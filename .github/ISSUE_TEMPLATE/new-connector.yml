@@ -1,0 +1,54 @@
+name: Propose a new connector
+description: Suggest a new data source for Lemieux to integrate.
+labels: ["connector-request"]
+body:
+  - type: input
+    id: source
+    attributes:
+      label: Data source name
+      placeholder: "e.g., MoneyPuck, PWHL, All Three Zones"
+    validations:
+      required: true
+
+  - type: input
+    id: url
+    attributes:
+      label: Source URL
+      placeholder: "https://..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: what
+    attributes:
+      label: What does this source provide that Lemieux doesn't already have?
+      description: Specific metrics, unique coverage, etc.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: access
+    attributes:
+      label: Access model
+      options:
+        - "Free, unauthenticated"
+        - "Free, requires user-level key (like NST)"
+        - "Paid subscription"
+        - "CSV / file downloads"
+        - "Other / unclear"
+    validations:
+      required: true
+
+  - type: textarea
+    id: terms
+    attributes:
+      label: License / terms of use
+      description: Paste or link the source's stated terms. Lemieux will only integrate sources where terms are compatible.
+
+  - type: checkboxes
+    id: willing
+    attributes:
+      label: Willing to submit the connector yourself?
+      options:
+        - label: "Yes, I'll open the PR using templates/connector-template"
+        - label: "No, just suggesting — someone else would need to build it"

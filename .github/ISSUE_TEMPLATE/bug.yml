@@ -1,0 +1,32 @@
+name: Bug report
+description: Report something broken in Lemieux.
+labels: ["bug"]
+body:
+  - type: input
+    id: package
+    attributes:
+      label: Package (lemieux-core / lemieux-mcp / connectors / glossary / app / skills)
+      placeholder: "e.g., lemieux-connectors:nst"
+    validations:
+      required: true
+
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: Include traceback if applicable.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect?
+    validations:
+      required: true
+
+  - type: textarea
+    id: repro
+    attributes:
+      label: Minimal reproduction
+      render: python

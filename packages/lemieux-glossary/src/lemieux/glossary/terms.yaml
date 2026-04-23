@@ -1,0 +1,211 @@
+# Canonical bilingual glossary for Lemieux.
+# Every metric used in any Lemieux output should be defined here.
+# Contribution rule: every term must have EN + FR and at least one caveat.
+
+terms:
+  - id: expected_goals
+    en:
+      short: "Expected goals (xG)"
+      long: "A model-based estimate of how likely each shot is to become a goal, given its location, type, and pre-shot context. Summing xG across many shots gives a better signal of shot quality than raw shot counts."
+    fr:
+      short: "Buts attendus (xG)"
+      long: "Estimation modélisée de la probabilité que chaque tir devienne un but, en fonction de sa position, de son type et du contexte pré-tir. La somme des xG d'un grand nombre de tirs donne un meilleur signal de la qualité des tirs que les simples décomptes."
+    formula: null
+    caveats:
+      - "Models differ: NST, MoneyPuck, and Evolving-Hockey each calibrate their xG differently; absolute values aren't directly comparable across sources."
+      - "xG doesn't capture goalie quality or rebound dynamics beyond their immediate effect."
+    sources:
+      - "https://www.naturalstattrick.com/glossary.php"
+      - "https://moneypuck.com/"
+
+  - id: xgf60
+    en:
+      short: "Expected goals for per 60 (xGF/60)"
+      long: "A team's or player's on-ice rate of expected goals for, normalized to 60 minutes of ice time. Standard unit for comparing across different sample sizes."
+    fr:
+      short: "Buts attendus pour par 60 (xGF/60)"
+      long: "Taux de buts attendus pour qu'une équipe (ou qu'un joueur lorsqu'il est sur la glace) génère par 60 minutes de jeu. Unité standard pour comparer des échantillons de tailles différentes."
+    formula: "xgf_total / toi_minutes * 60"
+    caveats:
+      - "Includes only the strength state you're filtering for (5v5, 5v4, etc.)."
+      - "Rate alone says nothing about sample size; always pair with TOI."
+    sources:
+      - "https://www.naturalstattrick.com/glossary.php"
+
+  - id: xga60
+    en:
+      short: "Expected goals against per 60 (xGA/60)"
+      long: "Same logic as xGF/60 but for shots against. Lower is better."
+    fr:
+      short: "Buts attendus contre par 60 (xGA/60)"
+      long: "Même logique que xGF/60, mais pour les tirs subis. Plus bas = mieux."
+    formula: "xga_total / toi_minutes * 60"
+    caveats:
+      - "Does not account for goalie save quality."
+    sources:
+      - "https://www.naturalstattrick.com/glossary.php"
+
+  - id: iso_xgf60
+    en:
+      short: "Isolated xGF/60"
+      long: "A player's on-ice xGF/60 minus the team's xGF/60 without the player on ice. Positive values mean the team creates more expected goals with this player on the ice than without."
+    fr:
+      short: "xGF/60 isolé"
+      long: "Le xGF/60 d'une équipe lorsqu'un joueur est sur la glace, moins le xGF/60 de la même équipe lorsque le joueur n'est pas sur la glace. Une valeur positive indique que l'équipe génère plus de buts attendus avec ce joueur sur la glace que sans lui."
+    formula: "(xgf_on / toi_on * 60) - (xgf_off / toi_off * 60)"
+    caveats:
+      - "This is not true RAPM — it doesn't control for teammates, opponents, or deployment."
+      - "Values are unstable below ~200 pooled minutes."
+    sources:
+      - "https://evolving-hockey.com/glossary/"
+      - "https://hockey-graphs.com/tag/wowy/"
+
+  - id: iso_xga60
+    en:
+      short: "Isolated xGA/60"
+      long: "Same construction as iso_xgf60 but for expected goals against. Negative values are good — the team gives up fewer expected goals with this player on the ice."
+    fr:
+      short: "xGA/60 isolé"
+      long: "Même construction qu'isolé xGF/60, mais pour les buts attendus contre. Les valeurs négatives sont bonnes — l'équipe accorde moins de buts attendus lorsque ce joueur est sur la glace."
+    formula: "(xga_on / toi_on * 60) - (xga_off / toi_off * 60)"
+    caveats:
+      - "Same limitations as iso_xgf60 (no teammate/opponent/deployment controls)."
+    sources:
+      - "https://evolving-hockey.com/glossary/"
+
+  - id: iso_net
+    en:
+      short: "Isolated net impact"
+      long: "iso_xgf60 minus iso_xga60. A rough single number summarizing offensive and defensive isolated impact. Use with care — suppresses directional detail."
+    fr:
+      short: "Impact net isolé"
+      long: "xGF/60 isolé moins xGA/60 isolé. Une valeur unique qui résume l'impact offensif et défensif isolé. À utiliser avec prudence — elle masque les détails directionnels."
+    formula: "iso_xgf60 - iso_xga60"
+    caveats:
+      - "A player with +1 offensively and +1 defensively (bad defensively) has a net of 0 — the summary hides that he's one-dimensional."
+
+  - id: corsi
+    en:
+      short: "Corsi (CF, CA, CF%)"
+      long: "All shot attempts: shots on goal + missed shots + blocked shots. Popular proxy for possession. Mostly superseded by xG for shot quality but still useful as a volume indicator."
+    fr:
+      short: "Corsi (CF, CA, CF%)"
+      long: "Toutes les tentatives de tir : tirs cadrés + tirs manqués + tirs bloqués. Indicateur populaire de la possession. Largement supplanté par le xG pour la qualité des tirs, mais toujours utile comme mesure de volume."
+    formula: "CF% = CF / (CF + CA)"
+    caveats:
+      - "Treats all shots equally regardless of location or quality."
+    sources:
+      - "https://www.naturalstattrick.com/glossary.php"
+
+  - id: fenwick
+    en:
+      short: "Fenwick (FF, FA, FF%)"
+      long: "Unblocked shot attempts — Corsi minus blocked shots. Slightly better predictor of goals than Corsi in most studies."
+    fr:
+      short: "Fenwick (FF, FA, FF%)"
+      long: "Tentatives de tir non bloquées — Corsi moins les tirs bloqués. Généralement un meilleur prédicteur des buts que le Corsi."
+    formula: "FF% = FF / (FF + FA)"
+    caveats:
+      - "Same quality-blind limitation as Corsi."
+    sources:
+      - "https://www.naturalstattrick.com/glossary.php"
+
+  - id: high_danger
+    en:
+      short: "High-danger chances (HDCF, HDCA, HDCF%)"
+      long: "Shots from the most dangerous areas of the ice (typically the slot and crease). NST defines danger zones geometrically."
+    fr:
+      short: "Chances de marquer à haut danger (HDCF, HDCA, HDCF%)"
+      long: "Tirs provenant des zones les plus dangereuses de la glace (habituellement l'enclave et le devant du filet). NST définit les zones de danger géométriquement."
+    formula: null
+    caveats:
+      - "Definitions differ between NST and other providers."
+    sources:
+      - "https://www.naturalstattrick.com/glossary.php"
+
+  - id: gsax
+    en:
+      short: "Goals saved above expected (GSAx)"
+      long: "Goalie performance metric: expected goals against minus actual goals allowed. Positive means the goalie saved more than expected based on shot quality."
+    fr:
+      short: "Buts sauvés au-dessus de l'attendu (GSAx)"
+      long: "Mesure de la performance du gardien : buts attendus contre moins les buts réellement accordés. Positif = le gardien a arrêté plus que prévu selon la qualité des tirs."
+    formula: "sum(xG against) - sum(goals against)"
+    caveats:
+      - "Depends on the xG model; different sources give different GSAx values."
+      - "Single-game GSAx is noisy."
+    sources:
+      - "https://www.naturalstattrick.com/glossary.php"
+
+  - id: pdo
+    en:
+      short: "PDO"
+      long: "On-ice shooting % plus on-ice save %. In the long run, tends to regress to ~1.000. Values well above or below indicate recent luck that likely won't sustain."
+    fr:
+      short: "PDO"
+      long: "Pourcentage de réussite des tirs + pourcentage d'arrêts lorsque le joueur est sur la glace. À long terme, tend à converger vers ~1,000. Des valeurs très au-dessus ou en-dessous indiquent une chance récente qui ne tiendra probablement pas."
+    formula: "SH% + SV%"
+    caveats:
+      - "Short-sample PDO is almost pure noise."
+    sources:
+      - "https://hockey-graphs.com/2015/07/23/pdo-isnt-luck/"
+
+  - id: rapm
+    en:
+      short: "Regularized Adjusted Plus-Minus (RAPM)"
+      long: "A ridge-regression approach that isolates each player's on-ice impact net of teammates and opponents, using shift-level data. The industry standard for isolated impact; what iso_xgf60 approximates at lower cost."
+    fr:
+      short: "Plus-Minus Ajusté Régularisé (RAPM)"
+      long: "Une approche par régression ridge qui isole l'impact de chaque joueur sur la glace, net des coéquipiers et adversaires, en utilisant les données de présences. Le standard de l'industrie pour l'impact isolé."
+    formula: null
+    caveats:
+      - "Identification breaks down when two players almost always play together."
+      - "Requires shift-level data and regularization — not easy to reproduce at home."
+    sources:
+      - "https://evolving-hockey.com/glossary/regularized-adjusted-plus-minus/"
+      - "https://hockey-graphs.com/2019/01/14/reviving-regularized-adjusted-plus-minus-for-hockey/"
+
+  - id: confidence_interval
+    en:
+      short: "80% confidence interval"
+      long: "A range of plausible values for an estimate. 80% means — assuming our noise model is right — there's an 80% chance the true value falls in this range. We default to 80% rather than 95% because playoff samples (16–28 games) make 95% so wide it hides real signal."
+    fr:
+      short: "Intervalle de confiance à 80 %"
+      long: "Plage de valeurs plausibles pour une estimation. 80 % signifie — en supposant que notre modèle de bruit soit correct — qu'il y a 80 % de chances que la vraie valeur se situe dans cet intervalle. Nous utilisons 80 % plutôt que 95 % parce que les échantillons de séries éliminatoires (16 à 28 matchs) rendent le 95 % si large qu'il masque le vrai signal."
+    formula: "estimate ± z_{0.9} × σ"
+    caveats:
+      - "CI straddles zero = the direction is uncertain at this sample size."
+      - "80% is a deliberate choice: more assertive than 95%, will be wrong ~1 in 5 times."
+
+  - id: pooled_baseline
+    en:
+      short: "Pooled baseline"
+      long: "When computing isolated impact, we sum events and minutes across multiple (season × stype) windows so low-GP or traded players get a more stable estimate. Default: 2 seasons + both playoffs."
+    fr:
+      short: "Base pondérée"
+      long: "Lors du calcul de l'impact isolé, nous additionnons les événements et les minutes sur plusieurs fenêtres (saison × type de match) pour obtenir une estimation plus stable pour les joueurs à faibles minutes ou récemment échangés. Par défaut : 2 saisons + les deux séries."
+    formula: null
+    caveats:
+      - "Pooling across teams for traded players is a mild approximation — we subtract their total on-ice events against the *receiving* team's totals."
+
+  - id: on_ice_vs_individual
+    en:
+      short: "On-ice (oi) vs. individual (bio)"
+      long: "NST reports two splits per player. 'On-ice' counts all team events while the player was on the ice (used for iso impact). 'Individual' counts only the player's own shots, goals, assists, etc. (used for raw scoring)."
+    fr:
+      short: "Sur la glace (oi) vs. individuel (bio)"
+      long: "NST rapporte deux ventilations par joueur. « Sur la glace » compte tous les événements d'équipe pendant que le joueur était sur la glace (utilisé pour l'impact isolé). « Individuel » compte seulement les tirs, buts, passes, etc. du joueur lui-même (utilisé pour le pointage brut)."
+    formula: null
+    caveats:
+      - "Don't mix them by accident — an on-ice xGF/60 is a team rate, not the player's own shooting."
+
+  - id: toi
+    en:
+      short: "Time on ice (TOI)"
+      long: "Minutes a player has been on the ice. Reported as total (pooled season) or per game (usage). Critical sample-size indicator — always show TOI alongside any rate."
+    fr:
+      short: "Temps de jeu (TOI)"
+      long: "Minutes qu'un joueur a passé sur la glace. Rapporté en total (pondéré sur la saison) ou par match (utilisation). Indicateur critique de la taille de l'échantillon — toujours afficher le TOI à côté de tout taux."
+    formula: null
+    caveats:
+      - "NST formats TOI as 'mm:ss' in game-level tables; as a float elsewhere."

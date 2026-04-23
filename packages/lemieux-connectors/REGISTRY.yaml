@@ -1,0 +1,33 @@
+# Machine-readable registry of Lemieux connectors.
+# Used by docs generation and MCP resource `lemieux://sources`.
+# Every key is mirrored in SOURCES.md (human-readable); this file is the structured source of truth.
+
+connectors:
+  - id: nhl_api
+    module: lemieux.connectors.nhl_api
+    class: NhlApiClient
+    status: stable
+    key_required: false
+    rate_limit_per_sec: 5
+    description_en: "NHL.com public API — play-by-play, shifts, rosters, schedules."
+    description_fr: "API publique LNH.com — jeu par jeu, présences, formations, calendriers."
+
+  - id: nst
+    module: lemieux.connectors.nst
+    class: NstClient
+    status: stable
+    key_required: true
+    key_env_var: NST_ACCESS_KEY
+    rate_limit_per_sec: 1
+    description_en: "Natural Stat Trick advanced stats (team, skater, goalie, line combos)."
+    description_fr: "Statistiques avancées Natural Stat Trick (équipe, joueur, gardien, trios)."
+
+  - id: moneypuck
+    status: roadmap
+    description_en: "CSV exports of MoneyPuck's independent xG model. (Planned)"
+    description_fr: "Exports CSV du modèle xG indépendant de MoneyPuck. (Planifié)"
+
+  - id: pwhl
+    status: roadmap
+    description_en: "Professional Women's Hockey League stats. (Planned)"
+    description_fr: "Statistiques de la Ligue professionnelle de hockey féminin. (Planifié)"

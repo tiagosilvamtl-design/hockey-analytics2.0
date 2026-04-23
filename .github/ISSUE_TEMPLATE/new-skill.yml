@@ -1,0 +1,31 @@
+name: Propose a new Claude skill
+description: Suggest a new workflow/skill for Lemieux.
+labels: ["skill-request"]
+body:
+  - type: input
+    id: name
+    attributes:
+      label: Proposed skill name (kebab-case)
+      placeholder: "e.g., draft-trend-brief, compare-teams, write-trade-analysis"
+    validations:
+      required: true
+
+  - type: textarea
+    id: purpose
+    attributes:
+      label: What does this skill do?
+      description: One-paragraph description of the workflow.
+    validations:
+      required: true
+
+  - type: textarea
+    id: triggers
+    attributes:
+      label: Trigger phrases (EN + FR)
+      description: What user intents should fire this skill?
+
+  - type: textarea
+    id: tools
+    attributes:
+      label: Which MCP tools would this skill call?
+      placeholder: "e.g., query_team_stats, project_swap_scenario, fetch_game_detail"

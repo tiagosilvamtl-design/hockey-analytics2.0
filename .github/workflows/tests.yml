@@ -1,0 +1,37 @@
+name: tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  pytest:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11", "3.12", "3.13"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install packages (editable)
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e packages/lemieux-core
+          pip install -e packages/lemieux-glossary
+          pip install -e packages/lemieux-connectors
+          pip install -e packages/lemieux-mcp
+          pip install pytest pytest-vcr vcrpy ruff pandera
+
+      - name: Ruff check
+        run: ruff check packages/
+
+      - name: Run tests
+        run: pytest packages/ -v

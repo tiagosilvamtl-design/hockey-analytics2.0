@@ -1,0 +1,56 @@
+# Secrets — never commit
+.env
+.env.local
+.env.*.local
+.streamlit/secrets.toml
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+
+# Virtual envs
+.venv/
+venv/
+env/
+ENV/
+
+# Data caches — never commit local stores
+*.sqlite
+*.sqlite-journal
+*.db
+*.db-journal
+.lemieux/
+
+# Node (docx build)
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# OS
+.DS_Store
+Thumbs.db
+.ipynb_checkpoints/
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Local reports output — regenerate from scripts, don't commit
+reports/output/*.sqlite
+reports/output/*.log
+
+# Docs build artifacts
+site/
+build/
+dist/

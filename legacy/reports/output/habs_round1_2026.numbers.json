@@ -1,0 +1,716 @@
+{
+  "meta": {
+    "team": "MTL",
+    "opponent": "T.B",
+    "series_ref": "2026 NHL Stanley Cup Playoffs \u2014 Round 1",
+    "date": "2026-04-22",
+    "pooled_keys": [
+      [
+        "20252026",
+        2
+      ],
+      [
+        "20252026",
+        3
+      ],
+      [
+        "20242025",
+        2
+      ],
+      [
+        "20242025",
+        3
+      ]
+    ],
+    "current_only_keys": [
+      [
+        "20252026",
+        2
+      ],
+      [
+        "20252026",
+        3
+      ]
+    ]
+  },
+  "swaps_5v5": {
+    "dach_gallagher": {
+      "status": "ok",
+      "sit": "5v5",
+      "slot_minutes": 11.9,
+      "out": {
+        "name": "Kirby Dach",
+        "toi_on": 1171.833333333333,
+        "iso_xgf60": -0.12757610192001456,
+        "iso_xga60": 0.052809451925071915
+      },
+      "in": {
+        "name": "Brendan Gallagher",
+        "toi_on": 1878.41666666667,
+        "iso_xgf60": 0.3501569338872468,
+        "iso_xga60": -0.02287143806658909
+      },
+      "delta_xgf60": 0.09475038543510683,
+      "delta_xga60": -0.015010043181679433,
+      "delta_xgf60_ci80": [
+        -0.03649609791006461,
+        0.22599686878027828
+      ],
+      "delta_xga60_ci80": [
+        -0.15178218491070244,
+        0.12176209854734359
+      ],
+      "net": 0.10976042861678627
+    },
+    "texier_veleno": {
+      "status": "ok",
+      "sit": "5v5",
+      "slot_minutes": 12.5,
+      "out": {
+        "name": "Alexandre Texier",
+        "toi_on": 1025.466666666667,
+        "iso_xgf60": -0.11986144785898123,
+        "iso_xga60": -0.216124920803467
+      },
+      "in": {
+        "name": "Joe Veleno",
+        "toi_on": 1453.8333333333298,
+        "iso_xgf60": -0.5573642284332445,
+        "iso_xga60": -0.37016476941339693
+      },
+      "delta_xgf60": -0.09114641261963818,
+      "delta_xga60": -0.03209163512706874,
+      "delta_xgf60_ci80": [
+        -0.23282633793518615,
+        0.05053351269590978
+      ],
+      "delta_xga60_ci80": [
+        -0.1807799994349566,
+        0.1165967291808191
+      ],
+      "net": -0.059054777492569446
+    },
+    "combined": {
+      "status": "ok",
+      "sit": "5v5",
+      "pairs": [
+        {
+          "out": "Kirby Dach",
+          "in": "Brendan Gallagher",
+          "slot_minutes": 11.9,
+          "delta_xgf60": 0.09475038543510683,
+          "delta_xga60": -0.015010043181679433
+        },
+        {
+          "out": "Alexandre Texier",
+          "in": "Joe Veleno",
+          "slot_minutes": 12.5,
+          "delta_xgf60": -0.09114641261963818,
+          "delta_xga60": -0.03209163512706874
+        }
+      ],
+      "delta_xgf60": 0.003603972815468648,
+      "delta_xga60": -0.047101678308748174,
+      "delta_xgf60_ci80": [
+        -0.1895251048188783,
+        0.1967330504498156
+      ],
+      "delta_xga60_ci80": [
+        -0.24912852908284489,
+        0.15492517246534854
+      ],
+      "net": 0.05070565112421682
+    }
+  },
+  "swaps_5v4": {
+    "dach_gallagher": {
+      "status": "ok",
+      "sit": "5v4",
+      "slot_minutes": 1.5,
+      "out": {
+        "name": "Kirby Dach",
+        "toi_on": 183.34999999999968,
+        "iso_xgf60": -1.6758323646456699,
+        "iso_xga60": 0.36673320744073357
+      },
+      "in": {
+        "name": "Brendan Gallagher",
+        "toi_on": 236.64999999999668,
+        "iso_xgf60": -1.319414550893387,
+        "iso_xga60": -0.1123518332259692
+      },
+      "delta_xgf60": 0.008910445343807073,
+      "delta_xga60": -0.01197712601666757,
+      "delta_xgf60_ci80": [
+        -0.06580431290437742,
+        0.08362520359199156
+      ],
+      "delta_xga60_ci80": [
+        -0.03641442102823746,
+        0.012460168994902323
+      ],
+      "net": 0.020887571360474644
+    },
+    "texier_veleno": {
+      "status": "ok",
+      "sit": "5v4",
+      "slot_minutes": 1.5,
+      "out": {
+        "name": "Alexandre Texier",
+        "toi_on": 80.50000000000028,
+        "iso_xgf60": 0.5892060777477841,
+        "iso_xga60": -0.0781456432471056
+      },
+      "in": {
+        "name": "Joe Veleno",
+        "toi_on": 6.2666666666666,
+        "iso_xgf60": -6.609839435827558,
+        "iso_xga60": -0.1741702182263899
+      },
+      "delta_xgf60": -0.17997613783938357,
+      "delta_xga60": -0.0024006143744821073,
+      "delta_xgf60_ci80": [
+        -0.3135539161647487,
+        -0.04639835951401847
+      ],
+      "delta_xga60_ci80": [
+        -0.07491897973762245,
+        0.07011775098865823
+      ],
+      "net": -0.17757552346490146
+    }
+  },
+  "laine": {
+    "status": "ok",
+    "sit": "5v4",
+    "laine": {
+      "toi_on": 162.7500000000033,
+      "iso_xgf60": -0.8244199552774365,
+      "iso_xga60": -0.14750046028690533,
+      "individual_toi": 0.0,
+      "individual_goals": 0.0,
+      "individual_xg": 0.0,
+      "ig_per60": 0.0
+    },
+    "pp2_candidates": [
+      {
+        "name": "Alexandre Texier",
+        "toi_on": 80.50000000000028,
+        "iso_xgf60": 0.5892060777477841,
+        "iso_xga60": -0.0781456432471056
+      },
+      {
+        "name": "Kirby Dach",
+        "toi_on": 183.34999999999968,
+        "iso_xgf60": -1.6758323646456699,
+        "iso_xga60": 0.36673320744073357
+      },
+      {
+        "name": "Alex Newhook",
+        "toi_on": 182.4666666666636,
+        "iso_xgf60": -1.761984284460719,
+        "iso_xga60": 0.21788431188586632
+      },
+      {
+        "name": "Zachary Bolduc",
+        "toi_on": 126.06666666666999,
+        "iso_xgf60": -0.0964275533644221,
+        "iso_xga60": 0.22173088357161164
+      }
+    ]
+  },
+  "rankings": {
+    "status": "ok",
+    "positive": [
+      {
+        "name": "Lane Hutson",
+        "position": "D",
+        "gp": 84,
+        "toi": 1543.6,
+        "iso_xgf60": 0.7046703745175336,
+        "iso_xga60": -0.3892926963964669,
+        "net": 1.0939630709140005,
+        "gf": 93,
+        "ga": 58
+      },
+      {
+        "name": "Cole Caufield",
+        "position": "R",
+        "gp": 83,
+        "toi": 1116.9,
+        "iso_xgf60": 0.6759731605364032,
+        "iso_xga60": -0.27213857901455896,
+        "net": 0.9481117395509622,
+        "gf": 67,
+        "ga": 41
+      },
+      {
+        "name": "Nick Suzuki",
+        "position": "C",
+        "gp": 84,
+        "toi": 1235.4,
+        "iso_xgf60": 0.52076900631993,
+        "iso_xga60": -0.22039378076707727,
+        "net": 0.7411627870870072,
+        "gf": 72,
+        "ga": 42
+      },
+      {
+        "name": "Zachary Bolduc",
+        "position": "R",
+        "gp": 80,
+        "toi": 937.9,
+        "iso_xgf60": 0.18136382055629774,
+        "iso_xga60": -0.2505578544831919,
+        "net": 0.43192167503948964,
+        "gf": 37,
+        "ga": 37
+      },
+      {
+        "name": "Alexandre Texier",
+        "position": "L",
+        "gp": 53,
+        "toi": 641.0,
+        "iso_xgf60": 0.19780144791247478,
+        "iso_xga60": -0.09594058876251532,
+        "net": 0.2937420366749901,
+        "gf": 26,
+        "ga": 18
+      },
+      {
+        "name": "Jayden Struble",
+        "position": "D",
+        "gp": 61,
+        "toi": 825.7,
+        "iso_xgf60": -0.06704874789136017,
+        "iso_xga60": -0.12857304620189902,
+        "net": 0.06152429831053885,
+        "gf": 36,
+        "ga": 31
+      },
+      {
+        "name": "Alexandre Carrier",
+        "position": "D",
+        "gp": 75,
+        "toi": 1154.4,
+        "iso_xgf60": 0.0339571371561882,
+        "iso_xga60": 0.0036346497844403913,
+        "net": 0.03032248737174781,
+        "gf": 55,
+        "ga": 53
+      },
+      {
+        "name": "Juraj Slafkovsk\u00fd",
+        "position": "L",
+        "gp": 84,
+        "toi": 1170.1,
+        "iso_xgf60": 0.2601421064543943,
+        "iso_xga60": 0.23165690861000376,
+        "net": 0.02848519784439052,
+        "gf": 62,
+        "ga": 45
+      }
+    ],
+    "negative": [
+      {
+        "name": "Oliver Kapanen",
+        "position": "C",
+        "gp": 84,
+        "toi": 950.9,
+        "iso_xgf60": -0.23533281914078197,
+        "iso_xga60": 0.6814952360118709,
+        "net": -0.9168280551526529,
+        "gf": 51,
+        "ga": 48
+      },
+      {
+        "name": "Alex Newhook",
+        "position": "C",
+        "gp": 44,
+        "toi": 519.3,
+        "iso_xgf60": -0.562060182573096,
+        "iso_xga60": 0.17015116805798103,
+        "net": -0.732211350631077,
+        "gf": 29,
+        "ga": 23
+      },
+      {
+        "name": "Mike Matheson",
+        "position": "D",
+        "gp": 80,
+        "toi": 1474.5,
+        "iso_xgf60": -0.1470284612568289,
+        "iso_xga60": 0.4450315946389609,
+        "net": -0.5920600558957898,
+        "gf": 64,
+        "ga": 61
+      },
+      {
+        "name": "Josh Anderson",
+        "position": "R",
+        "gp": 74,
+        "toi": 833.6,
+        "iso_xgf60": -0.3622053137423147,
+        "iso_xga60": 0.1546129767766522,
+        "net": -0.5168182905189669,
+        "gf": 31,
+        "ga": 38
+      },
+      {
+        "name": "Arber Xhekaj",
+        "position": "D",
+        "gp": 67,
+        "toi": 735.4,
+        "iso_xgf60": -0.7067139634149879,
+        "iso_xga60": -0.19565343348629494,
+        "net": -0.511060529928693,
+        "gf": 23,
+        "ga": 31
+      }
+    ],
+    "n_players": 21
+  },
+  "optimal": {
+    "status": "ok",
+    "forwards": [
+      [
+        "Nick Suzuki",
+        "Cole Caufield",
+        "Zachary Bolduc"
+      ],
+      [
+        "Kirby Dach",
+        "Alexandre Texier",
+        "Juraj Slafkovsk\u00fd"
+      ],
+      [
+        "Joe Veleno",
+        "Brendan Gallagher",
+        "Ivan Demidov"
+      ],
+      [
+        "Jake Evans",
+        "Josh Anderson"
+      ]
+    ],
+    "defense": [
+      [
+        "Lane Hutson",
+        "Arber Xhekaj"
+      ],
+      [
+        "Jayden Struble",
+        "Noah Dobson"
+      ],
+      [
+        "Alexandre Carrier",
+        "Kaiden Guhle"
+      ]
+    ],
+    "goalie": {
+      "status": "no_goalie_data",
+      "starter": "Dobes (assumed)"
+    },
+    "pp_units": {
+      "pp1": [
+        "Nick Suzuki",
+        "Juraj Slafkovsk\u00fd",
+        "Cole Caufield",
+        "Ivan Demidov",
+        "Lane Hutson"
+      ],
+      "pp2": [
+        "Zachary Bolduc",
+        "Phillip Danault",
+        "Brendan Gallagher",
+        "Alexandre Texier",
+        "Noah Dobson"
+      ],
+      "ranked": [
+        {
+          "name": "Nick Suzuki",
+          "position": "C",
+          "toi": 282.383333333337,
+          "iso_xgf60": 3.691262750862556
+        },
+        {
+          "name": "Juraj Slafkovsk\u00fd",
+          "position": "L",
+          "toi": 266.95,
+          "iso_xgf60": 3.6596883417003268
+        },
+        {
+          "name": "Cole Caufield",
+          "position": "R",
+          "toi": 265.98333333333,
+          "iso_xgf60": 3.259391355796067
+        },
+        {
+          "name": "Lane Hutson",
+          "position": "D",
+          "toi": 275.666666666663,
+          "iso_xgf60": 1.8564594670218337
+        },
+        {
+          "name": "Ivan Demidov",
+          "position": "R",
+          "toi": 241.61666666667,
+          "iso_xgf60": 1.309621420087975
+        },
+        {
+          "name": "Zachary Bolduc",
+          "position": "R",
+          "toi": 126.06666666666999,
+          "iso_xgf60": -1.1040424535210596
+        },
+        {
+          "name": "Noah Dobson",
+          "position": "D",
+          "toi": 108.95,
+          "iso_xgf60": -1.7256093372155732
+        },
+        {
+          "name": "Phillip Danault",
+          "position": "C",
+          "toi": 46.233333333333334,
+          "iso_xgf60": -1.8960673364746956
+        },
+        {
+          "name": "Brendan Gallagher",
+          "position": "R",
+          "toi": 105.23333333333,
+          "iso_xgf60": -2.073179556136772
+        },
+        {
+          "name": "Alexandre Texier",
+          "position": "L",
+          "toi": 51.6333333333333,
+          "iso_xgf60": -2.1732247387032215
+        },
+        {
+          "name": "Oliver Kapanen",
+          "position": "C",
+          "toi": 78.583333333333,
+          "iso_xgf60": -2.3421555507223184
+        },
+        {
+          "name": "Kirby Dach",
+          "position": "C",
+          "toi": 51.8999999999997,
+          "iso_xgf60": -3.2124724654124277
+        },
+        {
+          "name": "Alex Newhook",
+          "position": "C",
+          "toi": 44.700000000000294,
+          "iso_xgf60": -3.601929167029878
+        }
+      ]
+    },
+    "forwards_pool": [
+      {
+        "name": "Cole Caufield",
+        "position": "R",
+        "toi": 1116.8500000000001,
+        "iso_xgf60": 0.6759731605364032,
+        "iso_xga60": -0.27213857901455896,
+        "net": 0.9481117395509622
+      },
+      {
+        "name": "Nick Suzuki",
+        "position": "C",
+        "toi": 1235.4166666667002,
+        "iso_xgf60": 0.52076900631993,
+        "iso_xga60": -0.22039378076707727,
+        "net": 0.7411627870870072
+      },
+      {
+        "name": "Zachary Bolduc",
+        "position": "R",
+        "toi": 937.899999999997,
+        "iso_xgf60": 0.18136382055629774,
+        "iso_xga60": -0.2505578544831919,
+        "net": 0.43192167503948964
+      },
+      {
+        "name": "Alexandre Texier",
+        "position": "L",
+        "toi": 641.01666666667,
+        "iso_xgf60": 0.19780144791247478,
+        "iso_xga60": -0.09594058876251532,
+        "net": 0.2937420366749901
+      },
+      {
+        "name": "Juraj Slafkovsk\u00fd",
+        "position": "L",
+        "toi": 1170.1166666667,
+        "iso_xgf60": 0.2601421064543943,
+        "iso_xga60": 0.23165690861000376,
+        "net": 0.02848519784439052
+      },
+      {
+        "name": "Brendan Gallagher",
+        "position": "R",
+        "toi": 822.85,
+        "iso_xgf60": 0.20404684788056748,
+        "iso_xga60": 0.19987016526363144,
+        "net": 0.004176682616936045
+      },
+      {
+        "name": "Kirby Dach",
+        "position": "C",
+        "toi": 459.03333333333296,
+        "iso_xgf60": -0.22974257372441986,
+        "iso_xga60": -0.20873101315813702,
+        "net": -0.02101156056628284
+      },
+      {
+        "name": "Joe Veleno",
+        "position": "C",
+        "toi": 617.5,
+        "iso_xgf60": -0.44391773022974634,
+        "iso_xga60": -0.3945375749324427,
+        "net": -0.04938015529730366
+      },
+      {
+        "name": "Jake Evans",
+        "position": "C",
+        "toi": 823.083333333337,
+        "iso_xgf60": -0.2986265721718411,
+        "iso_xga60": -0.15060867851627568,
+        "net": -0.1480178936555654
+      },
+      {
+        "name": "Ivan Demidov",
+        "position": "R",
+        "toi": 955.349999999997,
+        "iso_xgf60": -0.1991823691913277,
+        "iso_xga60": 0.08149143252873081,
+        "net": -0.2806738017200585
+      },
+      {
+        "name": "Phillip Danault",
+        "position": "C",
+        "toi": 944.96666666667,
+        "iso_xgf60": -0.3615607846543809,
+        "iso_xga60": -0.042628201835767765,
+        "net": -0.31893258281861314
+      },
+      {
+        "name": "Josh Anderson",
+        "position": "R",
+        "toi": 833.63333333333,
+        "iso_xgf60": -0.3622053137423147,
+        "iso_xga60": 0.1546129767766522,
+        "net": -0.5168182905189669
+      },
+      {
+        "name": "Alex Newhook",
+        "position": "C",
+        "toi": 519.299999999997,
+        "iso_xgf60": -0.562060182573096,
+        "iso_xga60": 0.17015116805798103,
+        "net": -0.732211350631077
+      },
+      {
+        "name": "Oliver Kapanen",
+        "position": "C",
+        "toi": 950.85,
+        "iso_xgf60": -0.23533281914078197,
+        "iso_xga60": 0.6814952360118709,
+        "net": -0.9168280551526529
+      }
+    ],
+    "defense_pool": [
+      {
+        "name": "Lane Hutson",
+        "position": "D",
+        "toi": 1543.6000000000329,
+        "iso_xgf60": 0.7046703745175336,
+        "iso_xga60": -0.3892926963964669,
+        "net": 1.0939630709140005
+      },
+      {
+        "name": "Jayden Struble",
+        "position": "D",
+        "toi": 825.6999999999999,
+        "iso_xgf60": -0.06704874789136017,
+        "iso_xga60": -0.12857304620189902,
+        "net": 0.06152429831053885
+      },
+      {
+        "name": "Alexandre Carrier",
+        "position": "D",
+        "toi": 1154.383333333333,
+        "iso_xgf60": 0.0339571371561882,
+        "iso_xga60": 0.0036346497844403913,
+        "net": 0.03032248737174781
+      },
+      {
+        "name": "Kaiden Guhle",
+        "position": "D",
+        "toi": 697.7499999999969,
+        "iso_xgf60": -0.2888881674496666,
+        "iso_xga60": -0.045684090682548195,
+        "net": -0.24320407676711842
+      },
+      {
+        "name": "Noah Dobson",
+        "position": "D",
+        "toi": 1403.55,
+        "iso_xgf60": 0.07565098713787721,
+        "iso_xga60": 0.39016985189804654,
+        "net": -0.3145188647601693
+      },
+      {
+        "name": "Arber Xhekaj",
+        "position": "D",
+        "toi": 735.383333333337,
+        "iso_xgf60": -0.7067139634149879,
+        "iso_xga60": -0.19565343348629494,
+        "net": -0.511060529928693
+      },
+      {
+        "name": "Mike Matheson",
+        "position": "D",
+        "toi": 1474.516666666633,
+        "iso_xgf60": -0.1470284612568289,
+        "iso_xga60": 0.4450315946389609,
+        "net": -0.5920600558957898
+      }
+    ]
+  },
+  "slafkovsky": {
+    "status": "ok",
+    "buckets": {
+      "A": {
+        "label": "G1 all + G2 P1",
+        "mtl_sog": 10,
+        "tbl_sog": 5,
+        "mtl_goals": 5,
+        "tbl_goals": 4,
+        "slaf_sog": 5,
+        "slaf_goals": 3,
+        "mtl_missed": 7,
+        "tbl_missed": 2,
+        "slaf_toi_sec": 1682,
+        "shift_count": 33,
+        "slaf_toi_min": 28.03
+      },
+      "B": {
+        "label": "G2 P3 + G2 OT",
+        "mtl_sog": 5,
+        "tbl_sog": 5,
+        "mtl_goals": 0,
+        "tbl_goals": 1,
+        "slaf_sog": 0,
+        "slaf_goals": 0,
+        "mtl_missed": 2,
+        "tbl_missed": 2,
+        "slaf_toi_sec": 753,
+        "shift_count": 12,
+        "slaf_toi_min": 12.55
+      }
+    }
+  }
+}

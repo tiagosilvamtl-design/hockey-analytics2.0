@@ -1,0 +1,66 @@
+[project]
+name = "lemieux"
+version = "0.1.0"
+description = "Lemieux AI Hockey Analytics Framework — open-source connectors, analytics primitives, MCP server, and Claude skills for honest hockey analysis"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.11"
+authors = [
+    { name = "Xavier Beauchamp-Tremblay", email = "xbeauchamptremblay@gmail.com" },
+]
+keywords = ["hockey", "nhl", "analytics", "mcp", "claude", "sports-analytics"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering",
+]
+dependencies = [
+    # Workspace install pulls in all sub-packages
+    "lemieux-core",
+    "lemieux-connectors",
+    "lemieux-glossary",
+    "lemieux-mcp",
+    "lemieux-app",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.3",
+    "pytest-vcr>=1.0",
+    "ruff>=0.6",
+    "pandera>=0.20",
+    "vcrpy>=6.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/xbeauchamp/lemieux"
+Documentation = "https://github.com/xbeauchamp/lemieux#readme"
+Repository = "https://github.com/xbeauchamp/lemieux"
+Issues = "https://github.com/xbeauchamp/lemieux/issues"
+
+[tool.uv.sources]
+lemieux-core = { path = "packages/lemieux-core", editable = true }
+lemieux-connectors = { path = "packages/lemieux-connectors", editable = true }
+lemieux-glossary = { path = "packages/lemieux-glossary", editable = true }
+lemieux-mcp = { path = "packages/lemieux-mcp", editable = true }
+lemieux-app = { path = "packages/lemieux-app", editable = true }
+
+[tool.uv.workspace]
+members = ["packages/*"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["packages/*/tests"]
+addopts = "-ra -q"
