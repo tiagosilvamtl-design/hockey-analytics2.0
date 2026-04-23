@@ -142,4 +142,4 @@ Assembled on top of the analytics community that made this thinkable: [Natural S
 
 ## The name
 
-*Lemieux* is an homage to Mario Lemieux and to French-Canadian hockey heritage. There may or may not be a second layer of meaning about a famous AI research lab's coding assistant. We don't dwell on it.
+*Lemieux* is an homage to **Claude Lemieux** — the Québécois winger who made a Stanley Cup–decorated career out of long, ugly playoff series — and therefore an implicit wink at a certain favourite coding assistant and the models that power it. We don't dwell on it.
