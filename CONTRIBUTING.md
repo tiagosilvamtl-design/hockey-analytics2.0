@@ -59,6 +59,45 @@ Most contributions are new data source connectors. The template-and-three-tests 
 
 One-two maintainers currently. PR reviews happen weekly in batches. Stale bot auto-closes inactive issues after 90 days. If you need something sooner, drop a note in the PR — real urgency is respected.
 
+<a id="auto-review"></a>
+### Auto-review on every PR
+
+Every PR is reviewed automatically by Claude Code via the [`review-pr-lemieux`](./.claude/skills/review-pr-lemieux) skill (workflow at `.github/workflows/claude-pr-review.yml`). Within a few minutes of opening a PR you'll get a structured comment that looks like:
+
+```
+## 🤖 Lemieux automated review
+
+**Verdict:** ✅ MERGE  /  🟡 REQUEST CHANGES  /  ❌ CLOSE
+**One-line read:** ...
+
+### What this PR does
+### Why I'm voting <verdict>
+### What's good
+### What worries me
+### Did the contributor follow the rules?  (table)
+### Recommendation
+```
+
+Plus a label: `claude-recommends-merge`, `claude-requests-changes`, or `claude-recommends-close`.
+
+**The maintainer (Xavier) makes the final call.** Claude never auto-merges, auto-closes, or formally blocks PRs. The label and review comment are advisory — they let Xavier filter the PR list and read a 60-second summary instead of a full diff before clicking accept or reject.
+
+**What gets a 🟡 REQUEST CHANGES verdict** (not exhaustive):
+- No tests for new code paths
+- Skill or glossary entry missing FR variant
+- Literal-translation FR (call `translate-to-quebec-fr` first)
+- Style violations (Anglicisms, missing diacritics, formal-European register)
+- Large unrelated reformatting bundled in
+
+**What gets an ❌ CLOSE recommendation:**
+- Predictions / forecasting added (Lemieux is directional, not predictive)
+- Fabricated quotes or unverifiable citations
+- Secrets / API keys committed to the repo
+- Republishing raw third-party data beyond `SOURCES.md` allowances
+- Removing intellectual-honesty rails (hiding sample sizes, scalar player grades)
+
+If the auto-review flags something you disagree with, push back in a reply comment — the maintainer reads both. The skill is opinionated by design but it's not infallible.
+
 ---
 
 ## 🇫🇷 Français
@@ -115,3 +154,25 @@ La plupart des contributions sont des connecteurs de sources de données. Le mod
 ### Rythme de maintenance
 
 Un à deux mainteneurs actuellement. Les révisions de PR se font une fois par semaine, par lots. Le robot d'archivage ferme automatiquement les tickets inactifs après 90 jours. Si vous avez besoin de quelque chose plus tôt, mentionnez-le dans la PR — l'urgence réelle est respectée.
+
+### Révision automatique de chaque PR
+
+Chaque PR est révisée automatiquement par Claude Code via l'habileté [`review-pr-lemieux`](./.claude/skills/review-pr-lemieux) (workflow dans `.github/workflows/claude-pr-review.yml`). Quelques minutes après l'ouverture d'une PR, vous obtiendrez un commentaire structuré contenant : un verdict (MERGE / DEMANDER DES CHANGEMENTS / FERMER), un résumé de ce que fait la PR, ce qui est bien, ce qui inquiète, la grille des règles du projet, et la prochaine étape recommandée. Plus une étiquette : `claude-recommends-merge`, `claude-requests-changes` ou `claude-recommends-close`.
+
+**Le mainteneur (Xavier) prend la décision finale.** Claude ne fusionne, ne ferme et ne bloque jamais une PR de force. Le commentaire et l'étiquette sont consultatifs — ils permettent à Xavier de filtrer les PR et de lire un résumé de 60 secondes plutôt que tout le diff avant de cliquer accepter ou refuser.
+
+**Ce qui déclenche un 🟡 DEMANDER DES CHANGEMENTS** (liste non exhaustive) :
+- Aucun test pour les nouveaux chemins de code
+- Habileté ou terme du lexique sans variante FR
+- Traduction FR littérale (utiliser d'abord `translate-to-quebec-fr`)
+- Anglicismes, diacritiques manquants, registre français-européen formel
+- Reformulations massives non reliées au but de la PR
+
+**Ce qui déclenche une recommandation ❌ FERMER :**
+- Ajout de prédictions / projections de résultats (Lemieux est directionnel, pas prédictif)
+- Citations fabriquées ou non vérifiables
+- Secrets ou clés d'API commités au dépôt
+- Republication de données tierces brutes au-delà de ce que `SOURCES.md` autorise
+- Retrait des garde-fous d'honnêteté intellectuelle (cacher la taille d'échantillon, ajouter une note globale par joueur)
+
+Si la révision automatique pointe quelque chose avec lequel vous êtes en désaccord, répondez dans un commentaire — le mainteneur lit les deux. L'habileté est opiniâtre par conception, mais elle n'est pas infaillible.

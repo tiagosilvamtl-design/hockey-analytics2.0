@@ -61,7 +61,7 @@ En 2026, la couverture médiatique du hockey demeure majoritairement innumériqu
 | [`lemieux-connectors`](./packages/lemieux-connectors) | Connecteurs enfichables vers les sources de données (API publique LNH, Natural Stat Trick, autres à venir) |
 | [`lemieux-mcp`](./packages/lemieux-mcp) | Serveur FastMCP qui expose les outils et ressources analytiques à tout client MCP |
 | [`lemieux-glossary`](./packages/lemieux-glossary) | Définitions bilingues (FR/EN) de toutes les métriques utilisées, avec formules et mises en garde |
-| [`.claude/skills/`](./.claude/skills) | Flux de travail Claude — `draft-game-post`, `propose-swap-scenario`, `validate-analysis` |
+| [`.claude/skills/`](./.claude/skills) | Flux de travail Claude — `research-game`, `translate-to-quebec-fr`, `draft-game-post`, `propose-swap-scenario`, `validate-analysis`, `review-pr-lemieux` |
 | [`examples/`](./examples) | Analyses complètes de bout en bout. Commencer par `examples/habs_round1_2026/` |
 
 ## Démarrage rapide
@@ -125,6 +125,8 @@ Voir [SOURCES.md](./SOURCES.md) pour la liste complète avec les termes d'utilis
 ## Contribuer
 
 Voir [CONTRIBUTING.md](./CONTRIBUTING.md) (bilingue). La contribution la plus facile : un connecteur — copier `templates/connector-template`, implémenter `refresh()`, écrire trois tests.
+
+**Révision automatique de chaque PR.** Lorsqu'une PR est ouverte, un workflow GitHub lance Claude Code avec l'habileté [`review-pr-lemieux`](./.claude/skills/review-pr-lemieux) et publie un commentaire de révision structuré en quelques minutes — verdict (MERGE / DEMANDER DES CHANGEMENTS / FERMER), ce que fait la PR, ce qui est bien, ce qui inquiète, une grille des règles du projet, et la prochaine étape recommandée. Le mainteneur lit la révision et accepte ou refuse; Claude ne fusionne ni ne ferme jamais automatiquement.
 
 ## Feuille de route
 

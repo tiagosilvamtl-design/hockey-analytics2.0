@@ -61,10 +61,12 @@ Most hockey coverage in 2026 remains innumerate: deep conclusions from single-ga
 | [`lemieux-connectors`](./packages/lemieux-connectors) | Plugin-style data source adapters (NHL.com public API, Natural Stat Trick, more coming) |
 | [`lemieux-mcp`](./packages/lemieux-mcp) | FastMCP server exposing analytics tools + resources to any MCP client |
 | [`lemieux-glossary`](./packages/lemieux-glossary) | Bilingual (EN/FR) definitions of every metric we use, with formulas and caveats |
-| [`.claude/skills/`](./.claude/skills) | Opinionated Claude workflows — `draft-game-post`, `propose-swap-scenario`, `validate-analysis` |
+| [`.claude/skills/`](./.claude/skills) | Opinionated Claude workflows — `research-game`, `translate-to-quebec-fr`, `draft-game-post`, `propose-swap-scenario`, `validate-analysis`, `review-pr-lemieux` |
 | [`examples/`](./examples) | Worked end-to-end analyses. Start with `examples/habs_round1_2026/` |
 
 ## Quickstart
+
+> **Non-technical?** See [INSTALLATION_FACILE.md](./INSTALLATION_FACILE.md) (FR) — a friend-of-the-project install guide that walks you through Claude Code + Lemieux setup with zero prior tooling assumed.
 
 ```bash
 git clone https://github.com/lemieuxAI/framework.git lemieux
@@ -125,6 +127,8 @@ See [SOURCES.md](./SOURCES.md) for the full list with license terms. Connectors 
 ## Contributing
 
 See [CONTRIBUTING.md](./CONTRIBUTING.md) (bilingual). The easiest first PR is a connector — copy `templates/connector-template`, implement `refresh()`, write three tests. There's an issue template for each contribution type.
+
+**Auto-review on every PR.** When you open a PR, a GitHub Action runs Claude Code with the [`review-pr-lemieux`](./.claude/skills/review-pr-lemieux) skill and posts a structured review comment within minutes — verdict (MERGE / REQUEST CHANGES / CLOSE), what the PR does, what's good, what worries me, a project-rules checklist, and a recommended next step. The maintainer reads the review and accepts or rejects; Claude never auto-merges or auto-closes. See [CONTRIBUTING.md](./CONTRIBUTING.md#auto-review) for what triggers each verdict.
 
 ## Roadmap
 

@@ -1,0 +1,63 @@
+name: claude-pr-review
+
+# Auto-runs Claude Code on every PR (opened, synchronized, reopened) and posts
+# a structured review comment via the `review-pr-lemieux` skill. The maintainer
+# reads the verdict and decides — Claude does NOT auto-merge or auto-close.
+#
+# Setup (one-time):
+# 1. Repo Settings → Secrets and variables → Actions → New repository secret:
+#    - Name: ANTHROPIC_API_KEY
+#    - Value: an API key with usage budget for occasional PR review runs
+# 2. Repo Settings → Actions → General → Workflow permissions: "Read and write"
+#    (so the workflow can post comments + apply labels)
+# 3. Optionally restrict who can trigger via the `if:` condition below.
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+  pull_request_review_comment:
+    types: [created]
+  issue_comment:
+    types: [created]
+
+jobs:
+  review:
+    # Only run on PRs (issue_comment fires on issues too)
+    if: |
+      github.event_name == 'pull_request' ||
+      (github.event_name == 'issue_comment' && github.event.issue.pull_request != null) ||
+      github.event_name == 'pull_request_review_comment'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+      issues: write
+
+    steps:
+      - name: Checkout PR
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run Claude Code review
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          # Pin to a specific Claude model for cost predictability.
+          model: claude-sonnet-4-6
+          # The skill picks up the current PR context from gh CLI.
+          prompt: |
+            You are reviewing this pull request using the `review-pr-lemieux` skill
+            in `.claude/skills/review-pr-lemieux/SKILL.md`. Follow the skill's exact
+            output format. Post your review as a comment on the PR via
+            `gh pr comment ${{ github.event.pull_request.number || github.event.issue.number }}`.
+
+            After commenting, apply the recommended label per the skill's rubric:
+            - ✅ MERGE → `claude-recommends-merge`
+            - 🟡 REQUEST CHANGES → `claude-requests-changes`
+            - ❌ CLOSE → `claude-recommends-close`
+
+            Do NOT auto-merge, auto-close, or formally request changes via the API.
+            The maintainer makes the final call.
+          # Allow the action to use gh CLI tools for posting comments / labels.
+          allowed_tools: "Bash,Read,Glob,Grep,WebFetch"

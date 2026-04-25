@@ -1,0 +1,92 @@
+# Game 3 — usage / deployment observations from press coverage.
+# These enrich the pure box-score and shift data with the *intent* layer that only
+# interviews and chroniqueurs can surface. Logged here per the `research-game` skill
+# schema so future games can append to a parallel file and the framework can
+# reason about deployment-decision patterns over time.
+
+game_id: "2025030123"
+date: "2026-04-24"
+matchup: "TBL @ MTL"
+score: "MTL 3 - TBL 2 (OT)"
+
+usage_observations:
+  - text: "St-Louis reorganized two MTL forward lines pre-game: Kapanen to 3C with Newhook-Demidov; Texier to 2RW with Dach-Bolduc."
+    type: line_creation
+    player_or_team: "MTL"
+    decision_by: "St-Louis"
+    source: "Radio-Canada"
+    source_url: "https://ici.radio-canada.ca/sports/2248979/canadien-montreal-lightning-tampa-bay-series"
+    coach_quote: ""
+    data_corroboration: "NHL.com shift chart shows 4 of 6 top G2 forward combos did NOT carry into G3; new Texier-Dach-Bolduc trio played 6.7 min."
+    significance: "Major reshuffle, not just a tweak. New Dach line scored both 5v5 MTL goals."
+
+  - text: "Hutson led all skaters with 26:28 of ice time."
+    type: ice_time_anomaly
+    player_or_team: "Hutson"
+    decision_by: "St-Louis"
+    source: "RDS, François Gagnon"
+    source_url: "https://www.rds.ca/hockey/canadiens/article/redemption-et-tir-frappe/"
+    coach_quote: ""
+    data_corroboration: "TOI cited in chronique; consistent with NHL.com shift totals."
+    significance: "Heavy minutes for a 2nd-year defenseman on a winning night — a deployment vote of confidence."
+
+  - text: "Hutson blocked 4 shots."
+    type: defensive_role
+    player_or_team: "Hutson"
+    decision_by: "St-Louis"
+    source: "RDS, François Gagnon"
+    source_url: "https://www.rds.ca/hockey/canadiens/article/redemption-et-tir-frappe/"
+    coach_quote: ""
+    data_corroboration: ""
+    significance: "Defensive engagement metric not visible in standard +/-."
+
+  - text: "St-Louis declined to bench Dach despite costly G2 mistakes; instead increased his role with new linemates."
+    type: role_change
+    player_or_team: "Dach"
+    decision_by: "St-Louis"
+    source: "RDS, François Gagnon"
+    source_url: "https://www.rds.ca/hockey/canadiens/article/redemption-et-tir-frappe/"
+    coach_quote: |
+      « Je n'abandonnerai jamais un joueur à moins qu'il n'abandonne sur lui-même. »
+    data_corroboration: "Dach played in the new Texier-Dach-Bolduc line which scored 2 goals (6 points combined)."
+    significance: "Coach intent: rebuild via responsibility, not punishment. The data confirms the bet paid off in this game."
+
+  - text: "Sabourin (TBL) played only 3 minutes in regulation but received 45 seconds of OT ice time."
+    type: ice_time_anomaly
+    player_or_team: "Sabourin"
+    decision_by: "Cooper"
+    source: "Radio-Canada, Martin Leclerc (chronique)"
+    source_url: "https://ici.radio-canada.ca/sports/2248923/chronique-martin-leclerc-canadien-lightning"
+    coach_quote: ""
+    data_corroboration: "NHL.com shift chart can confirm Sabourin's TOI."
+    significance: "Anomalous deployment of an enforcer in critical OT minutes; the chroniqueur called it an 'effronterie'."
+
+  - text: "TBL also reshuffled aggressively — only 1 of 6 most-deployed G2 forward combos persisted into G3."
+    type: line_creation
+    player_or_team: "TBL"
+    decision_by: "Cooper"
+    source: "derived from data"
+    source_url: ""
+    coach_quote: ""
+    data_corroboration: "NHL.com shift chart drift analysis (5 new combos / 1 persisted)."
+    significance: "Both coaches abandoned their G2 lineups simultaneously — unusual symmetry."
+
+  - text: "Slafkovský's line (Suzuki-Caufield-Slafkovský) saw 9.6 min together at 5v5 in G3, down from 14.6 min in G2."
+    type: sheltered_minutes
+    player_or_team: "Slafkovský"
+    decision_by: "St-Louis"
+    source: "derived from data"
+    source_url: ""
+    coach_quote: ""
+    data_corroboration: "NHL.com shift chart."
+    significance: "Top line minutes compressed in G3 — could be tactical (defensive matchup juggling) or deployment shift after Slaf's offensive dip post-fight. To monitor."
+
+  - text: "Dobes allowed a rare 'poor' goal to Brandon Hagel (P2)."
+    type: goalie_anomaly
+    player_or_team: "Dobes"
+    decision_by: "—"
+    source: "RDS, Éric Leblanc"
+    source_url: "https://www.rds.ca/hockey/canadiens/article/lane-hutson-souleve-tout-le-quebec-en-prolongation/"
+    coach_quote: ""
+    data_corroboration: "Goal at P2 04:47 confirmed via NHL.com PBP."
+    significance: "Qualitative read — chroniqueur's judgment of shot-quality vs. save expectation. The xG model would tell us if the shot quality was high; absent that, this is a press-derived data point worth logging."

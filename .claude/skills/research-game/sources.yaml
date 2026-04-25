@@ -1,0 +1,135 @@
+# Curated source whitelist for `research-game`. Edit this to add or retire sources.
+# Each entry is searched separately (one WebSearch call per domain) so the search index
+# isn't dominated by a single high-volume site.
+
+sources:
+  - id: la_presse
+    name: La Presse
+    url: https://www.lapresse.ca/
+    domains: [lapresse.ca]
+    language: fr
+    region: QC
+    register: analytical
+    notable_writers: [Mathias Brunet, Simon-Olivier Lorange, Guillaume Lefrançois, Jean-François Tremblay, Richard Labbé]
+    paywall: soft  # most articles accessible; some chroniques limited
+    status: active
+
+  - id: rds
+    name: RDS
+    url: https://www.rds.ca/
+    domains: [rds.ca]
+    language: fr
+    region: QC
+    register: broadcast + chronique
+    notable_writers: [François Gagnon, Luc Gélinas, Marc Denis]
+    paywall: none
+    status: active
+
+  - id: radio_canada
+    name: Radio-Canada Sports
+    url: https://ici.radio-canada.ca/sports
+    domains: [ici.radio-canada.ca, radio-canada.ca]
+    language: fr
+    region: QC
+    register: news + chronique
+    notable_writers: [Martin Leclerc, Marc-Antoine Godin, Alexandre Pratt]
+    paywall: none
+    status: active
+
+  - id: le_devoir
+    name: Le Devoir
+    url: https://www.ledevoir.com/
+    domains: [ledevoir.com]
+    language: fr
+    region: QC
+    register: analytical
+    paywall: soft
+    status: active
+
+  - id: journal_de_montreal
+    name: Journal de Montréal
+    url: https://www.journaldemontreal.com/
+    domains: [journaldemontreal.com]
+    language: fr
+    region: QC
+    paywall: none
+    status: blocked  # WebSearch crawler currently denied
+    notable_writers: [Jean-François Chaumont, Stéphane Cadorette]
+
+  - id: tva_sports
+    name: TVA Sports
+    url: https://www.tvasports.ca/
+    domains: [tvasports.ca]
+    language: fr
+    region: QC
+    paywall: none
+    status: blocked  # WebSearch crawler currently denied
+
+  - id: nhl_com
+    name: NHL.com
+    url: https://www.nhl.com/
+    domains: [nhl.com, www.nhl.com]
+    language: en
+    paywall: none
+    status: active
+
+  - id: the_athletic
+    name: The Athletic
+    url: https://theathletic.com/
+    domains: [theathletic.com]
+    language: en
+    paywall: hard
+    notable_writers: [Marc Antoine Godin, Arpon Basu]
+    status: active
+
+  - id: sportsnet
+    name: Sportsnet
+    url: https://www.sportsnet.ca/
+    domains: [sportsnet.ca]
+    language: en
+    paywall: none
+    notable_writers: [Eric Engels, Luke Fox]
+    status: active
+
+  - id: tsn
+    name: TSN
+    url: https://www.tsn.ca/
+    domains: [tsn.ca]
+    language: en
+    paywall: none
+    notable_writers: [Frank Seravalli, Pierre LeBrun]
+    status: active
+
+  - id: habs_eotp
+    name: Habs Eyes On The Prize
+    url: https://www.habseyesontheprize.com/
+    domains: [habseyesontheprize.com]
+    language: en
+    paywall: none
+    register: community / analytical
+    status: active
+
+  - id: daily_faceoff
+    name: Daily Faceoff
+    url: https://www.dailyfaceoff.com/
+    domains: [dailyfaceoff.com]
+    language: en
+    paywall: none
+    register: line combinations + lineup news
+    status: active
+
+  - id: hockeydb
+    name: HockeyDB
+    url: https://www.hockeydb.com/
+    domains: [hockeydb.com]
+    language: en
+    paywall: none
+    register: structured boxscore
+    status: active
+
+# Sources to AVOID — pure betting / speculation outlets
+denylist:
+  - nypost.com/betting
+  - covers.com
+  - oddsshark.com
+  - draftkings.com/news

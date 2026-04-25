@@ -1,16 +1,17 @@
 # Lemieux roadmap
 
-## v0.1 — MVP (current)
+## v0.1 — MVP (shipped)
 
 - [x] `lemieux-core` — swap engine, isolated impact, pooled baselines, 80% CIs
 - [x] `lemieux-connectors` — plugin base class + NHL.com public API + Natural Stat Trick
 - [x] `lemieux-glossary` — 15 bilingual terms (EN + FR) with formulas, caveats, sources
 - [x] `lemieux-mcp` — FastMCP server with 5 tools + 4 resources
-- [x] 3 Claude skills — `draft-game-post`, `propose-swap-scenario`, `validate-analysis`
+- [x] 6 Claude skills — `research-game`, `translate-to-quebec-fr`, `draft-game-post`, `propose-swap-scenario`, `validate-analysis`, `review-pr-lemieux`
 - [x] Bilingual READMEs + `docs/en` + `docs/fr`
 - [x] Templates for connectors and skills
-- [x] One worked end-to-end example (`examples/habs_round1_2026/`)
+- [x] Two worked end-to-end examples (`examples/habs_round1_2026/` for the Round 1 report and the per-game post-Game-3 analysis with usage observations)
 - [x] CI — pytest + ruff + nightly connector-health
+- [x] **Auto-PR-review** via Claude Code GitHub Action (`.github/workflows/claude-pr-review.yml`)
 
 ## v0.2 — Community-facing release
 

@@ -20,9 +20,12 @@ Copy-Item -Recurse .claude\skills\* $env:USERPROFILE\.claude\skills\
 
 | Skill | When to invoke |
 |---|---|
-| `draft-game-post` | You want a full post-game analysis with tables, CIs, and glossary links |
-| `propose-swap-scenario` | You want 2-3 candidate lineup swaps evaluated head-to-head |
-| `validate-analysis` | You have a draft and want a rigor check before publishing |
+| `research-game` | Pull press coverage (EN + FR whitelist) for a specific game; output structured `claims.yaml` + `usage_observations.yaml` ready for downstream analysis |
+| `translate-to-quebec-fr` | Translate hockey-analytics writing into idiomatic Québec hockey-press French — never call after literal translation, always before finalizing FR copy |
+| `draft-game-post` | Full post-game analysis with tables, CIs, glossary links, claims ledger graded against data |
+| `propose-swap-scenario` | 2–3 candidate lineup swaps evaluated head-to-head with 80% CI bands |
+| `validate-analysis` | Rigor check on a draft before publishing — flags overclaims, missing CIs, predictions, cliches |
+| `review-pr-lemieux` | Opinionated PR review with structured verdict (MERGE / REQUEST CHANGES / CLOSE). Auto-invoked by `.github/workflows/claude-pr-review.yml` |
 
 ## Writing a new skill
 

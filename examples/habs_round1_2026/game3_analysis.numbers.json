@@ -1,0 +1,1439 @@
+{
+  "meta": {
+    "date": "2026-04-25",
+    "series": "MTL vs TBL Round 1 2026",
+    "after_game": 3
+  },
+  "per_game": {
+    "G1": {
+      "home": "TBL",
+      "away": "MTL",
+      "home_sog": 23,
+      "away_sog": 19,
+      "home_goals": 3,
+      "away_goals": 4,
+      "home_missed": 14,
+      "away_missed": 10,
+      "home_blocked": 17,
+      "away_blocked": 13,
+      "home_hits": 44,
+      "away_hits": 42,
+      "pim_total": 28,
+      "events_by_type": {
+        "period-start": 4,
+        "faceoff": 59,
+        "giveaway": 25,
+        "shot-on-goal": 35,
+        "stoppage": 45,
+        "hit": 86,
+        "blocked-shot": 30,
+        "missed-shot": 24,
+        "takeaway": 13,
+        "penalty": 13,
+        "goal": 7,
+        "delayed-penalty": 5,
+        "period-end": 4,
+        "game-end": 1
+      },
+      "home_cf": 50,
+      "away_cf": 46,
+      "home_ff": 37,
+      "away_ff": 29,
+      "home_cf_pct": 52.083333333333336,
+      "home_ff_pct": 56.060606060606055,
+      "meta": {
+        "id": "2025030121",
+        "date": "2026-04-19",
+        "venue": "Tampa"
+      }
+    },
+    "G2": {
+      "home": "TBL",
+      "away": "MTL",
+      "home_sog": 34,
+      "away_sog": 27,
+      "home_goals": 3,
+      "away_goals": 2,
+      "home_missed": 19,
+      "away_missed": 14,
+      "home_blocked": 27,
+      "away_blocked": 15,
+      "home_hits": 34,
+      "away_hits": 43,
+      "pim_total": 52,
+      "events_by_type": {
+        "period-start": 4,
+        "faceoff": 73,
+        "giveaway": 36,
+        "hit": 77,
+        "shot-on-goal": 56,
+        "takeaway": 12,
+        "stoppage": 62,
+        "blocked-shot": 42,
+        "missed-shot": 33,
+        "goal": 5,
+        "penalty": 23,
+        "delayed-penalty": 1,
+        "period-end": 4,
+        "game-end": 1
+      },
+      "home_cf": 68,
+      "away_cf": 68,
+      "home_ff": 53,
+      "away_ff": 41,
+      "home_cf_pct": 50.0,
+      "home_ff_pct": 56.38297872340425,
+      "meta": {
+        "id": "2025030122",
+        "date": "2026-04-21",
+        "venue": "Tampa"
+      }
+    },
+    "G3": {
+      "home": "MTL",
+      "away": "TBL",
+      "home_sog": 29,
+      "away_sog": 17,
+      "home_goals": 3,
+      "away_goals": 2,
+      "home_missed": 9,
+      "away_missed": 13,
+      "home_blocked": 14,
+      "away_blocked": 20,
+      "home_hits": 36,
+      "away_hits": 31,
+      "pim_total": 30,
+      "events_by_type": {
+        "period-start": 4,
+        "faceoff": 48,
+        "hit": 67,
+        "blocked-shot": 34,
+        "giveaway": 26,
+        "missed-shot": 22,
+        "shot-on-goal": 41,
+        "stoppage": 35,
+        "takeaway": 11,
+        "goal": 5,
+        "penalty": 15,
+        "delayed-penalty": 6,
+        "period-end": 4,
+        "game-end": 1
+      },
+      "home_cf": 58,
+      "away_cf": 44,
+      "home_ff": 38,
+      "away_ff": 30,
+      "home_cf_pct": 56.86274509803921,
+      "home_ff_pct": 55.88235294117647,
+      "meta": {
+        "id": "2025030123",
+        "date": "2026-04-24",
+        "venue": "Montreal"
+      }
+    }
+  },
+  "slafkovsky_per_game": {
+    "G1": {
+      "shifts": 29,
+      "toi_sec": 1271,
+      "slaf_sog": 4,
+      "slaf_goals": 3,
+      "slaf_missed": 3,
+      "mtl_sog_oi": 12,
+      "tbl_sog_oi": 8,
+      "mtl_goals_oi": 4,
+      "tbl_goals_oi": 3,
+      "mtl_missed_oi": 5,
+      "tbl_missed_oi": 2,
+      "by_period_toi_sec": {
+        "1": 371,
+        "2": 400,
+        "3": 418,
+        "4": 82
+      },
+      "toi_min": 21.18,
+      "game": "G1"
+    },
+    "G2": {
+      "shifts": 25,
+      "toi_sec": 1533,
+      "slaf_sog": 2,
+      "slaf_goals": 0,
+      "slaf_missed": 2,
+      "mtl_sog_oi": 14,
+      "tbl_sog_oi": 9,
+      "mtl_goals_oi": 2,
+      "tbl_goals_oi": 2,
+      "mtl_missed_oi": 6,
+      "tbl_missed_oi": 2,
+      "by_period_toi_sec": {
+        "1": 411,
+        "2": 369,
+        "3": 449,
+        "4": 304
+      },
+      "toi_min": 25.55,
+      "game": "G2"
+    },
+    "G3": {
+      "shifts": 20,
+      "toi_sec": 1088,
+      "slaf_sog": 1,
+      "slaf_goals": 0,
+      "slaf_missed": 0,
+      "mtl_sog_oi": 10,
+      "tbl_sog_oi": 3,
+      "mtl_goals_oi": 1,
+      "tbl_goals_oi": 0,
+      "mtl_missed_oi": 1,
+      "tbl_missed_oi": 0,
+      "by_period_toi_sec": {
+        "1": 340,
+        "2": 397,
+        "3": 299,
+        "4": 52
+      },
+      "toi_min": 18.13,
+      "game": "G3"
+    }
+  },
+  "slaf_fight_buckets": {
+    "pre": {
+      "label": "pre-fight: G1 + G2 up to P2 5:14",
+      "toi_sec": 1795,
+      "toi_min": 29.92,
+      "slaf_sog": 8,
+      "slaf_goals": 3,
+      "slaf_missed": 5,
+      "mtl_sog_oi": 16,
+      "tbl_sog_oi": 11,
+      "mtl_goals_oi": 5,
+      "tbl_goals_oi": 4,
+      "mtl_missed_oi": 8,
+      "tbl_missed_oi": 2
+    },
+    "post": {
+      "label": "post-fight: G2 from P2 5:14 + G3",
+      "toi_sec": 2097,
+      "toi_min": 34.95,
+      "slaf_sog": 2,
+      "slaf_goals": 0,
+      "slaf_missed": 0,
+      "mtl_sog_oi": 20,
+      "tbl_sog_oi": 9,
+      "mtl_goals_oi": 2,
+      "tbl_goals_oi": 1,
+      "mtl_missed_oi": 4,
+      "tbl_missed_oi": 2
+    },
+    "fight": {
+      "period": 2,
+      "sec_in_period": 314,
+      "game": "G2"
+    }
+  },
+  "series_5v5": {
+    "MTL": {
+      "gp": 3,
+      "toi": 141.48333333333332,
+      "cf": 107,
+      "ca": 133,
+      "cf_pct": 44.58,
+      "ff": 77,
+      "fa": 84,
+      "ff_pct": 47.83,
+      "sf": 48,
+      "sa": 52,
+      "sf_pct": 48.0,
+      "gf": 5,
+      "ga": 5,
+      "gf_pct": 50.0,
+      "xgf": 5.11,
+      "xga": 4.0,
+      "xgf_pct": 56.1,
+      "scf": 44,
+      "sca": 50,
+      "scf_pct": 46.81,
+      "hdcf": 24,
+      "hdca": 8,
+      "hdcf_pct": 75.0,
+      "pdo": 1.008
+    },
+    "T.B": {
+      "gp": 3,
+      "toi": 141.48333333333332,
+      "cf": 133,
+      "ca": 107,
+      "cf_pct": 55.42,
+      "ff": 84,
+      "fa": 77,
+      "ff_pct": 52.17,
+      "sf": 52,
+      "sa": 48,
+      "sf_pct": 52.0,
+      "gf": 5,
+      "ga": 5,
+      "gf_pct": 50.0,
+      "xgf": 4.0,
+      "xga": 5.11,
+      "xgf_pct": 43.9,
+      "scf": 50,
+      "sca": 44,
+      "scf_pct": 53.19,
+      "hdcf": 8,
+      "hdca": 24,
+      "hdcf_pct": 25.0,
+      "pdo": 0.992
+    }
+  },
+  "series_5v4": {
+    "MTL": {
+      "gp": 3,
+      "toi": 23.1,
+      "cf": 36,
+      "ca": 1,
+      "cf_pct": 97.3,
+      "ff": 26,
+      "fa": 0,
+      "ff_pct": 100.0,
+      "sf": 22,
+      "sa": 0,
+      "sf_pct": 100.0,
+      "gf": 4,
+      "ga": 0,
+      "gf_pct": 100.0,
+      "xgf": 2.98,
+      "xga": 0.0,
+      "xgf_pct": 100.0,
+      "scf": 18,
+      "sca": 0,
+      "scf_pct": 100.0,
+      "hdcf": 9,
+      "hdca": 0,
+      "hdcf_pct": 100.0,
+      "pdo": null
+    },
+    "T.B": {
+      "gp": 3,
+      "toi": 23.3,
+      "cf": 46,
+      "ca": 4,
+      "cf_pct": 92.0,
+      "ff": 34,
+      "fa": 3,
+      "ff_pct": 91.89,
+      "sf": 21,
+      "sa": 3,
+      "sf_pct": 87.5,
+      "gf": 3,
+      "ga": 0,
+      "gf_pct": 100.0,
+      "xgf": 3.25,
+      "xga": 0.09,
+      "xgf_pct": 97.2,
+      "scf": 23,
+      "sca": 1,
+      "scf_pct": 95.83,
+      "hdcf": 7,
+      "hdca": 0,
+      "hdcf_pct": 100.0,
+      "pdo": 1.143
+    }
+  },
+  "mtl_progression": {
+    "status": "ok",
+    "movers_up": [
+      {
+        "name": "Arber Xhekaj",
+        "position": "D",
+        "toi_p": 30.683333333333,
+        "toi_r": 715.36666666667,
+        "iso_xgf60_r": -0.7590118942100714,
+        "iso_xga60_r": -0.157496220171367,
+        "net_r": -0.6015156740387044,
+        "iso_xgf60_p": 1.1531031047716178,
+        "iso_xga60_p": -1.4169724113993802,
+        "net_p": 2.570075516170998,
+        "delta_net": 3.1715911902097025
+      },
+      {
+        "name": "Zachary Bolduc",
+        "position": "R",
+        "toi_p": 29.233333333333,
+        "toi_r": 919.03333333333,
+        "iso_xgf60_r": 0.14036909320337543,
+        "iso_xga60_r": -0.22990009620207452,
+        "net_r": 0.37026918940544995,
+        "iso_xgf60_p": 2.0027569183260887,
+        "iso_xga60_p": -1.1809047344535923,
+        "net_p": 3.183661652779681,
+        "delta_net": 2.813392463374231
+      },
+      {
+        "name": "Jayden Struble",
+        "position": "D",
+        "toi_p": 36.766666666667,
+        "toi_r": 798.9,
+        "iso_xgf60_r": -0.11075982881318547,
+        "iso_xga60_r": -0.08969904606885404,
+        "net_r": -0.02106078274433143,
+        "iso_xgf60_p": 1.503923508715289,
+        "iso_xga60_p": -0.924868426349867,
+        "net_p": 2.428791935065156,
+        "delta_net": 2.4498527178094873
+      },
+      {
+        "name": "Kirby Dach",
+        "position": "C",
+        "toi_p": 28.183333333333,
+        "toi_r": 440.15,
+        "iso_xgf60_r": -0.22937850709638052,
+        "iso_xga60_r": -0.1547642992827365,
+        "net_r": -0.07461420781364403,
+        "iso_xgf60_p": 0.9360348618902299,
+        "iso_xga60_p": -0.9751213918449778,
+        "net_p": 1.9111562537352076,
+        "delta_net": 1.9857704615488516
+      },
+      {
+        "name": "Phillip Danault",
+        "position": "C",
+        "toi_p": 36.033333333333,
+        "toi_r": 919.41666666667,
+        "iso_xgf60_r": -0.4199042629883336,
+        "iso_xga60_r": -0.07868555892008056,
+        "net_r": -0.34121870406825305,
+        "iso_xgf60_p": 1.6947376316381997,
+        "iso_xga60_p": 0.5613657866445494,
+        "net_p": 1.1333718449936503,
+        "delta_net": 1.4745905490619033
+      },
+      {
+        "name": "Oliver Kapanen",
+        "position": "C",
+        "toi_p": 25.983333333333,
+        "toi_r": 933.45,
+        "iso_xgf60_r": -0.2736956500857479,
+        "iso_xga60_r": 0.7168482733023533,
+        "net_r": -0.9905439233881013,
+        "iso_xgf60_p": 0.6549786326566704,
+        "iso_xga60_p": 0.18500037486570142,
+        "net_p": 0.469978257790969,
+        "delta_net": 1.4605221811790703
+      }
+    ],
+    "movers_down": [
+      {
+        "name": "Lane Hutson",
+        "position": "D",
+        "toi_p": 59.166666666667,
+        "toi_r": 1501.8666666667,
+        "iso_xgf60_r": 0.7112210225611721,
+        "iso_xga60_r": -0.42447822453623063,
+        "net_r": 1.1356992470974028,
+        "iso_xgf60_p": 0.17962785418726046,
+        "iso_xga60_p": 1.3024343754366465,
+        "net_p": -1.122806521249386,
+        "delta_net": -2.258505768346789
+      },
+      {
+        "name": "Cole Caufield",
+        "position": "R",
+        "toi_p": 41.25,
+        "toi_r": 1086.15,
+        "iso_xgf60_r": 0.7207552157348198,
+        "iso_xga60_r": -0.2805476936981246,
+        "net_r": 1.0013029094329444,
+        "iso_xgf60_p": -1.2315602986969805,
+        "iso_xga60_p": -0.21807539982465185,
+        "net_p": -1.0134848988723286,
+        "delta_net": -2.014787808305273
+      },
+      {
+        "name": "Nick Suzuki",
+        "position": "C",
+        "toi_p": 45.183333333333,
+        "toi_r": 1203.2666666667,
+        "iso_xgf60_r": 0.5558721981206856,
+        "iso_xga60_r": -0.2224584683280062,
+        "net_r": 0.7783306664486918,
+        "iso_xgf60_p": -1.0377267645027395,
+        "iso_xga60_p": -0.3071184547550996,
+        "net_p": -0.7306083097476399,
+        "delta_net": -1.5089389761963317
+      },
+      {
+        "name": "Kaiden Guhle",
+        "position": "D",
+        "toi_p": 54.966666666667,
+        "toi_r": 658.18333333333,
+        "iso_xgf60_r": -0.2847849440640826,
+        "iso_xga60_r": -0.06021932235179994,
+        "net_r": -0.22456562171228267,
+        "iso_xgf60_p": 0.02633143453138098,
+        "iso_xga60_p": 1.6351122709816512,
+        "net_p": -1.6087808364502703,
+        "delta_net": -1.3842152147379876
+      },
+      {
+        "name": "Alex Newhook",
+        "position": "C",
+        "toi_p": 35.766666666667,
+        "toi_r": 493.93333333333,
+        "iso_xgf60_r": -0.5042640846601731,
+        "iso_xga60_r": 0.2222859287944825,
+        "net_r": -0.7265500134546556,
+        "iso_xgf60_p": -1.1939332113730377,
+        "iso_xga60_p": 0.6933054600480293,
+        "net_p": -1.887238671421067,
+        "delta_net": -1.1606886579664113
+      },
+      {
+        "name": "Juraj Slafkovský",
+        "position": "L",
+        "toi_p": 43.55,
+        "toi_r": 1137.5666666667,
+        "iso_xgf60_r": 0.2876219362679602,
+        "iso_xga60_r": 0.2409738075110739,
+        "net_r": 0.04664812875688629,
+        "iso_xgf60_p": -1.10050496327078,
+        "iso_xga60_p": -0.40054662020056275,
+        "net_p": -0.6999583430702172,
+        "delta_net": -0.7466064718271035
+      }
+    ],
+    "all": [
+      {
+        "name": "Arber Xhekaj",
+        "position": "D",
+        "toi_p": 30.683333333333,
+        "toi_r": 715.36666666667,
+        "iso_xgf60_r": -0.7590118942100714,
+        "iso_xga60_r": -0.157496220171367,
+        "net_r": -0.6015156740387044,
+        "iso_xgf60_p": 1.1531031047716178,
+        "iso_xga60_p": -1.4169724113993802,
+        "net_p": 2.570075516170998,
+        "delta_net": 3.1715911902097025
+      },
+      {
+        "name": "Zachary Bolduc",
+        "position": "R",
+        "toi_p": 29.233333333333,
+        "toi_r": 919.03333333333,
+        "iso_xgf60_r": 0.14036909320337543,
+        "iso_xga60_r": -0.22990009620207452,
+        "net_r": 0.37026918940544995,
+        "iso_xgf60_p": 2.0027569183260887,
+        "iso_xga60_p": -1.1809047344535923,
+        "net_p": 3.183661652779681,
+        "delta_net": 2.813392463374231
+      },
+      {
+        "name": "Jayden Struble",
+        "position": "D",
+        "toi_p": 36.766666666667,
+        "toi_r": 798.9,
+        "iso_xgf60_r": -0.11075982881318547,
+        "iso_xga60_r": -0.08969904606885404,
+        "net_r": -0.02106078274433143,
+        "iso_xgf60_p": 1.503923508715289,
+        "iso_xga60_p": -0.924868426349867,
+        "net_p": 2.428791935065156,
+        "delta_net": 2.4498527178094873
+      },
+      {
+        "name": "Kirby Dach",
+        "position": "C",
+        "toi_p": 28.183333333333,
+        "toi_r": 440.15,
+        "iso_xgf60_r": -0.22937850709638052,
+        "iso_xga60_r": -0.1547642992827365,
+        "net_r": -0.07461420781364403,
+        "iso_xgf60_p": 0.9360348618902299,
+        "iso_xga60_p": -0.9751213918449778,
+        "net_p": 1.9111562537352076,
+        "delta_net": 1.9857704615488516
+      },
+      {
+        "name": "Phillip Danault",
+        "position": "C",
+        "toi_p": 36.033333333333,
+        "toi_r": 919.41666666667,
+        "iso_xgf60_r": -0.4199042629883336,
+        "iso_xga60_r": -0.07868555892008056,
+        "net_r": -0.34121870406825305,
+        "iso_xgf60_p": 1.6947376316381997,
+        "iso_xga60_p": 0.5613657866445494,
+        "net_p": 1.1333718449936503,
+        "delta_net": 1.4745905490619033
+      },
+      {
+        "name": "Oliver Kapanen",
+        "position": "C",
+        "toi_p": 25.983333333333,
+        "toi_r": 933.45,
+        "iso_xgf60_r": -0.2736956500857479,
+        "iso_xga60_r": 0.7168482733023533,
+        "net_r": -0.9905439233881013,
+        "iso_xgf60_p": 0.6549786326566704,
+        "iso_xga60_p": 0.18500037486570142,
+        "net_p": 0.469978257790969,
+        "delta_net": 1.4605221811790703
+      },
+      {
+        "name": "Josh Anderson",
+        "position": "R",
+        "toi_p": 36.466666666667,
+        "toi_r": 808.28333333333,
+        "iso_xgf60_r": -0.3718838269521636,
+        "iso_xga60_r": 0.1229459001924158,
+        "net_r": -0.4948297271445794,
+        "iso_xgf60_p": 0.3168105117814206,
+        "iso_xga60_p": 0.4854935826035902,
+        "net_p": -0.1686830708221696,
+        "delta_net": 0.3261466563224098
+      },
+      {
+        "name": "Alexandre Texier",
+        "position": "L",
+        "toi_p": 34.366666666667,
+        "toi_r": 615.96666666667,
+        "iso_xgf60_r": 0.2435011713240285,
+        "iso_xga60_r": -0.06764084181469299,
+        "net_r": 0.3111420131387215,
+        "iso_xgf60_p": 0.25082018647986803,
+        "iso_xga60_p": -0.3265554793769272,
+        "net_p": 0.5773756658567952,
+        "delta_net": 0.26623365271807375
+      },
+      {
+        "name": "Jake Evans",
+        "position": "C",
+        "toi_p": 34.616666666667,
+        "toi_r": 799.61666666667,
+        "iso_xgf60_r": -0.3362985132511076,
+        "iso_xga60_r": -0.1984791468082867,
+        "net_r": -0.1378193664428209,
+        "iso_xgf60_p": 0.7337091533057425,
+        "iso_xga60_p": 0.8979723562374196,
+        "net_p": -0.16426320293167707,
+        "delta_net": -0.026443836488856176
+      },
+      {
+        "name": "Ivan Demidov",
+        "position": "R",
+        "toi_p": 33.366666666667,
+        "toi_r": 932.43333333333,
+        "iso_xgf60_r": -0.19654455443179453,
+        "iso_xga60_r": 0.10810743233151232,
+        "net_r": -0.30465198676330685,
+        "iso_xgf60_p": -0.5297307902518578,
+        "iso_xga60_p": 0.20392833619284145,
+        "net_p": -0.7336591264446992,
+        "delta_net": -0.42900713968139237
+      },
+      {
+        "name": "Mike Matheson",
+        "position": "D",
+        "toi_p": 51.15,
+        "toi_r": 1438.7333333333,
+        "iso_xgf60_r": -0.09686458349248417,
+        "iso_xga60_r": 0.466437850583179,
+        "net_r": -0.5633024340756632,
+        "iso_xgf60_p": -1.6119855861315222,
+        "iso_xga60_p": -0.4705262360541498,
+        "net_p": -1.1414593500773724,
+        "delta_net": -0.5781569160017093
+      },
+      {
+        "name": "Alexandre Carrier",
+        "position": "D",
+        "toi_p": 50.683333333333,
+        "toi_r": 1118.95,
+        "iso_xgf60_r": 0.0768277722369981,
+        "iso_xga60_r": 0.017582730059824137,
+        "net_r": 0.05924504217717397,
+        "iso_xgf60_p": -1.1446689661266471,
+        "iso_xga60_p": -0.5956501962170297,
+        "net_p": -0.5490187699096174,
+        "delta_net": -0.6082638120867914
+      },
+      {
+        "name": "Juraj Slafkovský",
+        "position": "L",
+        "toi_p": 43.55,
+        "toi_r": 1137.5666666667,
+        "iso_xgf60_r": 0.2876219362679602,
+        "iso_xga60_r": 0.2409738075110739,
+        "net_r": 0.04664812875688629,
+        "iso_xgf60_p": -1.10050496327078,
+        "iso_xga60_p": -0.40054662020056275,
+        "net_p": -0.6999583430702172,
+        "delta_net": -0.7466064718271035
+      },
+      {
+        "name": "Alex Newhook",
+        "position": "C",
+        "toi_p": 35.766666666667,
+        "toi_r": 493.93333333333,
+        "iso_xgf60_r": -0.5042640846601731,
+        "iso_xga60_r": 0.2222859287944825,
+        "net_r": -0.7265500134546556,
+        "iso_xgf60_p": -1.1939332113730377,
+        "iso_xga60_p": 0.6933054600480293,
+        "net_p": -1.887238671421067,
+        "delta_net": -1.1606886579664113
+      },
+      {
+        "name": "Kaiden Guhle",
+        "position": "D",
+        "toi_p": 54.966666666667,
+        "toi_r": 658.18333333333,
+        "iso_xgf60_r": -0.2847849440640826,
+        "iso_xga60_r": -0.06021932235179994,
+        "net_r": -0.22456562171228267,
+        "iso_xgf60_p": 0.02633143453138098,
+        "iso_xga60_p": 1.6351122709816512,
+        "net_p": -1.6087808364502703,
+        "delta_net": -1.3842152147379876
+      },
+      {
+        "name": "Nick Suzuki",
+        "position": "C",
+        "toi_p": 45.183333333333,
+        "toi_r": 1203.2666666667,
+        "iso_xgf60_r": 0.5558721981206856,
+        "iso_xga60_r": -0.2224584683280062,
+        "net_r": 0.7783306664486918,
+        "iso_xgf60_p": -1.0377267645027395,
+        "iso_xga60_p": -0.3071184547550996,
+        "net_p": -0.7306083097476399,
+        "delta_net": -1.5089389761963317
+      },
+      {
+        "name": "Cole Caufield",
+        "position": "R",
+        "toi_p": 41.25,
+        "toi_r": 1086.15,
+        "iso_xgf60_r": 0.7207552157348198,
+        "iso_xga60_r": -0.2805476936981246,
+        "net_r": 1.0013029094329444,
+        "iso_xgf60_p": -1.2315602986969805,
+        "iso_xga60_p": -0.21807539982465185,
+        "net_p": -1.0134848988723286,
+        "delta_net": -2.014787808305273
+      },
+      {
+        "name": "Lane Hutson",
+        "position": "D",
+        "toi_p": 59.166666666667,
+        "toi_r": 1501.8666666667,
+        "iso_xgf60_r": 0.7112210225611721,
+        "iso_xga60_r": -0.42447822453623063,
+        "net_r": 1.1356992470974028,
+        "iso_xgf60_p": 0.17962785418726046,
+        "iso_xga60_p": 1.3024343754366465,
+        "net_p": -1.122806521249386,
+        "delta_net": -2.258505768346789
+      }
+    ]
+  },
+  "mtl_g2_combos": [
+    {
+      "players": [
+        "Mike Matheson",
+        "Jake Evans",
+        "Alexandre Carrier",
+        "Alex Newhook",
+        "Jakub Dobes"
+      ],
+      "toi_sec": 122,
+      "toi_min": 2.03
+    },
+    {
+      "players": [
+        "Phillip Danault",
+        "Mike Matheson",
+        "Josh Anderson",
+        "Alexandre Carrier",
+        "Jakub Dobes"
+      ],
+      "toi_sec": 94,
+      "toi_min": 1.57
+    },
+    {
+      "players": [
+        "Phillip Danault",
+        "Mike Matheson",
+        "Josh Anderson",
+        "Kaiden Guhle",
+        "Jakub Dobes"
+      ],
+      "toi_sec": 93,
+      "toi_min": 1.55
+    },
+    {
+      "players": [
+        "Nick Suzuki",
+        "Cole Caufield",
+        "Kaiden Guhle",
+        "Jakub Dobes",
+        "Lane Hutson"
+      ],
+      "toi_sec": 42,
+      "toi_min": 0.7
+    },
+    {
+      "players": [
+        "Jake Evans",
+        "Alexandre Carrier",
+        "Alex Newhook",
+        "Jakub Dobes",
+        "Lane Hutson"
+      ],
+      "toi_sec": 31,
+      "toi_min": 0.52
+    },
+    {
+      "players": [
+        "Kaiden Guhle",
+        "Jakub Dobes",
+        "Lane Hutson",
+        "Juraj SlafkovskÃ½",
+        "Ivan Demidov"
+      ],
+      "toi_sec": 26,
+      "toi_min": 0.43
+    }
+  ],
+  "mtl_g3_combos": [
+    {
+      "players": [
+        "Mike Matheson",
+        "Jake Evans",
+        "Alexandre Carrier",
+        "Alex Newhook",
+        "Jakub Dobes"
+      ],
+      "toi_sec": 214,
+      "toi_min": 3.57
+    },
+    {
+      "players": [
+        "Phillip Danault",
+        "Josh Anderson",
+        "Kaiden Guhle",
+        "Jakub Dobes",
+        "Lane Hutson"
+      ],
+      "toi_sec": 72,
+      "toi_min": 1.2
+    },
+    {
+      "players": [
+        "Phillip Danault",
+        "Josh Anderson",
+        "Alexandre Carrier",
+        "Kaiden Guhle",
+        "Jakub Dobes"
+      ],
+      "toi_sec": 71,
+      "toi_min": 1.18
+    },
+    {
+      "players": [
+        "Phillip Danault",
+        "Mike Matheson",
+        "Josh Anderson",
+        "Kaiden Guhle",
+        "Jakub Dobes"
+      ],
+      "toi_sec": 69,
+      "toi_min": 1.15
+    },
+    {
+      "players": [
+        "Nick Suzuki",
+        "Cole Caufield",
+        "Kaiden Guhle",
+        "Jakub Dobes",
+        "Lane Hutson"
+      ],
+      "toi_sec": 56,
+      "toi_min": 0.93
+    },
+    {
+      "players": [
+        "Jake Evans",
+        "Alexandre Carrier",
+        "Alex Newhook",
+        "Kaiden Guhle",
+        "Jakub Dobes"
+      ],
+      "toi_sec": 49,
+      "toi_min": 0.82
+    }
+  ],
+  "tbl_g2_combos": [
+    {
+      "players": [
+        "Ryan McDonagh",
+        "Andrei Vasilevskiy",
+        "Erik Cernak",
+        "Anthony Cirelli",
+        "Brandon Hagel"
+      ],
+      "toi_sec": 113,
+      "toi_min": 1.88
+    },
+    {
+      "players": [
+        "Andrei Vasilevskiy",
+        "Erik Cernak",
+        "Anthony Cirelli",
+        "Brandon Hagel",
+        "J.J. Moser"
+      ],
+      "toi_sec": 83,
+      "toi_min": 1.38
+    },
+    {
+      "players": [
+        "Ryan McDonagh",
+        "Andrei Vasilevskiy",
+        "Erik Cernak",
+        "Anthony Cirelli",
+        "Gage Goncalves"
+      ],
+      "toi_sec": 75,
+      "toi_min": 1.25
+    },
+    {
+      "players": [
+        "Nikita Kucherov",
+        "Andrei Vasilevskiy",
+        "Brayden Point",
+        "Emil Lilleberg",
+        "Declan Carlile"
+      ],
+      "toi_sec": 60,
+      "toi_min": 1.0
+    },
+    {
+      "players": [
+        "Yanni Gourde",
+        "Zemgus Girgensons",
+        "Andrei Vasilevskiy",
+        "J.J. Moser",
+        "Emil Lilleberg"
+      ],
+      "toi_sec": 48,
+      "toi_min": 0.8
+    },
+    {
+      "players": [
+        "Andrei Vasilevskiy",
+        "Darren Raddysh",
+        "Anthony Cirelli",
+        "Brandon Hagel",
+        "J.J. Moser"
+      ],
+      "toi_sec": 46,
+      "toi_min": 0.77
+    }
+  ],
+  "tbl_g3_combos": [
+    {
+      "players": [
+        "Ryan McDonagh",
+        "Andrei Vasilevskiy",
+        "Erik Cernak",
+        "Anthony Cirelli",
+        "Brandon Hagel"
+      ],
+      "toi_sec": 117,
+      "toi_min": 1.95
+    },
+    {
+      "players": [
+        "Yanni Gourde",
+        "Zemgus Girgensons",
+        "Andrei Vasilevskiy",
+        "J.J. Moser",
+        "Emil Lilleberg"
+      ],
+      "toi_sec": 74,
+      "toi_min": 1.23
+    },
+    {
+      "players": [
+        "Ryan McDonagh",
+        "Andrei Vasilevskiy",
+        "Jake Guentzel",
+        "Erik Cernak",
+        "Anthony Cirelli"
+      ],
+      "toi_sec": 65,
+      "toi_min": 1.08
+    },
+    {
+      "players": [
+        "Andrei Vasilevskiy",
+        "Jake Guentzel",
+        "Anthony Cirelli",
+        "J.J. Moser",
+        "Declan Carlile"
+      ],
+      "toi_sec": 52,
+      "toi_min": 0.87
+    },
+    {
+      "players": [
+        "Andrei Vasilevskiy",
+        "Darren Raddysh",
+        "Anthony Cirelli",
+        "Brandon Hagel",
+        "J.J. Moser"
+      ],
+      "toi_sec": 45,
+      "toi_min": 0.75
+    },
+    {
+      "players": [
+        "Ryan McDonagh",
+        "Yanni Gourde",
+        "Andrei Vasilevskiy",
+        "Erik Cernak",
+        "Brandon Hagel"
+      ],
+      "toi_sec": 32,
+      "toi_min": 0.53
+    }
+  ],
+  "mtl_g2_forward_lines": [
+    {
+      "players": [
+        "Nick Suzuki",
+        "Cole Caufield",
+        "Juraj SlafkovskÃ½"
+      ],
+      "toi_sec": 877,
+      "toi_min": 14.62
+    },
+    {
+      "players": [
+        "Phillip Danault",
+        "Josh Anderson",
+        "Jake Evans"
+      ],
+      "toi_sec": 622,
+      "toi_min": 10.37
+    },
+    {
+      "players": [
+        "Alexandre Texier",
+        "Alex Newhook",
+        "Ivan Demidov"
+      ],
+      "toi_sec": 602,
+      "toi_min": 10.03
+    },
+    {
+      "players": [
+        "Kirby Dach",
+        "Zachary Bolduc",
+        "Oliver Kapanen"
+      ],
+      "toi_sec": 459,
+      "toi_min": 7.65
+    },
+    {
+      "players": [
+        "Phillip Danault",
+        "Jake Evans",
+        "Alexandre Texier"
+      ],
+      "toi_sec": 59,
+      "toi_min": 0.98
+    },
+    {
+      "players": [
+        "Josh Anderson",
+        "Alex Newhook",
+        "Ivan Demidov"
+      ],
+      "toi_sec": 53,
+      "toi_min": 0.88
+    },
+    {
+      "players": [
+        "Nick Suzuki",
+        "Alexandre Texier",
+        "Cole Caufield"
+      ],
+      "toi_sec": 50,
+      "toi_min": 0.83
+    },
+    {
+      "players": [
+        "Josh Anderson",
+        "Jake Evans",
+        "Alex Newhook"
+      ],
+      "toi_sec": 47,
+      "toi_min": 0.78
+    }
+  ],
+  "mtl_g3_forward_lines": [
+    {
+      "players": [
+        "Nick Suzuki",
+        "Cole Caufield",
+        "Juraj SlafkovskÃ½"
+      ],
+      "toi_sec": 574,
+      "toi_min": 9.57
+    },
+    {
+      "players": [
+        "Phillip Danault",
+        "Josh Anderson",
+        "Jake Evans"
+      ],
+      "toi_sec": 503,
+      "toi_min": 8.38
+    },
+    {
+      "players": [
+        "Alex Newhook",
+        "Oliver Kapanen",
+        "Ivan Demidov"
+      ],
+      "toi_sec": 473,
+      "toi_min": 7.88
+    },
+    {
+      "players": [
+        "Alexandre Texier",
+        "Kirby Dach",
+        "Zachary Bolduc"
+      ],
+      "toi_sec": 403,
+      "toi_min": 6.72
+    },
+    {
+      "players": [
+        "Kirby Dach",
+        "Alex Newhook",
+        "Ivan Demidov"
+      ],
+      "toi_sec": 48,
+      "toi_min": 0.8
+    },
+    {
+      "players": [
+        "Nick Suzuki",
+        "Alexandre Texier",
+        "Zachary Bolduc"
+      ],
+      "toi_sec": 43,
+      "toi_min": 0.72
+    },
+    {
+      "players": [
+        "Josh Anderson",
+        "Nick Suzuki",
+        "Zachary Bolduc"
+      ],
+      "toi_sec": 37,
+      "toi_min": 0.62
+    },
+    {
+      "players": [
+        "Phillip Danault",
+        "Josh Anderson",
+        "Nick Suzuki"
+      ],
+      "toi_sec": 34,
+      "toi_min": 0.57
+    }
+  ],
+  "tbl_g2_forward_lines": [
+    {
+      "players": [
+        "Jake Guentzel",
+        "Anthony Cirelli",
+        "Brandon Hagel"
+      ],
+      "toi_sec": 441,
+      "toi_min": 7.35
+    },
+    {
+      "players": [
+        "Nikita Kucherov",
+        "Brayden Point",
+        "Gage Goncalves"
+      ],
+      "toi_sec": 353,
+      "toi_min": 5.88
+    },
+    {
+      "players": [
+        "Yanni Gourde",
+        "Gage Goncalves",
+        "Dominic James"
+      ],
+      "toi_sec": 339,
+      "toi_min": 5.65
+    },
+    {
+      "players": [
+        "Nikita Kucherov",
+        "Anthony Cirelli",
+        "Brandon Hagel"
+      ],
+      "toi_sec": 322,
+      "toi_min": 5.37
+    },
+    {
+      "players": [
+        "Yanni Gourde",
+        "Zemgus Girgensons",
+        "Nick Paul"
+      ],
+      "toi_sec": 318,
+      "toi_min": 5.3
+    },
+    {
+      "players": [
+        "Corey Perry",
+        "Zemgus Girgensons",
+        "Scott Sabourin"
+      ],
+      "toi_sec": 232,
+      "toi_min": 3.87
+    },
+    {
+      "players": [
+        "Jake Guentzel",
+        "Nick Paul",
+        "Brayden Point"
+      ],
+      "toi_sec": 225,
+      "toi_min": 3.75
+    },
+    {
+      "players": [
+        "Corey Perry",
+        "Scott Sabourin",
+        "Dominic James"
+      ],
+      "toi_sec": 175,
+      "toi_min": 2.92
+    }
+  ],
+  "tbl_g3_forward_lines": [
+    {
+      "players": [
+        "Nikita Kucherov",
+        "Anthony Cirelli",
+        "Brandon Hagel"
+      ],
+      "toi_sec": 467,
+      "toi_min": 7.78
+    },
+    {
+      "players": [
+        "Yanni Gourde",
+        "Zemgus Girgensons",
+        "Jake Guentzel"
+      ],
+      "toi_sec": 397,
+      "toi_min": 6.62
+    },
+    {
+      "players": [
+        "Brayden Point",
+        "Gage Goncalves",
+        "Dominic James"
+      ],
+      "toi_sec": 286,
+      "toi_min": 4.77
+    },
+    {
+      "players": [
+        "Anthony Cirelli",
+        "Brandon Hagel",
+        "Gage Goncalves"
+      ],
+      "toi_sec": 130,
+      "toi_min": 2.17
+    },
+    {
+      "players": [
+        "Jake Guentzel",
+        "Nick Paul",
+        "Brayden Point"
+      ],
+      "toi_sec": 96,
+      "toi_min": 1.6
+    },
+    {
+      "players": [
+        "Corey Perry",
+        "Scott Sabourin",
+        "Nick Paul"
+      ],
+      "toi_sec": 91,
+      "toi_min": 1.52
+    },
+    {
+      "players": [
+        "Corey Perry",
+        "Zemgus Girgensons",
+        "Scott Sabourin"
+      ],
+      "toi_sec": 86,
+      "toi_min": 1.43
+    },
+    {
+      "players": [
+        "Yanni Gourde",
+        "Zemgus Girgensons",
+        "Gage Goncalves"
+      ],
+      "toi_sec": 86,
+      "toi_min": 1.43
+    }
+  ],
+  "mtl_lineup_drift_g2_to_g3": {
+    "persisted": [
+      [
+        "Nick Suzuki",
+        "Juraj SlafkovskÃ½",
+        "Cole Caufield"
+      ],
+      [
+        "Josh Anderson",
+        "Jake Evans",
+        "Phillip Danault"
+      ]
+    ],
+    "new_lines": [
+      [
+        "Oliver Kapanen",
+        "Alex Newhook",
+        "Ivan Demidov"
+      ],
+      [
+        "Kirby Dach",
+        "Alexandre Texier",
+        "Zachary Bolduc"
+      ],
+      [
+        "Kirby Dach",
+        "Alex Newhook",
+        "Ivan Demidov"
+      ],
+      [
+        "Nick Suzuki",
+        "Alexandre Texier",
+        "Zachary Bolduc"
+      ]
+    ],
+    "dropped_lines": [
+      [
+        "Alexandre Texier",
+        "Alex Newhook",
+        "Ivan Demidov"
+      ],
+      [
+        "Kirby Dach",
+        "Oliver Kapanen",
+        "Zachary Bolduc"
+      ],
+      [
+        "Jake Evans",
+        "Alexandre Texier",
+        "Phillip Danault"
+      ],
+      [
+        "Josh Anderson",
+        "Alex Newhook",
+        "Ivan Demidov"
+      ]
+    ],
+    "n_persisted": 2,
+    "n_new": 4,
+    "n_dropped": 4,
+    "summary": "major reshuffle"
+  },
+  "tbl_lineup_drift_g2_to_g3": {
+    "persisted": [
+      [
+        "Nikita Kucherov",
+        "Anthony Cirelli",
+        "Brandon Hagel"
+      ]
+    ],
+    "new_lines": [
+      [
+        "Jake Guentzel",
+        "Yanni Gourde",
+        "Zemgus Girgensons"
+      ],
+      [
+        "Brayden Point",
+        "Gage Goncalves",
+        "Dominic James"
+      ],
+      [
+        "Anthony Cirelli",
+        "Gage Goncalves",
+        "Brandon Hagel"
+      ],
+      [
+        "Jake Guentzel",
+        "Brayden Point",
+        "Nick Paul"
+      ],
+      [
+        "Nick Paul",
+        "Scott Sabourin",
+        "Corey Perry"
+      ]
+    ],
+    "dropped_lines": [
+      [
+        "Jake Guentzel",
+        "Anthony Cirelli",
+        "Brandon Hagel"
+      ],
+      [
+        "Nikita Kucherov",
+        "Brayden Point",
+        "Gage Goncalves"
+      ],
+      [
+        "Gage Goncalves",
+        "Yanni Gourde",
+        "Dominic James"
+      ],
+      [
+        "Nick Paul",
+        "Yanni Gourde",
+        "Zemgus Girgensons"
+      ],
+      [
+        "Scott Sabourin",
+        "Zemgus Girgensons",
+        "Corey Perry"
+      ]
+    ],
+    "n_persisted": 1,
+    "n_new": 5,
+    "n_dropped": 5,
+    "summary": "major reshuffle"
+  }
+}

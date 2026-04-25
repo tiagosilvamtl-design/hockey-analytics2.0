@@ -54,3 +54,15 @@ reports/output/*.log
 site/
 build/
 dist/
+
+# Research notes (input-only, do not commit)
+research/
+reearch/
+
+# Local Claude Code settings (per-machine; never commit)
+.claude/settings.local.json
+
+# Google OAuth credentials and tokens (NEVER commit)
+google-credentials.json
+google-token.json
+.lemieux/
