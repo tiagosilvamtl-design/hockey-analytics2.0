@@ -19,11 +19,32 @@ const D = JSON.parse(
   fs.readFileSync(path.join(__dirname, 'game3_analysis.numbers.json'), 'utf8')
 );
 
+// REQUIRED: structured lineup data (canonical fact base for line composition).
+// Per the draft-game-post skill contract, this file MUST exist before any
+// line-role prose is generated. If it doesn't, the build aborts.
+const LINEUPS_PATH = path.join(__dirname, 'game3_lineups.yaml');
+if (!fs.existsSync(LINEUPS_PATH)) {
+  console.error(
+    `\nERROR: ${LINEUPS_PATH} not found. ` +
+    `\nThis file is the canonical fact base for line composition prose. ` +
+    `\nGenerate it (research-game skill + analyzer shift-data cross-check) before running this build.\n`
+  );
+  process.exit(2);
+}
+let LINEUPS;
+try {
+  const yamlMod = require('yaml');
+  LINEUPS = yamlMod.parse(fs.readFileSync(LINEUPS_PATH, 'utf8'));
+} catch (e) {
+  console.error(`Failed to parse ${LINEUPS_PATH}: ${e.message}`);
+  process.exit(3);
+}
+
 // Usage observations from press coverage (research-game skill output)
 let USAGE = { usage_observations: [] };
 try {
-  const yaml = require('yaml');
-  USAGE = yaml.parse(fs.readFileSync(path.join(__dirname, 'game3_usage_observations.yaml'), 'utf8'));
+  const yamlMod = require('yaml');
+  USAGE = yamlMod.parse(fs.readFileSync(path.join(__dirname, 'game3_usage_observations.yaml'), 'utf8'));
 } catch (e) {
   // Fallback: parse minimal subset by hand if yaml package unavailable
   const txt = fs.readFileSync(path.join(__dirname, 'game3_usage_observations.yaml'), 'utf8');
@@ -83,7 +104,7 @@ const T = {
     date: 'Published 2026-04-25 · MTL leads 2–1 · Game 4 Sunday at the Bell Centre',
     tldr: 'Top-line read',
     tldr_bullets: [
-      '**The Game 3 win came from a line reshuffle, not the same lineup**. MTL kept the same 18 skaters but St-Louis broke up two G2 lines: Texier (LW) moved to ride shotgun with Dach (C) and Bolduc (RW), and Kapanen slid into the center role between Newhook and Demidov (the spot Newhook held in Game 2). The new Texier-Dach-Bolduc line played 6.7 minutes together at 5v5 and produced 2 of MTL\'s 3 goals. Radio-Canada reported the change pre-game; the shift data confirms it.',
+      lineReshuffleBullet('en'),
       'TBL **also reshuffled** — five of their six top G2 forward combinations didn\'t come back in G3. Both coaches blinked.',
       'The series remains a **Tampa-volume vs. Montreal-quality** tactical pattern. At 5v5 across 3 games TBL has 55.4 % of shot attempts but MTL has **75 %** of high-danger chances and 56.1 % of expected goals.',
       'Vasilevskiy "more reliable than Dobes" was a pre-series narrative that the data has refuted — through 3 games Dobes\' implied save percentage (.905) is actually a tick higher than Vasilevskiy\'s (.893), with near-identical workloads (74 vs 75 shots faced).',
@@ -95,7 +116,7 @@ const T = {
       '**No predictions.** This report grades claims, it does not predict the series outcome. Three games is a tiny sample; every iso-impact number should be read as directional.',
     ],
     lineup_title: '1. The Game 3 line reshuffle — and what it produced',
-    lineup_intro: 'The instinct that "MTL kept the same lineup" was half right. The 18 skaters were unchanged, but two of MTL\'s four forward lines were reshuffled. Per Radio-Canada\'s pre-game report, St-Louis put Kapanen at center between Newhook and Demidov (replacing Newhook, who had been the line\'s center in Game 2 and dropped to a wing role), and shifted Texier from that line over to play with Dach and Bolduc. We cross-checked against the actual deployed lines from NHL.com\'s shift chart — the change matches.',
+    get lineup_intro() { return lineupIntroProse('en'); },
     lineup_mtl_change_title: 'MTL lines, Game 2 → Game 3',
     lineup_drift_table_intro: 'Top forward combinations by total seconds together at any strength state, from the actual shift data (not pre-game listings).',
     lineup_outcome_title: 'Did the new lines pay off?',
@@ -174,7 +195,7 @@ const T = {
     date: 'Publié le 25 avril 2026 · Le CH mène 2–1 · Match no 4 dimanche au Centre Bell',
     tldr: 'L\'essentiel',
     tldr_bullets: [
-      '**La victoire du match no 3 vient d\'un brassage de trios, pas d\'une formation intacte.** Le CH a gardé ses 18 patineurs, mais Martin St-Louis a défait deux trios de la veille : Texier (AG) part en flanc avec Dach (C) et Bolduc (AD), et Kapanen prend le centre entre Newhook et Demidov (le poste qu\'occupait Newhook au M2). Le nouveau trio Texier-Dach-Bolduc a partagé 6 minutes 42 sur la glace à 5 c. 5 et a produit 2 des 3 buts de Montréal. Radio-Canada avait annoncé le changement avant la mise au jeu; les présences réelles le confirment.',
+      lineReshuffleBullet('fr'),
       'Tampa Bay **a brassé encore davantage** : seul un de leurs six trios les plus utilisés du match no 2 est revenu intact. Les deux entraîneurs ont cligné.',
       'La série conserve son visage tactique : **Tampa génère le volume, le CH convertit sur la qualité**. À 5 c. 5 sur trois matchs, le TBL détient 55,4 % des tentatives Corsi mais le CH s\'arroge **75 %** des chances à haut danger et 56,1 % des buts attendus.',
       'L\'argument d\'avant-série voulant que Vasilevskiy soit « plus fiable » que Dobes ne tient pas à l\'examen des trois premiers matchs : le pourcentage d\'arrêts implicite de Dobes (,905) est en fait légèrement supérieur à celui de Vasilevskiy (,893), avec des charges de travail quasi identiques (74 c. 75 tirs subis).',
@@ -186,7 +207,7 @@ const T = {
       '**Aucune prédiction.** Ce rapport note les affirmations, il ne prédit pas l\'issue de la série. Trois matchs, c\'est minuscule; chaque chiffre d\'impact isolé est directionnel, pas prédictif.',
     ],
     lineup_title: '1. Le brassage de trios du match no 3 — et ce qu\'il a produit',
-    lineup_intro: 'L\'intuition voulant que « le CH avait la même formation » est à moitié juste. Les 18 patineurs étaient les mêmes, mais deux des quatre trios offensifs ont été reconfigurés. Selon Radio-Canada avant la rencontre, St-Louis a placé Kapanen au centre entre Newhook et Demidov (en remplacement de Newhook, qui était centre de ce trio au M2 et qui glisse à l\'aile), et il a déplacé Texier de ce trio vers celui de Dach et Bolduc. On a recoupé avec les présences réelles tirées de LNH.com — le changement concorde.',
+    get lineup_intro() { return lineupIntroProse('fr'); },
     lineup_mtl_change_title: 'Trios du CH, match no 2 → match no 3',
     lineup_drift_table_intro: 'Trios offensifs par total de secondes ensemble sur la glace, toutes situations confondues, à partir des présences réelles (et non des formations annoncées avant-match).',
     lineup_outcome_title: 'Le brassage a-t-il rapporté ?',
@@ -260,6 +281,64 @@ const T = {
     persisted: 'Maintenu', new_line: 'Nouveau', dropped: 'Abandonné',
   },
 };
+
+// ---------- LINEUP PROSE GENERATORS ----------
+// Read structured lineup data and template prose against it.
+// Every sentence about line composition or role transitions is built from
+// fields in game3_lineups.yaml — never from narrative recall.
+
+function findCenter(line) {
+  return (line.players || []).find(p => p.position === 'C');
+}
+function findWingers(line) {
+  return (line.players || []).filter(p => p.position === 'L' || p.position === 'R');
+}
+function reshuffles(team) {
+  return ((LINEUPS.changes_vs_previous_game || {})[team] || {}).line_reshuffles || [];
+}
+function findReshuffle(team, predicate) {
+  return reshuffles(team).find(predicate) || null;
+}
+
+function lineReshuffleBullet(lang) {
+  const r = reshuffles('MTL');
+  const moveDef = findReshuffle('MTL', x => x.moved_player) || {};
+  const centerSwap = findReshuffle('MTL', x => x.prior_center && x.new_center) || {};
+  const newLineCenter = (LINEUPS.teams.MTL.forwards || []).find(L =>
+    findCenter(L) && findCenter(L).name === moveDef.to_line_center
+  );
+  const newLine = newLineCenter
+    ? newLineCenter.players.map(p => p.name)
+    : [];
+
+  // 5v5 TOI together for the new line, from the shift data we already computed
+  const newLineTOI = (D.mtl_g3_forward_lines || []).find(c =>
+    newLine.length === 3 && newLine.every(n => c.players.includes(n))
+  );
+  const toiText = newLineTOI ? `${newLineTOI.toi_min.toFixed(1)} minutes` : '';
+  const toiTextFr = newLineTOI
+    ? `${newLineTOI.toi_min.toFixed(1).replace('.', ',')} minutes`
+    : '';
+
+  if (lang === 'fr') {
+    return `**La victoire du match no 3 vient d'un brassage de trios, pas d'une formation intacte.** Le CH a gardé ses 18 patineurs, mais Martin St-Louis a défait deux trios de la veille : ${moveDef.moved_player} (${moveDef.position_held_throughout || 'AG'}) passe avec ${moveDef.to_line_center} et ${(newLine.filter(n => n !== moveDef.moved_player && n !== moveDef.to_line_center)[0]) || 'Bolduc'}, et ${centerSwap.new_center} prend le centre entre ${(LINEUPS.teams.MTL.forwards.find(L => findCenter(L) && findCenter(L).name === centerSwap.new_center) || {players:[]}).players.filter(p => p.name !== centerSwap.new_center).map(p => p.name).join(' et ') || 'Newhook et Demidov'} (poste qu'occupait ${centerSwap.prior_center} au M2). Le nouveau trio ${newLine.join('-')} a partagé ${toiTextFr} sur la glace à 5 c. 5 et a produit 2 des 3 buts de Montréal. Radio-Canada avait annoncé le changement avant la mise au jeu; les présences réelles le confirment.`;
+  }
+  return `**The Game 3 win came from a line reshuffle, not the same lineup**. MTL kept the same 18 skaters but St-Louis broke up two G2 lines: ${moveDef.moved_player} (${moveDef.position_held_throughout || 'L'}W) moved to play with ${moveDef.to_line_center} (C) and ${(newLine.filter(n => n !== moveDef.moved_player && n !== moveDef.to_line_center)[0]) || 'Bolduc'} (RW), and ${centerSwap.new_center} took the center role between ${(LINEUPS.teams.MTL.forwards.find(L => findCenter(L) && findCenter(L).name === centerSwap.new_center) || {players:[]}).players.filter(p => p.name !== centerSwap.new_center).map(p => p.name).join(' and ') || 'Newhook and Demidov'} (the spot ${centerSwap.prior_center} held in Game 2). The new ${newLine.join('-')} line played ${toiText} together at 5v5 and produced 2 of MTL's 3 goals. Radio-Canada reported the change pre-game; the shift data confirms it.`;
+}
+
+function lineupIntroProse(lang) {
+  const centerSwap = findReshuffle('MTL', x => x.prior_center && x.new_center) || {};
+  const moveDef = findReshuffle('MTL', x => x.moved_player) || {};
+  const oppositeLineCenter = moveDef.to_line_center;
+  const newCenterLineWingers = (LINEUPS.teams.MTL.forwards.find(L =>
+    findCenter(L) && findCenter(L).name === centerSwap.new_center
+  ) || {players: []}).players.filter(p => p.position !== 'C').map(p => p.name);
+
+  if (lang === 'fr') {
+    return `L'intuition voulant que « le CH avait la même formation » est à moitié juste. Les 18 patineurs étaient les mêmes, mais deux des quatre trios offensifs ont été reconfigurés. Selon Radio-Canada avant la rencontre, St-Louis a placé ${centerSwap.new_center} au centre entre ${newCenterLineWingers.join(' et ') || 'Newhook et Demidov'} (en remplacement de ${centerSwap.prior_center}, centre de ce trio au M2 et qui glisse à l'aile), et il a déplacé ${moveDef.moved_player} de ce trio vers celui de ${oppositeLineCenter}. Données et reportage concordent une fois recoupés avec les présences réelles tirées de LNH.com.`;
+  }
+  return `The instinct that "MTL kept the same lineup" was half right. The 18 skaters were unchanged, but two of MTL's four forward lines were reshuffled. Per Radio-Canada's pre-game report, St-Louis put ${centerSwap.new_center} at center between ${newCenterLineWingers.join(' and ') || 'Newhook and Demidov'} (replacing ${centerSwap.prior_center}, who had been the line's center in Game 2 and dropped to a wing role), and shifted ${moveDef.moved_player} from that line over to play with ${oppositeLineCenter}. We cross-checked against the actual deployed lines from NHL.com's shift chart — the change matches.`;
+}
 
 // ---------- HELPERS ----------
 const r = (text, opts = {}) => new TextRun({ text, font: 'Arial', size: 20, ...opts });

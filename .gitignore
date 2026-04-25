@@ -66,3 +66,4 @@ reearch/
 google-credentials.json
 google-token.json
 .lemieux/
+node_modules/

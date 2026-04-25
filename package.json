@@ -1,0 +1,11 @@
+{
+  "name": "lemieux-docx-builders",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Node deps for docx report generators in examples/. Run `npm install` once at the repo root before running build_game*.js scripts.",
+  "license": "MIT",
+  "dependencies": {
+    "docx": "^9.5.1",
+    "yaml": "^2.5.0"
+  }
+}
