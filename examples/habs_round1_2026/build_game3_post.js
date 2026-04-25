@@ -115,11 +115,11 @@ const T = {
       '**Sources.** Numbers come from Natural Stat Trick (5v5 / 5v4 series totals) and NHL.com\'s public play-by-play and shift charts. Press claims come from La Presse, RDS, Radio-Canada, NY Post, Habs Eyes On The Prize, HockeyDB.',
       '**No predictions.** This report grades claims, it does not predict the series outcome. Three games is a tiny sample; every iso-impact number should be read as directional.',
     ],
-    lineup_title: '1. The Game 3 line reshuffle — and what it produced',
+    lineup_title: '1. The brand-new line that scored both 5v5 MTL goals',
     get lineup_intro() { return lineupIntroProse('en'); },
-    lineup_mtl_change_title: 'MTL lines, Game 2 → Game 3',
-    lineup_drift_table_intro: 'Top forward combinations by total seconds together at any strength state, from the actual shift data (not pre-game listings).',
-    lineup_outcome_title: 'Did the new lines pay off?',
+    lineup_mtl_change_title: 'For context — MTL lines, Game 2 → Game 3',
+    lineup_drift_table_intro: 'Top forward combinations by total seconds together at any strength state, from the actual shift data (not pre-game listings). Reading order: outcome first (above), composition table here as the explanatory context.',
+    lineup_outcome_title: 'How the new lines performed',
     lineup_outcome: [
       'The new **Texier-Dach-Bolduc** trio scored both 5v5 MTL goals (Texier opened, Dach tied) and combined for 6 points. Per Martin Leclerc\'s Radio-Canada chronique, this line drove the win.',
       'The new **Kapanen-Newhook-Demidov** trio played 7.9 minutes together and was on the ice for zero goals against — quiet but defensively responsible in their first game together.',
@@ -206,11 +206,11 @@ const T = {
       '**Sources.** Les chiffres viennent de Natural Stat Trick (totaux 5 c. 5 / 5 c. 4 de série) et des API publiques de LNH.com (jeu par jeu, présences). Les affirmations citées proviennent de La Presse, RDS, Radio-Canada, du New York Post, de Habs Eyes On The Prize et de HockeyDB.',
       '**Aucune prédiction.** Ce rapport note les affirmations, il ne prédit pas l\'issue de la série. Trois matchs, c\'est minuscule; chaque chiffre d\'impact isolé est directionnel, pas prédictif.',
     ],
-    lineup_title: '1. Le brassage de trios du match no 3 — et ce qu\'il a produit',
+    lineup_title: '1. Le nouveau trio qui a marqué les deux buts du CH à 5 c. 5',
     get lineup_intro() { return lineupIntroProse('fr'); },
-    lineup_mtl_change_title: 'Trios du CH, match no 2 → match no 3',
-    lineup_drift_table_intro: 'Trios offensifs par total de secondes ensemble sur la glace, toutes situations confondues, à partir des présences réelles (et non des formations annoncées avant-match).',
-    lineup_outcome_title: 'Le brassage a-t-il rapporté ?',
+    lineup_mtl_change_title: 'Pour le contexte — trios du CH, M2 → M3',
+    lineup_drift_table_intro: 'Trios offensifs par total de secondes ensemble sur la glace, toutes situations confondues, à partir des présences réelles (et non des formations annoncées avant-match). Ordre de lecture : la production d\'abord (plus haut), la composition ici comme contexte explicatif.',
+    lineup_outcome_title: 'Comment les nouveaux trios ont produit',
     lineup_outcome: [
       'Le nouveau trio **Texier-Dach-Bolduc** a inscrit les deux buts à 5 c. 5 du CH (Texier en début de match, Dach en deuxième) et a totalisé 6 points. Selon la chronique de Martin Leclerc à Radio-Canada, ce trio a piloté la victoire.',
       'Le nouveau trio **Kapanen-Newhook-Demidov** a partagé 7 minutes 54 et n\'a accordé aucun but : début discret mais responsable défensivement.',
@@ -325,23 +325,35 @@ function lineReshuffleBullet(lang) {
   const trioLabel = newLine.map(lastName).join('-');
 
   if (lang === 'fr') {
-    return `**Mêmes 18 patineurs au match no 3, mais deux trios reconfigurés.** ${moveDef.moved_player} (${moveDef.position_held_throughout || 'AG'}) passe avec ${moveDef.to_line_center} et ${lastName((newLine.filter(n => n !== moveDef.moved_player && n !== moveDef.to_line_center)[0])) || 'Bolduc'}, et ${centerSwap.new_center} prend le centre entre ${(LINEUPS.teams.MTL.forwards.find(L => findCenter(L) && findCenter(L).name === centerSwap.new_center) || {players:[]}).players.filter(p => p.name !== centerSwap.new_center).map(p => lastName(p.name)).join(' et ') || 'Newhook et Demidov'} — poste qu'occupait ${centerSwap.prior_center} au M2. Le nouveau trio ${trioLabel} a partagé ${toiTextFr} sur la glace à 5 c. 5 et a inscrit 2 des 3 buts du CH. Radio-Canada avait annoncé le brassage avant la mise au jeu; les présences réelles le confirment.`;
+    return `**Les deux buts du CH à 5 c. 5 sont venus d'un trio qui n'existait pas avant ce soir.** ${trioLabel} a partagé ${toiTextFr} sur la glace ensemble — ${lastName(moveDef.moved_player)} a ouvert la marque, ${lastName(moveDef.to_line_center)} a égalisé en deuxième. Le trio est une création de St-Louis pour le M3 : il a déplacé ${lastName(moveDef.moved_player)} (${moveDef.position_held_throughout || 'AG'}) du flanc de ${centerSwap.prior_center} pour le mettre avec ${lastName(moveDef.to_line_center)} (C) et ${lastName((newLine.filter(n => n !== moveDef.moved_player && n !== moveDef.to_line_center)[0])) || 'Bolduc'}, et a placé ${lastName(centerSwap.new_center)} au centre entre ${lastName(centerSwap.prior_center)} et ${lastName('Ivan Demidov')}. Mêmes 18 patineurs qu'au M2, mais une production qui ne ressemblait à aucun trio précédent.`;
   }
-  return `**Same 18 skaters in Game 3, but two reshuffled forward lines.** ${moveDef.moved_player} (${moveDef.position_held_throughout || 'L'}W) moved over to play with ${moveDef.to_line_center} (C) and ${lastName((newLine.filter(n => n !== moveDef.moved_player && n !== moveDef.to_line_center)[0])) || 'Bolduc'} (RW), and ${centerSwap.new_center} took the center role between ${(LINEUPS.teams.MTL.forwards.find(L => findCenter(L) && findCenter(L).name === centerSwap.new_center) || {players:[]}).players.filter(p => p.name !== centerSwap.new_center).map(p => lastName(p.name)).join(' and ') || 'Newhook and Demidov'} — the spot ${centerSwap.prior_center} held in Game 2. The new ${trioLabel} trio played ${toiText} together at 5v5 and scored 2 of MTL's 3 goals. Radio-Canada reported the reshuffle pre-game; the shift data confirms it.`;
+  return `**MTL's two even-strength goals came from a line that didn't exist before tonight.** ${trioLabel} played ${toiText} together at 5v5 — ${lastName(moveDef.moved_player)} opened the scoring, ${lastName(moveDef.to_line_center)} tied it in the second. The trio is a St-Louis Game-3 creation: he pulled ${lastName(moveDef.moved_player)} (${moveDef.position_held_throughout || 'L'}W) off ${centerSwap.prior_center}'s wing and put him with ${lastName(moveDef.to_line_center)} (C) and ${lastName((newLine.filter(n => n !== moveDef.moved_player && n !== moveDef.to_line_center)[0])) || 'Bolduc'} (RW), and slid ${lastName(centerSwap.new_center)} to center between ${lastName(centerSwap.prior_center)} and ${lastName('Ivan Demidov')}. Same 18 skaters as Game 2, but a scoring profile no prior trio matched.`;
 }
 
 function lineupIntroProse(lang) {
   const centerSwap = findReshuffle('MTL', x => x.prior_center && x.new_center) || {};
   const moveDef = findReshuffle('MTL', x => x.moved_player) || {};
-  const oppositeLineCenter = moveDef.to_line_center;
-  const newCenterLineWingers = (LINEUPS.teams.MTL.forwards.find(L =>
-    findCenter(L) && findCenter(L).name === centerSwap.new_center
-  ) || {players: []}).players.filter(p => p.position !== 'C').map(p => p.name);
+  const newLineCenterRow = (LINEUPS.teams.MTL.forwards || []).find(L =>
+    findCenter(L) && findCenter(L).name === moveDef.to_line_center
+  );
+  const newLine = newLineCenterRow
+    ? newLineCenterRow.players.map(p => p.name)
+    : [];
+  const trioLabel = newLine.map(full => (full || '').split(' ').slice(-1)[0]).join('-');
+
+  // Pull the new-trio's 5v5 TOI from the analyzer output
+  const newLineTOI = (D.mtl_g3_forward_lines || []).find(c =>
+    newLine.length === 3 && newLine.every(n => c.players.includes(n))
+  );
+  const top5v5 = (D.mtl_g3_forward_lines || []).slice(0, 4);
+  const rank = newLineTOI ? top5v5.findIndex(c => c === newLineTOI) + 1 : null;
+  const rankFr = rank ? `${rank}e` : 'récente';
+  const rankEn = rank ? `${rank}${['st','nd','rd','th'][Math.min(rank-1,3)]}` : 'recent';
 
   if (lang === 'fr') {
-    return `L'intuition voulant que « le CH avait la même formation » est à moitié juste. Les 18 patineurs étaient les mêmes, mais deux des quatre trios offensifs ont été reconfigurés. Selon Radio-Canada avant la rencontre, St-Louis a placé ${centerSwap.new_center} au centre entre ${newCenterLineWingers.join(' et ') || 'Newhook et Demidov'} (en remplacement de ${centerSwap.prior_center}, centre de ce trio au M2 et qui glisse à l'aile), et il a déplacé ${moveDef.moved_player} de ce trio vers celui de ${oppositeLineCenter}. Données et reportage concordent une fois recoupés avec les présences réelles tirées de LNH.com.`;
+    return `Le trio ${trioLabel} a inscrit les deux buts à 5 c. 5 du CH (${(newLineTOI && newLineTOI.toi_min) ? `${newLineTOI.toi_min.toFixed(1).replace('.', ',')} min ensemble, ${rankFr} en TG d'équipe parmi les trios MTL` : 'partage non négligeable de la glace à 5 c. 5'}). C'est de la production qui n'existait pas dans les deux premiers matchs, parce que le trio lui-même n'existait pas. Cette section explique d'où il sort et ce que les chiffres disent de sa performance — la composition (avant/après) est dans le tableau ci-dessous comme contexte, pas comme nouvelle.`;
   }
-  return `The instinct that "MTL kept the same lineup" was half right. The 18 skaters were unchanged, but two of MTL's four forward lines were reshuffled. Per Radio-Canada's pre-game report, St-Louis put ${centerSwap.new_center} at center between ${newCenterLineWingers.join(' and ') || 'Newhook and Demidov'} (replacing ${centerSwap.prior_center}, who had been the line's center in Game 2 and dropped to a wing role), and shifted ${moveDef.moved_player} from that line over to play with ${oppositeLineCenter}. We cross-checked against the actual deployed lines from NHL.com's shift chart — the change matches.`;
+  return `The ${trioLabel} trio scored both of MTL's 5v5 goals in Game 3 (${(newLineTOI && newLineTOI.toi_min) ? `${newLineTOI.toi_min.toFixed(1)} minutes together, the ${rankEn}-most-deployed MTL forward combo of the night` : 'a meaningful 5v5 share of the ice'}). That production didn't show up in Games 1-2 because this trio didn't exist in Games 1-2. The rest of this section is about where the line came from and what the numbers say about its performance — the composition table (before / after) is below as context, not as the lead.`;
 }
 
 // ---------- HELPERS ----------
