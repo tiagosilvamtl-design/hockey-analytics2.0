@@ -96,6 +96,43 @@ At 5v5, [TEAM] outshot [OPP] by [CF%] and outchanced [CF/xGF pct]. [Link: [xGF%]
 
 Same structure. French versions of term names come from `lemieux://glossary/{term_id}` with `lang="fr"`. Keep section headings in French: « Ce qui s'est passé », « Ce que disent les chiffres », « Ce que les données ne disent pas », etc.
 
+## Lead with outcomes, not announcements of changes
+
+By the time a post-game report ships, the audience has already watched the game. They know who scored, they saw the lineup, they noticed if a line got reshuffled, they heard the broadcasters call out matchup changes. None of that is news. **The story is what the data reveals about play that wasn't obvious from watching** — what the new line *produced* (xGF, shot share, goals), what an isolated impact rate looks like over a multi-game window, where the chance-quality vs. shot-volume gap actually showed up.
+
+Concretely: front the **outcome**, treat the **change** as explanatory context.
+
+### Heuristic
+
+Any time you're about to write a sentence whose subject is a coaching decision, a lineup move, a system tweak, or a roster change, ask: *what did it produce*? If you have a quantitative answer, lead with that. If you don't, the sentence shouldn't be in the lead — push it to a context paragraph or drop it entirely.
+
+### Examples
+
+| Don't lead with this | Lead with this |
+|---|---|
+| "MTL reshuffled two lines for Game 3." | "A trio that didn't exist before tonight scored both of MTL's 5v5 goals — here's how it was built." |
+| "Slafkovský was matched against Hagel's line all night." | "Slafkovský's line gave up zero high-danger chances at 5v5; the Hagel matchup was the reason." |
+| "Kapanen got 14 minutes at 3C in his first game in that role." | "MTL's third line generated +0.8 xG net in 14 minutes — Kapanen's debut at 3C." |
+| "St-Louis put Hutson on PP1." | "PP1 generated 1.4 xG in 4:30 of 5v4 with Hutson at the point — his first PP1 minutes of the series." |
+| "TBL's bottom six didn't see much ice time." | "TBL's bottom six was outshot 8–1 in 9 minutes of 5v5 — Cooper shortened the bench for cause." |
+
+### When this rule does NOT apply
+
+- **Setup paragraphs** in long-form posts (a brief "what's at stake" framing is fine).
+- **Methodology / context boxes** that exist precisely to explain how something is being measured — those are not the lead.
+- **Composition tables** for reference (the BEFORE/AFTER lineup table is fine; just don't put it before the outcome).
+
+### Why this matters
+
+Hockey writers default to recap voice ("then this happened, then that happened"). That voice repeats what the audience already knows. The whole reason this framework exists is to surface what the *data* reveals — and that's almost always an outcome or a delta, never an announcement. If a draft reads like a play-by-play recap, it's missing the point.
+
+### Self-check on the lead
+
+- Does the first sentence of the post lead with a measured outcome (a goal differential, an iso impact, an xG share, an unexpected ranking) — or with a fact about lineups/decisions/changes?
+- If the latter, restructure: pull the outcome up; push the announcement down.
+
+---
+
 ## Lineups are inputs to this skill, not outputs
 
 **You do not infer line composition or player positions from press prose. You read them from a structured lineups file.** The skill is allowed to refuse to draft prose about line roles if no structured lineup data is available — that's correct behavior, not a failure mode.
