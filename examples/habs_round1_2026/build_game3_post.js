@@ -105,9 +105,9 @@ const T = {
     tldr: 'Top-line read',
     tldr_bullets: [
       lineReshuffleBullet('en'),
-      'TBL **also reshuffled** — five of their six top G2 forward combinations didn\'t come back in G3. Both coaches blinked.',
-      'The series remains a **Tampa-volume vs. Montreal-quality** tactical pattern. At 5v5 across 3 games TBL has 55.4 % of shot attempts but MTL has **75 %** of high-danger chances and 56.1 % of expected goals.',
-      'Vasilevskiy "more reliable than Dobes" was a pre-series narrative that the data has refuted — through 3 games Dobes\' implied save percentage (.905) is actually a tick higher than Vasilevskiy\'s (.893), with near-identical workloads (74 vs 75 shots faced).',
+      'At 5v5 across three games, Tampa has 55.4 % of shot attempts; Montreal has 56.1 % of expected goals and **75 %** of high-danger chances. Tampa shoots; Montreal scores.',
+      'Hutson, Caufield and Suzuki have all scored — and all sit below their regular-season isolated impact at 5v5 across the series. The underlying play is being carried by depth (Bolduc, Dach, Texier, Struble, Xhekaj). Goals are coming through the stars; the pre-goal possession isn\'t.',
+      'Vasilevskiy: 75 shots faced, 8 goals against, .893 implied SV%. Dobes: 74, 7, .905. Near-identical workloads, narrow gap, Dobes a tick higher. The pre-series claim that Vasilevskiy was the more reliable goaltender doesn\'t hold across three games.',
     ],
     methodology_title: 'How to read this report',
     methodology: [
@@ -119,33 +119,33 @@ const T = {
     get lineup_intro() { return lineupIntroProse('en'); },
     lineup_mtl_change_title: 'MTL forward lines, Game 2 → Game 3',
     lineup_drift_table_intro: 'Top forward combinations by total seconds together at any strength state, from the actual shift data (not pre-game listings).',
-    lineup_outcome_title: 'How the new lines performed',
+    lineup_outcome_title: 'The two new lines',
     lineup_outcome: [
-      'The new **Texier-Dach-Bolduc** trio scored both 5v5 MTL goals (Texier opened, Dach tied) and combined for 6 points. Per Martin Leclerc\'s Radio-Canada chronique, this line drove the win.',
-      'The new **Kapanen-Newhook-Demidov** trio played 7.9 minutes together and was on the ice for zero goals against — quiet but defensively responsible in their first game together.',
-      'François Gagnon (RDS) framed it as a redemption arc for Dach after social-media harassment over his Game 2 mistakes. St-Louis\' answer: *« Je n\'abandonnerai jamais un joueur à moins qu\'il n\'abandonne sur lui-même. »* The data backs the read — Dach\'s line drove territorial play.',
+      '**Texier-Dach-Bolduc:** 6.7 minutes at 5v5, two goals, six combined points (Texier scored, Dach scored, Bolduc primary on both).',
+      '**Kapanen-Newhook-Demidov:** 7.9 minutes at 5v5, zero goals for or against. Quiet, defensively responsible debut as a unit.',
+      'François Gagnon (RDS) on the Dach call: St-Louis declined to bench him after Game 2 and gave him an expanded role instead. Quote: *« Je n\'abandonnerai jamais un joueur à moins qu\'il n\'abandonne sur lui-même. »*',
     ],
-    tbl_lineup_title: 'TBL also blinked',
-    tbl_lineup_text: 'Tampa\'s lineup churned even more aggressively — only 1 of their 6 most-deployed G2 forward combinations carried into G3, vs. 5 new combinations. Coach Jon Cooper\'s decisions are themselves a story; Martin Leclerc went after one in particular — Scott Sabourin getting 45 seconds of overtime ice time despite playing only 3 minutes in regulation. Quote: *« Si Martin St-Louis avait pris de telles décisions dans des matchs de cette importance, il serait probablement en disgrâce à jamais auprès des partisans du Canadien. »*',
-    usage_title: 'Usage observations — what the box score can\'t tell you',
-    usage_intro: 'Deployment decisions captured from the press (and corroborated by shift data where possible). These are the qualitative inputs that make the quantitative data interpretable — a coach\'s intent never shows up in a Corsi number. Logged in `game3_usage_observations.yaml` for downstream reuse.',
+    tbl_lineup_title: 'Tampa\'s lineup also churned',
+    tbl_lineup_text: 'Only one of Tampa\'s six most-deployed Game-2 forward combinations carried into Game 3. The Cooper move that drew the sharpest criticism (Martin Leclerc, Radio-Canada): Sabourin getting 45 seconds of overtime after 3 minutes in regulation. Quote: *« Si Martin St-Louis avait pris de telles décisions dans des matchs de cette importance, il serait probablement en disgrâce à jamais auprès des partisans du Canadien. »*',
+    usage_title: 'Usage notes from press coverage',
+    usage_intro: 'Deployment decisions captured from RDS, Radio-Canada and La Presse, paired with shift-data corroboration where available.',
     claims_title: '2. Claims ledger',
-    claims_intro: 'Each row pairs a quote from public reporting with what our data actually shows. Verdict colors: green = confirmed, amber = mixed, red = refuted.',
+    claims_intro: 'Each row pairs a quote from public reporting with what the data shows. Verdict colors: green confirmed, amber mixed, red refuted.',
     series_title: '3. Series state of play (5v5, three games)',
-    series_intro: 'The underlying-numbers picture across all three games. The two headline NY Post claims — TBL "tilts the ice", MTL "generates more high-danger chances" — are simultaneously true. Different weapons.',
-    progression_title: '4. Player progression — regular season → 2026 playoffs',
-    progression_intro: 'For each MTL skater with ≥ 200 regular-season 5v5 minutes and ≥ 15 minutes in the playoffs, we compare 5v5 isolated net impact (iso xGF/60 − iso xGA/60). Up-movers are doing more in playoffs than the regular season suggested; down-movers are doing less.',
-    progression_stars_caveat: 'On the down-movers: Hutson, Caufield, and Suzuki have all scored in the series. The iso-impact regression isn\'t about goals — it\'s about the team\'s underlying expected-goals share when they\'re on the ice. They\'re cashing in (good) while the underlying play is below their regular-season standard (something to watch).',
+    series_intro: 'Tampa drives shot volume; Montreal converts on chance quality. Both NY Post pre-series claims are simultaneously true. Different weapons.',
+    progression_title: '4. MTL skater progression — regular season vs. 2026 playoffs',
+    progression_intro: 'Isolated net impact at 5v5 (iso xGF/60 − iso xGA/60) in the regular season vs. the three playoff games. Up-movers are exceeding their regular-season impact; down-movers are below it. Minimum 200 regular-season minutes and 15 playoff minutes.',
+    progression_stars_caveat: 'Hutson, Caufield and Suzuki have all scored in the series. Isolated impact measures the team\'s underlying expected-goals share when they\'re on the ice, not their goal-scoring. Goals are landing; the pre-goal play sits below their regular-season standard. The two facts coexist.',
     goalies_title: '5. Goalies',
-    goalies_intro: 'The NY Post called Vasilevskiy "more reliable" pre-series. Through 3 games the workload has been roughly even and Dobes\' implied save percentage is in fact slightly higher. Pre-series reputation is doing the heavy lifting in that narrative; the 3-game data does not support it. François Gagnon (RDS) called Dobes "à la hauteur de Vasilevskiy" in his Game 3 chronique — that read tracks.',
+    goalies_intro: 'Vasilevskiy: 75 shots faced, 8 goals against, .893 implied SV%. Dobes: 74, 7, .905. Near-identical workloads across the series, with Dobes a tick ahead on save rate. Game 3 alone was lopsided (29 vs. 17 shots faced); the three-game total isn\'t. François Gagnon (RDS) wrote Dobes had "matched Vasilevskiy" after Game 3 — that tracks.',
     slaf_title: '6. Watch list — Slafkovský pre/post the Hagel fight',
-    slaf_intro: 'A Game-2 narrative worth tracking forward, not the dominant Game-3 story. The Slafkovský-Hagel fight at G2 P2 5:14 split the series cleanly: 8 SOG and 3 goals before, 2 SOG and 0 goals since. But on the ice with him after the fight, MTL outshoots TBL 20-9 and outscores 2-1. Verdict: his individual offense fell off, his line is still winning. Worth monitoring through Game 4 to see whether the personal production returns.',
+    slaf_intro: 'Splitting Slafkovský\'s on-ice events at the moment of the Game-2 fight (G2, period 2, 5:14): pre-fight 8 SOG and 3 goals; post-fight (rest of G2 plus all of G3) 2 SOG and 0 goals. With him on the ice after the fight, MTL outshoots Tampa 20-9 and outscores 2-1. Personal production fell off; line-level outcomes did not. Worth tracking through Game 4.',
     cant_title: '7. What the data still can\'t tell us',
     cant_bullets: [
-      'Whether the new MTL lines persist for Game 4 or were a one-game tweak. Coaches change their minds; St-Louis has not telegraphed his Game 4 intentions publicly.',
-      'How much of MTL\'s high-danger edge is sustainable against a Vasilevskiy who has yet to play his series ceiling. PDO regression cuts both ways.',
-      'Whether Slafkovský\'s post-fight reduction in shot volume is psychological, tactical, or sample noise. The model only sees ice time and what happened with him on it.',
-      'Officiating variance — TBL\'s only G3 goal came on the power play, and Game 4 referee assignments matter.',
+      'Whether the new MTL lines persist for Game 4 or were a one-game tweak.',
+      'How much of MTL\'s high-danger edge holds against a Vasilevskiy who has yet to play his series ceiling. PDO regression cuts both ways.',
+      'Whether Slafkovský\'s post-fight reduction in shot generation is psychological, tactical, or sample noise.',
+      'Officiating variance. Tampa\'s only Game-3 goal came on the power play.',
     ],
     sources_title: '8. Sources',
     sources_groups: [
@@ -196,9 +196,9 @@ const T = {
     tldr: 'L\'essentiel',
     tldr_bullets: [
       lineReshuffleBullet('fr'),
-      'Tampa Bay **a brassé encore davantage** : seul un de leurs six trios les plus utilisés du match no 2 est revenu intact. Les deux entraîneurs ont cligné.',
-      'La série conserve son visage tactique : **Tampa génère le volume, le CH convertit sur la qualité**. À 5 c. 5 sur trois matchs, le TBL détient 55,4 % des tentatives Corsi mais le CH s\'arroge **75 %** des chances à haut danger et 56,1 % des buts attendus.',
-      'L\'argument d\'avant-série voulant que Vasilevskiy soit « plus fiable » que Dobes ne tient pas à l\'examen des trois premiers matchs : le pourcentage d\'arrêts implicite de Dobes (,905) est en fait légèrement supérieur à celui de Vasilevskiy (,893), avec des charges de travail quasi identiques (74 c. 75 tirs subis).',
+      'À 5 c. 5 sur trois matchs, Tampa détient 55,4 % des tentatives Corsi; Montréal s\'arroge 56,1 % des buts attendus et **75 %** des chances à haut danger. Tampa génère le volume; Montréal convertit la qualité.',
+      'Hutson, Caufield et Suzuki ont tous marqué — et tous ont un impact net isolé à 5 c. 5 inférieur à leur saison régulière. Le jeu sous-jacent est porté par la profondeur (Bolduc, Dach, Texier, Struble, Xhekaj). Les buts passent par les vedettes; le travail qui les précède, beaucoup moins.',
+      'Vasilevskiy : 75 tirs subis, 8 buts accordés, ,893 d\'arrêts implicites. Dobes : 74, 7, ,905. Charges quasi identiques, écart mince, et Dobes légèrement supérieur. L\'argument d\'avant-série plaçant Vasilevskiy au-dessus ne tient pas sur ces trois matchs.',
     ],
     methodology_title: 'Comment lire ce rapport',
     methodology: [
@@ -210,14 +210,14 @@ const T = {
     get lineup_intro() { return lineupIntroProse('fr'); },
     lineup_mtl_change_title: 'Trios offensifs du CH, M2 → M3',
     lineup_drift_table_intro: 'Trios offensifs par total de secondes ensemble sur la glace, toutes situations confondues, à partir des présences réelles (et non des formations annoncées avant-match).',
-    lineup_outcome_title: 'Comment les nouveaux trios ont produit',
+    lineup_outcome_title: 'Les deux nouveaux trios',
     lineup_outcome: [
-      'Le nouveau trio **Texier-Dach-Bolduc** a inscrit les deux buts à 5 c. 5 du CH (Texier en début de match, Dach en deuxième) et a totalisé 6 points. Selon la chronique de Martin Leclerc à Radio-Canada, ce trio a piloté la victoire.',
-      'Le nouveau trio **Kapanen-Newhook-Demidov** a partagé 7 minutes 54 et n\'a accordé aucun but : début discret mais responsable défensivement.',
-      'François Gagnon a présenté le tout comme une rédemption pour Dach, après les attaques en ligne qui ont suivi son match no 2. La réponse de St-Louis : « Je n\'abandonnerai jamais un joueur à moins qu\'il n\'abandonne sur lui-même. » Les chiffres confortent la lecture : le trio de Dach a dominé territorialement.',
+      '**Texier-Dach-Bolduc :** 6,7 minutes à 5 c. 5, deux buts, six points combinés (Texier marque, Dach marque, Bolduc passe principale sur les deux).',
+      '**Kapanen-Newhook-Demidov :** 7,9 minutes à 5 c. 5, aucun but pour ou contre. Début discret et défensivement responsable.',
+      'François Gagnon (RDS) sur le cas Dach : St-Louis a refusé de le mettre à l\'écart après le M2 et lui a plutôt confié un rôle élargi. Citation : *« Je n\'abandonnerai jamais un joueur à moins qu\'il n\'abandonne sur lui-même. »*',
     ],
-    tbl_lineup_title: 'Le Lightning a cligné aussi',
-    tbl_lineup_text: 'Tampa a brassé encore plus agressivement — un seul de leurs six trios les plus utilisés au match no 2 est revenu au match no 3, contre cinq nouveaux. Les choix de Jon Cooper sont eux-mêmes une histoire; Martin Leclerc s\'en est pris à un en particulier — Scott Sabourin obtenant 45 secondes en prolongation après n\'avoir joué que 3 minutes en temps réglementaire. Sa formule : « Si Martin St-Louis avait pris de telles décisions dans des matchs de cette importance, il serait probablement en disgrâce à jamais auprès des partisans du Canadien. »',
+    tbl_lineup_title: 'La formation de Tampa a brassé aussi',
+    tbl_lineup_text: 'Un seul des six trios offensifs les plus utilisés du M2 par Tampa est revenu au M3. Le geste de Cooper qui a soulevé le plus de critiques (Martin Leclerc, Radio-Canada) : Sabourin obtient 45 secondes en prolongation après 3 minutes en temps réglementaire. Citation : *« Si Martin St-Louis avait pris de telles décisions dans des matchs de cette importance, il serait probablement en disgrâce à jamais auprès des partisans du Canadien. »*',
     usage_title: 'Observations sur l\'utilisation — ce que le sommaire ne dit pas',
     usage_intro: 'Décisions de déploiement glanées dans la presse (et corroborées par les présences réelles quand c\'est possible). Ce sont les lectures qualitatives qui rendent les chiffres interprétables — l\'intention d\'un entraîneur n\'apparaît jamais dans un chiffre Corsi. Consigné dans `game3_usage_observations.yaml` pour usage en aval.',
 
@@ -300,60 +300,44 @@ function findReshuffle(team, predicate) {
   return reshuffles(team).find(predicate) || null;
 }
 
-function lineReshuffleBullet(lang) {
-  const r = reshuffles('MTL');
+function _lastName(full) { return (full || '').split(' ').slice(-1)[0]; }
+
+function _newLineContext() {
   const moveDef = findReshuffle('MTL', x => x.moved_player) || {};
   const centerSwap = findReshuffle('MTL', x => x.prior_center && x.new_center) || {};
-  const newLineCenter = (LINEUPS.teams.MTL.forwards || []).find(L =>
+  const newLineRow = (LINEUPS.teams.MTL.forwards || []).find(L =>
     findCenter(L) && findCenter(L).name === moveDef.to_line_center
   );
-  const newLine = newLineCenter
-    ? newLineCenter.players.map(p => p.name)
-    : [];
-
-  // 5v5 TOI together for the new line, from the shift data we already computed
+  const newLine = newLineRow ? newLineRow.players.map(p => p.name) : [];
   const newLineTOI = (D.mtl_g3_forward_lines || []).find(c =>
     newLine.length === 3 && newLine.every(n => c.players.includes(n))
   );
-  const toiText = newLineTOI ? `${newLineTOI.toi_min.toFixed(1)} minutes` : '';
-  const toiTextFr = newLineTOI
-    ? `${newLineTOI.toi_min.toFixed(1).replace('.', ',')} minutes`
-    : '';
+  const top5 = (D.mtl_g3_forward_lines || []).slice(0, 5);
+  const rank = newLineTOI ? top5.findIndex(c => c === newLineTOI) + 1 : null;
+  return {
+    moveDef, centerSwap, newLine,
+    trioLabel: newLine.map(_lastName).join('-'),
+    toi: newLineTOI ? newLineTOI.toi_min : 0,
+    rank,
+  };
+}
 
-  // Last-name-only label for the trio, sportswriting convention
-  const lastName = full => (full || '').split(' ').slice(-1)[0];
-  const trioLabel = newLine.map(lastName).join('-');
-
+function lineReshuffleBullet(lang) {
+  const c = _newLineContext();
   if (lang === 'fr') {
-    return `**Les deux buts du CH à 5 c. 5 sont venus d'un trio qui n'existait pas avant ce soir.** ${trioLabel} a partagé ${toiTextFr} sur la glace ensemble — ${lastName(moveDef.moved_player)} a ouvert la marque, ${lastName(moveDef.to_line_center)} a égalisé en deuxième. Le trio est une création de St-Louis pour le M3 : il a déplacé ${lastName(moveDef.moved_player)} (${moveDef.position_held_throughout || 'AG'}) du flanc de ${centerSwap.prior_center} pour le mettre avec ${lastName(moveDef.to_line_center)} (C) et ${lastName((newLine.filter(n => n !== moveDef.moved_player && n !== moveDef.to_line_center)[0])) || 'Bolduc'}, et a placé ${lastName(centerSwap.new_center)} au centre entre ${lastName(centerSwap.prior_center)} et ${lastName('Ivan Demidov')}. Mêmes 18 patineurs qu'au M2, mais une production qui ne ressemblait à aucun trio précédent.`;
+    return `**${c.trioLabel}, un trio que St-Louis a assemblé pour le M3, a inscrit les deux buts du CH à 5 c. 5 en ${c.toi.toFixed(1).replace('.', ',')} minutes ensemble.** ${_lastName(c.moveDef.moved_player)} ouvre le pointage en première, ${_lastName(c.moveDef.to_line_center)} égalise en deuxième sur un tir dévié contre la jambe de Ryan McDonagh.`;
   }
-  return `**MTL's two even-strength goals came from a line that didn't exist before tonight.** ${trioLabel} played ${toiText} together at 5v5 — ${lastName(moveDef.moved_player)} opened the scoring, ${lastName(moveDef.to_line_center)} tied it in the second. The trio is a St-Louis Game-3 creation: he pulled ${lastName(moveDef.moved_player)} (${moveDef.position_held_throughout || 'L'}W) off ${centerSwap.prior_center}'s wing and put him with ${lastName(moveDef.to_line_center)} (C) and ${lastName((newLine.filter(n => n !== moveDef.moved_player && n !== moveDef.to_line_center)[0])) || 'Bolduc'} (RW), and slid ${lastName(centerSwap.new_center)} to center between ${lastName(centerSwap.prior_center)} and ${lastName('Ivan Demidov')}. Same 18 skaters as Game 2, but a scoring profile no prior trio matched.`;
+  return `**${c.trioLabel}, a trio St-Louis assembled for Game 3, scored both of MTL's 5v5 goals in ${c.toi.toFixed(1)} minutes of shared ice.** ${_lastName(c.moveDef.moved_player)} opened the scoring in the first, ${_lastName(c.moveDef.to_line_center)} tied it 2-2 in the second on a tip off Ryan McDonagh's leg.`;
 }
 
 function lineupIntroProse(lang) {
-  const centerSwap = findReshuffle('MTL', x => x.prior_center && x.new_center) || {};
-  const moveDef = findReshuffle('MTL', x => x.moved_player) || {};
-  const newLineCenterRow = (LINEUPS.teams.MTL.forwards || []).find(L =>
-    findCenter(L) && findCenter(L).name === moveDef.to_line_center
-  );
-  const newLine = newLineCenterRow
-    ? newLineCenterRow.players.map(p => p.name)
-    : [];
-  const trioLabel = newLine.map(full => (full || '').split(' ').slice(-1)[0]).join('-');
-
-  // Pull the new-trio's 5v5 TOI from the analyzer output
-  const newLineTOI = (D.mtl_g3_forward_lines || []).find(c =>
-    newLine.length === 3 && newLine.every(n => c.players.includes(n))
-  );
-  const top5v5 = (D.mtl_g3_forward_lines || []).slice(0, 4);
-  const rank = newLineTOI ? top5v5.findIndex(c => c === newLineTOI) + 1 : null;
-  const rankFr = rank ? `${rank}e` : 'récente';
-  const rankEn = rank ? `${rank}${['st','nd','rd','th'][Math.min(rank-1,3)]}` : 'recent';
-
+  const c = _newLineContext();
+  const rankEn = c.rank ? `${c.rank}${['st','nd','rd','th'][Math.min(c.rank-1,3)]}` : '';
+  const rankFr = c.rank ? `${c.rank}e` : '';
   if (lang === 'fr') {
-    return `Le trio ${trioLabel} a inscrit les deux buts à 5 c. 5 du CH (${(newLineTOI && newLineTOI.toi_min) ? `${newLineTOI.toi_min.toFixed(1).replace('.', ',')} min ensemble, ${rankFr} en TG d'équipe parmi les trios MTL` : 'partage non négligeable de la glace à 5 c. 5'}). Une production que les deux premiers matchs n'ont pas vue, parce que le trio lui-même n'existait pas avant ce soir.`;
+    return `Le trio ${c.trioLabel} a partagé ${c.toi.toFixed(1).replace('.', ',')} minutes à 5 c. 5${rankFr ? ` — ${rankFr} trio offensif le plus utilisé du CH ce soir` : ''} et a inscrit les deux buts à forces égales. Texier marque à 4:53 de la première; Dach égalise à 12:43 de la deuxième sur un tir dévié contre la jambe de Ryan McDonagh. Le trio sort de l'esprit de St-Louis pour le M3 : Texier passe du flanc de Newhook à celui de Dach, Kapanen prend le centre entre Newhook (qui glisse à l'aile) et Demidov.`;
   }
-  return `The ${trioLabel} trio scored both of MTL's 5v5 goals in Game 3 (${(newLineTOI && newLineTOI.toi_min) ? `${newLineTOI.toi_min.toFixed(1)} minutes together, the ${rankEn}-most-deployed MTL forward combo of the night` : 'a meaningful 5v5 share of the ice'}). Production the first two games never saw — because the line itself didn't exist before tonight.`;
+  return `${c.trioLabel} shared ${c.toi.toFixed(1)} minutes of 5v5 ice${rankEn ? ` — the ${rankEn}-most-deployed MTL forward combo of the night` : ''} and produced both even-strength goals. Texier scored at 4:53 of the first; Dach tied it 2-2 at 12:43 of the second on a tip off Ryan McDonagh's leg. The line is a Game-3 build by St-Louis: Texier moved from Newhook's wing to Dach's, Kapanen took the center role between Newhook (now on the wing) and Demidov.`;
 }
 
 // ---------- HELPERS ----------
