@@ -105,6 +105,19 @@ def find_or_create_folder(service, name: str) -> str:
     return folder["id"]
 
 
+def make_anyone_with_link(service, file_id: str) -> None:
+    """Grant 'anyone with the link can view' permission on a file or folder."""
+    try:
+        service.permissions().create(
+            fileId=file_id,
+            body={"type": "anyone", "role": "reader"},
+            fields="id",
+        ).execute()
+    except Exception as e:  # noqa: BLE001
+        # Permission already exists or domain policy blocks — surface but don't fail.
+        sys.stderr.write(f"   (note: could not set anyone-with-link on {file_id}: {e})\n")
+
+
 def find_file_in_folder(service, folder_id: str, name: str) -> str | None:
     safe_name = name.replace("'", "\\'")
     q = f"name = '{safe_name}' and '{folder_id}' in parents and trashed = false"
@@ -120,31 +133,44 @@ def guess_mime(path: Path) -> str:
     return mt or "application/octet-stream"
 
 
-def upload_file(service, folder_id: str, path: Path, overwrite: bool, dry_run: bool) -> dict:
+def upload_file(service, folder_id: str, path: Path, overwrite: bool, dry_run: bool,
+                public: bool = False) -> dict:
     name = path.name
     mime = guess_mime(path)
     existing_id = find_file_in_folder(service, folder_id, name)
     if existing_id and not overwrite:
+        if public:
+            make_anyone_with_link(service, existing_id)
         return {"status": "exists", "name": name, "id": existing_id,
-                "url": f"https://drive.google.com/file/d/{existing_id}/view"}
+                "webViewLink": f"https://drive.google.com/file/d/{existing_id}/view"}
     if dry_run:
         return {"status": "would_upload", "name": name, "size": path.stat().st_size}
     media = MediaFileUpload(str(path), mimetype=mime, resumable=True)
+    # `supportsAllDrives` is harmless and forward-compatible with shared drives.
+    # Critically: do NOT pass any conversion flag — the v3 default is no conversion,
+    # so docx stays docx in Drive. (This was a bug in v0.1: we were getting
+    # auto-converted Google Docs because the legacy default differs.)
     if existing_id and overwrite:
         result = (
             service.files()
-            .update(fileId=existing_id, media_body=media, fields="id, name, webViewLink")
+            .update(fileId=existing_id, media_body=media,
+                    fields="id, name, webViewLink, mimeType",
+                    supportsAllDrives=True)
             .execute()
         )
         result["status"] = "updated"
     else:
-        body = {"name": name, "parents": [folder_id]}
+        body = {"name": name, "parents": [folder_id], "mimeType": mime}
         result = (
             service.files()
-            .create(body=body, media_body=media, fields="id, name, webViewLink")
+            .create(body=body, media_body=media,
+                    fields="id, name, webViewLink, mimeType",
+                    supportsAllDrives=True)
             .execute()
         )
         result["status"] = "uploaded"
+    if public:
+        make_anyone_with_link(service, result["id"])
     return result
 
 
@@ -163,7 +189,13 @@ def main() -> int:
                         help="If a file with the same name exists in the folder, replace it.")
     parser.add_argument("--dry-run", action="store_true",
                         help="Print what would happen without uploading.")
+    parser.add_argument("--public", action="store_true",
+                        help="After upload, set 'anyone with the link can view' on each file.")
+    parser.add_argument("--folder-public", action="store_true",
+                        help="Also make the target folder itself publicly browsable (implies --public).")
     args = parser.parse_args()
+    if args.folder_public:
+        args.public = True
 
     missing = [p for p in args.files if not p.exists()]
     if missing:
@@ -172,22 +204,38 @@ def main() -> int:
 
     service = get_service(args.creds, args.token)
     folder_id = find_or_create_folder(service, args.folder)
-    print(f"📁 Drive folder: {args.folder!r}  (id: {folder_id})")
-    print(f"   https://drive.google.com/drive/folders/{folder_id}")
+    if args.folder_public:
+        make_anyone_with_link(service, folder_id)
+    folder_url = f"https://drive.google.com/drive/folders/{folder_id}"
+    visibility = " · public link enabled" if args.folder_public else ""
+    print(f"📁 Drive folder: {args.folder!r}  (id: {folder_id}){visibility}")
+    print(f"   {folder_url}")
     print()
 
     failures = 0
+    public_links = []
     for path in args.files:
         try:
-            result = upload_file(service, folder_id, path, args.overwrite, args.dry_run)
+            result = upload_file(service, folder_id, path, args.overwrite, args.dry_run, args.public)
             status = result["status"]
             symbol = {"uploaded": "✓", "updated": "↻", "exists": "·",
                       "would_upload": "?"}.get(status, "?")
-            link = result.get("webViewLink") or result.get("url") or ""
-            print(f"   {symbol} [{status:14}] {path.name:50} {link}")
+            link = result.get("webViewLink") or ""
+            tag = " 🔓" if args.public and status in {"uploaded", "updated", "exists"} else ""
+            print(f"   {symbol} [{status:14}] {path.name:55}{tag} {link}")
+            if args.public and link:
+                public_links.append((path.name, link))
         except Exception as e:  # noqa: BLE001
             failures += 1
             print(f"   ✗ [error         ] {path.name}: {e}")
+
+    if args.public and public_links:
+        print()
+        print("=== PUBLIC LINKS (anyone with the link can view) ===")
+        for name, link in public_links:
+            print(f"  {name}\n    {link}")
+        if args.folder_public:
+            print(f"\n  Folder: {folder_url}")
 
     if failures:
         print(f"\n{failures} file(s) failed.", file=sys.stderr)

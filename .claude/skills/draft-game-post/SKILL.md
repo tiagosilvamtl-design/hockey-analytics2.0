@@ -104,6 +104,20 @@ Same structure. French versions of term names come from `lemieux://glossary/{ter
 - Predicting the series outcome.
 - Inventing quotes. Only cite what's in the play-by-play or an explicitly sourced link.
 - Using raw Corsi as a primary quality metric (it's a volume filter; xG is the quality metric).
+- **Misstating a player's position when describing line roles.** Always cross-check the position before writing prose like "X took Y's center role" or "Z moved to wing." Skater roster positions live in `skater_stats.position` (`C`, `L`, `R`, `D`). If your prose claims a player took on or vacated a role, run the verification step below.
+
+## Position-verification step (mandatory before submitting prose about line roles)
+
+This catches a real bug that almost shipped: I once described Texier as a center on a line where Newhook was actually the center, because the press extract said "Kapanen took Texier's former line" and I conflated "left that line" with "was the center of that line". Don't do this.
+
+**Before writing any sentence of the form "X took Y's role as <position>" or "X moved from <position> to <position>", do this:**
+
+1. Pull `skater_stats.position` for every player named in the sentence (one SQL query, or call `query_skater_stats` via MCP).
+2. For each player, confirm what position the press / data attributes to them in BOTH the prior game and the current game.
+3. Check whether the previous-game line had a different center than the new-game version of that line. If the center changed, name the previous center explicitly.
+4. If a player you claim "took the center role" is not listed as `C` in the data, restructure the sentence to describe the line composition without inferring positional roles. Example: "Texier joined Dach and Bolduc" is safer than "Texier moved to Dach's wing" if you haven't verified Dach plays center (he does, but the principle holds).
+
+The verification is one query and 30 seconds. Skipping it is how the wrong-name-as-center error gets into a published draft.
 
 ## Self-check before delivery
 
@@ -113,3 +127,5 @@ Before returning output, run `validate-analysis` mentally:
 - Every cited metric appears in the glossary? ✓
 - No series predictions? ✓
 - Sample-size caveats in the final section? ✓
+- **Every player position claim verified against `skater_stats.position`?** ✓
+- **Every line-role assertion ("X took Y's role at C") names the right prior and new center?** ✓
