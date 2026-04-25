@@ -96,6 +96,26 @@ At 5v5, [TEAM] outshot [OPP] by [CF%] and outchanced [CF/xGF pct]. [Link: [xGF%]
 
 Same structure. French versions of term names come from `lemieux://glossary/{term_id}` with `lang="fr"`. Keep section headings in French: « Ce qui s'est passé », « Ce que disent les chiffres », « Ce que les données ne disent pas », etc.
 
+## Lineups are inputs to this skill, not outputs
+
+**You do not infer line composition or player positions from press prose. You read them from a structured lineups file.** The skill is allowed to refuse to draft prose about line roles if no structured lineup data is available — that's correct behavior, not a failure mode.
+
+### The contract
+
+Before producing any sentence about line composition, line changes between games, or who plays which position:
+
+1. **Load the structured lineup file for this game.** Standard path: `examples/<series>/<gameN>_lineups.yaml` (or wherever the orchestrator puts it). Schema: per-team `forwards` (array of lines, each with players + their `position` field), `defense`, `goalie`, `pp1`, `pp2`, `scratches`. The file also contains the `previous_game` lineup and a `changes_vs_previous_game` block. See `examples/habs_round1_2026/game3_lineups.yaml` for the canonical example.
+
+2. **If the file doesn't exist, stop.** Either:
+   - Generate it from `research-game` output + NHL.com shift data (preferred), or
+   - Tell the user the file is required and what it should contain.
+   
+   Do NOT improvise from press extracts. Press extracts are imprecise about positions and have produced real bugs.
+
+3. **Write prose against the loaded data, not against narrative recall.** Every claim like "Kapanen took the center role on the Demidov line" must be a direct read of `changes_vs_previous_game.MTL.line_reshuffles[i]` — the file's `prior_center`, `new_center`, and `description` fields are the prose source. The author of those fields is the analyst who produced the lineup file (typically `research-game` + the analyzer cross-check), not you.
+
+4. **If you find yourself wanting to say something the structured data doesn't support, the data is wrong or incomplete.** Flag it back to the user; don't paper over with prose.
+
 ## Common mistakes to avoid
 
 - Citing a rate without TOI.
@@ -104,20 +124,7 @@ Same structure. French versions of term names come from `lemieux://glossary/{ter
 - Predicting the series outcome.
 - Inventing quotes. Only cite what's in the play-by-play or an explicitly sourced link.
 - Using raw Corsi as a primary quality metric (it's a volume filter; xG is the quality metric).
-- **Misstating a player's position when describing line roles.** Always cross-check the position before writing prose like "X took Y's center role" or "Z moved to wing." Skater roster positions live in `skater_stats.position` (`C`, `L`, `R`, `D`). If your prose claims a player took on or vacated a role, run the verification step below.
-
-## Position-verification step (mandatory before submitting prose about line roles)
-
-This catches a real bug that almost shipped: I once described Texier as a center on a line where Newhook was actually the center, because the press extract said "Kapanen took Texier's former line" and I conflated "left that line" with "was the center of that line". Don't do this.
-
-**Before writing any sentence of the form "X took Y's role as <position>" or "X moved from <position> to <position>", do this:**
-
-1. Pull `skater_stats.position` for every player named in the sentence (one SQL query, or call `query_skater_stats` via MCP).
-2. For each player, confirm what position the press / data attributes to them in BOTH the prior game and the current game.
-3. Check whether the previous-game line had a different center than the new-game version of that line. If the center changed, name the previous center explicitly.
-4. If a player you claim "took the center role" is not listed as `C` in the data, restructure the sentence to describe the line composition without inferring positional roles. Example: "Texier joined Dach and Bolduc" is safer than "Texier moved to Dach's wing" if you haven't verified Dach plays center (he does, but the principle holds).
-
-The verification is one query and 30 seconds. Skipping it is how the wrong-name-as-center error gets into a published draft.
+- **Writing prose about line composition without loading the structured `*_lineups.yaml` file.** This is how the Texier-as-center bug shipped — prose was written from press recall instead of structured data. The fix is upstream (always load the file), not downstream (verify positions later).
 
 ## Self-check before delivery
 
@@ -127,5 +134,5 @@ Before returning output, run `validate-analysis` mentally:
 - Every cited metric appears in the glossary? ✓
 - No series predictions? ✓
 - Sample-size caveats in the final section? ✓
-- **Every player position claim verified against `skater_stats.position`?** ✓
-- **Every line-role assertion ("X took Y's role at C") names the right prior and new center?** ✓
+- **Structured `*_lineups.yaml` was loaded before any line-composition prose was written?** ✓
+- **Every line-role sentence is a direct read of fields in that file (no narrative recall, no press-extract inference)?** ✓

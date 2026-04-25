@@ -1,0 +1,121 @@
+# Authoritative lineup data for Game 3 (MTL @ TBL, 2026-04-24).
+# This is INPUT to the analysis, not output of it. The Game 3 post is generated
+# against this file; positions and roles are not inferred from press prose.
+#
+# Source priority (highest first):
+#   1. NHL.com play-by-play roster + shift overlap → who actually played which position
+#   2. Daily Faceoff / beat reporter pre-game lines → reported lineup
+#   3. Press recaps after the game → confirms what was deployed vs. reported
+#
+# The file is loaded by build_game3_post.js and used as ground truth for every
+# sentence about line composition or role assignments.
+
+game_id: "2025030123"
+date: "2026-04-24"
+matchup: "TBL @ MTL"
+score: "MTL 3 - TBL 2 (OT)"
+
+teams:
+  MTL:
+    forwards:
+      - line: 1
+        players:
+          - { name: "Juraj Slafkovský", position: "L" }
+          - { name: "Nick Suzuki",      position: "C" }
+          - { name: "Cole Caufield",    position: "R" }
+      - line: 2
+        players:
+          - { name: "Alexandre Texier", position: "L" }
+          - { name: "Kirby Dach",       position: "C" }
+          - { name: "Zachary Bolduc",   position: "R" }
+      - line: 3
+        players:
+          - { name: "Alex Newhook",     position: "L" }   # demoted from C role; played wing here
+          - { name: "Oliver Kapanen",   position: "C" }   # promoted to center this trio
+          - { name: "Ivan Demidov",     position: "R" }
+      - line: 4
+        players:
+          - { name: "Phillip Danault",  position: "C" }
+          - { name: "Josh Anderson",    position: "R" }
+          - { name: "Jake Evans",       position: "C" }   # double-listed C; played wing on this line
+    defense:
+      - pair: 1
+        players:
+          - { name: "Mike Matheson",  position: "D", side: "L" }
+          - { name: "Lane Hutson",    position: "D", side: "R" }   # left-shot but plays right side
+      - pair: 2
+        players:
+          - { name: "Jayden Struble", position: "D", side: "L" }
+          - { name: "Noah Dobson",    position: "D", side: "R" }
+      - pair: 3
+        players:
+          - { name: "Kaiden Guhle",   position: "D", side: "L" }
+          - { name: "Alexandre Carrier", position: "D", side: "R" }
+    goalie: "Jakub Dobeš"
+    pp1: ["Nick Suzuki", "Cole Caufield", "Juraj Slafkovský", "Ivan Demidov", "Lane Hutson"]
+    pp2: ["Zachary Bolduc", "Phillip Danault", "Brendan Gallagher", "Alexandre Texier", "Noah Dobson"]
+    scratches: []
+
+  # TBL block — fill in when reported lines are confirmed.
+  TBL:
+    forwards: []
+    defense: []
+    goalie: "Andrei Vasilevskiy"
+    pp1: []
+    pp2: []
+    scratches: []
+
+# Game 2 lineups for reference (used by the drift / reshuffle analysis).
+previous_game:
+  game_id: "2025030122"
+  date: "2026-04-21"
+  MTL:
+    forwards:
+      - line: 1
+        players:
+          - { name: "Juraj Slafkovský", position: "L" }
+          - { name: "Nick Suzuki",      position: "C" }
+          - { name: "Cole Caufield",    position: "R" }
+      - line: 2
+        players:
+          # In G2 this trio's center was Newhook. Texier was the LW.
+          - { name: "Alexandre Texier", position: "L" }
+          - { name: "Alex Newhook",     position: "C" }
+          - { name: "Ivan Demidov",     position: "R" }
+      - line: 3
+        players:
+          # Dach centered Bolduc and Kapanen in G2. In G3 Kapanen leaves this line.
+          - { name: "Kirby Dach",       position: "C" }
+          - { name: "Zachary Bolduc",   position: "R" }
+          - { name: "Oliver Kapanen",   position: "C" }   # listed C, played wing here in G2
+      - line: 4
+        players:
+          - { name: "Phillip Danault",  position: "C" }
+          - { name: "Josh Anderson",    position: "R" }
+          - { name: "Jake Evans",       position: "C" }
+
+# What changed between G2 and G3 — derived facts, NOT prose interpretation.
+# The analyzer can compute these directly from the two `forwards` blocks above.
+changes_vs_previous_game:
+  MTL:
+    line_reshuffles:
+      - description: "Kapanen replaced Newhook at center on the Newhook/Demidov line."
+        prior_center: "Alex Newhook"
+        new_center: "Oliver Kapanen"
+        line_position_g2: 2  # was MTL's 2nd line in G2 by 5v5 TOI
+        line_position_g3: 3
+      - description: "Texier moved from the Newhook/Demidov line (LW) to play LW with Dach (C) and Bolduc (RW)."
+        moved_player: "Alexandre Texier"
+        position_held_throughout: "L"
+        from_line_center: "Alex Newhook"
+        to_line_center: "Kirby Dach"
+        line_position_g2: 2
+        line_position_g3: 2  # remains a top-six line by deployment
+      - description: "Newhook dropped to wing on the new Kapanen/Demidov line (was C in G2 on that line)."
+        moved_player: "Alex Newhook"
+        prior_position: "C"   # role on the line
+        new_position: "wing"
+    personnel_changes_in_out: []   # no scratches activated, no players sat out
+  TBL:
+    line_reshuffles: []  # to be populated when TBL data confirmed
+    personnel_changes_in_out: []

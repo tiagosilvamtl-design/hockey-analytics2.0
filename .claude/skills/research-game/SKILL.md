@@ -148,7 +148,15 @@ claims:
     contradicts: []  # optional — list other entry IDs
 ```
 
-**Why `lineups` is first-class:** the user's project is fundamentally about understanding the impact of lineup permutations. Every research file should make the line changes obvious enough that a downstream analyzer can ingest them, run swap-scenario math, and grade whether the changes paid off — without needing to re-read the FR press to figure out what changed.
+**Why `lineups` is first-class:** the user's project is fundamentally about understanding the impact of lineup permutations. The downstream analyzer treats the lineup file as **ground-truth input** — it does not infer or guess line composition from press prose, and `draft-game-post` is not allowed to write line-role sentences without loading this file first. The lineup file is therefore not "research output to be summarized later" but the **canonical fact base** for every claim about who played where, who was promoted, who was demoted, and what changed game-over-game. Get this right or the whole downstream analysis is structurally wrong.
+
+The lineup section must include:
+
+- Per-team forwards (4 lines × 3 players, each with `position`: `C`, `L`, `R`)
+- Per-team defense pairs (3 × 2)
+- Goalie + PP1/PP2 + scratches
+- A `previous_game.<TEAM>.forwards` block with the same shape so drift can be computed mechanically
+- A `changes_vs_previous_game.<TEAM>.line_reshuffles` block with `prior_center`, `new_center`, `moved_player` fields populated. These fields are read directly into prose by `draft-game-post` — they are not re-interpreted.
 
 **Why `usage_observations` is first-class:** raw shift data tells you that Hutson played 26:28; it can't tell you that doing so was a deliberate vote of confidence after a tough Game 2, or that giving Sabourin 45 seconds of OT after 3 minutes of regulation was an "effronterie". These are the *qualitative* lenses that make the *quantitative* data interpretable — and they only come from reading the press. Capture every interview-derived deployment claim here, paired with the data corroboration where available, so downstream analysis can cite both layers.
 
