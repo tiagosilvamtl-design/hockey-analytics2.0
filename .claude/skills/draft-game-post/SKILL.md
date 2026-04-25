@@ -126,6 +126,30 @@ Any time you're about to write a sentence whose subject is a coaching decision, 
 
 Hockey writers default to recap voice ("then this happened, then that happened"). That voice repeats what the audience already knows. The whole reason this framework exists is to surface what the *data* reveals — and that's almost always an outcome or a delta, never an announcement. If a draft reads like a play-by-play recap, it's missing the point.
 
+## No meta-commentary about the report's own structure
+
+Don't write sentences that explain what the next paragraph will do, or that defend the editorial choices being made. Sentences like:
+
+- "The rest of this section is about where the line came from..."
+- "The composition table is below as context, not as the lead."
+- "Reading order: outcome first, then context."
+- "Cette section explique d'où il sort..."
+- "We'll come back to that in section 4."
+- "It's worth noting that..." / "What's interesting is..."
+
+...are all having a meeting with the reader inside the report. The reader doesn't need a tour guide. They will read the next paragraph because it's there. They will see the table because it's there. **Just write the report; let the structure speak for itself.**
+
+This is a corollary of "lead with outcomes": meta-commentary often shows up when the author is trying to justify why they put the outcome first instead of the announcement. The justification doesn't belong in the prose. Just deliver the outcome and move on.
+
+### Examples to avoid
+
+| Don't write | Just write |
+|---|---|
+| "This section explains where the line came from." | (delete the sentence; the next paragraph already does this) |
+| "What the numbers say about Hutson is interesting:" | (delete; let the numbers say it) |
+| "It's worth flagging that the sample is small here." | "The sample here is 3 games — wide CIs apply." (state the fact, drop the editorial frame) |
+| "We'll come back to special teams below." | (delete; if the section is below, the reader will find it) |
+
 ### Self-check on the lead
 
 - Does the first sentence of the post lead with a measured outcome (a goal differential, an iso impact, an xG share, an unexpected ranking) — or with a fact about lineups/decisions/changes?

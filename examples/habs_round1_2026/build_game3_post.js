@@ -117,8 +117,8 @@ const T = {
     ],
     lineup_title: '1. The brand-new line that scored both 5v5 MTL goals',
     get lineup_intro() { return lineupIntroProse('en'); },
-    lineup_mtl_change_title: 'For context — MTL lines, Game 2 → Game 3',
-    lineup_drift_table_intro: 'Top forward combinations by total seconds together at any strength state, from the actual shift data (not pre-game listings). Reading order: outcome first (above), composition table here as the explanatory context.',
+    lineup_mtl_change_title: 'MTL forward lines, Game 2 → Game 3',
+    lineup_drift_table_intro: 'Top forward combinations by total seconds together at any strength state, from the actual shift data (not pre-game listings).',
     lineup_outcome_title: 'How the new lines performed',
     lineup_outcome: [
       'The new **Texier-Dach-Bolduc** trio scored both 5v5 MTL goals (Texier opened, Dach tied) and combined for 6 points. Per Martin Leclerc\'s Radio-Canada chronique, this line drove the win.',
@@ -208,8 +208,8 @@ const T = {
     ],
     lineup_title: '1. Le nouveau trio qui a marqué les deux buts du CH à 5 c. 5',
     get lineup_intro() { return lineupIntroProse('fr'); },
-    lineup_mtl_change_title: 'Pour le contexte — trios du CH, M2 → M3',
-    lineup_drift_table_intro: 'Trios offensifs par total de secondes ensemble sur la glace, toutes situations confondues, à partir des présences réelles (et non des formations annoncées avant-match). Ordre de lecture : la production d\'abord (plus haut), la composition ici comme contexte explicatif.',
+    lineup_mtl_change_title: 'Trios offensifs du CH, M2 → M3',
+    lineup_drift_table_intro: 'Trios offensifs par total de secondes ensemble sur la glace, toutes situations confondues, à partir des présences réelles (et non des formations annoncées avant-match).',
     lineup_outcome_title: 'Comment les nouveaux trios ont produit',
     lineup_outcome: [
       'Le nouveau trio **Texier-Dach-Bolduc** a inscrit les deux buts à 5 c. 5 du CH (Texier en début de match, Dach en deuxième) et a totalisé 6 points. Selon la chronique de Martin Leclerc à Radio-Canada, ce trio a piloté la victoire.',
@@ -351,9 +351,9 @@ function lineupIntroProse(lang) {
   const rankEn = rank ? `${rank}${['st','nd','rd','th'][Math.min(rank-1,3)]}` : 'recent';
 
   if (lang === 'fr') {
-    return `Le trio ${trioLabel} a inscrit les deux buts à 5 c. 5 du CH (${(newLineTOI && newLineTOI.toi_min) ? `${newLineTOI.toi_min.toFixed(1).replace('.', ',')} min ensemble, ${rankFr} en TG d'équipe parmi les trios MTL` : 'partage non négligeable de la glace à 5 c. 5'}). C'est de la production qui n'existait pas dans les deux premiers matchs, parce que le trio lui-même n'existait pas. Cette section explique d'où il sort et ce que les chiffres disent de sa performance — la composition (avant/après) est dans le tableau ci-dessous comme contexte, pas comme nouvelle.`;
+    return `Le trio ${trioLabel} a inscrit les deux buts à 5 c. 5 du CH (${(newLineTOI && newLineTOI.toi_min) ? `${newLineTOI.toi_min.toFixed(1).replace('.', ',')} min ensemble, ${rankFr} en TG d'équipe parmi les trios MTL` : 'partage non négligeable de la glace à 5 c. 5'}). Une production que les deux premiers matchs n'ont pas vue, parce que le trio lui-même n'existait pas avant ce soir.`;
   }
-  return `The ${trioLabel} trio scored both of MTL's 5v5 goals in Game 3 (${(newLineTOI && newLineTOI.toi_min) ? `${newLineTOI.toi_min.toFixed(1)} minutes together, the ${rankEn}-most-deployed MTL forward combo of the night` : 'a meaningful 5v5 share of the ice'}). That production didn't show up in Games 1-2 because this trio didn't exist in Games 1-2. The rest of this section is about where the line came from and what the numbers say about its performance — the composition table (before / after) is below as context, not as the lead.`;
+  return `The ${trioLabel} trio scored both of MTL's 5v5 goals in Game 3 (${(newLineTOI && newLineTOI.toi_min) ? `${newLineTOI.toi_min.toFixed(1)} minutes together, the ${rankEn}-most-deployed MTL forward combo of the night` : 'a meaningful 5v5 share of the ice'}). Production the first two games never saw — because the line itself didn't exist before tonight.`;
 }
 
 // ---------- HELPERS ----------
