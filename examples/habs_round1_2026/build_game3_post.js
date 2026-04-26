@@ -105,9 +105,9 @@ const T = {
     tldr: 'Top-line read',
     tldr_bullets: [
       lineReshuffleBullet('en'),
-      'At 5v5 across three games, Tampa has 55.4 % of shot attempts; Montreal has 56.1 % of expected goals and **75 %** of high-danger chances. Tampa shoots; Montreal scores.',
-      'Hutson, Caufield and Suzuki have all scored — and all sit below their regular-season isolated impact at 5v5 across the series. The underlying play is being carried by depth (Bolduc, Dach, Texier, Struble, Xhekaj). Goals are coming through the stars; the pre-goal possession isn\'t.',
-      'Vasilevskiy: 75 shots faced, 8 goals against, .893 implied SV%. Dobes: 74, 7, .905. Near-identical workloads, narrow gap, Dobes a tick higher. The pre-series claim that Vasilevskiy was the more reliable goaltender doesn\'t hold across three games.',
+      'Hutson, Caufield and Suzuki have all scored — and all sit below their regular-season isolated impact at 5v5 across the series. Goals are coming through the stars; the pre-goal possession is being driven by depth (Bolduc, Dach, Texier, Struble, Xhekaj). The eye test sees stars finishing; the data sees stars riding their line.',
+      'Through three games Dobes has a higher implied save percentage than Vasilevskiy (.905 vs. .893) on near-identical workloads (74 vs. 75 shots faced). Game 3\'s 29-vs-17 was the outlier; the cumulative read flips the pre-series chatter that Vasilevskiy was the more reliable option.',
+      'MTL holds **75 % of 5v5 high-danger chances** through three games. That is unusually one-sided for any team in any series — the kind of number that almost always regresses, but that has held all three games. Worth watching for the inflection point, not yet for the predictable narrative reversal.',
     ],
     methodology_title: 'How to read this report',
     methodology: [
@@ -196,9 +196,9 @@ const T = {
     tldr: 'L\'essentiel',
     tldr_bullets: [
       lineReshuffleBullet('fr'),
-      'À 5 c. 5 sur trois matchs, Tampa détient 55,4 % des tentatives Corsi; Montréal s\'arroge 56,1 % des buts attendus et **75 %** des chances à haut danger. Tampa génère le volume; Montréal convertit la qualité.',
-      'Hutson, Caufield et Suzuki ont tous marqué — et tous ont un impact net isolé à 5 c. 5 inférieur à leur saison régulière. Le jeu sous-jacent est porté par la profondeur (Bolduc, Dach, Texier, Struble, Xhekaj). Les buts passent par les vedettes; le travail qui les précède, beaucoup moins.',
-      'Vasilevskiy : 75 tirs subis, 8 buts accordés, ,893 d\'arrêts implicites. Dobes : 74, 7, ,905. Charges quasi identiques, écart mince, et Dobes légèrement supérieur. L\'argument d\'avant-série plaçant Vasilevskiy au-dessus ne tient pas sur ces trois matchs.',
+      'Hutson, Caufield et Suzuki ont tous marqué — et tous ont un impact net isolé à 5 c. 5 inférieur à leur saison régulière. Les buts passent par les vedettes; le jeu qui les précède est porté par la profondeur (Bolduc, Dach, Texier, Struble, Xhekaj). L\'œil voit les vedettes finir; les chiffres voient les vedettes profiter de leur trio.',
+      'Sur les trois matchs, Dobes a un pourcentage d\'arrêts implicite supérieur à Vasilevskiy (,905 c. ,893) sur des charges quasi identiques (74 c. 75 tirs subis). Le M3 (29-17) est l\'exception; le cumul renverse l\'argument d\'avant-série voulant Vasilevskiy plus fiable.',
+      'Le CH détient **75 % des chances à haut danger à 5 c. 5** sur trois matchs. C\'est un déséquilibre rare pour toute équipe dans toute série — un chiffre qui régresse presque toujours, mais qui s\'est maintenu trois matchs d\'affilée. À surveiller pour le point d\'inflexion, pas encore pour le retour à la moyenne attendu.',
     ],
     methodology_title: 'Comment lire ce rapport',
     methodology: [
@@ -324,10 +324,12 @@ function _newLineContext() {
 
 function lineReshuffleBullet(lang) {
   const c = _newLineContext();
+  const rankEn = c.rank ? `${c.rank}${['st','nd','rd','th'][Math.min(c.rank-1,3)]}` : '';
+  const rankFr = c.rank ? `${c.rank}e` : '';
   if (lang === 'fr') {
-    return `**${c.trioLabel}, un trio que St-Louis a assemblé pour le M3, a inscrit les deux buts du CH à 5 c. 5 en ${c.toi.toFixed(1).replace('.', ',')} minutes ensemble.** ${_lastName(c.moveDef.moved_player)} ouvre le pointage en première, ${_lastName(c.moveDef.to_line_center)} égalise en deuxième sur un tir dévié contre la jambe de Ryan McDonagh.`;
+    return `**${c.trioLabel} a marqué les deux buts du CH à 5 c. 5 en seulement ${c.toi.toFixed(1).replace('.', ',')} minutes ensemble — ${rankFr ? `${rankFr} trio le plus utilisé du CH ce soir, mais le plus productif` : 'malgré une utilisation limitée'}.** Le quatrième trio porte l\'offensive au lieu d\'un trio Suzuki-Caufield-Slafkovský qui en a partagé 9,6 mais n\'a pas trouvé le filet à 5 c. 5.`;
   }
-  return `**${c.trioLabel}, a trio St-Louis assembled for Game 3, scored both of MTL's 5v5 goals in ${c.toi.toFixed(1)} minutes of shared ice.** ${_lastName(c.moveDef.moved_player)} opened the scoring in the first, ${_lastName(c.moveDef.to_line_center)} tied it 2-2 in the second on a tip off Ryan McDonagh's leg.`;
+  return `**${c.trioLabel} scored both of MTL's 5v5 goals in just ${c.toi.toFixed(1)} minutes together — ${rankEn ? `the ${rankEn}-most-deployed MTL forward combo of the night, but the most productive one` : 'despite limited deployment'}.** A bottom-of-the-rotation trio carried the even-strength offense while the Suzuki-Caufield-Slafkovský line had 9.6 minutes and didn't find the net at 5v5.`;
 }
 
 function lineupIntroProse(lang) {
@@ -335,9 +337,9 @@ function lineupIntroProse(lang) {
   const rankEn = c.rank ? `${c.rank}${['st','nd','rd','th'][Math.min(c.rank-1,3)]}` : '';
   const rankFr = c.rank ? `${c.rank}e` : '';
   if (lang === 'fr') {
-    return `Le trio ${c.trioLabel} a partagé ${c.toi.toFixed(1).replace('.', ',')} minutes à 5 c. 5${rankFr ? ` — ${rankFr} trio offensif le plus utilisé du CH ce soir` : ''} et a inscrit les deux buts à forces égales. Texier marque à 4:53 de la première; Dach égalise à 12:43 de la deuxième sur un tir dévié contre la jambe de Ryan McDonagh. Le trio sort de l'esprit de St-Louis pour le M3 : Texier passe du flanc de Newhook à celui de Dach, Kapanen prend le centre entre Newhook (qui glisse à l'aile) et Demidov.`;
+    return `${c.trioLabel} a inscrit les deux buts à 5 c. 5 du CH (Texier à 4:53 de la première, Dach à 12:43 de la deuxième sur un tir dévié contre la jambe de McDonagh) en ${c.toi.toFixed(1).replace('.', ',')} minutes ensemble. Lecture inhabituelle : c\'est le ${rankFr || ''} trio offensif le plus utilisé du CH au M3, mais c\'est lui qui a déverrouillé le filet à forces égales — pas le trio Suzuki-Caufield-Slafkovský (9,6 min, 0 but à 5 c. 5) ni la troisième vague Newhook-Kapanen-Demidov (7,9 min, 0 but).`;
   }
-  return `${c.trioLabel} shared ${c.toi.toFixed(1)} minutes of 5v5 ice${rankEn ? ` — the ${rankEn}-most-deployed MTL forward combo of the night` : ''} and produced both even-strength goals. Texier scored at 4:53 of the first; Dach tied it 2-2 at 12:43 of the second on a tip off Ryan McDonagh's leg. The line is a Game-3 build by St-Louis: Texier moved from Newhook's wing to Dach's, Kapanen took the center role between Newhook (now on the wing) and Demidov.`;
+  return `${c.trioLabel} produced both of MTL's 5v5 goals (Texier at 4:53 of the first, Dach at 12:43 of the second on a tip off McDonagh's leg) in ${c.toi.toFixed(1)} minutes of shared ice. The unusual reading: it's the ${rankEn || ''}-most-deployed MTL forward combo of the night, yet it's the line that unlocked even-strength scoring — not the Suzuki-Caufield-Slafkovský trio (9.6 min, 0 5v5 goals) or the Newhook-Kapanen-Demidov unit (7.9 min, 0 goals).`;
 }
 
 // ---------- HELPERS ----------

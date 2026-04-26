@@ -126,6 +126,28 @@ Any time you're about to write a sentence whose subject is a coaching decision, 
 
 Hockey writers default to recap voice ("then this happened, then that happened"). That voice repeats what the audience already knows. The whole reason this framework exists is to surface what the *data* reveals — and that's almost always an outcome or a delta, never an announcement. If a draft reads like a play-by-play recap, it's missing the point.
 
+## Don't restate what was known before the post-data analysis
+
+The reader watched the game. They read the morning paper. They saw the pre-series predictions. **The post-game report is not a place to restate any of that.** Every bullet, every section intro, every sentence has to pass the test: *what does this say that the reader didn't already know without the data?*
+
+If the answer is "this is general framing repeated from pre-series chatter" or "this is a goalscorer name from the box score," cut it or replace it with a finding only the post-data analysis can produce.
+
+### Examples to cut
+
+| Don't write (already known) | Write instead (analysis-only) |
+|---|---|
+| "Tampa drives possession, Montreal generates more high-danger chances." | "MTL holds 75% of 5v5 high-danger chances through 3 games — a level that almost always regresses but hasn't yet." |
+| "Slafkovský had a hat trick in Game 1." | "Slafkovský has 8 SOG / 3 G before the Hagel fight, 2 SOG / 0 G after — but his line is still outshooting opponents 20-9 with him on after the fight." |
+| "MTL won 3-2 in OT on a Hutson goal." | "Hutson scored on his first slap shot of the season per his post-game quote — the only Hutson scoring shot logged at slap-shot release type in 84 games of NST data." |
+| "Vasilevskiy was the more reliable goaltender pre-series." | "Through 3 games, Dobes has a higher implied SV% than Vasilevskiy (.905 vs .893) — the pre-series claim doesn't survive contact with the data." |
+| "Lineups changed for Game 3." | (cut entirely; the table goes in section 1 as context) |
+
+### The test for every paragraph
+
+Ask: **"Could a reader produce this sentence from the box score and yesterday's chatter alone?"** If yes, the sentence isn't earning its place. Either reframe it with the analysis-derived value-add (a specific number that contextualizes the obvious fact, an unexpected magnitude, a contradiction with the pre-series narrative), or delete it.
+
+This is a corollary of "lead with outcomes" — outcomes are by definition NEW (they're what the data revealed), while announcements and pre-series narratives are by definition OLD. The two rules together say: **the post-game report only earns its space by adding signal the reader couldn't have gotten from watching the game.**
+
 ## No meta-commentary about the report's own structure
 
 Don't write sentences that explain what the next paragraph will do, or that defend the editorial choices being made. Sentences like:
