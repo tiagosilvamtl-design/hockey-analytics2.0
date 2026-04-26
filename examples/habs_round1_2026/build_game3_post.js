@@ -137,7 +137,7 @@ const T = {
     progression_intro: 'Isolated net impact at 5v5 (iso xGF/60 − iso xGA/60) in the regular season vs. the three playoff games. Up-movers are exceeding their regular-season impact; down-movers are below it. Minimum 200 regular-season minutes and 15 playoff minutes.',
     progression_stars_caveat: 'Hutson is the only one of the three down-movers on the scoresheet (G2 plus the G3 OT winner). Caufield and Suzuki are scoreless. The iso-impact regression measures the team\'s underlying expected-goals share when each player is on the ice, not their goal totals — even Hutson\'s goals are landing on iso play below his regular-season standard. The two facts coexist.',
     goalies_title: '5. Goalies',
-    goalies_intro: 'Vasilevskiy: 75 shots faced, 9 goals against, .880 implied SV%. Dobes: 74, 7, .892. Near-identical workloads across the series, with Dobes a tick ahead on save rate. Game 3 alone was lopsided (29 vs. 17 shots faced); the three-game total isn\'t. François Gagnon (RDS) wrote Dobes had "matched Vasilevskiy" after Game 3 — that tracks.',
+    goalies_intro: 'Vasilevskiy: 75 shots faced, 9 goals against, .880 implied SV%. Dobes: 74, 8, .892. Near-identical workloads across the series, with Dobes a tick ahead on save rate. Game 3 alone was lopsided (29 vs. 17 shots faced); the three-game total isn\'t. François Gagnon (RDS) wrote Dobes had "matched Vasilevskiy" after Game 3 — that tracks.',
     slaf_title: '6. Watch list — Slafkovský pre/post the Hagel fight',
     slaf_intro: 'Splitting Slafkovský\'s on-ice events at the moment of the Game-2 fight (G2, period 2, 5:14): pre-fight 8 SOG and 3 goals; post-fight (rest of G2 plus all of G3) 2 SOG and 0 goals. With him on the ice after the fight, MTL outshoots Tampa 20-9 and outscores 2-1. Personal production fell off; line-level outcomes did not. Worth tracking through Game 4.',
     cant_title: '7. What the data still can\'t tell us',
@@ -637,11 +637,17 @@ function claimsSection(t, lang) {
     if (g.home === teamAbbr) return g.away_goals;
     return g.home_goals;
   };
-  let vasFaced = 0, vasGA = 0, dobFaced = 0, dobGA = 0;
+  // Shots faced from per_game (counter is reliable for SOG events).
+  // Goals against from D.series_goalscorers (PBP-direct, canonical) — per_game
+  // has a known goal-count bug (see CLAUDE.md §10).
+  let vasFaced = 0, dobFaced = 0;
   for (const k of ['G1','G2','G3']) {
-    vasFaced += sogFacedBy(k, 'TBL'); vasGA += goalsAllowedBy(k, 'TBL');
-    dobFaced += sogFacedBy(k, 'MTL'); dobGA += goalsAllowedBy(k, 'MTL');
+    vasFaced += sogFacedBy(k, 'TBL');
+    dobFaced += sogFacedBy(k, 'MTL');
   }
+  const sumGoals = (team) => Object.values((D.series_goalscorers || {})[team] || {}).reduce((a, b) => a + b, 0);
+  const vasGA = sumGoals('MTL');  // Vas faces MTL shooters → MTL's goals = Vas's GA
+  const dobGA = sumGoals('TBL');  // Dobes faces TBL shooters → TBL's goals = Dobes's GA
   const hits3 = ['G1','G2','G3'].reduce((s, k) => s + D.per_game[k].home_hits + D.per_game[k].away_hits, 0);
   const hits2 = ['G1','G2'].reduce((s, k) => s + D.per_game[k].home_hits + D.per_game[k].away_hits, 0);
 
@@ -754,11 +760,17 @@ function goaliesSection(t, lang) {
     if (g.home === teamAbbr) return g.away_goals;
     return g.home_goals;
   };
-  let vasFaced = 0, vasGA = 0, dobFaced = 0, dobGA = 0;
+  // Shots faced from per_game (counter is reliable for SOG events).
+  // Goals against from D.series_goalscorers (PBP-direct, canonical) — per_game
+  // has a known goal-count bug (see CLAUDE.md §10).
+  let vasFaced = 0, dobFaced = 0;
   for (const k of ['G1','G2','G3']) {
-    vasFaced += sogFacedBy(k, 'TBL'); vasGA += goalsAllowedBy(k, 'TBL');
-    dobFaced += sogFacedBy(k, 'MTL'); dobGA += goalsAllowedBy(k, 'MTL');
+    vasFaced += sogFacedBy(k, 'TBL');
+    dobFaced += sogFacedBy(k, 'MTL');
   }
+  const sumGoals = (team) => Object.values((D.series_goalscorers || {})[team] || {}).reduce((a, b) => a + b, 0);
+  const vasGA = sumGoals('MTL');  // Vas faces MTL shooters → MTL's goals = Vas's GA
+  const dobGA = sumGoals('TBL');  // Dobes faces TBL shooters → TBL's goals = Dobes's GA
   const fmtSv = n => (n.toFixed(3)).replace('.', lang === 'fr' ? ',' : '.');
   const headers = [t.th_metric, 'Vasilevskiy (TBL)', 'Dobes (MTL)'];
   const rows = [
