@@ -513,8 +513,42 @@ def detect_lineup_drift(prev_combos: list[dict], curr_combos: list[dict]) -> dic
 # =====================================================================
 # Top-level orchestrator
 # =====================================================================
+def series_goalscorers() -> dict:
+    """Authoritative goalscorer counts per team across all games in the series.
+
+    Read from NHL.com play-by-play (event ownerTeamId + scoringPlayerId + roster
+    name lookup). This is the data prose must source from for any claim about
+    who scored — no narrative recall.
+    """
+    out = {"MTL": {}, "TBL": {}}
+    for label, info in NHL_GAMES.items():
+        pbp = fetch_pbp(info["id"])
+        roster_name = {}
+        for sp in pbp.get("rosterSpots") or []:
+            pid = sp.get("playerId")
+            if pid:
+                first = (sp.get("firstName") or {}).get("default") or ""
+                last = (sp.get("lastName") or {}).get("default") or ""
+                roster_name[pid] = f"{first} {last}".strip()
+        for play in pbp.get("plays") or []:
+            if play.get("typeDescKey") != "goal":
+                continue
+            d = play.get("details") or {}
+            owner = d.get("eventOwnerTeamId")
+            scorer_id = d.get("scoringPlayerId") or d.get("shootingPlayerId")
+            if not scorer_id:
+                continue
+            team = "MTL" if owner == TEAM_ID["MTL"] else "TBL" if owner == TEAM_ID["TBL"] else None
+            if team is None:
+                continue
+            name = roster_name.get(scorer_id) or f"playerId={scorer_id}"
+            out[team][name] = out[team].get(name, 0) + 1
+    return out
+
+
 def compute_all() -> dict:
     out = {"meta": {"date": "2026-04-25", "series": "MTL vs TBL Round 1 2026", "after_game": 3}}
+    out["series_goalscorers"] = series_goalscorers()
 
     # Per-game team stats from PBP
     out["per_game"] = {}

@@ -135,7 +135,7 @@ const T = {
     series_intro: 'Tampa drives shot volume; Montreal converts on chance quality. Both NY Post pre-series claims are simultaneously true. Different weapons.',
     progression_title: '4. MTL skater progression — regular season vs. 2026 playoffs',
     progression_intro: 'Isolated net impact at 5v5 (iso xGF/60 − iso xGA/60) in the regular season vs. the three playoff games. Up-movers are exceeding their regular-season impact; down-movers are below it. Minimum 200 regular-season minutes and 15 playoff minutes.',
-    progression_stars_caveat: 'Hutson, Caufield and Suzuki have all scored in the series. Isolated impact measures the team\'s underlying expected-goals share when they\'re on the ice, not their goal-scoring. Goals are landing; the pre-goal play sits below their regular-season standard. The two facts coexist.',
+    progression_stars_caveat: 'Hutson is the only one of the three down-movers on the scoresheet (G2 plus the G3 OT winner). Caufield and Suzuki are scoreless. The iso-impact regression measures the team\'s underlying expected-goals share when each player is on the ice, not their goal totals — even Hutson\'s goals are landing on iso play below his regular-season standard. The two facts coexist.',
     goalies_title: '5. Goalies',
     goalies_intro: 'Vasilevskiy: 75 shots faced, 8 goals against, .893 implied SV%. Dobes: 74, 7, .905. Near-identical workloads across the series, with Dobes a tick ahead on save rate. Game 3 alone was lopsided (29 vs. 17 shots faced); the three-game total isn\'t. François Gagnon (RDS) wrote Dobes had "matched Vasilevskiy" after Game 3 — that tracks.',
     slaf_title: '6. Watch list — Slafkovský pre/post the Hagel fight',
@@ -281,6 +281,91 @@ const T = {
     persisted: 'Maintenu', new_line: 'Nouveau', dropped: 'Abandonné',
   },
 };
+
+// ---------- PROSE FACT-CHECK GUARD ----------
+// Aborts the build if any prose claims a non-scorer scored. The data source of
+// truth is D.series_goalscorers (computed from NHL.com PBP scoringPlayerId).
+function runProseFactCheck() {
+  const scorers = new Set([
+    ...Object.keys((D.series_goalscorers || {}).MTL || {}),
+    ...Object.keys((D.series_goalscorers || {}).TBL || {}),
+  ]);
+  const rosterNames = new Set();
+  const collect = (team) => {
+    for (const line of (team.forwards || [])) for (const p of (line.players || [])) if (p.name) rosterNames.add(p.name);
+    for (const pair of (team.defense || [])) for (const p of (pair.players || [])) if (p.name) rosterNames.add(p.name);
+  };
+  for (const t of ['MTL', 'TBL']) collect((LINEUPS.teams || {})[t] || {});
+  if (LINEUPS.previous_game) for (const t of ['MTL', 'TBL']) collect(LINEUPS.previous_game[t] || {});
+
+  // Walk every string anywhere in the T language objects
+  const corpus = [];
+  const walk = (o) => {
+    if (typeof o === 'string') corpus.push(o);
+    else if (Array.isArray(o)) o.forEach(walk);
+    else if (o && typeof o === 'object') {
+      for (const k of Object.keys(o)) {
+        try { walk(o[k]); } catch (e) { /* getter that needs context — skip */ }
+      }
+    }
+  };
+  walk(T);
+  // Also include the templated prose generators' output for both languages
+  try { corpus.push(lineReshuffleBullet('en'), lineReshuffleBullet('fr')); } catch (e) {}
+  try { corpus.push(lineupIntroProse('en'), lineupIntroProse('fr')); } catch (e) {}
+  const text = corpus.join('\n\n');
+
+  // Two patterns we flag:
+  //   (a) Direct subject-verb: "<Name> scored", "<Name> has scored", "<Name> a marqué", etc.
+  //   (b) Coordinated subject: "...<Name>... have all scored" / "...ont tous marqué".
+  // Generic words like "pointage" / "le but" are dropped — too broad.
+  const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const errors = [];
+
+  for (const name of rosterNames) {
+    if (scorers.has(name)) continue;
+    const last = name.split(' ').slice(-1)[0];
+    const candidates = [name, last].filter(s => s && s.length >= 3);
+    for (const cand of candidates) {
+      const c = escapeRe(cand);
+      // (a) Direct: <Name> [optional modal] scored | tied it | opened the scoring | notched a goal
+      // Negative lookbehind for "-" so trio labels like "Texier-Dach-Bolduc scored" don't
+      // wrongly attribute the goal to Bolduc — the subject there is the trio.
+      const direct = new RegExp(
+        `(?<![-])\\b${c}\\b\\s+(?:has\\s+|have\\s+|had\\s+|also\\s+|just\\s+|will\\s+)?` +
+        `(?:scored|opened the scoring|tied it|tied the game|notched (?:a |his |the )?goal|` +
+        `a marqu(?:é|e)|marque\\b|a inscrit|égalise|inscrit (?:le|son) (?:but|filet))`,
+        'i'
+      );
+      // (b) Coordinated subject: <Name> ... (have/had/ont) (all|tous) (scored|marqué)
+      const coord = new RegExp(
+        `(?<![-])\\b${c}\\b[^.;!?\\n]{0,40}\\b(?:have|had|ont)\\s+(?:all|both|tous)\\s+` +
+        `(?:also\\s+)?(?:scored|marqu(?:é|e))\\b`,
+        'i'
+      );
+      const m = text.match(direct) || text.match(coord);
+      if (m) {
+        errors.push(
+          `[${name}] "${m[0].slice(0, 80)}" — appears as the subject of a scoring verb, ` +
+          `but D.series_goalscorers shows 0 goals for this player in the series.`
+        );
+        break;
+      }
+    }
+  }
+
+  if (errors.length > 0) {
+    console.error('\n========== BUILD ABORTED: prose fact-check failures ==========');
+    for (const e of errors) console.error('  ' + e);
+    console.error(
+      '\nThis guard prevents the "claimed X scored when X is scoreless" bug class.\n' +
+      'Source of truth: D.series_goalscorers (from NHL.com PBP scoringPlayerId).\n' +
+      'Fix the prose strings or — if the data is wrong — re-run the analyzer.\n'
+    );
+    process.exit(7);
+  }
+  console.log(`prose fact-check passed (${rosterNames.size} roster names, ${scorers.size} confirmed scorers)`);
+}
 
 // ---------- LINEUP PROSE GENERATORS ----------
 // Read structured lineup data and template prose against it.
@@ -797,6 +882,7 @@ function buildDoc(lang) {
 }
 
 (async () => {
+  runProseFactCheck();   // hard abort if any prose contradicts D.series_goalscorers
   for (const lang of ['en', 'fr']) {
     const doc = buildDoc(lang);
     const buf = await Packer.toBuffer(doc);

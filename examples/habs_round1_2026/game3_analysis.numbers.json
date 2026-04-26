@@ -4,6 +4,22 @@
     "series": "MTL vs TBL Round 1 2026",
     "after_game": 3
   },
+  "series_goalscorers": {
+    "MTL": {
+      "Josh Anderson": 2,
+      "Juraj Slafkovský": 3,
+      "Lane Hutson": 2,
+      "Alexandre Texier": 1,
+      "Kirby Dach": 1
+    },
+    "TBL": {
+      "Darren Raddysh": 1,
+      "Brandon Hagel": 4,
+      "Nikita Kucherov": 1,
+      "J.J. Moser": 1,
+      "Brayden Point": 1
+    }
+  },
   "per_game": {
     "G1": {
       "home": "TBL",
@@ -1310,58 +1326,58 @@
   "mtl_lineup_drift_g2_to_g3": {
     "persisted": [
       [
-        "Nick Suzuki",
         "Juraj SlafkovskÃ½",
+        "Nick Suzuki",
         "Cole Caufield"
       ],
       [
-        "Josh Anderson",
         "Jake Evans",
-        "Phillip Danault"
+        "Phillip Danault",
+        "Josh Anderson"
       ]
     ],
     "new_lines": [
       [
+        "Alex Newhook",
         "Oliver Kapanen",
-        "Alex Newhook",
         "Ivan Demidov"
       ],
       [
         "Kirby Dach",
-        "Alexandre Texier",
-        "Zachary Bolduc"
+        "Zachary Bolduc",
+        "Alexandre Texier"
       ],
       [
-        "Kirby Dach",
         "Alex Newhook",
-        "Ivan Demidov"
+        "Ivan Demidov",
+        "Kirby Dach"
       ],
       [
+        "Zachary Bolduc",
         "Nick Suzuki",
-        "Alexandre Texier",
-        "Zachary Bolduc"
+        "Alexandre Texier"
       ]
     ],
     "dropped_lines": [
       [
-        "Alexandre Texier",
         "Alex Newhook",
-        "Ivan Demidov"
+        "Ivan Demidov",
+        "Alexandre Texier"
       ],
       [
-        "Kirby Dach",
+        "Zachary Bolduc",
         "Oliver Kapanen",
-        "Zachary Bolduc"
+        "Kirby Dach"
       ],
       [
         "Jake Evans",
-        "Alexandre Texier",
-        "Phillip Danault"
+        "Phillip Danault",
+        "Alexandre Texier"
       ],
       [
-        "Josh Anderson",
         "Alex Newhook",
-        "Ivan Demidov"
+        "Ivan Demidov",
+        "Josh Anderson"
       ]
     ],
     "n_persisted": 2,
@@ -1379,55 +1395,55 @@
     ],
     "new_lines": [
       [
-        "Jake Guentzel",
+        "Zemgus Girgensons",
         "Yanni Gourde",
-        "Zemgus Girgensons"
+        "Jake Guentzel"
       ],
       [
-        "Brayden Point",
         "Gage Goncalves",
-        "Dominic James"
+        "Dominic James",
+        "Brayden Point"
       ],
       [
+        "Gage Goncalves",
         "Anthony Cirelli",
-        "Gage Goncalves",
         "Brandon Hagel"
       ],
       [
+        "Nick Paul",
         "Jake Guentzel",
-        "Brayden Point",
-        "Nick Paul"
+        "Brayden Point"
       ],
       [
-        "Nick Paul",
         "Scott Sabourin",
-        "Corey Perry"
+        "Corey Perry",
+        "Nick Paul"
       ]
     ],
     "dropped_lines": [
       [
-        "Jake Guentzel",
         "Anthony Cirelli",
+        "Jake Guentzel",
         "Brandon Hagel"
       ],
       [
         "Nikita Kucherov",
-        "Brayden Point",
-        "Gage Goncalves"
+        "Gage Goncalves",
+        "Brayden Point"
       ],
       [
-        "Gage Goncalves",
         "Yanni Gourde",
+        "Gage Goncalves",
         "Dominic James"
       ],
       [
-        "Nick Paul",
+        "Zemgus Girgensons",
         "Yanni Gourde",
-        "Zemgus Girgensons"
+        "Nick Paul"
       ],
       [
-        "Scott Sabourin",
         "Zemgus Girgensons",
+        "Scott Sabourin",
         "Corey Perry"
       ]
     ],
