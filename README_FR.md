@@ -62,7 +62,9 @@ En 2026, la couverture médiatique du hockey demeure majoritairement innumériqu
 | [`lemieux-mcp`](./packages/lemieux-mcp) | Serveur FastMCP qui expose les outils et ressources analytiques à tout client MCP |
 | [`lemieux-glossary`](./packages/lemieux-glossary) | Définitions bilingues (FR/EN) de toutes les métriques utilisées, avec formules et mises en garde |
 | [`.claude/skills/`](./.claude/skills) | Flux de travail Claude — `research-game`, `translate-to-quebec-fr`, `draft-game-post`, `propose-swap-scenario`, `validate-analysis`, `review-pr-lemieux` |
-| [`examples/`](./examples) | Analyses complètes de bout en bout. Commencer par `examples/habs_round1_2026/` |
+| [`examples/`](./examples) | Trois analyses complètes dans `examples/habs_round1_2026/` : rapport autonome du premier tour, analyse par match (M3), classement des joueurs en séries |
+| [`tools/push_to_drive.py`](./tools) | Téléversement portable vers Google Drive (OAuth personnel, `--public --folder-public` pour des liens partageables) |
+| [`CLAUDE.md`](./CLAUDE.md) | Guide d'utilisation canonique pour travailler dans ce dépôt avec Claude Code — règles d'écriture, flux de données, invariants structurels |
 
 ## Démarrage rapide
 
@@ -121,6 +123,8 @@ Voir [SOURCES.md](./SOURCES.md) pour la liste complète avec les termes d'utilis
 4. **Bilingue dès le premier jour.** Documentation, lexique, habiletés — tout est livré en FR + EN. L'analyse avancée de hockey en français est essentiellement un territoire inoccupé; Lemieux s'y installe.
 5. **Architecture enfichable.** Ajouter un connecteur ou une habileté, c'est 3 fichiers + des tests. Voir [`templates/`](./templates).
 6. **Respectueux des fournisseurs.** Mise en cache agressive, limitation de débit polie, documentation des termes, aucune redistribution de données non produites par nous.
+7. **Les données sont la source; la prose est templatée à partir d'elles.** Les fichiers d'entrée structurés (`<gameN>_lineups.yaml`, `<task>.numbers.json`) sont la base canonique des faits. L'invariant de construction garantit qu'aucune prose ne peut contredire les données — `runProseFactCheck()` interrompt la production du docx (code de sortie 7) si un patineur sans but apparaît comme sujet d'un verbe de marquage. Le même patron s'applique à la composition des trios, le temps de glace, les passes, etc. La composition des trios est une ENTRÉE de l'analyse, jamais inférée d'extraits de presse.
+8. **Mener par les résultats, pas par les annonces.** Le public a regardé le match — le rôle du rapport post-match est de faire surface ce que seuls les chiffres révèlent (amplitudes inattendues, paradoxes que l'œil ne voit pas, contradictions avec le narratif d'avant-série). Le pipeline de révision automatique des PR attrape les manquements.
 
 ## Contribuer
 

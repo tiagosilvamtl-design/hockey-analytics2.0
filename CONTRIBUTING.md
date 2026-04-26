@@ -47,6 +47,15 @@ Most contributions are new data source connectors. The template-and-three-tests 
 - `uv run ruff check` and `ruff format` before pushing.
 - The `connector-health` workflow runs nightly against live APIs and opens issues on schema drift — if you own a connector, you're expected to triage drift within 2 weeks.
 
+### Build invariants (non-negotiable)
+
+When extending or generating reports, these structural rules apply. They are documented in detail in [`CLAUDE.md`](./CLAUDE.md); summary:
+
+- **Lineup data is INPUT, not output.** Renderers must load `<gameN>_lineups.yaml` (or equivalent structured file) before writing any prose about line composition. The `draft-game-post` skill mandates this and refuses to draft if the file is missing.
+- **Goalscorer claims source from data.** Use `D.series_goalscorers` or `D.individual` (PBP-derived). The `runProseFactCheck()` guard in every renderer walks the prose corpus and aborts the build (exit code 7) if any roster name with 0 goals appears as the subject of a scoring verb. The "claimed X scored when X is scoreless" bug class cannot ship.
+- **The data is the source, the prose is templated.** If a fact a sentence makes can be computed from the data, compute it and template it; don't write it from narrative recall.
+- **Lead with outcomes, not announcements.** Post-game reports surface what only the data reveals — not what the audience already saw or what was predicted pre-series. See `draft-game-post/SKILL.md` and `validate-analysis/SKILL.md` for the heuristic and worked examples.
+
 ### Community norms
 
 - **Be wrong out loud.** If your analysis turns out to overclaim, fix it publicly.
@@ -142,6 +151,15 @@ La plupart des contributions sont des connecteurs de sources de données. Le mod
 - Les connecteurs utilisent des réponses enregistrées; **pas d'appels réseau en direct dans l'IC**.
 - `uv run ruff check` et `ruff format` avant de pousser.
 - Le flux `connector-health` s'exécute toutes les nuits contre les API en direct et ouvre des tickets lorsqu'un schéma change — si vous maintenez un connecteur, vous êtes responsable de traiter les dérives dans les 2 semaines.
+
+### Invariants de construction (non négociables)
+
+Lors de la génération de rapports ou d'analyses, ces règles structurelles s'appliquent. Détails dans [`CLAUDE.md`](./CLAUDE.md); résumé :
+
+- **Les formations sont des ENTRÉES, pas des sorties.** Les générateurs doivent charger `<gameN>_lineups.yaml` (ou un fichier structuré équivalent) avant d'écrire toute prose sur la composition des trios. L'habileté `draft-game-post` impose cette règle et refuse de rédiger si le fichier est absent.
+- **Les revendications sur les marqueurs viennent des données.** Utiliser `D.series_goalscorers` ou `D.individual` (extraits du jeu par jeu). La garde `runProseFactCheck()` dans chaque générateur parcourt la prose et interrompt la construction (code 7) si un patineur sans but apparaît comme sujet d'un verbe de marquage. La catégorie de bogue « X a marqué alors que X n'a pas marqué » ne peut plus passer.
+- **Les données sont la source, la prose est templatée.** Si un fait peut être calculé à partir des données, le calculer et le templater; ne pas l'écrire de mémoire narrative.
+- **Mener par les résultats, pas par les annonces.** Les rapports post-match font surface ce que seules les données révèlent — pas ce que le public a déjà vu ni ce qui était prédit avant la série. Voir `draft-game-post/SKILL.md` et `validate-analysis/SKILL.md` pour l'heuristique et les exemples.
 
 ### Normes communautaires
 

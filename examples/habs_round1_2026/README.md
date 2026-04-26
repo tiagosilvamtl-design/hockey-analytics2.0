@@ -1,37 +1,75 @@
-# Example: Montreal Canadiens — 2026 Playoffs, Round 1 report
+# `examples/habs_round1_2026/` — three worked end-to-end analyses
 
-This directory is the canonical worked example for Lemieux. It shows the full pipeline:
+This directory holds the canonical worked examples that demonstrate the Lemieux data flow end-to-end. New contributors should read this before extending the framework. Anything that works here is a pattern other game series can copy.
 
-1. **Ingest**: pull data from NST + NHL.com for the MTL vs. TBL series.
-2. **Analyze**: compute swap scenarios, rank positive/negative contributors, build optimal lineup, slice Slafkovský's shifts by period.
-3. **Render**: produce a publishable Word document + JSON audit trail.
+## What's in here
 
-## Files
+### 1. Round 1 standalone report (pre-Game 3)
 
-- `habs_round1_2026.docx` — the final published artifact
-- `habs_round1_2026.numbers.json` — every number cited in the docx, for audit
-- `habs_round1_2026.md` — pandoc-converted markdown mirror of the docx
+A snapshot of MTL vs TBL Round 1 status before Game 3 — swap-scenario analyses, claims ledger, optimal lineup, Slafkovský period analysis.
 
-The orchestrator script that produced these artifacts is currently at `legacy/analytics/habs_round1.py` and will be migrated onto the MCP tool surface in a follow-up release. See [`legacy/README.md`](../../legacy/README.md).
+- Generator: `legacy/analytics/habs_round1.py` (orchestrator, predates the `packages/*` layout)
+- Renderer: `legacy/reports/build_habs_round1_2026.js`
+- Output: `habs_round1_2026.docx`, `habs_round1_2026.numbers.json`, `habs_round1_2026.md`
 
-## Reproducing (v0.1, using the legacy orchestrator)
+### 2. Per-game analysis (Game 3, 2026-04-24)
+
+The post-game report for MTL vs TBL Game 3, with the new line-reshuffle finding leading the post and the structural-input pattern in full effect.
+
+- Analyzer: `game3_analysis.py` — pulls NST playoff totals, NHL.com shift+PBP for the three games, computes `series_goalscorers`, `mtl_lineup_drift_g2_to_g3`, `slaf_fight_buckets`, `mtl_progression`, etc.
+- Lineup input: `game3_lineups.yaml` — canonical fact base for line composition (read by the renderer; `draft-game-post` skill mandates loading this)
+- Usage layer: `game3_usage_observations.yaml` — interview-derived deployment notes (Hutson 26:28, Sabourin OT cameo, etc.)
+- Renderer: `build_game3_post.js` — branded EN+FR docx with `runProseFactCheck()` guard
+- Audit: `game3_analysis.numbers.json`
+- Reports: `game3_post_2026-04-25_{EN,FR}.docx`
+
+### 3. Playoff rankings report (after Game 3, 2026-04-26)
+
+A snapshot ranking of MTL skaters by advanced analytics (5v5 iso net, 5v4 iso offense, individual production, regression vs regular season, goalies).
+
+- Analyzer: `playoff_rankings.py` — same data sources, but ranked output. Includes the **canonical goalie SV% method** (PBP-direct shot+goal counting, supersedes the buggy per_game-derived computation in `game3_analysis.py`).
+- Renderer: `build_playoff_rankings_post.js` — same branded shell, prose fact-check guard active
+- Audit: `playoff_rankings.numbers.json`
+- Reports: `playoff_rankings_2026-04-26_{EN,FR}.docx`
+
+## Reproducing any of these
+
+You'll need:
+- The repo cloned, Python venv set up, `pip install -e packages/lemieux-core packages/lemieux-glossary packages/lemieux-connectors`
+- Your NST access key in `.env` at the repo root (`NST_ACCESS_KEY=...`)
+- Node + `npm install` at the repo root (for the docx builder deps: `docx`, `yaml`)
+
+Then for the playoff rankings:
 
 ```bash
-# 1. Make sure your NST key is in .env at the repo root
-# 2. Ingest data (hits NST politely, caches locally)
-python -c "from legacy.data.nst_client import NstClient; from legacy.data.ingest import refresh_team_stats, refresh_skater_stats; c = NstClient(); [refresh_team_stats(c, s, st, sit) for s in ['20252026','20242025'] for st in [2,3] for sit in ['5v5','5v4','all']]"
+# 1. Compute the analysis JSON
+.venv/Scripts/python examples/habs_round1_2026/playoff_rankings.py
 
-# 3. Compute numbers
-python -m legacy.analytics.habs_round1
+# 2. Render branded docx (runs prose fact-check guard first; aborts on violations)
+node examples/habs_round1_2026/build_playoff_rankings_post.js
 
-# 4. Render docx (requires node + docx npm package)
-node legacy/reports/build_habs_round1_2026.js
+# 3. Optionally push to Google Drive
+.venv/Scripts/python tools/push_to_drive.py --public --folder-public \
+  --folder "Lemieux Hockey Analytics" \
+  examples/habs_round1_2026/playoff_rankings_2026-04-26_*.docx
 ```
 
-## Reproducing (v0.2+, via MCP)
+For the Game 3 post, swap `playoff_rankings` → `game3_analysis` in step 1 and `build_playoff_rankings_post` → `build_game3_post` in step 2.
 
-Once the migration is complete, the same artifact will be reproducible from Claude Code with a single prompt invoking the `draft-game-post` skill, which composes `query_team_stats`, `rank_players`, `project_swap_scenario`, and `fetch_game_detail` via the MCP server.
+## What this directory demonstrates (the patterns to copy)
 
-## Why this example matters
+1. **Analyzer → JSON → renderer → guard → docx → Drive** as the canonical pipeline.
+2. **Structured input files** (`game3_lineups.yaml`, `game3_usage_observations.yaml`) as canonical fact bases that the renderer reads from. The renderer never improvises facts that the data could provide.
+3. **Build-time prose fact-check guard** — `runProseFactCheck()` walks every prose string in the language objects and aborts the build if any roster name with 0 goals appears as the subject of a scoring verb. The pattern can (and should) be extended to validate other kinds of factual claims (ice time, assist credits, etc.) as the framework matures.
+4. **Branded EN+FR docx output** — same structure both languages, FR prose run through `translate-to-quebec-fr` style.
+5. **Caveats over confidence** — every section that cites a small-sample number explicitly flags it. The reader always knows when they're looking at a robust signal vs. a directional read.
 
-It demonstrates that every specific claim in the Word document (e.g., "Slafkovský had 5 SOG in bucket A, 0 in bucket B") traces back to a deterministic SQL + NHL-API query. If a reader disputes a number, we can point them at the one function that produced it.
+## Known caveats / data integrity notes
+
+- `game3_analysis.py:game_level_team_stats` has a known goal-count bug in its per-game home/away counters (it produced `Dobeš 74/7/.905` when the truth was `74/8/.892`). The PBP-direct method in `playoff_rankings.py:goalie_summary` is canonical. The Game 3 docx has been corrected.
+- The Slafkovský fight-bucket analysis joins NHL.com shift charts to play-by-play events — NST's game reports don't expose per-period player splits, so this layer depends on NHL.com endpoints holding their schema.
+- Playoff samples are 1-3 games; every iso-impact rate has wide implicit CIs. Reports treat the directions as informative and the magnitudes as noisy.
+
+## Sources
+
+See [SOURCES.md](../../SOURCES.md) at the repo root for license posture and per-source notes.

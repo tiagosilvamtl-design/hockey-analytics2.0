@@ -7,11 +7,19 @@
 - [x] `lemieux-glossary` — 15 bilingual terms (EN + FR) with formulas, caveats, sources
 - [x] `lemieux-mcp` — FastMCP server with 5 tools + 4 resources
 - [x] 6 Claude skills — `research-game`, `translate-to-quebec-fr`, `draft-game-post`, `propose-swap-scenario`, `validate-analysis`, `review-pr-lemieux`
-- [x] Bilingual READMEs + `docs/en` + `docs/fr`
+- [x] Bilingual READMEs + `docs/en` + `docs/fr` + `INSTALLATION_FACILE.md` (FR non-technical install)
 - [x] Templates for connectors and skills
-- [x] Two worked end-to-end examples (`examples/habs_round1_2026/` for the Round 1 report and the per-game post-Game-3 analysis with usage observations)
+- [x] Three worked end-to-end examples in `examples/habs_round1_2026/`:
+  - Round 1 standalone report (Habs vs TBL pre-G3)
+  - Per-game analysis (G3 post with usage observations + line-reshuffle analysis)
+  - Playoff rankings report (snapshot-style, all-MTL skaters by advanced analytics)
 - [x] CI — pytest + ruff + nightly connector-health
 - [x] **Auto-PR-review** via Claude Code GitHub Action (`.github/workflows/claude-pr-review.yml`)
+- [x] **Build-time prose fact-check guard** — `runProseFactCheck()` aborts the docx build with exit code 7 if any roster name with 0 goals appears as a scoring subject in prose. Source of truth: `D.series_goalscorers` (PBP-derived). The "claimed X scored when X is scoreless" bug class is no longer possible to ship.
+- [x] **Structural data invariants** — `<gameN>_lineups.yaml` is required input for any line-composition prose; `series_goalscorers` is required input for any scoring claim. Renderers refuse to build if these inputs are missing.
+- [x] **Drive uploader** — `tools/push_to_drive.py` portable Google Drive push (BYO OAuth, 5-min one-time setup, refreshable token, `--public --folder-public` for shareable links).
+- [x] **Writing rails baked into the skills**: lead with outcomes (not announcements), no meta-commentary about report structure, no restating pre-data narrative, lineup data is input not output, goalscorer claims must source from PBP.
+- [x] **`CLAUDE.md`** — canonical operating guide for working in this repo as Claude Code.
 
 ## v0.2 — Community-facing release
 

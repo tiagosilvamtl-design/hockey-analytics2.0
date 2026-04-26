@@ -62,7 +62,9 @@ Most hockey coverage in 2026 remains innumerate: deep conclusions from single-ga
 | [`lemieux-mcp`](./packages/lemieux-mcp) | FastMCP server exposing analytics tools + resources to any MCP client |
 | [`lemieux-glossary`](./packages/lemieux-glossary) | Bilingual (EN/FR) definitions of every metric we use, with formulas and caveats |
 | [`.claude/skills/`](./.claude/skills) | Opinionated Claude workflows — `research-game`, `translate-to-quebec-fr`, `draft-game-post`, `propose-swap-scenario`, `validate-analysis`, `review-pr-lemieux` |
-| [`examples/`](./examples) | Worked end-to-end analyses. Start with `examples/habs_round1_2026/` |
+| [`examples/`](./examples) | Three worked end-to-end analyses in `examples/habs_round1_2026/`: Round 1 standalone report, per-game analysis (Game 3), and playoff rankings report |
+| [`tools/push_to_drive.py`](./tools) | Portable Google Drive uploader (BYO OAuth, `--public --folder-public` for shareable links) |
+| [`CLAUDE.md`](./CLAUDE.md) | Canonical operating guide for working in this repo with Claude Code — writing rails, data flow invariants, structural conventions |
 
 ## Quickstart
 
@@ -123,6 +125,8 @@ See [SOURCES.md](./SOURCES.md) for the full list with license terms. Connectors 
 4. **Bilingual from day one.** Docs, glossary, skills all ship EN + FR. Francophone hockey analytics is essentially unoccupied territory; Lemieux changes that.
 5. **Plugin-friendly.** Adding a new connector or skill is 3 files + tests. See [`templates/`](./templates).
 6. **Respectful of upstream.** Cache aggressively, rate-limit politely, document every source's terms, never redistribute data we didn't generate.
+7. **Data is the source; prose is templated against it.** Structured input files (`<gameN>_lineups.yaml`, `<task>.numbers.json`) are the canonical fact base. The build invariant guarantees no prose can contradict the data — `runProseFactCheck()` aborts the docx build (exit code 7) if any roster name with 0 goals appears as a scoring subject in prose. Same pattern applies to lineup composition, ice time, assists, etc. Lineup composition data is INPUT to the analysis, never inferred from press extracts.
+8. **Lead with outcomes, not announcements.** The audience watched the game — the post-game report's job is to surface what only the data reveals (unexpected magnitudes, paradoxes the eye test misses, contradictions with pre-series narrative). The auto-PR-review pipeline catches violations.
 
 ## Contributing
 
