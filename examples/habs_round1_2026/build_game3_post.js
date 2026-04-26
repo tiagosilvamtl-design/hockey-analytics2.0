@@ -105,7 +105,7 @@ const T = {
     tldr: 'Top-line read',
     tldr_bullets: [
       lineReshuffleBullet('en'),
-      'Hutson, Caufield and Suzuki have all scored — and all sit below their regular-season isolated impact at 5v5 across the series. Goals are coming through the stars; the pre-goal possession is being driven by depth (Bolduc, Dach, Texier, Struble, Xhekaj). The eye test sees stars finishing; the data sees stars riding their line.',
+      'The three biggest iso-impact movers DOWN from regular season to these playoffs at 5v5 are Hutson, Caufield and Suzuki — and only one of them has produced. Hutson is on the scoresheet (G2 + the OT winner in G3); Caufield and Suzuki are scoreless. The depth tier (Bolduc, Dach, Texier, Struble, Xhekaj) is driving both the underlying play and the bottom-line goals — Dach and Texier scored at 5v5 in G3, Bolduc had a primary assist on each.',
       'Through three games Dobes has a higher implied save percentage than Vasilevskiy (.905 vs. .893) on near-identical workloads (74 vs. 75 shots faced). Game 3\'s 29-vs-17 was the outlier; the cumulative read flips the pre-series chatter that Vasilevskiy was the more reliable option.',
       'MTL holds **75 % of 5v5 high-danger chances** through three games. That is unusually one-sided for any team in any series — the kind of number that almost always regresses, but that has held all three games. Worth watching for the inflection point, not yet for the predictable narrative reversal.',
     ],
@@ -196,7 +196,7 @@ const T = {
     tldr: 'L\'essentiel',
     tldr_bullets: [
       lineReshuffleBullet('fr'),
-      'Hutson, Caufield et Suzuki ont tous marqué — et tous ont un impact net isolé à 5 c. 5 inférieur à leur saison régulière. Les buts passent par les vedettes; le jeu qui les précède est porté par la profondeur (Bolduc, Dach, Texier, Struble, Xhekaj). L\'œil voit les vedettes finir; les chiffres voient les vedettes profiter de leur trio.',
+      'Les trois plus grandes régressions d\'impact net isolé entre la saison régulière et les séries à 5 c. 5 sont Hutson, Caufield et Suzuki — et un seul des trois a produit. Hutson est au pointage (M2 + le but vainqueur en prolongation au M3); Caufield et Suzuki n\'ont pas marqué. La profondeur (Bolduc, Dach, Texier, Struble, Xhekaj) porte à la fois le jeu sous-jacent et le pointage final — Dach et Texier ont marqué à 5 c. 5 au M3, Bolduc a obtenu une passe principale sur chaque but.',
       'Sur les trois matchs, Dobes a un pourcentage d\'arrêts implicite supérieur à Vasilevskiy (,905 c. ,893) sur des charges quasi identiques (74 c. 75 tirs subis). Le M3 (29-17) est l\'exception; le cumul renverse l\'argument d\'avant-série voulant Vasilevskiy plus fiable.',
       'Le CH détient **75 % des chances à haut danger à 5 c. 5** sur trois matchs. C\'est un déséquilibre rare pour toute équipe dans toute série — un chiffre qui régresse presque toujours, mais qui s\'est maintenu trois matchs d\'affilée. À surveiller pour le point d\'inflexion, pas encore pour le retour à la moyenne attendu.',
     ],
