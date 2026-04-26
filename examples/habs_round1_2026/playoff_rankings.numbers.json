@@ -1,0 +1,625 @@
+{
+  "meta": {
+    "as_of": "2026-04-26",
+    "team": "MTL",
+    "games_played": 3,
+    "series": "Round 1 vs TBL (MTL leads 2-1)",
+    "min_toi_5v5": 15.0,
+    "min_toi_5v4": 5.0
+  },
+  "rank_5v5": [
+    {
+      "name": "Zachary Bolduc",
+      "position": "R",
+      "gp": 3,
+      "toi": 29.2,
+      "iso_xgf60": 2.0027569183260887,
+      "iso_xga60": -1.1809047344535923,
+      "net": 3.183661652779681,
+      "cf_pct": 59.32,
+      "xgf_pct": 83.29,
+      "hdcf_pct": 87.5
+    },
+    {
+      "name": "Arber Xhekaj",
+      "position": "D",
+      "gp": 3,
+      "toi": 30.7,
+      "iso_xgf60": 1.1531031047716178,
+      "iso_xga60": -1.4169724113993802,
+      "net": 2.570075516170998,
+      "cf_pct": 72.22,
+      "xgf_pct": 83.79,
+      "hdcf_pct": 100.0
+    },
+    {
+      "name": "Jayden Struble",
+      "position": "D",
+      "gp": 3,
+      "toi": 36.8,
+      "iso_xgf60": 1.503923508715289,
+      "iso_xga60": -0.924868426349867,
+      "net": 2.428791935065156,
+      "cf_pct": 64.79,
+      "xgf_pct": 76.56,
+      "hdcf_pct": 100.0
+    },
+    {
+      "name": "Kirby Dach",
+      "position": "C",
+      "gp": 3,
+      "toi": 28.2,
+      "iso_xgf60": 0.9360348618902299,
+      "iso_xga60": -0.9751213918449778,
+      "net": 1.9111562537352076,
+      "cf_pct": 52.08,
+      "xgf_pct": 75.99,
+      "hdcf_pct": 83.33
+    },
+    {
+      "name": "Phillip Danault",
+      "position": "C",
+      "gp": 3,
+      "toi": 36.0,
+      "iso_xgf60": 1.6947376316381997,
+      "iso_xga60": 0.5613657866445494,
+      "net": 1.1333718449936503,
+      "cf_pct": 50.68,
+      "xgf_pct": 61.86,
+      "hdcf_pct": 71.43
+    },
+    {
+      "name": "Alexandre Texier",
+      "position": "L",
+      "gp": 3,
+      "toi": 34.4,
+      "iso_xgf60": 0.25082018647986803,
+      "iso_xga60": -0.3265554793769272,
+      "net": 0.5773756658567952,
+      "cf_pct": 42.65,
+      "xgf_pct": 61.99,
+      "hdcf_pct": 100.0
+    },
+    {
+      "name": "Oliver Kapanen",
+      "position": "C",
+      "gp": 3,
+      "toi": 26.0,
+      "iso_xgf60": 0.6549786326566704,
+      "iso_xga60": 0.18500037486570142,
+      "net": 0.469978257790969,
+      "cf_pct": 48.84,
+      "xgf_pct": 59.35,
+      "hdcf_pct": 60.0
+    },
+    {
+      "name": "Jake Evans",
+      "position": "C",
+      "gp": 3,
+      "toi": 34.6,
+      "iso_xgf60": 0.7337091533057425,
+      "iso_xga60": 0.8979723562374196,
+      "net": -0.16426320293167707,
+      "cf_pct": 41.18,
+      "xgf_pct": 53.43,
+      "hdcf_pct": 69.23
+    },
+    {
+      "name": "Josh Anderson",
+      "position": "R",
+      "gp": 3,
+      "toi": 36.5,
+      "iso_xgf60": 0.3168105117814206,
+      "iso_xga60": 0.4854935826035902,
+      "net": -0.1686830708221696,
+      "cf_pct": 41.94,
+      "xgf_pct": 53.93,
+      "hdcf_pct": 69.23
+    },
+    {
+      "name": "Alexandre Carrier",
+      "position": "D",
+      "gp": 3,
+      "toi": 50.7,
+      "iso_xgf60": -1.1446689661266471,
+      "iso_xga60": -0.5956501962170297,
+      "net": -0.5490187699096174,
+      "cf_pct": 35.62,
+      "xgf_pct": 52.17,
+      "hdcf_pct": 85.71
+    },
+    {
+      "name": "Juraj Slafkovský",
+      "position": "L",
+      "gp": 3,
+      "toi": 43.5,
+      "iso_xgf60": -1.10050496327078,
+      "iso_xga60": -0.40054662020056275,
+      "net": -0.6999583430702172,
+      "cf_pct": 45.0,
+      "xgf_pct": 49.77,
+      "hdcf_pct": 75.0
+    },
+    {
+      "name": "Nick Suzuki",
+      "position": "C",
+      "gp": 3,
+      "toi": 45.2,
+      "iso_xgf60": -1.0377267645027395,
+      "iso_xga60": -0.3071184547550996,
+      "net": -0.7306083097476399,
+      "cf_pct": 47.69,
+      "xgf_pct": 49.43,
+      "hdcf_pct": 77.78
+    },
+    {
+      "name": "Ivan Demidov",
+      "position": "R",
+      "gp": 3,
+      "toi": 33.4,
+      "iso_xgf60": -0.5297307902518578,
+      "iso_xga60": 0.20392833619284145,
+      "net": -0.7336591264446992,
+      "cf_pct": 38.46,
+      "xgf_pct": 48.86,
+      "hdcf_pct": 80.0
+    },
+    {
+      "name": "Cole Caufield",
+      "position": "R",
+      "gp": 3,
+      "toi": 41.2,
+      "iso_xgf60": -1.2315602986969805,
+      "iso_xga60": -0.21807539982465185,
+      "net": -1.0134848988723286,
+      "cf_pct": 40.35,
+      "xgf_pct": 45.58,
+      "hdcf_pct": 66.67
+    },
+    {
+      "name": "Lane Hutson",
+      "position": "D",
+      "gp": 3,
+      "toi": 59.2,
+      "iso_xgf60": 0.17962785418726046,
+      "iso_xga60": 1.3024343754366465,
+      "net": -1.122806521249386,
+      "cf_pct": 37.38,
+      "xgf_pct": 48.06,
+      "hdcf_pct": 58.82
+    },
+    {
+      "name": "Mike Matheson",
+      "position": "D",
+      "gp": 3,
+      "toi": 51.1,
+      "iso_xgf60": -1.6119855861315222,
+      "iso_xga60": -0.4705262360541498,
+      "net": -1.1414593500773724,
+      "cf_pct": 34.67,
+      "xgf_pct": 44.88,
+      "hdcf_pct": 80.0
+    },
+    {
+      "name": "Kaiden Guhle",
+      "position": "D",
+      "gp": 3,
+      "toi": 55.0,
+      "iso_xgf60": 0.02633143453138098,
+      "iso_xga60": 1.6351122709816512,
+      "net": -1.6087808364502703,
+      "cf_pct": 34.65,
+      "xgf_pct": 44.73,
+      "hdcf_pct": 53.33
+    },
+    {
+      "name": "Alex Newhook",
+      "position": "C",
+      "gp": 3,
+      "toi": 35.8,
+      "iso_xgf60": -1.1939332113730377,
+      "iso_xga60": 0.6933054600480293,
+      "net": -1.887238671421067,
+      "cf_pct": 32.81,
+      "xgf_pct": 36.45,
+      "hdcf_pct": 66.67
+    }
+  ],
+  "rank_5v4": [
+    {
+      "name": "Ivan Demidov",
+      "position": "R",
+      "gp": 3,
+      "toi": 18.6,
+      "iso_xgf60": 7.113424500703579,
+      "iso_xga60": 0.0,
+      "net": 7.113424500703579,
+      "cf_pct": 97.06,
+      "xgf_pct": 100.0,
+      "hdcf_pct": 100.0
+    },
+    {
+      "name": "Juraj Slafkovský",
+      "position": "L",
+      "gp": 3,
+      "toi": 18.8,
+      "iso_xgf60": 6.971034294302182,
+      "iso_xga60": 0.0,
+      "net": 6.971034294302182,
+      "cf_pct": 97.06,
+      "xgf_pct": 100.0,
+      "hdcf_pct": 100.0
+    },
+    {
+      "name": "Cole Caufield",
+      "position": "R",
+      "gp": 3,
+      "toi": 18.8,
+      "iso_xgf60": 6.938891637803069,
+      "iso_xga60": 0.0,
+      "net": 6.938891637803069,
+      "cf_pct": 97.06,
+      "xgf_pct": 100.0,
+      "hdcf_pct": 100.0
+    },
+    {
+      "name": "Nick Suzuki",
+      "position": "C",
+      "gp": 3,
+      "toi": 19.0,
+      "iso_xgf60": 6.724928008012688,
+      "iso_xga60": 0.0,
+      "net": 6.724928008012688,
+      "cf_pct": 97.06,
+      "xgf_pct": 100.0,
+      "hdcf_pct": 100.0
+    },
+    {
+      "name": "Lane Hutson",
+      "position": "D",
+      "gp": 3,
+      "toi": 20.1,
+      "iso_xgf60": 5.400066969269032,
+      "iso_xga60": 0.0,
+      "net": 5.400066969269032,
+      "cf_pct": 97.06,
+      "xgf_pct": 100.0,
+      "hdcf_pct": 100.0
+    }
+  ],
+  "individual": [
+    {
+      "g": 3,
+      "a1": 0,
+      "a2": 0,
+      "sog": 7,
+      "points": 3,
+      "a": 0,
+      "name": "Juraj Slafkovský"
+    },
+    {
+      "g": 2,
+      "a1": 1,
+      "a2": 0,
+      "sog": 8,
+      "points": 3,
+      "a": 1,
+      "name": "Lane Hutson"
+    },
+    {
+      "g": 0,
+      "a1": 1,
+      "a2": 2,
+      "sog": 4,
+      "points": 3,
+      "a": 3,
+      "name": "Cole Caufield"
+    },
+    {
+      "g": 0,
+      "a1": 1,
+      "a2": 2,
+      "sog": 4,
+      "points": 3,
+      "a": 3,
+      "name": "Nick Suzuki"
+    },
+    {
+      "g": 2,
+      "a1": 0,
+      "a2": 0,
+      "sog": 4,
+      "points": 2,
+      "a": 0,
+      "name": "Josh Anderson"
+    },
+    {
+      "g": 1,
+      "a1": 1,
+      "a2": 0,
+      "sog": 3,
+      "points": 2,
+      "a": 1,
+      "name": "Alexandre Texier"
+    },
+    {
+      "g": 1,
+      "a1": 0,
+      "a2": 1,
+      "sog": 1,
+      "points": 2,
+      "a": 1,
+      "name": "Kirby Dach"
+    },
+    {
+      "g": 0,
+      "a1": 1,
+      "a2": 1,
+      "sog": 5,
+      "points": 2,
+      "a": 2,
+      "name": "Zachary Bolduc"
+    },
+    {
+      "g": 0,
+      "a1": 1,
+      "a2": 0,
+      "sog": 1,
+      "points": 1,
+      "a": 1,
+      "name": "Alexandre Carrier"
+    },
+    {
+      "g": 0,
+      "a1": 0,
+      "a2": 1,
+      "sog": 5,
+      "points": 1,
+      "a": 1,
+      "name": "Mike Matheson"
+    },
+    {
+      "g": 0,
+      "a1": 1,
+      "a2": 0,
+      "sog": 5,
+      "points": 1,
+      "a": 1,
+      "name": "Ivan Demidov"
+    },
+    {
+      "g": 0,
+      "a1": 1,
+      "a2": 0,
+      "sog": 4,
+      "points": 1,
+      "a": 1,
+      "name": "Phillip Danault"
+    },
+    {
+      "g": 0,
+      "a1": 1,
+      "a2": 0,
+      "sog": 3,
+      "points": 1,
+      "a": 1,
+      "name": "Arber Xhekaj"
+    },
+    {
+      "g": 0,
+      "a1": 0,
+      "a2": 1,
+      "sog": 3,
+      "points": 1,
+      "a": 1,
+      "name": "Jake Evans"
+    },
+    {
+      "g": 0,
+      "a1": 0,
+      "a2": 0,
+      "sog": 3,
+      "points": 0,
+      "a": 0,
+      "name": "Alex Newhook"
+    },
+    {
+      "g": 0,
+      "a1": 0,
+      "a2": 0,
+      "sog": 2,
+      "points": 0,
+      "a": 0,
+      "name": "Oliver Kapanen"
+    },
+    {
+      "g": 0,
+      "a1": 0,
+      "a2": 0,
+      "sog": 3,
+      "points": 0,
+      "a": 0,
+      "name": "Kaiden Guhle"
+    },
+    {
+      "g": 0,
+      "a1": 0,
+      "a2": 0,
+      "sog": 1,
+      "points": 0,
+      "a": 0,
+      "name": "Jayden Struble"
+    }
+  ],
+  "goalie": {
+    "name": "Jakub Dobeš",
+    "shots_faced": 74,
+    "goals_against": 8,
+    "sv_pct": 0.892,
+    "games": 3
+  },
+  "progression": [
+    {
+      "name": "Arber Xhekaj",
+      "position": "D",
+      "toi_p": 30.7,
+      "toi_r": 715.4,
+      "net_r": -0.6015156740387044,
+      "net_p": 2.570075516170998,
+      "delta": 3.1715911902097025
+    },
+    {
+      "name": "Zachary Bolduc",
+      "position": "R",
+      "toi_p": 29.2,
+      "toi_r": 919.0,
+      "net_r": 0.37026918940544995,
+      "net_p": 3.183661652779681,
+      "delta": 2.813392463374231
+    },
+    {
+      "name": "Jayden Struble",
+      "position": "D",
+      "toi_p": 36.8,
+      "toi_r": 798.9,
+      "net_r": -0.02106078274433143,
+      "net_p": 2.428791935065156,
+      "delta": 2.4498527178094873
+    },
+    {
+      "name": "Kirby Dach",
+      "position": "C",
+      "toi_p": 28.2,
+      "toi_r": 440.1,
+      "net_r": -0.07461420781364403,
+      "net_p": 1.9111562537352076,
+      "delta": 1.9857704615488516
+    },
+    {
+      "name": "Phillip Danault",
+      "position": "C",
+      "toi_p": 36.0,
+      "toi_r": 919.4,
+      "net_r": -0.34121870406825305,
+      "net_p": 1.1333718449936503,
+      "delta": 1.4745905490619033
+    },
+    {
+      "name": "Oliver Kapanen",
+      "position": "C",
+      "toi_p": 26.0,
+      "toi_r": 933.5,
+      "net_r": -0.9905439233881013,
+      "net_p": 0.469978257790969,
+      "delta": 1.4605221811790703
+    },
+    {
+      "name": "Josh Anderson",
+      "position": "R",
+      "toi_p": 36.5,
+      "toi_r": 808.3,
+      "net_r": -0.4948297271445794,
+      "net_p": -0.1686830708221696,
+      "delta": 0.3261466563224098
+    },
+    {
+      "name": "Alexandre Texier",
+      "position": "L",
+      "toi_p": 34.4,
+      "toi_r": 616.0,
+      "net_r": 0.3111420131387215,
+      "net_p": 0.5773756658567952,
+      "delta": 0.26623365271807375
+    },
+    {
+      "name": "Jake Evans",
+      "position": "C",
+      "toi_p": 34.6,
+      "toi_r": 799.6,
+      "net_r": -0.1378193664428209,
+      "net_p": -0.16426320293167707,
+      "delta": -0.026443836488856176
+    },
+    {
+      "name": "Ivan Demidov",
+      "position": "R",
+      "toi_p": 33.4,
+      "toi_r": 932.4,
+      "net_r": -0.30465198676330685,
+      "net_p": -0.7336591264446992,
+      "delta": -0.42900713968139237
+    },
+    {
+      "name": "Mike Matheson",
+      "position": "D",
+      "toi_p": 51.1,
+      "toi_r": 1438.7,
+      "net_r": -0.5633024340756632,
+      "net_p": -1.1414593500773724,
+      "delta": -0.5781569160017093
+    },
+    {
+      "name": "Alexandre Carrier",
+      "position": "D",
+      "toi_p": 50.7,
+      "toi_r": 1119.0,
+      "net_r": 0.05924504217717397,
+      "net_p": -0.5490187699096174,
+      "delta": -0.6082638120867914
+    },
+    {
+      "name": "Juraj Slafkovský",
+      "position": "L",
+      "toi_p": 43.5,
+      "toi_r": 1137.6,
+      "net_r": 0.04664812875688629,
+      "net_p": -0.6999583430702172,
+      "delta": -0.7466064718271035
+    },
+    {
+      "name": "Alex Newhook",
+      "position": "C",
+      "toi_p": 35.8,
+      "toi_r": 493.9,
+      "net_r": -0.7265500134546556,
+      "net_p": -1.887238671421067,
+      "delta": -1.1606886579664113
+    },
+    {
+      "name": "Kaiden Guhle",
+      "position": "D",
+      "toi_p": 55.0,
+      "toi_r": 658.2,
+      "net_r": -0.22456562171228267,
+      "net_p": -1.6087808364502703,
+      "delta": -1.3842152147379876
+    },
+    {
+      "name": "Nick Suzuki",
+      "position": "C",
+      "toi_p": 45.2,
+      "toi_r": 1203.3,
+      "net_r": 0.7783306664486918,
+      "net_p": -0.7306083097476399,
+      "delta": -1.5089389761963317
+    },
+    {
+      "name": "Cole Caufield",
+      "position": "R",
+      "toi_p": 41.2,
+      "toi_r": 1086.2,
+      "net_r": 1.0013029094329444,
+      "net_p": -1.0134848988723286,
+      "delta": -2.014787808305273
+    },
+    {
+      "name": "Lane Hutson",
+      "position": "D",
+      "toi_p": 59.2,
+      "toi_r": 1501.9,
+      "net_r": 1.1356992470974028,
+      "net_p": -1.122806521249386,
+      "delta": -2.258505768346789
+    }
+  ]
+}
