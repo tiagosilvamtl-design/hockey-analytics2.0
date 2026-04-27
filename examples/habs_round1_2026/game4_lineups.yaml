@@ -1,0 +1,122 @@
+# Authoritative deployed lineup data for Game 4 (TBL @ MTL, 2026-04-26).
+# This is INPUT to the post-game analysis. Same pattern as game3_lineups.yaml.
+#
+# Source priority:
+#   1. NHL.com PBP roster + shift overlap → who actually played which position
+#   2. Pre-game announced lineups (game4_pregame_lineups.yaml)
+#   3. Press recaps after the game
+#
+# Read by build_game4_post.js as ground truth for any line-role prose.
+
+game_id: "2025030124"
+date: "2026-04-26"
+matchup: "TBL @ MTL"
+score: "TBL 3 - MTL 2 (regulation)"
+
+teams:
+  MTL:
+    forwards:
+      - line: 1
+        players:
+          - { name: "Juraj Slafkovský", position: "L" }
+          - { name: "Nick Suzuki",      position: "C" }
+          - { name: "Cole Caufield",    position: "R" }
+      - line: 2
+        players:
+          - { name: "Alexandre Texier", position: "L" }
+          - { name: "Kirby Dach",       position: "C" }
+          - { name: "Zachary Bolduc",   position: "R" }
+      - line: 3
+        players:
+          - { name: "Alex Newhook",     position: "L" }   # demoted from C role; stays at wing
+          - { name: "Oliver Kapanen",   position: "C" }
+          - { name: "Ivan Demidov",     position: "R" }
+      - line: 4
+        players:
+          - { name: "Phillip Danault",  position: "C" }
+          - { name: "Josh Anderson",    position: "R" }
+          - { name: "Jake Evans",       position: "C" }   # double-listed C; played wing on this line
+    defense:
+      - pair: 1
+        players:
+          - { name: "Mike Matheson",   position: "D", side: "L" }
+          - { name: "Lane Hutson",     position: "D", side: "R" }   # left-shot but plays right side
+      - pair: 2
+        players:
+          - { name: "Jayden Struble",  position: "D", side: "L" }
+          - { name: "Noah Dobson",     position: "D", side: "R" }
+      - pair: 3
+        players:
+          - { name: "Kaiden Guhle",    position: "D", side: "L" }
+          - { name: "Alexandre Carrier", position: "D", side: "R" }
+    goalie: "Jakub Dobeš"
+    pp1: ["Nick Suzuki", "Cole Caufield", "Juraj Slafkovský", "Ivan Demidov", "Lane Hutson"]
+    pp2: ["Zachary Bolduc", "Phillip Danault", "Brendan Gallagher", "Alexandre Texier", "Noah Dobson"]
+    scratches: []
+
+  TBL:
+    # Lineup for G4 — Crozier IN, Carlile OUT, Lilleberg shifted to L on 3rd pair.
+    # Hedman + D'Astous remained out (long-term).
+    forwards: []   # Forwards held vs G3
+    defense:
+      - pair: 1
+        players:
+          - { name: "Ryan McDonagh",   position: "D", side: "L" }
+          - { name: "Erik Cernak",     position: "D", side: "R" }
+      - pair: 2
+        players:
+          - { name: "J.J. Moser",      position: "D", side: "L" }
+          - { name: "Darren Raddysh",  position: "D", side: "R" }
+      - pair: 3
+        players:
+          - { name: "Emil Lilleberg",  position: "D", side: "L" }   # SHIFTED to L for G4
+          - { name: "Max Crozier",     position: "D", side: "R" }   # IN for G4
+    goalie: "Andrei Vasilevskiy"
+    pp1: []
+    pp2: []
+    scratches: ["Declan Carlile"]   # Active but scratched for G4
+
+# Game 3 lineups for reference (used by drift / reshuffle analysis if needed).
+previous_game:
+  game_id: "2025030123"
+  date: "2026-04-24"
+  MTL:
+    forwards:
+      - line: 1
+        players:
+          - { name: "Juraj Slafkovský", position: "L" }
+          - { name: "Nick Suzuki",      position: "C" }
+          - { name: "Cole Caufield",    position: "R" }
+      - line: 2
+        players:
+          - { name: "Alexandre Texier", position: "L" }
+          - { name: "Kirby Dach",       position: "C" }
+          - { name: "Zachary Bolduc",   position: "R" }
+      - line: 3
+        players:
+          - { name: "Alex Newhook",     position: "L" }
+          - { name: "Oliver Kapanen",   position: "C" }
+          - { name: "Ivan Demidov",     position: "R" }
+      - line: 4
+        players:
+          - { name: "Phillip Danault",  position: "C" }
+          - { name: "Josh Anderson",    position: "R" }
+          - { name: "Jake Evans",       position: "C" }
+
+# What changed between G3 and G4 — derived facts.
+changes_vs_previous_game:
+  MTL:
+    line_reshuffles: []         # No line-blender from G3 to G4
+    personnel_changes_in_out: [] # Same 18 skaters, same goalie
+  TBL:
+    personnel_changes_in_out:
+      - in:  "Max Crozier"
+        out: "Declan Carlile"
+        position: "D"
+        rationale: |
+          Carlile was -3 / 11:20 TOI in Game 3. Crozier inserted at RHD on the
+          third pair; Lilleberg shifted from R to L (his natural side). Cooper's
+          third different right-side defenseman in four games (Hedman + D'Astous
+          out long-term). See game4_pregame_swap.numbers.json for the swap-engine
+          projection (+0.11 net xG/game, 80% CI [−0.08, +0.31] — straddled zero).
+    line_reshuffles: []

@@ -1,0 +1,1167 @@
+{
+  "meta": {
+    "as_of": "2026-04-27",
+    "game_id": "2025030124",
+    "matchup": "TBL @ MTL",
+    "result": "TBL 3 - MTL 2 (regulation)",
+    "series_state_after_g4": "tied 2-2",
+    "data_sources": [
+      "NHL.com PBP (live + post-game)",
+      "NHL.com boxscore",
+      "NHL.com shifts (post-game; complete P1+P2+P3)",
+      "Natural Stat Trick — refreshed 2026-04-27 (team_stats + skater_stats, season 25-26 stype=3)"
+    ],
+    "method_note": "5v5 + 5v4 series totals from NST teamtable through Game 4. Goalscorer counts and goalie SV% are PBP-direct (canonical method per CLAUDE.md §3). Per-skater iso impacts use the on/off formulation in legacy/analytics/swap_engine.py."
+  },
+  "series_5v5": {
+    "MTL": {
+      "gp": 4,
+      "toi_min": 179.95,
+      "gf": 6.0,
+      "ga": 6.0,
+      "xgf": 6.01,
+      "xga": 5.34,
+      "cf_pct": 43.88,
+      "hdcf_pct": 60.47,
+      "xgf_pct": 52.96,
+      "sf": 57.0,
+      "sa": 63.0
+    },
+    "T.B": {
+      "gp": 4,
+      "toi_min": 179.95,
+      "gf": 6.0,
+      "ga": 6.0,
+      "xgf": 5.34,
+      "xga": 6.01,
+      "cf_pct": 56.12,
+      "hdcf_pct": 39.53,
+      "xgf_pct": 47.04,
+      "sf": 63.0,
+      "sa": 57.0
+    }
+  },
+  "series_5v4": {
+    "MTL": {
+      "gp": 4,
+      "toi_min": 31.083333333333332,
+      "gf": 5.0,
+      "ga": 0.0,
+      "xgf": 4.9,
+      "xga": 0.0,
+      "cf_pct": 98.18,
+      "hdcf_pct": 100.0,
+      "xgf_pct": 100.0,
+      "sf": 30.0,
+      "sa": 0.0
+    },
+    "T.B": {
+      "gp": 4,
+      "toi_min": 32.21666666666667,
+      "gf": 4.0,
+      "ga": 0.0,
+      "xgf": 5.27,
+      "xga": 0.09,
+      "cf_pct": 94.12,
+      "hdcf_pct": 100.0,
+      "xgf_pct": 98.26,
+      "sf": 27.0,
+      "sa": 3.0
+    }
+  },
+  "per_game": {
+    "G1": {
+      "game_id": "2025030121",
+      "date": "2026-04-19",
+      "home": "TBL",
+      "away": "MTL",
+      "home_score": 3,
+      "away_score": 4,
+      "home_sog": 23,
+      "away_sog": 19
+    },
+    "G2": {
+      "game_id": "2025030122",
+      "date": "2026-04-21",
+      "home": "TBL",
+      "away": "MTL",
+      "home_score": 3,
+      "away_score": 2,
+      "home_sog": 34,
+      "away_sog": 27
+    },
+    "G3": {
+      "game_id": "2025030123",
+      "date": "2026-04-24",
+      "home": "MTL",
+      "away": "TBL",
+      "home_score": 3,
+      "away_score": 2,
+      "home_sog": 29,
+      "away_sog": 17
+    },
+    "G4": {
+      "game_id": "2025030124",
+      "date": "2026-04-26",
+      "home": "MTL",
+      "away": "TBL",
+      "home_score": 2,
+      "away_score": 3,
+      "home_sog": 18,
+      "away_sog": 20
+    }
+  },
+  "series_goalscorers": {
+    "MTL": {
+      "J. Anderson": 2,
+      "J. Slafkovský": 3,
+      "L. Hutson": 2,
+      "A. Texier": 1,
+      "K. Dach": 1,
+      "Z. Bolduc": 1,
+      "C. Caufield": 1
+    },
+    "TBL": {
+      "D. Raddysh": 1,
+      "B. Hagel": 6,
+      "N. Kucherov": 1,
+      "J. Moser": 1,
+      "B. Point": 1,
+      "J. Guentzel": 1
+    }
+  },
+  "individual": [
+    {
+      "name": "B. Hagel",
+      "g": 6,
+      "a1": 0,
+      "a2": 1,
+      "sog": 9
+    },
+    {
+      "name": "J. Guentzel",
+      "g": 1,
+      "a1": 4,
+      "a2": 2,
+      "sog": 10
+    },
+    {
+      "name": "N. Kucherov",
+      "g": 1,
+      "a1": 3,
+      "a2": 2,
+      "sog": 14
+    },
+    {
+      "name": "L. Hutson",
+      "g": 2,
+      "a1": 1,
+      "a2": 1,
+      "sog": 11
+    },
+    {
+      "name": "C. Caufield",
+      "g": 1,
+      "a1": 1,
+      "a2": 2,
+      "sog": 6
+    },
+    {
+      "name": "N. Suzuki",
+      "g": 0,
+      "a1": 2,
+      "a2": 2,
+      "sog": 7
+    },
+    {
+      "name": "J. Slafkovský",
+      "g": 3,
+      "a1": 0,
+      "a2": 0,
+      "sog": 12
+    },
+    {
+      "name": "Z. Bolduc",
+      "g": 1,
+      "a1": 1,
+      "a2": 1,
+      "sog": 7
+    },
+    {
+      "name": "J. Moser",
+      "g": 1,
+      "a1": 1,
+      "a2": 1,
+      "sog": 7
+    },
+    {
+      "name": "A. Texier",
+      "g": 1,
+      "a1": 1,
+      "a2": 1,
+      "sog": 4
+    },
+    {
+      "name": "J. Anderson",
+      "g": 2,
+      "a1": 0,
+      "a2": 0,
+      "sog": 6
+    },
+    {
+      "name": "D. Raddysh",
+      "g": 1,
+      "a1": 0,
+      "a2": 1,
+      "sog": 14
+    },
+    {
+      "name": "K. Dach",
+      "g": 1,
+      "a1": 0,
+      "a2": 1,
+      "sog": 3
+    },
+    {
+      "name": "A. Cirelli",
+      "g": 0,
+      "a1": 2,
+      "a2": 0,
+      "sog": 2
+    },
+    {
+      "name": "B. Point",
+      "g": 1,
+      "a1": 0,
+      "a2": 0,
+      "sog": 8
+    },
+    {
+      "name": "M. Matheson",
+      "g": 0,
+      "a1": 0,
+      "a2": 1,
+      "sog": 7
+    },
+    {
+      "name": "I. Demidov",
+      "g": 0,
+      "a1": 1,
+      "a2": 0,
+      "sog": 6
+    },
+    {
+      "name": "P. Danault",
+      "g": 0,
+      "a1": 1,
+      "a2": 0,
+      "sog": 5
+    },
+    {
+      "name": "K. Guhle",
+      "g": 0,
+      "a1": 1,
+      "a2": 0,
+      "sog": 4
+    },
+    {
+      "name": "E. Cernak",
+      "g": 0,
+      "a1": 0,
+      "a2": 1,
+      "sog": 3
+    },
+    {
+      "name": "A. Xhekaj",
+      "g": 0,
+      "a1": 1,
+      "a2": 0,
+      "sog": 3
+    },
+    {
+      "name": "J. Evans",
+      "g": 0,
+      "a1": 0,
+      "a2": 1,
+      "sog": 3
+    },
+    {
+      "name": "A. Carrier",
+      "g": 0,
+      "a1": 1,
+      "a2": 0,
+      "sog": 1
+    },
+    {
+      "name": "R. McDonagh",
+      "g": 0,
+      "a1": 0,
+      "a2": 1,
+      "sog": 1
+    },
+    {
+      "name": "N. Paul",
+      "g": 0,
+      "a1": 0,
+      "a2": 0,
+      "sog": 5
+    },
+    {
+      "name": "C. Perry",
+      "g": 0,
+      "a1": 0,
+      "a2": 0,
+      "sog": 4
+    },
+    {
+      "name": "Y. Gourde",
+      "g": 0,
+      "a1": 0,
+      "a2": 0,
+      "sog": 4
+    },
+    {
+      "name": "A. Newhook",
+      "g": 0,
+      "a1": 0,
+      "a2": 0,
+      "sog": 3
+    },
+    {
+      "name": "O. Kapanen",
+      "g": 0,
+      "a1": 0,
+      "a2": 0,
+      "sog": 3
+    },
+    {
+      "name": "G. Goncalves",
+      "g": 0,
+      "a1": 0,
+      "a2": 0,
+      "sog": 3
+    },
+    {
+      "name": "D. James",
+      "g": 0,
+      "a1": 0,
+      "a2": 0,
+      "sog": 3
+    },
+    {
+      "name": "Z. Girgensons",
+      "g": 0,
+      "a1": 0,
+      "a2": 0,
+      "sog": 2
+    },
+    {
+      "name": "E. Lilleberg",
+      "g": 0,
+      "a1": 0,
+      "a2": 0,
+      "sog": 2
+    },
+    {
+      "name": "J. Struble",
+      "g": 0,
+      "a1": 0,
+      "a2": 0,
+      "sog": 2
+    },
+    {
+      "name": "M. Crozier",
+      "g": 0,
+      "a1": 0,
+      "a2": 0,
+      "sog": 2
+    },
+    {
+      "name": "D. Carlile",
+      "g": 0,
+      "a1": 0,
+      "a2": 0,
+      "sog": 1
+    }
+  ],
+  "goalies": {
+    "Dobeš": {
+      "shots_faced": 94,
+      "goals_against": 11,
+      "sv_pct": 0.883,
+      "games": 4
+    },
+    "Vasilevskiy": {
+      "shots_faced": 93,
+      "goals_against": 11,
+      "sv_pct": 0.882,
+      "games": 4
+    }
+  },
+  "mtl_progression": {
+    "movers_up": [
+      {
+        "name": "Arber Xhekaj",
+        "position": "D",
+        "toi_p": 38.983333333333,
+        "toi_r": 715.36666666667,
+        "net_r": -0.602,
+        "net_p": 2.662,
+        "delta": 3.263
+      },
+      {
+        "name": "Jayden Struble",
+        "position": "D",
+        "toi_p": 45.616666666667,
+        "toi_r": 798.9,
+        "net_r": -0.021,
+        "net_p": 2.467,
+        "delta": 2.488
+      },
+      {
+        "name": "Zachary Bolduc",
+        "position": "R",
+        "toi_p": 39.05,
+        "toi_r": 919.03333333333,
+        "net_r": 0.37,
+        "net_p": 2.796,
+        "delta": 2.425
+      },
+      {
+        "name": "Kirby Dach",
+        "position": "C",
+        "toi_p": 36.633333333333,
+        "toi_r": 440.15,
+        "net_r": -0.075,
+        "net_p": 1.611,
+        "delta": 1.686
+      },
+      {
+        "name": "Oliver Kapanen",
+        "position": "C",
+        "toi_p": 32.7,
+        "toi_r": 933.45,
+        "net_r": -0.991,
+        "net_p": 0.153,
+        "delta": 1.144
+      }
+    ],
+    "movers_down": [
+      {
+        "name": "Cole Caufield",
+        "position": "R",
+        "toi_p": 51.9,
+        "toi_r": 1086.15,
+        "net_r": 1.001,
+        "net_p": -1.207,
+        "delta": -2.209
+      },
+      {
+        "name": "Nick Suzuki",
+        "position": "C",
+        "toi_p": 56.65,
+        "toi_r": 1203.2666666667,
+        "net_r": 0.778,
+        "net_p": -1.099,
+        "delta": -1.877
+      },
+      {
+        "name": "Lane Hutson",
+        "position": "D",
+        "toi_p": 75.833333333333,
+        "toi_r": 1501.8666666667,
+        "net_r": 1.136,
+        "net_p": -0.468,
+        "delta": -1.604
+      },
+      {
+        "name": "Alexandre Carrier",
+        "position": "D",
+        "toi_p": 63.316666666667,
+        "toi_r": 1118.95,
+        "net_r": 0.059,
+        "net_p": -1.295,
+        "delta": -1.354
+      },
+      {
+        "name": "Mike Matheson",
+        "position": "D",
+        "toi_p": 64.65,
+        "toi_r": 1438.7333333333,
+        "net_r": -0.563,
+        "net_p": -1.71,
+        "delta": -1.147
+      }
+    ],
+    "all": [
+      {
+        "name": "Arber Xhekaj",
+        "position": "D",
+        "toi_p": 38.983333333333,
+        "toi_r": 715.36666666667,
+        "net_r": -0.602,
+        "net_p": 2.662,
+        "delta": 3.263
+      },
+      {
+        "name": "Jayden Struble",
+        "position": "D",
+        "toi_p": 45.616666666667,
+        "toi_r": 798.9,
+        "net_r": -0.021,
+        "net_p": 2.467,
+        "delta": 2.488
+      },
+      {
+        "name": "Zachary Bolduc",
+        "position": "R",
+        "toi_p": 39.05,
+        "toi_r": 919.03333333333,
+        "net_r": 0.37,
+        "net_p": 2.796,
+        "delta": 2.425
+      },
+      {
+        "name": "Kirby Dach",
+        "position": "C",
+        "toi_p": 36.633333333333,
+        "toi_r": 440.15,
+        "net_r": -0.075,
+        "net_p": 1.611,
+        "delta": 1.686
+      },
+      {
+        "name": "Oliver Kapanen",
+        "position": "C",
+        "toi_p": 32.7,
+        "toi_r": 933.45,
+        "net_r": -0.991,
+        "net_p": 0.153,
+        "delta": 1.144
+      },
+      {
+        "name": "Josh Anderson",
+        "position": "R",
+        "toi_p": 47.316666666667,
+        "toi_r": 808.28333333333,
+        "net_r": -0.495,
+        "net_p": 0.213,
+        "delta": 0.708
+      },
+      {
+        "name": "Jake Evans",
+        "position": "C",
+        "toi_p": 44.533333333333,
+        "toi_r": 799.61666666667,
+        "net_r": -0.138,
+        "net_p": 0.043,
+        "delta": 0.181
+      },
+      {
+        "name": "Ivan Demidov",
+        "position": "R",
+        "toi_p": 41.133333333333,
+        "toi_r": 932.43333333333,
+        "net_r": -0.305,
+        "net_p": -0.535,
+        "delta": -0.231
+      },
+      {
+        "name": "Alex Newhook",
+        "position": "C",
+        "toi_p": 44.05,
+        "toi_r": 493.93333333333,
+        "net_r": -0.727,
+        "net_p": -1.432,
+        "delta": -0.706
+      },
+      {
+        "name": "Kaiden Guhle",
+        "position": "D",
+        "toi_p": 72.133333333333,
+        "toi_r": 658.18333333333,
+        "net_r": -0.225,
+        "net_p": -0.942,
+        "delta": -0.717
+      },
+      {
+        "name": "Juraj Slafkovský",
+        "position": "L",
+        "toi_p": 54.666666666667,
+        "toi_r": 1137.5666666667,
+        "net_r": 0.047,
+        "net_p": -0.857,
+        "delta": -0.904
+      },
+      {
+        "name": "Mike Matheson",
+        "position": "D",
+        "toi_p": 64.65,
+        "toi_r": 1438.7333333333,
+        "net_r": -0.563,
+        "net_p": -1.71,
+        "delta": -1.147
+      },
+      {
+        "name": "Alexandre Carrier",
+        "position": "D",
+        "toi_p": 63.316666666667,
+        "toi_r": 1118.95,
+        "net_r": 0.059,
+        "net_p": -1.295,
+        "delta": -1.354
+      },
+      {
+        "name": "Lane Hutson",
+        "position": "D",
+        "toi_p": 75.833333333333,
+        "toi_r": 1501.8666666667,
+        "net_r": 1.136,
+        "net_p": -0.468,
+        "delta": -1.604
+      },
+      {
+        "name": "Nick Suzuki",
+        "position": "C",
+        "toi_p": 56.65,
+        "toi_r": 1203.2666666667,
+        "net_r": 0.778,
+        "net_p": -1.099,
+        "delta": -1.877
+      },
+      {
+        "name": "Cole Caufield",
+        "position": "R",
+        "toi_p": 51.9,
+        "toi_r": 1086.15,
+        "net_r": 1.001,
+        "net_p": -1.207,
+        "delta": -2.209
+      }
+    ]
+  },
+  "companion_analyses": {
+    "periods_live_and_postgame": "game4_periods.numbers.json",
+    "slaf_hit_buckets": "game4_slaf_hit.numbers.json",
+    "pregame_swap_projection": "game4_pregame_swap.numbers.json"
+  },
+  "goal_sequence": [
+    {
+      "period": 2,
+      "time": "10:06",
+      "owner": "MTL",
+      "scorer": "Z. Bolduc",
+      "scorer_pid": 8482737,
+      "assist1": "K. Guhle",
+      "assist2": "A. Texier",
+      "situation": "5v5",
+      "on_ice": [
+        {
+          "name": "A. Newhook",
+          "team": "MTL"
+        },
+        {
+          "name": "Z. Bolduc",
+          "team": "MTL"
+        },
+        {
+          "name": "K. Dach",
+          "team": "MTL"
+        },
+        {
+          "name": "A. Texier",
+          "team": "MTL"
+        },
+        {
+          "name": "O. Kapanen",
+          "team": "MTL"
+        },
+        {
+          "name": "I. Demidov",
+          "team": "MTL"
+        },
+        {
+          "name": "J. Struble",
+          "team": "MTL"
+        },
+        {
+          "name": "A. Xhekaj",
+          "team": "MTL"
+        },
+        {
+          "name": "D. James",
+          "team": "TBL"
+        },
+        {
+          "name": "O. Bjorkstrand",
+          "team": "TBL"
+        },
+        {
+          "name": "G. Goncalves",
+          "team": "TBL"
+        },
+        {
+          "name": "R. McDonagh",
+          "team": "TBL"
+        },
+        {
+          "name": "D. Raddysh",
+          "team": "TBL"
+        },
+        {
+          "name": "E. Cernak",
+          "team": "TBL"
+        },
+        {
+          "name": "J. Moser",
+          "team": "TBL"
+        }
+      ],
+      "on_ice_complete": true
+    },
+    {
+      "period": 2,
+      "time": "13:29",
+      "owner": "MTL",
+      "scorer": "C. Caufield",
+      "scorer_pid": 8481540,
+      "assist1": "N. Suzuki",
+      "assist2": "L. Hutson",
+      "situation": "5v4",
+      "on_ice": [
+        {
+          "name": "C. Caufield",
+          "team": "MTL"
+        },
+        {
+          "name": "N. Suzuki",
+          "team": "MTL"
+        },
+        {
+          "name": "J. Slafkovský",
+          "team": "MTL"
+        },
+        {
+          "name": "Z. Bolduc",
+          "team": "MTL"
+        },
+        {
+          "name": "K. Dach",
+          "team": "MTL"
+        },
+        {
+          "name": "A. Texier",
+          "team": "MTL"
+        },
+        {
+          "name": "I. Demidov",
+          "team": "MTL"
+        },
+        {
+          "name": "J. Struble",
+          "team": "MTL"
+        },
+        {
+          "name": "L. Hutson",
+          "team": "MTL"
+        },
+        {
+          "name": "A. Xhekaj",
+          "team": "MTL"
+        },
+        {
+          "name": "C. Perry",
+          "team": "TBL"
+        },
+        {
+          "name": "N. Paul",
+          "team": "TBL"
+        },
+        {
+          "name": "Z. Girgensons",
+          "team": "TBL"
+        },
+        {
+          "name": "Y. Gourde",
+          "team": "TBL"
+        },
+        {
+          "name": "M. Crozier",
+          "team": "TBL"
+        },
+        {
+          "name": "E. Lilleberg",
+          "team": "TBL"
+        },
+        {
+          "name": "J. Moser",
+          "team": "TBL"
+        }
+      ],
+      "on_ice_complete": true
+    },
+    {
+      "period": 2,
+      "time": "19:06",
+      "owner": "TBL",
+      "scorer": "J. Guentzel",
+      "scorer_pid": 8477404,
+      "assist1": "J. Moser",
+      "assist2": "D. Raddysh",
+      "situation": "4v4",
+      "on_ice": [
+        {
+          "name": "C. Caufield",
+          "team": "MTL"
+        },
+        {
+          "name": "N. Suzuki",
+          "team": "MTL"
+        },
+        {
+          "name": "A. Newhook",
+          "team": "MTL"
+        },
+        {
+          "name": "I. Demidov",
+          "team": "MTL"
+        },
+        {
+          "name": "K. Guhle",
+          "team": "MTL"
+        },
+        {
+          "name": "A. Carrier",
+          "team": "MTL"
+        },
+        {
+          "name": "J. Struble",
+          "team": "MTL"
+        },
+        {
+          "name": "L. Hutson",
+          "team": "MTL"
+        },
+        {
+          "name": "B. Point",
+          "team": "TBL"
+        },
+        {
+          "name": "J. Guentzel",
+          "team": "TBL"
+        },
+        {
+          "name": "A. Cirelli",
+          "team": "TBL"
+        },
+        {
+          "name": "N. Kucherov",
+          "team": "TBL"
+        },
+        {
+          "name": "M. Crozier",
+          "team": "TBL"
+        },
+        {
+          "name": "R. McDonagh",
+          "team": "TBL"
+        },
+        {
+          "name": "D. Raddysh",
+          "team": "TBL"
+        },
+        {
+          "name": "J. Moser",
+          "team": "TBL"
+        }
+      ],
+      "on_ice_complete": true
+    },
+    {
+      "period": 3,
+      "time": "01:40",
+      "owner": "TBL",
+      "scorer": "B. Hagel",
+      "scorer_pid": 8479542,
+      "assist1": "N. Kucherov",
+      "assist2": "J. Guentzel",
+      "situation": "5v4",
+      "on_ice": [
+        {
+          "name": "A. Newhook",
+          "team": "MTL"
+        },
+        {
+          "name": "J. Evans",
+          "team": "MTL"
+        },
+        {
+          "name": "Z. Bolduc",
+          "team": "MTL"
+        },
+        {
+          "name": "K. Dach",
+          "team": "MTL"
+        },
+        {
+          "name": "A. Texier",
+          "team": "MTL"
+        },
+        {
+          "name": "M. Matheson",
+          "team": "MTL"
+        },
+        {
+          "name": "K. Guhle",
+          "team": "MTL"
+        },
+        {
+          "name": "A. Carrier",
+          "team": "MTL"
+        },
+        {
+          "name": "L. Hutson",
+          "team": "MTL"
+        },
+        {
+          "name": "B. Point",
+          "team": "TBL"
+        },
+        {
+          "name": "Y. Gourde",
+          "team": "TBL"
+        },
+        {
+          "name": "B. Hagel",
+          "team": "TBL"
+        },
+        {
+          "name": "J. Guentzel",
+          "team": "TBL"
+        },
+        {
+          "name": "A. Cirelli",
+          "team": "TBL"
+        },
+        {
+          "name": "N. Kucherov",
+          "team": "TBL"
+        },
+        {
+          "name": "R. McDonagh",
+          "team": "TBL"
+        },
+        {
+          "name": "D. Raddysh",
+          "team": "TBL"
+        },
+        {
+          "name": "E. Cernak",
+          "team": "TBL"
+        }
+      ],
+      "on_ice_complete": true
+    },
+    {
+      "period": 3,
+      "time": "15:07",
+      "owner": "TBL",
+      "scorer": "B. Hagel",
+      "scorer_pid": 8479542,
+      "assist1": "N. Kucherov",
+      "assist2": "J. Moser",
+      "situation": "5v5",
+      "on_ice": [
+        {
+          "name": "C. Caufield",
+          "team": "MTL"
+        },
+        {
+          "name": "N. Suzuki",
+          "team": "MTL"
+        },
+        {
+          "name": "J. Slafkovský",
+          "team": "MTL"
+        },
+        {
+          "name": "Z. Bolduc",
+          "team": "MTL"
+        },
+        {
+          "name": "K. Dach",
+          "team": "MTL"
+        },
+        {
+          "name": "A. Texier",
+          "team": "MTL"
+        },
+        {
+          "name": "M. Matheson",
+          "team": "MTL"
+        },
+        {
+          "name": "A. Carrier",
+          "team": "MTL"
+        },
+        {
+          "name": "B. Point",
+          "team": "TBL"
+        },
+        {
+          "name": "Y. Gourde",
+          "team": "TBL"
+        },
+        {
+          "name": "B. Hagel",
+          "team": "TBL"
+        },
+        {
+          "name": "J. Guentzel",
+          "team": "TBL"
+        },
+        {
+          "name": "A. Cirelli",
+          "team": "TBL"
+        },
+        {
+          "name": "N. Kucherov",
+          "team": "TBL"
+        },
+        {
+          "name": "R. McDonagh",
+          "team": "TBL"
+        },
+        {
+          "name": "D. Raddysh",
+          "team": "TBL"
+        },
+        {
+          "name": "E. Cernak",
+          "team": "TBL"
+        },
+        {
+          "name": "J. Moser",
+          "team": "TBL"
+        }
+      ],
+      "on_ice_complete": true
+    }
+  ],
+  "hagel_by_period": {
+    "P1": {
+      "score": 0.0,
+      "g": 0,
+      "a": 0,
+      "sog": 0,
+      "ind_hd_attempts": 0
+    },
+    "P2": {
+      "score": 1.75,
+      "g": 0,
+      "a": 0,
+      "sog": 1,
+      "ind_hd_attempts": 1
+    },
+    "P3": {
+      "score": 9.55,
+      "g": 2,
+      "a": 0,
+      "sog": 2,
+      "ind_hd_attempts": 2
+    }
+  },
+  "crozier_on_ice": {
+    "goals_for_oi": 1,
+    "goals_against_oi": 1,
+    "shifts_in_p1p2": 16,
+    "team": "TBL"
+  },
+  "slaf_hit_buckets": {
+    "pre": {
+      "label": "PRE-hit: P1 + P2 up to 17:48",
+      "period_range": "P1 (0:00-20:00) + P2 (0:00-17:48)",
+      "slaf_sog": 2,
+      "slaf_missed": 3,
+      "slaf_blocked": 0,
+      "slaf_goals": 0,
+      "slaf_hits_for": 2,
+      "slaf_hits_against": 1,
+      "slaf_blocks_made": 1,
+      "slaf_giveaways": 0,
+      "slaf_takeaways": 0,
+      "mtl_cf_5v5": 3,
+      "tbl_cf_5v5": 10,
+      "mtl_hdcf_5v5": 0,
+      "tbl_hdcf_5v5": 5,
+      "mtl_sog_oi": 7,
+      "tbl_sog_oi": 2,
+      "mtl_goals_oi": 1,
+      "tbl_goals_oi": 0,
+      "slaf_toi_sec": 693,
+      "shifts_count": 12,
+      "mtl_cf_pct_5v5": 23.1,
+      "mtl_hdcf_pct_5v5": 0.0,
+      "slaf_toi_min": 11.55,
+      "mtl_xg_share_5v5": 23.1
+    },
+    "post": {
+      "label": "POST-hit: P2 17:48 onward + P3",
+      "period_range": "P2 (17:48-20:00) + P3 (full)",
+      "slaf_sog": 0,
+      "slaf_missed": 0,
+      "slaf_blocked": 0,
+      "slaf_goals": 0,
+      "slaf_hits_for": 0,
+      "slaf_hits_against": 2,
+      "slaf_blocks_made": 0,
+      "slaf_giveaways": 0,
+      "slaf_takeaways": 0,
+      "mtl_cf_5v5": 4,
+      "tbl_cf_5v5": 2,
+      "mtl_hdcf_5v5": 0,
+      "tbl_hdcf_5v5": 1,
+      "mtl_sog_oi": 1,
+      "tbl_sog_oi": 1,
+      "mtl_goals_oi": 0,
+      "tbl_goals_oi": 1,
+      "slaf_toi_sec": 280,
+      "shifts_count": 7,
+      "mtl_cf_pct_5v5": 66.7,
+      "mtl_hdcf_pct_5v5": 0.0,
+      "slaf_toi_min": 4.67,
+      "mtl_xg_share_5v5": 66.7
+    },
+    "deltas": {
+      "slaf_sog": -2,
+      "slaf_hits_against": 1,
+      "slaf_toi_min": -6.88,
+      "mtl_cf_pct_5v5_pp": 43.6,
+      "mtl_hdcf_pct_5v5_pp": 0
+    },
+    "hit_event": {
+      "period": 2,
+      "time_elapsed": "17:48",
+      "time_remaining_in_period": "02:12",
+      "hitter": "Max Crozier (TBL D)",
+      "hittee": "Juraj Slafkovský (MTL L)",
+      "zone": "Neutral",
+      "story_hook": "Crozier was the very defenseman Tampa inserted for Game 4 — the Carlile-out / Crozier-in swap projected at +0.11 net xG/game pre-game."
+    }
+  },
+  "swap_projection": {
+    "out": "Declan Carlile",
+    "in": "Max Crozier",
+    "delta_xgf_per_game": 0.1137,
+    "delta_xga_per_game": 0.0039,
+    "delta_net_per_game": 0.1099,
+    "delta_xgf_ci80": [
+      -0.0811,
+      0.3086
+    ],
+    "delta_xga_ci80": [
+      -0.1848,
+      0.1925
+    ]
+  }
+}
