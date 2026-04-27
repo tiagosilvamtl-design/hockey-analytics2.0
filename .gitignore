@@ -69,3 +69,5 @@ google-credentials.json
 google-token.json
 .lemieux/
 node_modules/
+# Deck workspace: keep sources + output, ignore vendored html2pptx copy
+deck/html2pptx.js
