@@ -60,9 +60,11 @@ For the Game 3 post, swap `playoff_rankings` → `game3_analysis` in step 1 and 
 
 1. **Analyzer → JSON → renderer → guard → docx → Drive** as the canonical pipeline.
 2. **Structured input files** (`game3_lineups.yaml`, `game3_usage_observations.yaml`) as canonical fact bases that the renderer reads from. The renderer never improvises facts that the data could provide.
-3. **Build-time prose fact-check guard** — `runProseFactCheck()` walks every prose string in the language objects and aborts the build if any roster name with 0 goals appears as the subject of a scoring verb. The pattern can (and should) be extended to validate other kinds of factual claims (ice time, assist credits, etc.) as the framework matures.
-4. **Branded EN+FR docx output** — same structure both languages, FR prose run through `translate-to-quebec-fr` style.
-5. **Caveats over confidence** — every section that cites a small-sample number explicitly flags it. The reader always knows when they're looking at a robust signal vs. a directional read.
+3. **Per-game context files** (`game1_context.yaml` … `game4_context.yaml`) as the canonical cross-game fact base. Any doc that references events from a previously analyzed game (a fight, a hit, a final score, a series state) MUST read the relevant context file first — prose memory is not a source. See [`docs/en/game-context-files.md`](../../docs/en/game-context-files.md) for the schema and `examples/habs_round1_2026/game_context_check.js` for the mechanical guard (`assertGameClaim`, `assertScore`, `assertSeriesState` — abort with exit code 8 on mismatch).
+4. **Build-time prose fact-check guard** — `runProseFactCheck()` walks every prose string in the language objects and aborts the build if any roster name with 0 goals appears as the subject of a scoring verb. The pattern can (and should) be extended to validate other kinds of factual claims (ice time, assist credits, etc.) as the framework matures.
+5. **Branded EN+FR docx output** — same structure both languages, FR prose run through `translate-to-quebec-fr` style.
+6. **Caveats over confidence** — every section that cites a small-sample number explicitly flags it. The reader always knows when they're looking at a robust signal vs. a directional read.
+7. **Live in-game pipeline** (`game4_periods.py` + `build_game4_periods_post.js`) — generic multi-period analyzer that auto-detects completed periods from PBP `period-end` events, computes per-period rankings + cumulative + period-over-period deltas, and renders a docx with the **score barème** legend (calibrated on 2024 + 2025 playoffs via `tools/score_calibration.py`) coloring each composite-score cell by tier (Awful / Mediocre / Good / Excellent). When `gameState=='FINAL'` the renderer also adds a goal-sequence narrative table, pre-game-thesis check, and player-of-the-match spotlight.
 
 ## Known caveats / data integrity notes
 

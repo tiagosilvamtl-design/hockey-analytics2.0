@@ -122,6 +122,31 @@ The framework's data invariant. Every renderer reads from here. Critical fields 
 
 The qualitative-deployment layer the box score can't tell you. Read by `draft-game-post` to populate the "Usage observations" table. Schema in `.claude/skills/research-game/SKILL.md`.
 
+### `<gameN>_context.yaml` — canonical per-game context (REQUIRED for cross-game references)
+
+Every game we ever analyze gets a `<gameN>_context.yaml` file. This is the canonical fact base for that game — the single source of truth a future doc must consult when it references the game by number, by event, or by score.
+
+**The rule:** if a doc you're writing refers to events from a previously analyzed game (e.g. "the Hagel fight in Game 2", "MTL won Game 3 in OT", "Crozier hit Slafkovský in Game 4"), you MUST read the relevant `<gameN>_context.yaml` first and verify the claim against it. **Prose memory is not a source.** This rule exists because the framework already shipped a Slaf hit analysis that mis-attributed the Hagel fight to Game 3 when it was Game 2 — exactly the kind of error a context file prevents.
+
+**Schema** (see `tools/build_game_context.py` for the data-derivable subset):
+
+- `schema_version`, `game_id`, `date`, `season`, `game_type`
+- `series`, `series_game` — index in the series (1, 2, 3, 4, ...)
+- `home_team`, `away_team`, `matchup`, `final_score`, `result`
+- `regulation_or_overtime` (`REG` / `OT` / `SO`)
+- `goalies` — name per team
+- `goalscorers` — `{team: {name: count}}`
+- `goal_sequence` — list of goals in chronological order with period, time, scorer, assists, situation
+- `key_events[]` — fights, marquee hits, ejections, injuries. Each has a `kind`, `period`, `time_in_period`, `significance` (manual narrative). Cross-game framework anchors should be flagged with `FRAMEWORK ANCHOR:` in the significance line.
+- `series_state_after_game` — e.g. `MTL leads 2-1`, `tied 2-2`
+- `file_pointers` — URLs + relative paths to PBP, boxscore, shifts, analyzer output, lineups yaml
+- `related_briefs[]` — list of report files that consumed this game's data
+- `notes` — free-form narrative the data alone can't capture
+
+**Generation:** `tools/build_game_context.py` populates the data-derivable fields from NHL.com PBP + boxscore. Manual fields (`significance`, `series_state_after_game`, `notes`) are filled in by hand.
+
+**Cross-game fact-check rule:** when extending the renderer's prose fact-check guard (see §5), **add a check that verifies any "Game N" claim resolves to a real `gameN_context.yaml` with matching attributes** (e.g., if prose says "Game 2 Hagel fight at P2 5:14", the guard should look it up in `game2_context.yaml` and confirm there's a `key_events[]` entry with `kind: fight` and `time_in_period: "05:14"`). This is the mechanical safeguard. The instinctive safeguard is: **read the context file first.**
+
 ---
 
 ## 5. The prose fact-check guard
@@ -252,6 +277,7 @@ research/, reearch/                          ← input research notes (gitignore
 
 ## 9. What NOT to do
 
+- **Don't reference a previously analyzed game from prose memory.** If you write "the Hagel fight in Game 3" or "MTL won Game 1 in OT", load the relevant `<gameN>_context.yaml` first and confirm the claim against it. The framework already shipped one report with the Hagel fight mis-attributed to Game 3 (it was Game 2). The fix is upstream — context-file lookup, not downstream verification.
 - **Don't write prose about line roles without loading `<gameN>_lineups.yaml` first.** It will be wrong eventually; the structural fix is upstream loading, not downstream verification.
 - **Don't claim a player scored without checking `D.series_goalscorers`.** The prose fact-check guard will abort the build, but you're expected to not produce the violation in the first place.
 - **Don't restate pre-series narrative ("Tampa drives possession") as if it's a finding.** The reader knew that yesterday. Either reframe with the analysis-derived value-add or cut.

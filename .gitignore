@@ -61,6 +61,8 @@ reearch/
 
 # Local Claude Code settings (per-machine; never commit)
 .claude/settings.local.json
+.claude/scheduled_tasks.lock
+.claude/scheduled_tasks/
 
 # Google OAuth credentials and tokens (NEVER commit)
 google-credentials.json

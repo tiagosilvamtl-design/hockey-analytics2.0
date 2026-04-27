@@ -1,0 +1,128 @@
+# Canonical game context. Read this BEFORE writing any later doc that
+# references game 2 of Round 1, MTL vs TBL. The data-derivable
+# fields are populated from NHL.com; TODO_MANUAL fields require user fill-in.
+#
+# Schema: see CLAUDE.md - 'Per-game context files' section.
+
+schema_version: 1
+game_id: 2025030122
+date: 2026-04-21
+season: 20252026
+game_type: 3
+series: Round 1, MTL vs TBL
+series_game: 2
+matchup: MTL @ TBL
+home_team: TBL
+away_team: MTL
+final_score:
+  TBL: 3
+  MTL: 2
+result: TBL 3 - MTL 2 (OT)
+regulation_or_overtime: OT
+completed_periods:
+  - 1
+  - 2
+  - 3
+  - 4
+goalies:
+  TBL: A. Vasilevskiy
+  MTL: J. Dobes
+goalscorers:
+  TBL:
+    B. Hagel: 1
+    N. Kucherov: 1
+    J. Moser: 1
+  MTL:
+    L. Hutson: 1
+    J. Anderson: 1
+goal_sequence:
+  - period: 1
+    time: "08:40"
+    team: TBL
+    scorer: B. Hagel
+    assist1: J. Guentzel
+    assist2: E. Cernak
+    situation: 5v5
+  - period: 1
+    time: "16:11"
+    team: MTL
+    scorer: L. Hutson
+    assist1: N. Suzuki
+    assist2: C. Caufield
+    situation: 5v4
+  - period: 2
+    time: "18:36"
+    team: MTL
+    scorer: J. Anderson
+    assist1: P. Danault
+    assist2: J. Evans
+    situation: 5v5
+  - period: 3
+    time: "12:33"
+    team: TBL
+    scorer: N. Kucherov
+    assist1: A. Cirelli
+    assist2: B. Hagel
+    situation: 5v5
+  - period: 4
+    time: "12:48"
+    team: TBL
+    scorer: J. Moser
+    assist1: A. Cirelli
+    assist2: null
+    situation: 5v5
+key_events:
+  - kind: fight
+    period: 2
+    time_in_period: "05:14"
+    elapsed_sec_in_period: 314
+    primary_player: J. Slafkovský
+    team: MTL
+    details: 5-min fighting major; drawn by B. Hagel
+    significance: "Slafkovský-Hagel fight at P2 5:14 of Game 2 became the framework's
+      canonical pre/post-event marker for this series. The pre-fight bucket
+      (G1 + G2 up to P2 5:14) shows Slafkovský with 8 SOG / 3 goals on 29.9 min;
+      post-fight (G2 from 5:14 + G3) shows 2 SOG / 0 goals on 35.0 min. See
+      game3_analysis.numbers.json -> slaf_fight_buckets."
+  - kind: fight
+    period: 2
+    time_in_period: "05:14"
+    elapsed_sec_in_period: 314
+    primary_player: B. Hagel
+    team: TBL
+    details: 5-min fighting major; drawn by J. Slafkovský
+    significance: "Coincidental fighting majors. The pair drove the cross-game
+      framework anchor for the rest of the series."
+  - kind: hit
+    period: 3
+    time_in_period: "04:44"
+    hittee: J. Slafkovský
+    hitter: D. Raddysh
+    zone: D
+    significance: "Defensive-zone hit; lower-magnitude than the fight, included
+      for completeness."
+  - kind: hit
+    period: 3
+    time_in_period: "16:57"
+    hittee: J. Slafkovský
+    hitter: B. Hagel
+    zone: D
+    significance: "Late-period contact, post-fight bucket."
+series_state_after_game: "tied 1-1"
+file_pointers:
+  pbp_url: "https://api-web.nhle.com/v1/gamecenter/2025030122/play-by-play"
+  boxscore_url: "https://api-web.nhle.com/v1/gamecenter/2025030122/boxscore"
+  shifts_url: "https://api.nhle.com/stats/rest/en/shiftcharts?cayenneExp=gameId=2025030122"
+  analyzer_output: "(no per-game analyzer; covered by habs_round1_2026.numbers.json
+    standalone Round 1 report)"
+  lineups_yaml: "(not captured as standalone yaml; see legacy/analytics/habs_round1.py)"
+related_briefs:
+  - "examples/habs_round1_2026/habs_round1_2026.docx (covers G1+G2, pre-Game-3)"
+  - "examples/habs_round1_2026/game3_analysis.numbers.json (uses G2 fight as bucket cut)"
+notes: |
+  Game 2 swung on the Hagel-Slafkovský fight at P2 5:14, which the framework
+  has used ever since as the cross-game pre/post marker. TBL won 3-2 in OT
+  (J. Moser at 12:48 of OT). Series tied at 1-1 going to Montreal.
+  Goalies: Vasilevskiy (TBL), Dobeš (MTL).
+  Hagel scored a goal AND drew a fight from Slafkovský in the same period —
+  the kind of two-way swing the iso framework can't price.

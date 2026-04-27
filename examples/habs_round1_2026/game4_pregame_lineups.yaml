@@ -1,0 +1,80 @@
+# Pre-game announced lineups for Game 4 (TBL @ MTL, 2026-04-26 19:00 ET).
+# This file is INPUT to the pre-game analysis. Sourced from morning-skate
+# reports + beat reporters before puck drop. Treat as ground truth for the
+# pre-game brief; reconcile against shift data in the post-game pass.
+#
+# Sources:
+#   - dose.ca (Crozier in / Carlile out, morning-skate observation)
+#   - montrealhockeyfanatics.com (Lilleberg shift R→L, third blue-line change in 4 games)
+#   - NHL.com Canadiens "Updates from optional morning skate – Apr. 26"
+#   - NHL.com Canadiens "TBL@MTL: What you need to know | Game 4"
+
+game_id: "2025030124"
+date: "2026-04-26"
+matchup: "TBL @ MTL"
+status: "pre-game (puck drop 19:00 ET)"
+series_state: "MTL leads 2-1"
+
+teams:
+  MTL:
+    expected_changes_vs_g3: "none reported"
+    forwards:
+      - line: 1
+        players:
+          - { name: "Juraj Slafkovský", position: "L" }
+          - { name: "Nick Suzuki",      position: "C" }
+          - { name: "Cole Caufield",    position: "R" }
+      - line: 2
+        players:
+          - { name: "Alexandre Texier", position: "L" }
+          - { name: "Kirby Dach",       position: "C" }
+          - { name: "Zachary Bolduc",   position: "R" }
+      - line: 3
+        players:
+          - { name: "Alex Newhook",     position: "L" }
+          - { name: "Oliver Kapanen",   position: "C" }
+          - { name: "Ivan Demidov",     position: "R" }
+      - line: 4
+        players:
+          - { name: "Phillip Danault",  position: "C" }
+          - { name: "Josh Anderson",    position: "R" }
+          - { name: "Jake Evans",       position: "C" }
+    defense:
+      - pair: 1
+        players:
+          - { name: "Mike Matheson",     position: "D", side: "L" }
+          - { name: "Lane Hutson",       position: "D", side: "R" }
+      - pair: 2
+        players:
+          - { name: "Jayden Struble",    position: "D", side: "L" }
+          - { name: "Noah Dobson",       position: "D", side: "R" }
+      - pair: 3
+        players:
+          - { name: "Kaiden Guhle",      position: "D", side: "L" }
+          - { name: "Alexandre Carrier", position: "D", side: "R" }
+    goalie: "Jakub Dobeš"
+    starter_confirmed: false
+    morning_skate_note: "21 skaters at the optional morning skate; no public lineup adjustments signaled by St-Louis."
+
+  TBL:
+    expected_changes_vs_g3: "one D swap + side-shift on third pair"
+    defense_changes:
+      - in:  { name: "Max Crozier",     position: "D", side: "R" }
+        out: { name: "Declan Carlile",  position: "D", side: "L" }
+        rationale_from_press: "Carlile was -3 / 11:20 in Game 3; Crozier comes off ice first at morning skate, Carlile stays on (Dose / Montreal Hockey Fanatics)."
+      - shift:
+          player: "Emil Lilleberg"
+          new_side: "L"
+          prior_side: "R"
+          rationale_from_press: "Lilleberg, a left-shot, slides to the left of the third pair to make room for Crozier (RHD)."
+    out_long_term:
+      - { name: "Victor Hedman",      reason: "injury (out of series per recent press)" }
+      - { name: "Charle-Édouard D'Astous", reason: "injury — third straight game out, day-to-day, hit by Anderson Game 1" }
+    goalie: "Andrei Vasilevskiy"
+    starter_confirmed: false  # implied from series; no public anti-confirmation
+    third_pair_history_in_series:
+      g1: "D'Astous (R) – partner"
+      g2: "Carlile activated"
+      g3: "Carlile remains; -3 / 11:20"
+      g4_announced: "Crozier in for Carlile; Lilleberg switches to L"
+    series_blue_line_summary: "Three different defensemen rotated through Tampa's third pair across four games, with the Hedman + D'Astous absences forcing the rotation."

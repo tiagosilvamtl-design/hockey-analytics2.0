@@ -1,0 +1,125 @@
+# Canonical game context. Read this BEFORE writing any later doc that
+# references game 4 of Round 1, MTL vs TBL. The data-derivable
+# fields are populated from NHL.com; TODO_MANUAL fields require user fill-in.
+#
+# Schema: see CLAUDE.md - 'Per-game context files' section.
+
+schema_version: 1
+game_id: 2025030124
+date: 2026-04-26
+season: 20252026
+game_type: 3
+series: Round 1, MTL vs TBL
+series_game: 4
+matchup: TBL @ MTL
+home_team: MTL
+away_team: TBL
+final_score:
+  MTL: 2
+  TBL: 3
+result: TBL 3 - MTL 2
+regulation_or_overtime: REG
+completed_periods:
+  - 1
+  - 2
+  - 3
+goalies:
+  MTL: J. Dobes
+  TBL: A. Vasilevskiy
+goalscorers:
+  MTL:
+    Z. Bolduc: 1
+    C. Caufield: 1
+  TBL:
+    J. Guentzel: 1
+    B. Hagel: 2
+goal_sequence:
+  - period: 2
+    time: "10:06"
+    team: MTL
+    scorer: Z. Bolduc
+    assist1: K. Guhle
+    assist2: A. Texier
+    situation: 5v5
+  - period: 2
+    time: "13:29"
+    team: MTL
+    scorer: C. Caufield
+    assist1: N. Suzuki
+    assist2: L. Hutson
+    situation: 5v4
+  - period: 2
+    time: "19:06"
+    team: TBL
+    scorer: J. Guentzel
+    assist1: J. Moser
+    assist2: D. Raddysh
+    situation: 4v4
+  - period: 3
+    time: "01:40"
+    team: TBL
+    scorer: B. Hagel
+    assist1: N. Kucherov
+    assist2: J. Guentzel
+    situation: 5v4
+  - period: 3
+    time: "15:07"
+    team: TBL
+    scorer: B. Hagel
+    assist1: N. Kucherov
+    assist2: J. Moser
+    situation: 5v5
+key_events:
+  - kind: hit
+    period: 2
+    time_in_period: "05:12"
+    hittee: J. Slafkovský
+    hitter: C. Perry
+    zone: O
+    significance: "TODO_MANUAL: heavy contact event on Slafkovský — narrative significance to fill"
+  - kind: hit
+    period: 2
+    time_in_period: "17:48"
+    elapsed_sec_in_period: 1068
+    hittee: J. Slafkovský
+    hitter: M. Crozier
+    zone: N
+    significance: "FRAMEWORK ANCHOR: Crozier-on-Slafkovský hit at P2 17:48
+      (2:12 remaining). The hitter is the lineup-change-in for Game 4 (Carlile
+      out, Crozier in, the very player the swap engine projected at +0.11 net
+      xG/game). Used as pre/post bucket cut in
+      game4_slaf_hit.numbers.json. Pre vs post: Slaf TOI 11.55 -> 4.67 min;
+      individual SOG 2 -> 0; goals on-ice MTL 1/TBL 0 -> MTL 0/TBL 1.
+      Recurring pattern with the G2 Hagel fight (different defenseman, same shape)."
+  - kind: hit
+    period: 3
+    time_in_period: "06:46"
+    hittee: J. Slafkovský
+    hitter: E. Cernak
+    zone: D
+    significance: "TODO_MANUAL: heavy contact event on Slafkovský — narrative significance to fill"
+series_state_after_game: "tied 2-2"
+file_pointers:
+  pbp_url: "https://api-web.nhle.com/v1/gamecenter/2025030124/play-by-play"
+  boxscore_url: "https://api-web.nhle.com/v1/gamecenter/2025030124/boxscore"
+  shifts_url: "https://api.nhle.com/stats/rest/en/shiftcharts?cayenneExp=gameId=2025030124"
+  analyzer_output: "examples/habs_round1_2026/game4_periods.numbers.json (multi-period live + post-game)"
+  pregame_swap_analysis: "examples/habs_round1_2026/game4_pregame_swap.numbers.json"
+  slaf_hit_analysis: "examples/habs_round1_2026/game4_slaf_hit.numbers.json"
+  lineups_yaml: "examples/habs_round1_2026/game4_pregame_lineups.yaml (pre-game; in-game shift drift not separately captured)"
+related_briefs:
+  - "examples/habs_round1_2026/game4_pregame_2026-04-26_{EN,FR}.docx"
+  - "examples/habs_round1_2026/game4_p1_2026-04-26_{EN,FR}.docx"
+  - "examples/habs_round1_2026/game4_periods_p1-p3_2026-04-26_{EN,FR}.docx"
+  - "examples/habs_round1_2026/game4_slaf_hit_2026-04-26_{EN,FR}.docx"
+notes: |
+  Game 4 in Montreal: TBL won 3-2 in regulation. Hagel scored twice in P3
+  (PP 1:40 and 5v5 15:07) with Kucherov primary on both. MTL led 2-1 after
+  Bolduc and Caufield goals in P2; Guentzel pulled one back at 4v4 with 54s
+  remaining in P2.
+  TBL lineup change for this game: Carlile out, Crozier in (RHD); Lilleberg
+  shifted to L on the third pair. Pre-game swap engine projected +0.11 net
+  xG/game with 80% CI straddling zero. Reality consistent: Crozier 1-1 on-ice.
+  Series tied 2-2; Game 5 in Tampa.
+  Hagel cumulative composite score 11.30 (99th percentile of the 2024+2025
+  playoff sample) — the player of the match by every measure.

@@ -1,0 +1,117 @@
+# Canonical game context. Read this BEFORE writing any later doc that
+# references game 3 of Round 1, MTL vs TBL. The data-derivable
+# fields are populated from NHL.com; TODO_MANUAL fields require user fill-in.
+#
+# Schema: see CLAUDE.md - 'Per-game context files' section.
+
+schema_version: 1
+game_id: 2025030123
+date: 2026-04-24
+season: 20252026
+game_type: 3
+series: Round 1, MTL vs TBL
+series_game: 3
+matchup: TBL @ MTL
+home_team: MTL
+away_team: TBL
+final_score:
+  MTL: 3
+  TBL: 2
+result: MTL 3 - TBL 2 (OT)
+regulation_or_overtime: OT
+completed_periods:
+  - 1
+  - 2
+  - 3
+  - 4
+goalies:
+  MTL: J. Dobes
+  TBL: A. Vasilevskiy
+goalscorers:
+  MTL:
+    A. Texier: 1
+    K. Dach: 1
+    L. Hutson: 1
+  TBL:
+    B. Point: 1
+    B. Hagel: 1
+goal_sequence:
+  - period: 1
+    time: "04:53"
+    team: MTL
+    scorer: A. Texier
+    assist1: Z. Bolduc
+    assist2: K. Dach
+    situation: 5v5
+  - period: 1
+    time: "07:42"
+    team: TBL
+    scorer: B. Point
+    assist1: J. Guentzel
+    assist2: N. Kucherov
+    situation: 5v4
+  - period: 2
+    time: "04:47"
+    team: TBL
+    scorer: B. Hagel
+    assist1: null
+    assist2: null
+    situation: 5v5
+  - period: 2
+    time: "12:43"
+    team: MTL
+    scorer: K. Dach
+    assist1: A. Xhekaj
+    assist2: null
+    situation: 5v5
+  - period: 4
+    time: "02:09"
+    team: MTL
+    scorer: L. Hutson
+    assist1: A. Texier
+    assist2: Z. Bolduc
+    situation: 5v5
+key_events:
+  - kind: hit
+    period: 2
+    time_in_period: "08:44"
+    hittee: J. Slafkovský
+    hitter: Z. Girgensons
+    zone: N
+    significance: "TODO_MANUAL: heavy contact event on Slafkovský — narrative significance to fill"
+  - kind: hit
+    period: 2
+    time_in_period: "09:08"
+    hittee: J. Slafkovský
+    hitter: G. Goncalves
+    zone: N
+    significance: "TODO_MANUAL: heavy contact event on Slafkovský — narrative significance to fill"
+  - kind: hit
+    period: 3
+    time_in_period: "07:13"
+    hittee: J. Slafkovský
+    hitter: D. Raddysh
+    zone: D
+    significance: "TODO_MANUAL: heavy contact event on Slafkovský — narrative significance to fill"
+series_state_after_game: "MTL leads 2-1"
+file_pointers:
+  pbp_url: "https://api-web.nhle.com/v1/gamecenter/2025030123/play-by-play"
+  boxscore_url: "https://api-web.nhle.com/v1/gamecenter/2025030123/boxscore"
+  shifts_url: "https://api.nhle.com/stats/rest/en/shiftcharts?cayenneExp=gameId=2025030123"
+  analyzer_output: "examples/habs_round1_2026/game3_analysis.numbers.json"
+  lineups_yaml: "examples/habs_round1_2026/game3_lineups.yaml"
+  usage_observations: "examples/habs_round1_2026/game3_usage_observations.yaml"
+related_briefs:
+  - "examples/habs_round1_2026/game3_post_2026-04-25_EN.docx"
+  - "examples/habs_round1_2026/game3_post_2026-04-25_FR.docx"
+  - "examples/habs_round1_2026/playoff_rankings.numbers.json (uses G1-G3 pooled)"
+notes: |
+  Game 3 in Montreal: MTL won 3-2 in OT (Hutson OT winner at 2:09 of P4 with
+  his first slap shot of the season; reported 26:28 TOI).
+  Major story: line reshuffle. Texier-Dach-Bolduc (new line) produced both
+  MTL 5v5 goals; Kapanen replaced Newhook at C of the 3rd line.
+  Goalies: Dobeš (MTL, .892 SV% through G3 PBP-direct), Vasilevskiy.
+  No fights in this game. Slafkovský hits-against listed are routine forecheck
+  contact, NOT framework-anchor events.
+  IMPORTANT cross-game anchor: this game is the POST side of the G2-Hagel-fight
+  bucket (along with G2 from P2 5:14). The fight itself was in Game 2.

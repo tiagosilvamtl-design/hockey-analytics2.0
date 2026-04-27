@@ -1,0 +1,107 @@
+{
+  "meta": {
+    "playoffs_sampled": [
+      "2024 (season 23-24)",
+      "2025 (season 24-25)"
+    ],
+    "candidate_ids_tried": 60,
+    "games_fetched": 50,
+    "total_player_period_obs": 4927,
+    "non_trivial_obs": 4879,
+    "score_recipe": "G×3 + A×2 + SOG×0.5 + ind_HD×0.75 + (missed/blocked attempts)×0.15 + (hits + blocks)×0.25 - giveaways×0.5 + takeaways×0.5",
+    "filter_note": "Excluded skater-period observations with no events recorded. Per-period TOI not reliably available from boxscore; event-presence filter is the honest substitute."
+  },
+  "stats_overall": {
+    "n": 4879,
+    "mean": 1.201,
+    "median": 0.75,
+    "stdev": 1.386,
+    "min": -1.25,
+    "max": 11.7,
+    "percentiles": {
+      "5": -0.25,
+      "10": 0.15,
+      "25": 0.3,
+      "40": 0.5,
+      "50": 0.75,
+      "60": 1.0,
+      "75": 1.55,
+      "85": 2.4,
+      "90": 3.0,
+      "95": 4.25,
+      "99": 6.4
+    }
+  },
+  "stats_forwards": {
+    "n": 3233,
+    "mean": 1.348,
+    "median": 0.9,
+    "stdev": 1.499,
+    "percentiles": {
+      "5": -0.1,
+      "10": 0.15,
+      "25": 0.4,
+      "40": 0.65,
+      "50": 0.9,
+      "60": 1.15,
+      "75": 1.75,
+      "85": 2.65,
+      "90": 3.5,
+      "95": 4.65,
+      "99": 6.75
+    }
+  },
+  "stats_defense": {
+    "n": 1646,
+    "mean": 0.911,
+    "median": 0.65,
+    "stdev": 1.076,
+    "percentiles": {
+      "5": -0.35,
+      "10": 0.15,
+      "25": 0.25,
+      "40": 0.5,
+      "50": 0.65,
+      "60": 0.75,
+      "75": 1.15,
+      "85": 1.75,
+      "90": 2.3,
+      "95": 3.125,
+      "99": 4.887
+    }
+  },
+  "tiers": {
+    "Awful": {
+      "max": 0.15,
+      "color_hex": "F8CBAD",
+      "label_en": "Awful",
+      "label_fr": "Faible"
+    },
+    "Mediocre": {
+      "min": 0.15,
+      "max": 0.75,
+      "color_hex": "FFE699",
+      "label_en": "Mediocre",
+      "label_fr": "Moyen"
+    },
+    "Good": {
+      "min": 0.75,
+      "max": 3.0,
+      "color_hex": "C6E0B4",
+      "label_en": "Good",
+      "label_fr": "Bon"
+    },
+    "Excellent": {
+      "min": 3.0,
+      "color_hex": "70AD47",
+      "label_en": "Excellent",
+      "label_fr": "Excellent"
+    }
+  },
+  "tier_thresholds_summary": {
+    "p10": 0.15,
+    "p50": 0.75,
+    "p90": 3.0,
+    "interpretation": "A skater scoring < 0.15 in a single period is in the bottom 10% of playoff observations (Awful). 0.15-0.75 = bottom-half but not alarming (Mediocre). 0.75-3.0 = above-median, contributing (Good). > 3.0 = top 10%, dominant period (Excellent)."
+  }
+}

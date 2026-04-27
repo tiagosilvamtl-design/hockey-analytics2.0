@@ -1,0 +1,124 @@
+# Canonical game context. Read this BEFORE writing any later doc that
+# references game 1 of Round 1, MTL vs TBL. The data-derivable
+# fields are populated from NHL.com; TODO_MANUAL fields require user fill-in.
+#
+# Schema: see CLAUDE.md - 'Per-game context files' section.
+
+schema_version: 1
+game_id: 2025030121
+date: 2026-04-19
+season: 20252026
+game_type: 3
+series: Round 1, MTL vs TBL
+series_game: 1
+matchup: MTL @ TBL
+home_team: TBL
+away_team: MTL
+final_score:
+  TBL: 3
+  MTL: 4
+result: MTL 4 - TBL 3 (OT)
+regulation_or_overtime: OT
+completed_periods:
+  - 1
+  - 2
+  - 3
+  - 4
+goalies:
+  TBL: A. Vasilevskiy
+  MTL: J. Dobes
+goalscorers:
+  TBL:
+    D. Raddysh: 1
+    B. Hagel: 2
+  MTL:
+    J. Anderson: 1
+    J. Slafkovský: 3
+goal_sequence:
+  - period: 1
+    time: "13:24"
+    team: MTL
+    scorer: J. Anderson
+    assist1: A. Carrier
+    assist2: M. Matheson
+    situation: 5v5
+  - period: 2
+    time: "12:15"
+    team: TBL
+    scorer: D. Raddysh
+    assist1: N. Kucherov
+    assist2: J. Guentzel
+    situation: 5v4
+  - period: 2
+    time: "12:44"
+    team: TBL
+    scorer: B. Hagel
+    assist1: J. Guentzel
+    assist2: R. McDonagh
+    situation: 5v5
+  - period: 2
+    time: "19:36"
+    team: MTL
+    scorer: J. Slafkovský
+    assist1: I. Demidov
+    assist2: C. Caufield
+    situation: 5v4
+  - period: 3
+    time: "05:56"
+    team: MTL
+    scorer: J. Slafkovský
+    assist1: C. Caufield
+    assist2: N. Suzuki
+    situation: 5v4
+  - period: 3
+    time: "08:58"
+    team: TBL
+    scorer: B. Hagel
+    assist1: J. Guentzel
+    assist2: N. Kucherov
+    situation: 5v4
+  - period: 4
+    time: "01:22"
+    team: MTL
+    scorer: J. Slafkovský
+    assist1: L. Hutson
+    assist2: N. Suzuki
+    situation: 5v4
+key_events:
+  - kind: hit
+    period: 1
+    time_in_period: "00:20"
+    hittee: J. Slafkovský
+    hitter: E. Cernak
+    zone: D
+    significance: "TODO_MANUAL: heavy contact event on Slafkovský — narrative significance to fill"
+  - kind: hit
+    period: 2
+    time_in_period: "17:13"
+    hittee: J. Slafkovský
+    hitter: R. McDonagh
+    zone: D
+    significance: "TODO_MANUAL: heavy contact event on Slafkovský — narrative significance to fill"
+  - kind: hit
+    period: 2
+    time_in_period: "17:19"
+    hittee: J. Slafkovský
+    hitter: R. McDonagh
+    zone: D
+    significance: "TODO_MANUAL: heavy contact event on Slafkovský — narrative significance to fill"
+series_state_after_game: "MTL leads 1-0"
+file_pointers:
+  pbp_url: "https://api-web.nhle.com/v1/gamecenter/2025030121/play-by-play"
+  boxscore_url: "https://api-web.nhle.com/v1/gamecenter/2025030121/boxscore"
+  shifts_url: "https://api.nhle.com/stats/rest/en/shiftcharts?cayenneExp=gameId=2025030121"
+  analyzer_output: "(no per-game analyzer; covered by habs_round1_2026.numbers.json)"
+  lineups_yaml: "(not captured as standalone yaml)"
+related_briefs:
+  - "examples/habs_round1_2026/habs_round1_2026.docx (covers G1+G2, pre-Game-3)"
+notes: |
+  Game 1 in Tampa: MTL won 4-3 in OT. Slafkovský hat-trick (3 goals — two on
+  PP, one in OT). Anderson hit Charle-Édouard D'Astous early, leading to
+  D'Astous missing the rest of the series and forcing the TBL D rotation
+  (Carlile in for G2-G3, Crozier in for G4).
+  Cernak hit Slafkovský at P1 0:20 (opening shift) — early statement; not
+  treated as a framework cross-game anchor since it preceded any pattern.
