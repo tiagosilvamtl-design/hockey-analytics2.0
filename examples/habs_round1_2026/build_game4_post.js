@@ -21,6 +21,8 @@ const {
 const D = JSON.parse(fs.readFileSync(path.join(__dirname, 'game4_analysis.numbers.json'), 'utf8'));
 const LINEUPS = yaml.parse(fs.readFileSync(path.join(__dirname, 'game4_lineups.yaml'), 'utf8'));
 const BAREME = JSON.parse(fs.readFileSync(path.join(__dirname, 'score_bareme.json'), 'utf8'));
+const PRESS = JSON.parse(fs.readFileSync(path.join(__dirname, 'game4_press_validation.numbers.json'), 'utf8'));
+const CLAIMS_YAML = yaml.parse(fs.readFileSync(path.join(__dirname, '..', '..', 'research', '2025030124_claims.yaml'), 'utf8'));
 
 // Cross-game context fact-check — must succeed before any docx is written.
 const ctxCheck = require('./game_context_check');
@@ -189,21 +191,22 @@ function runProseFactCheck() {
 
 // ---------- I18N ----------
 const tldrEN = () => {
-  const m5 = D.series_5v5.MTL || {}; const t5 = D.series_5v5['T.B'] || {};
-  const m4 = D.series_5v4.MTL || {}; const t4 = D.series_5v4['T.B'] || {};
+  const p3 = PRESS.claim_2_p3_collapse.data_check.all_strengths_by_period;
+  const p35v5 = PRESS.claim_2_p3_collapse.data_check.p3_5v5_only;
   return [
-    `**TBL 3, MTL 2 (regulation). Series tied 2–2; Game 5 in Tampa.** Tampa scored two goals in 13 minutes of P3 (Hagel both, Kucherov primary on both). MTL led 2–1 entering the third after Bolduc and Caufield scored in P2 — but Guentzel pulled one back at 4v4 with 54 seconds left in P2 and the period flipped Tampa's way after intermission.`,
-    `**Series-to-date 5v5: identical actuals (6–6 GF/GA), but MTL leads xG share ${pct(m5.xgf_pct)} and HDCF share ${pct(m5.hdcf_pct)}.** Tampa drives volume (${pct(t5.cf_pct)} of attempts). The dynamic from the first three games persists.`,
-    `**The pre-game thesis (Carlile→Crozier as a small TBL upgrade) verified directionally and ineffectively.** Projected +${fmt(D.swap_projection.delta_net_per_game, 2)} net xG/game with the 80% CI [${fmt(D.swap_projection.delta_xgf_ci80[0], 2)}, ${fmt(D.swap_projection.delta_xgf_ci80[1], 2)}] straddling zero. Crozier finished the game ${D.crozier_on_ice.goals_for_oi}–${D.crozier_on_ice.goals_against_oi} on-ice. The actual swing came from Hagel + Kucherov in P3, not the third pair.`,
+    `**TBL 3, MTL 2. Series tied 2–2; Game 5 in Tampa.** MTL led 2–0 in the second period, gave up a 4v4 goal with 54 seconds left in P2, then conceded twice to Hagel in the third (1:40 PP, 15:07 5v5). Hagel now has 6 goals in 4 series games.`,
+    `**Did the Habs crash in P3? At 5v5, no.** MTL Corsi% by period: ${p3.mtl_corsi_pct_p1.toFixed(1)} → ${p3.mtl_corsi_pct_p2.toFixed(1)} → **${p3.mtl_corsi_pct_p3.toFixed(1)}%** in P3. Pure 5v5 in the third was even (${p35v5.mtl_attempts_5v5}–${p35v5.tbl_attempts_5v5} shot attempts). The damage was on **special teams + a deflection**, not on territorial collapse. **Three MTL penalties in P3** put Tampa on the man advantage — Hagel's tying goal came directly off the second of those.`,
+    `**The Slafkovský hit is the second framework-anchor contact event of the series, not the second straight game.** The Hagel-Slafkovský fight was in **Game 2** (P2 5:14); Game 3 had no comparable event. Game 4: Crozier hit at P2 17:48 (with MTL still up 2–0). The Guentzel 4v4 goal landed **78 seconds later**. The press is treating it as a "triad" turning point — the data refines that to: hit + 4v4 goal + P3 PP discipline failures.`,
   ];
 };
 
 const tldrFR = () => {
-  const m5 = D.series_5v5.MTL || {}; const t5 = D.series_5v5['T.B'] || {};
+  const p3 = PRESS.claim_2_p3_collapse.data_check.all_strengths_by_period;
+  const p35v5 = PRESS.claim_2_p3_collapse.data_check.p3_5v5_only;
   return [
-    `**TBL 3, CH 2 (temps réglementaire). Série égale 2–2; M5 à Tampa.** Tampa marque deux fois en 13 minutes de P3 (Hagel les deux, Kucherov à la mention principale chaque fois). Le CH menait 2–1 à l\'entracte après les buts de Bolduc et Caufield en P2 — mais Guentzel a réduit l\'écart à 4 c. 4 avec 54 secondes à faire, et la période a basculé du côté de Tampa après l\'entracte.`,
-    `**Cumulé 5 c. 5 : marques identiques (6–6 BP/BC), mais le CH mène la part de BA à ${pctFr(m5.xgf_pct)} et la part de CHD à ${pctFr(m5.hdcf_pct)}.** Tampa renverse le volume (${pctFr(t5.cf_pct)} des tentatives). La dynamique des trois premiers matchs persiste.`,
-    `**La thèse d\'avant-match (Carlile→Crozier comme petite amélioration pour TBL) s\'est vérifiée directionnellement et sans signification.** Projection : +${fmtFr(D.swap_projection.delta_net_per_game, 2)} BA net/match, IC 80 % [${fmtFr(D.swap_projection.delta_xgf_ci80[0], 2)}, ${fmtFr(D.swap_projection.delta_xgf_ci80[1], 2)}] chevauchant zéro. Crozier finit le match à ${D.crozier_on_ice.goals_for_oi}–${D.crozier_on_ice.goals_against_oi} sur la glace. Le vrai swing vient de Hagel + Kucherov en P3, pas du 3ᵉ duo.`,
+    `**TBL 3, CH 2. Série égale 2–2; M5 à Tampa.** Le CH menait 2–0 en deuxième, accorde un but à 4 c. 4 avec 54 secondes à faire en P2, puis encaisse deux fois Hagel en troisième (1:40 en AN, 15:07 à 5 c. 5). Hagel compte maintenant 6 buts en 4 matchs.`,
+    `**Le CH s'est-il écroulé en P3? À 5 c. 5, non.** Corsi% du CH par période : ${pctFr(p3.mtl_corsi_pct_p1, 1)} → ${pctFr(p3.mtl_corsi_pct_p2, 1)} → **${pctFr(p3.mtl_corsi_pct_p3, 1)}** en P3. À 5 c. 5 strict en troisième, c'était égal (${p35v5.mtl_attempts_5v5}–${p35v5.tbl_attempts_5v5} tentatives). Les dégâts viennent des **équipes spéciales + une déviation**, pas d'un effondrement territorial. **Trois pénalités du CH en P3** mettent Tampa sur l'AN — le but égalisateur de Hagel arrive directement sur la deuxième.`,
+    `**La mise en échec de Slafkovský est le 2ᵉ événement d'ancrage cadriciel de la série, pas le « 2ᵉ match consécutif ».** Le combat Hagel-Slafkovský était au **Match 2** (P2 5:14); le M3 n'avait aucun événement comparable. M4 : Crozier frappe à 17:48 de la P2 (avec le CH menant 2–0). Le but de Guentzel à 4 c. 4 suit **78 secondes plus tard**. La presse parle d'une « triade » qui a tourné le match — les données affinent : mise en échec + but à 4 c. 4 + indiscipline en P3.`,
   ];
 };
 
@@ -221,15 +224,15 @@ const T = {
       '**Cross-game integrity.** Any reference to events from prior games of the series resolves through `game{N}_context.yaml`. The build aborts (exit 8) if a claim contradicts the context file.',
       '**No predictions.** Four games is still a small sample; iso-impact magnitudes are directional.',
     ],
-    story_title: '1. How the game went',
-    story_intro: 'Goal sequence chronological. Situation: 5v5 = even strength, 5v4 = power play, 4v4 = coincidental minors. Row color reflects the scoring team.',
-    th_when: 'When', th_team: 'Team', th_scorer: 'Scorer', th_assists: 'Assists', th_sit: 'Situation',
-    story_takeaway_title: 'What the sequence says',
+    story_title: '1. The timeline of a 2–0 lead that vanished',
+    story_intro: 'Goal sequence chronological + the Crozier hit on Slafkovský embedded at its actual timestamp. The 78-second window between the hit and the Guentzel 4v4 goal is the question Marc Antoine Godin (Radio-Canada) calls "the triad" — the data is below.',
+    th_when: 'When', th_team: 'Team', th_scorer: 'Scorer / event', th_assists: 'Assists / detail', th_sit: 'Situation',
+    story_takeaway_title: 'Did the Habs crash?',
     story_takeaway: [
-      `**Period 1 (0–0).** Tampa drove play (P1 5v5 Corsi 9–15, HDCF 2–7). Dobeš held it level — the entire P1 shutout is on him.`,
-      `**Period 2 (MTL 2–1).** Bolduc at 10:06 from a Guhle and Texier feed at 5v5 — the Texier-Dach-Bolduc line cashing again. Caufield at 13:29 on the PP (Suzuki, Hutson). Then a coincidental-minor stretch produced the **Guentzel 4v4 goal at 19:06** (Moser, Raddysh) — Tampa back to 2–1 with 54 seconds left in the period. The crucial event of the game.`,
-      `**Period 3 (TBL 3–2).** Hagel scored the tying goal on the PP at 1:40 (Kucherov, Guentzel) — Tampa came out of intermission with the momentum. **Hagel game-winner at 15:07 at 5v5** (Kucherov, J.J. Moser) — closes it out.`,
-      `**Special teams: 1 PP goal each (Caufield MTL, Hagel TBL). The 4v4 stretch was the swing event** — and the most preventable.`,
+      `**At 5v5, no.** MTL Corsi% by period went 39.1 → 35.3 → **50.0**. Pure 5v5 attempts in the third were 7–7 even. MTL was actually MORE balanced at even strength in the third than in the first two periods.`,
+      `**On special teams, yes.** Three MTL penalties in P3 (vs 1 in P1, 0 in P2). Hagel's tying goal at P3 1:40 came on the second of those PPs. The "veteran-team-punishes-undisciplined-hockey" line St-Louis used post-game survives the data — that's the actual mechanism.`,
+      `**The 4v4 stretch was the inflection.** From 2–0 with 9:54 left in P2 to 2–1 with 0:54 left, in a sequence that included the Crozier hit. Once it became a one-goal game, Tampa had Hagel + Kucherov together for stretches in P3, and one PP goal + one slot deflection got it done. **Matheson was on-ice for both Hagel goals.** Both shots were deflections from inside ~15 ft of the net.`,
+      `**What didn't happen.** MTL did not get blown out of P3 5v5. The story isn't "the Habs collapsed under pressure" — it's "Tampa converted three discipline lapses + one defensive-zone lapse into a comeback while MTL kept playing roughly even hockey at even strength."`,
     ],
     thesis_title: '2. Pre-game thesis check — Crozier-for-Carlile',
     thesis_intro: 'The pre-game brief projected the announced TBL change as a marginal upgrade with the CI band straddling zero. Reality:',
@@ -251,13 +254,19 @@ const T = {
     motm_intro: 'Hagel\'s composite score by period: quiet through 40, then a top-decile period in P3. The recipe captures both individual offense and on-ice contribution.',
     th_period: 'Period', th_lg: 'G', th_la: 'A', th_lsog: 'SOG', th_lihd: 'iHD', th_score: 'Score', th_tier: 'Tier',
     motm_caveat: 'Hagel now has 6 goals through 4 games of the series. That is the kind of conversion rate the framework cannot project before-the-fact (it would have failed the no-predictions rail to suggest it pre-series). What it CAN do is grade the magnitude after-the-fact: a 99th-percentile P3 shift composite, on a calibration sample of 4 879 playoff player-period observations.',
-    slaf_title: '6. Slafkovský — pre/post the Crozier hit',
-    slaf_intro: 'The Crozier hit on Slafkovský at P2 17:48 (neutral zone) is the second straight game where a heavy contact event correlates with Slafkovský\'s offensive output disappearing. Game 2 was the Hagel fight at P2 5:14; Game 4 is this. Different defenseman, same shape.',
+    slaf_title: '6. Slafkovský and the contact-event pattern (corrected)',
+    slaf_intro: 'The framework treats Game 4 (Crozier hit) and Game 2 (Hagel fight) as bucket-cut anchors. **This is not "two straight games" — Game 3 had no comparable event.** The cross-game timeline:',
     slaf_pattern: [
-      `**Game 4 buckets (this hit).** Pre: Slaf 11.55 min TOI, 2 SOG, 1–0 goals on-ice (the Bolduc goal). Post: 4.67 min TOI, 0 SOG, 0–1 goals on-ice (one of Hagel\'s).`,
-      `**Game 2 buckets (Hagel fight).** Pre: 8 SOG, 3 goals over 29.9 min. Post: 2 SOG, 0 goals over 35.0 min. Source: \`game2_context.yaml\` + \`game3_analysis.numbers.json -> slaf_fight_buckets\`.`,
-      `**Companion brief:** the focused pre/post analysis is in \`game4_slaf_hit_2026-04-26_{EN,FR}.docx\` (and the analyzer audit trail is \`game4_slaf_hit.numbers.json\`).`,
+      `**Game 1** (MTL 4–3 OT) · Slafkovský hat-trick · Cernak hit at P1 0:20 — too early to be an anchor.`,
+      `**Game 2** (TBL 3–2 OT) · **Hagel-Slafkovský fight at P2 5:14** · Pre-bucket (G1 + G2 to fight): 8 SOG, 3 goals over 29.9 min. Post-bucket (G2 from 5:14 + G3): 2 SOG, 0 goals over 35.0 min. Source: \`game2_context.yaml\`.`,
+      `**Game 3** (MTL 3–2 OT) · No framework-anchor contact event. Routine forecheck-level hits only. Source: \`game3_context.yaml\`.`,
+      `**Game 4** (TBL 3–2) · **Crozier hit on Slafkovský at P2 17:48**, MTL leading 2–0. Pre-hit: 11.55 min TOI, 2 SOG, MTL 1 / TBL 0 on-ice goals. Post-hit: 4.67 min TOI (TOI share dropped from 38.7% to 21.0% of available time), 0 SOG, MTL 0 / TBL 1 on-ice goals. **Slafkovský-on-ice 5v5 Corsi actually IMPROVED post-hit (3-10 → 4-2 on a 4.67-min sample) — but his individual offense vanished and TOI was halved.** Source: \`game4_context.yaml\` + companion brief.`,
+      `**Press read vs data read.** Marc Antoine Godin called it part of "the triad" that flipped the game. Habs players denied an effect (Matheson "Je ne pense pas"). Bolduc allowed: "maybe it gave them some gas." **The data-honest read**: Bolduc was right. The hit (17:48) preceded the Guentzel 4v4 goal (19:06) by **78 seconds**. Slaf-on-ice possession improved on tiny TOI; his individual production tanked. The "second straight game" framing some are using is wrong — the framework anchors are G2 and G4 with G3 in between.`,
     ],
+    claims_title: '5. Press claims ledger — interesting only',
+    claims_intro: 'Six analytical claims pulled from RDS, Radio-Canada, NHL.com, Habs Eyes On The Prize, CBC and Tampa Bay Times. Boring claims (lineup matches what was reported, Hutson played a lot of minutes) are excluded by editorial rule. Color codes: green = data confirms, amber = mixed/partial, red = data refutes.',
+    claims_caveat: 'Verdicts are computed in `game4_press_validation.numbers.json`. Each claim row is one source quote vs the data check.',
+    th_claim: 'Press claim', th_verdict: 'Verdict', th_data: 'What the data shows',
     progression_title: '7. MTL skater progression — regular season vs 2026 playoffs (4 games)',
     progression_intro: 'Isolated net impact at 5v5 (iso xGF/60 − iso xGA/60), regular season vs the four playoff games. Up-movers exceed their reg-season impact; down-movers are below it. Minimum 200 reg-season minutes and 15 playoff minutes.',
     th_player: 'Player', th_pos: 'Pos', th_toi_p: 'P TOI', th_toi_r: 'R TOI',
@@ -282,6 +291,8 @@ const T = {
           ['NHL.com shift charts (post-game complete)', 'https://api.nhle.com/stats/rest/en/shiftcharts?cayenneExp=gameId=2025030124'],
         ],
       },
+      { heading: 'Francophone press', items: CLAIMS_YAML.source_groups.francophone },
+      { heading: 'Anglophone press', items: CLAIMS_YAML.source_groups.anglophone },
       { heading: 'Cross-game context (canonical fact base)',
         items: [
           ['game2_context.yaml — Hagel-Slafkovský fight reference', '(see examples/habs_round1_2026/game2_context.yaml)'],
@@ -294,6 +305,8 @@ const T = {
           ['Pre-game brief (swap engine projection)', '(see game4_pregame_2026-04-26_{EN,FR}.docx)'],
           ['Live multi-period (P1+P2+P3 + barème legend + thesis check)', '(see game4_periods_p1-p3_2026-04-26_{EN,FR}.docx)'],
           ['Slafkovský pre/post-hit special', '(see game4_slaf_hit_2026-04-26_{EN,FR}.docx)'],
+          ['Press validation analyzer audit trail', '(see game4_press_validation.numbers.json)'],
+          ['Research-game claims yaml', '(see research/2025030124_claims.yaml)'],
         ],
       },
     ],
@@ -313,15 +326,15 @@ const T = {
       '**Intégrité multimatchs.** Toute référence à des événements de matchs précédents de la série passe par `game{N}_context.yaml`. La construction interrompt (code 8) si une affirmation contredit le fichier de contexte.',
       '**Aucune prédiction.** Quatre matchs reste un petit échantillon; les amplitudes d\'impact isolé sont directionnelles.',
     ],
-    story_title: '1. Comment le match s\'est déroulé',
-    story_intro: 'Séquence des buts en ordre chronologique. Situation : 5 c. 5 = à forces égales, 5 c. 4 = avantage numérique, 4 c. 4 = pénalités coïncidentes. La couleur de la rangée indique l\'équipe qui marque.',
-    th_when: 'Moment', th_team: 'Équipe', th_scorer: 'Marqueur', th_assists: 'Mentions', th_sit: 'Situation',
-    story_takeaway_title: 'Ce que la séquence raconte',
+    story_title: '1. La chronologie d\'une avance de 2–0 qui s\'évanouit',
+    story_intro: 'Séquence des buts en ordre chronologique + la mise en échec de Crozier sur Slafkovský insérée à son moment réel. La fenêtre de 78 secondes entre la mise en échec et le but de Guentzel à 4 c. 4, c\'est ce que Marc Antoine Godin (Radio-Canada) appelle « la triade » — les chiffres sont plus bas.',
+    th_when: 'Moment', th_team: 'Équipe', th_scorer: 'Marqueur / événement', th_assists: 'Mentions / détail', th_sit: 'Situation',
+    story_takeaway_title: 'Le CH s\'est-il écroulé?',
     story_takeaway: [
-      `**1ʳᵉ période (0–0).** Tampa dirige le jeu (Corsi 5 c. 5 9–15, CHD 2–7). Dobeš tient le fort — le blanchissage de la P1 est entièrement le sien.`,
-      `**2ᵉ période (CH 2–1).** Bolduc à 10:06 sur des passes de Guhle et Texier à 5 c. 5 — le trio Texier-Dach-Bolduc qui marque encore. Caufield à 13:29 sur l\'AN (Suzuki, Hutson). Puis une séquence de pénalités coïncidentes accouche du **but de Guentzel à 4 c. 4 à 19:06** (Moser, Raddysh) — Tampa revient à 2–1 avec 54 secondes à faire. L\'événement crucial du match.`,
-      `**3ᵉ période (TBL 3–2).** Hagel égale en AN à 1:40 (Kucherov, Guentzel) — Tampa sort de l\'entracte avec le momentum. **But vainqueur de Hagel à 15:07 à 5 c. 5** (Kucherov, J.J. Moser) — il scelle l\'affaire.`,
-      `**Spéciales : 1 but en AN par camp (Caufield CH, Hagel TBL). La phase 4 c. 4 a été l\'événement charnière** — et le plus évitable.`,
+      `**À 5 c. 5, non.** Corsi% du CH par période : 39,1 → 35,3 → **50,0**. À 5 c. 5 strict en troisième, c\'était égal — 7–7 en tentatives. Le CH a été plus équilibré à forces égales en P3 qu\'en P1 ou P2.`,
+      `**Aux spéciales, oui.** Trois pénalités du CH en P3 (vs 1 en P1, 0 en P2). Le but égalisateur de Hagel à 1:40 de la P3 vient sur la deuxième de ces AN. La ligne « équipe vétérane qui punit l\'indiscipline » de St-Louis après-match survit aux chiffres — c\'est exactement le mécanisme.`,
+      `**La phase 4 c. 4 a été le point d\'inflexion.** De 2–0 avec 9:54 à faire en P2 à 2–1 avec 0:54 à faire, dans une séquence qui inclut la mise en échec de Crozier. Une fois ramené à un but d\'écart, Tampa a fait jouer Hagel et Kucherov ensemble par séquences en P3, et un but en AN + une déviation de zone offensive ont suffi. **Matheson était sur la glace pour les deux buts de Hagel.** Les deux tirs étaient des déviations à environ 15 pi du filet.`,
+      `**Ce qui ne s\'est pas produit.** Le CH n\'a pas explosé en P3 à 5 c. 5. L\'histoire n\'est pas « le CH s\'effondre sous la pression » — c\'est « Tampa convertit trois manques de discipline + une perte en zone défensive en remontée pendant que le CH continue de jouer à peu près à égalité à forces égales ».`,
     ],
     thesis_title: '2. Vérification de la thèse d\'avant-match — Crozier pour Carlile',
     thesis_intro: 'Le survol d\'avant-match projetait le changement annoncé du TBL comme une amélioration marginale, IC chevauchant zéro. Réalité :',
@@ -343,13 +356,19 @@ const T = {
     motm_intro: 'Pointage composite de Hagel par période : silencieux pendant 40 minutes, puis une période au sommet décile en P3. La recette capte à la fois sa production individuelle et sa contribution sur la glace.',
     th_period: 'Période', th_lg: 'B', th_la: 'A', th_lsog: 'TB', th_lihd: 'CHDi', th_score: 'Pointage', th_tier: 'Niveau',
     motm_caveat: 'Hagel compte maintenant 6 buts en 4 matchs de la série. C\'est le genre de taux de conversion que le cadriciel ne peut pas projeter avant-coup (cela violerait la règle « aucune prédiction » de le suggérer pré-série). Ce qu\'il PEUT faire : noter l\'amplitude après-coup. Une période en P3 dans le 99ᵉ percentile, sur un échantillon de calibration de 4 879 observations joueur-période en séries.',
-    slaf_title: '6. Slafkovský — avant/après la mise en échec de Crozier',
-    slaf_intro: 'La mise en échec de Crozier sur Slafkovský à 17:48 de la P2 (zone neutre) est le deuxième match consécutif où un événement de contact lourd coïncide avec la disparition de l\'offensive de Slafkovský. Le M2, c\'était le combat avec Hagel à 5:14 de la P2; le M4, c\'est cette mise en échec. Défenseur différent, même forme.',
+    slaf_title: '6. Slafkovský et le patron des événements de contact (correction)',
+    slaf_intro: 'Le cadriciel traite le M4 (mise en échec de Crozier) et le M2 (combat avec Hagel) comme des points d\'ancrage de tranche. **Ce n\'est pas « deux matchs consécutifs » — le M3 n\'avait aucun événement comparable.** Chronologie multimatchs :',
     slaf_pattern: [
-      `**Tranches du M4 (cette mise en échec).** Avant : Slaf 11,55 min de TG, 2 TB, 1–0 buts sur la glace (le but de Bolduc). Après : 4,67 min de TG, 0 TB, 0–1 buts sur la glace (un de Hagel).`,
-      `**Tranches du M2 (combat Hagel).** Avant : 8 TB, 3 buts sur 29,9 min. Après : 2 TB, 0 but sur 35,0 min. Source : \`game2_context.yaml\` + \`game3_analysis.numbers.json -> slaf_fight_buckets\`.`,
-      `**Dossier compagnon :** l\'analyse pré/post focalisée se trouve dans \`game4_slaf_hit_2026-04-26_{EN,FR}.docx\` (chemin d\'audit \`game4_slaf_hit.numbers.json\`).`,
+      `**Match 1** (CH 4–3 PR) · Tour du chapeau de Slafkovský · Mise en échec de Cernak à 0:20 de la P1 — trop tôt dans la série pour être un ancrage.`,
+      `**Match 2** (TBL 3–2 PR) · **Combat Hagel-Slafkovský à 5:14 de la P2** · Tranche avant (M1 + M2 jusqu\'au combat) : 8 TB, 3 buts en 29,9 min. Tranche après (M2 dès 5:14 + M3) : 2 TB, 0 but en 35,0 min. Source : \`game2_context.yaml\`.`,
+      `**Match 3** (CH 3–2 PR) · Aucun événement de contact d\'ancrage cadriciel. Que des contacts de niveau échec-avant routinier. Source : \`game3_context.yaml\`.`,
+      `**Match 4** (TBL 3–2) · **Mise en échec de Crozier sur Slafkovský à 17:48 de la P2**, le CH menant 2–0. Avant : 11,55 min de TG, 2 TB, 1 but du CH / 0 du TBL sur la glace. Après : 4,67 min de TG (la part de TG passe de 38,7 % à 21,0 % du temps disponible), 0 TB, 0 / 1 sur la glace. **Le Corsi 5 c. 5 du trio de Slaf s\'est en fait AMÉLIORÉ après (3-10 → 4-2 sur 4,67 min) — mais sa production individuelle disparaît et son TG est coupé de moitié.** Source : \`game4_context.yaml\` + dossier compagnon.`,
+      `**Lecture de la presse vs lecture des données.** Marc Antoine Godin parle de « la triade » qui a tourné le match. Les joueurs nient un effet (Matheson : « Je ne pense pas »). Bolduc admet : « Peut-être que ça leur a donné un peu de gaz. » **La lecture honnête des données** : Bolduc avait raison. La mise en échec (17:48) précède le but de Guentzel à 4 c. 4 (19:06) de **78 secondes**. La possession à 5 c. 5 du trio de Slaf s\'améliore sur un mini-échantillon; sa production individuelle se tarit. Le cadre « 2ᵉ match consécutif » utilisé dans certains comptes-rendus est faux — les ancrages cadriciels sont M2 et M4, avec le M3 entre les deux.`,
     ],
+    claims_title: '5. Tableau des affirmations de la presse — uniquement les intéressantes',
+    claims_intro: 'Six affirmations analytiques tirées de RDS, Radio-Canada, LNH.com, Habs Eyes On The Prize, CBC et Tampa Bay Times. Les affirmations banales (la formation correspond au rapporté, Hutson a joué beaucoup) sont exclues par règle éditoriale. Codes couleur : vert = confirmée par les chiffres, ambre = mitigée/partielle, rouge = infirmée.',
+    claims_caveat: 'Verdicts calculés dans `game4_press_validation.numbers.json`. Chaque ligne associe une citation à la vérification analytique.',
+    th_claim: 'Affirmation', th_verdict: 'Verdict', th_data: 'Ce que disent les chiffres',
     progression_title: '7. Progression des patineurs du CH — saison régulière vs séries 2026 (4 matchs)',
     progression_intro: 'Impact net isolé à 5 c. 5 (iso BAF/60 − iso BAC/60), saison régulière vs les 4 matchs des séries. Hausse : surperforme la saison; baisse : sous la saison. Minimum 200 minutes de saison et 15 minutes en séries.',
     th_player: 'Patineur', th_pos: 'Pos', th_toi_p: 'TG (S)', th_toi_r: 'TG (R)',
@@ -374,6 +393,8 @@ const T = {
           ['Tableau des présences LNH.com', 'https://api.nhle.com/stats/rest/en/shiftcharts?cayenneExp=gameId=2025030124'],
         ],
       },
+      { heading: 'Presse francophone', items: CLAIMS_YAML.source_groups.francophone },
+      { heading: 'Presse anglophone', items: CLAIMS_YAML.source_groups.anglophone },
       { heading: 'Contexte multimatchs (base canonique)',
         items: [
           ['game2_context.yaml — référence du combat Hagel-Slafkovský', '(voir examples/habs_round1_2026/game2_context.yaml)'],
@@ -386,6 +407,8 @@ const T = {
           ['Survol d\'avant-match (projection moteur d\'échange)', '(voir game4_pregame_2026-04-26_{EN,FR}.docx)'],
           ['Multi-période en direct (P1+P2+P3 + légende du barème + vérif. de la thèse)', '(voir game4_periods_p1-p3_2026-04-26_{EN,FR}.docx)'],
           ['Spécial Slafkovský pré/post-mise en échec', '(voir game4_slaf_hit_2026-04-26_{EN,FR}.docx)'],
+          ['Audit de l\'analyseur de validation de la presse', '(voir game4_press_validation.numbers.json)'],
+          ['Affirmations en yaml de l\'habileté research-game', '(voir research/2025030124_claims.yaml)'],
         ],
       },
     ],
@@ -440,14 +463,37 @@ function methodSection(t) {
 
 function storySection(t, lang) {
   const teamFill = (team) => team === 'MTL' ? BRAND.mtlfill : BRAND.tblfill;
-  const rows = (D.goal_sequence || []).map(g => ({
-    cells: [
-      `P${g.period} ${g.time}`, g.owner, g.scorer || '—',
-      [g.assist1, g.assist2].filter(Boolean).join(', ') || '—',
-      g.situation,
-    ],
-    _opts: { fill: teamFill(g.owner) },
+  // Build chronological events: goals + the Slaf hit + the score-state markers.
+  const events = (D.goal_sequence || []).map(g => ({
+    period: g.period, sec: parseInt(g.time.split(':')[0]) * 60 + parseInt(g.time.split(':')[1]),
+    time: g.time, kind: 'goal', g,
   }));
+  // Insert the Crozier hit at P2 17:48
+  events.push({
+    period: 2, sec: 17 * 60 + 48, time: '17:48', kind: 'hit',
+    detail: lang === 'fr'
+      ? { team: 'TBL', label: '⚡ Crozier · mise en échec sur Slafkovský', extra: 'zone neutre · CH menait alors 2–0' }
+      : { team: 'TBL', label: '⚡ Crozier hit on Slafkovský', extra: 'neutral zone · MTL led 2–0 at the time' },
+  });
+  events.sort((a, b) => a.period - b.period || a.sec - b.sec);
+
+  const rows = events.map(e => {
+    if (e.kind === 'goal') {
+      const g = e.g;
+      return {
+        cells: [
+          `P${g.period} ${g.time}`, g.owner, g.scorer || '—',
+          [g.assist1, g.assist2].filter(Boolean).join(', ') || '—',
+          g.situation,
+        ],
+        _opts: { fill: teamFill(g.owner) },
+      };
+    }
+    return {
+      cells: [`P${e.period} ${e.time}`, e.detail.team, e.detail.label, e.detail.extra, '—'],
+      _opts: { fill: BRAND.caveat },
+    };
+  });
   return [
     h1(t.story_title),
     para(t.story_intro, { italics: true }),
@@ -575,6 +621,61 @@ function slafSection(t, lang) {
   ];
 }
 
+function pressClaimsSection(t, lang) {
+  // Build a verdict-color-coded claims table
+  const verdictColor = (verdict) => {
+    if (/CONFIRMED/.test(verdict) && !/PARTIALLY/.test(verdict) && !/MIXED/.test(verdict)) return BRAND.confirm;
+    if (/REFUTED/.test(verdict)) return BRAND.refute;
+    return BRAND.neutral; // mixed / partial
+  };
+  const verdictWord = (verdict, lang) => {
+    if (lang === 'fr') {
+      if (/PARTIALLY CONFIRMED/.test(verdict)) return 'Partiellement confirmée';
+      if (/CONFIRMED/.test(verdict)) return 'Confirmée';
+      if (/REFUTED/.test(verdict)) return 'Infirmée';
+      return 'Mitigée';
+    }
+    if (/PARTIALLY CONFIRMED/.test(verdict)) return 'Partially confirmed';
+    if (/CONFIRMED/.test(verdict)) return 'Confirmed';
+    if (/REFUTED/.test(verdict)) return 'Refuted';
+    return 'Mixed';
+  };
+
+  const claimEntries = [
+    { id: 'claim_1_crozier_hit_turned_game' },
+    { id: 'claim_2_p3_collapse' },
+    { id: 'claim_3_penalty_discipline' },
+    { id: 'claim_4_matheson_hagel_crease' },
+    { id: 'claim_5_top_line_surge' },
+    { id: 'claim_6_habs_unaffected_by_hit' },
+  ];
+
+  const rows = claimEntries.map(({ id }) => {
+    const c = PRESS[id];
+    const verdict = verdictWord(c.data_verdict, lang);
+    const verdictHead = (c.data_verdict.match(/^([A-Z ]+CONFIRMED|[A-Z ]+REFUTED|MIXED|PARTIALLY CONFIRMED)/) || [''])[0];
+    const fill = verdictColor(c.data_verdict);
+    return {
+      cells: [
+        c.claim,
+        { value: c.press_source.split(' · ')[0], fill: undefined },
+        { value: verdict, fill, bold: true },
+        c.data_verdict.replace(/^[A-Z ]+(CONFIRMED|REFUTED|MIXED|PARTIALLY CONFIRMED)\.?\s*/, ''),
+      ],
+    };
+  });
+  return [
+    h1(t.claims_title),
+    para(t.claims_intro, { italics: true }),
+    dataTable(
+      [t.th_claim, t.th_source, t.th_verdict, t.th_data],
+      rows,
+      [3200, 1500, 1500, 4500]
+    ),
+    para(t.claims_caveat, { italics: true, color: BRAND.mute }),
+  ];
+}
+
 function progressionSection(t, lang) {
   const prog = D.mtl_progression || {};
   const fmtX = lang === 'fr' ? fmtFr : fmt;
@@ -658,6 +759,8 @@ function buildDoc(lang) {
         new Paragraph({ children: [new PageBreak()] }),
         ...goaliesSection(t, lang),
         ...motmSection(t, lang),
+        new Paragraph({ children: [new PageBreak()] }),
+        ...pressClaimsSection(t, lang),
         new Paragraph({ children: [new PageBreak()] }),
         ...slafSection(t, lang),
         ...progressionSection(t, lang),

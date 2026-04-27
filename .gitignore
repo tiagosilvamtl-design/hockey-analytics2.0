@@ -55,8 +55,11 @@ site/
 build/
 dist/
 
-# Research notes (input-only, do not commit)
-research/
+# Research raw notes (scratch, do not commit) — but DO commit structured
+# research-game skill outputs (claims yamls + lineups yamls).
+research/*
+!research/*_claims.yaml
+!research/*_lineups.yaml
 reearch/
 
 # Local Claude Code settings (per-machine; never commit)

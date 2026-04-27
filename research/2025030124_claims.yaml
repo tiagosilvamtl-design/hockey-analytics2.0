@@ -1,0 +1,86 @@
+# Press claims ledger for Game 4 (TBL @ MTL, 2026-04-26).
+# Output of the research-game skill workflow. Only INTERESTING claims —
+# claims that warrant analytical validation, not "the lineup matches what
+# was reported" boring stuff.
+#
+# Each entry has the source quote, source URL, and the question the data
+# can answer. Verdicts are computed in game4_press_validation.numbers.json
+# and rendered into the comprehensive post-game report.
+
+game_id: "2025030124"
+research_date: "2026-04-27"
+
+claims:
+  - id: crozier_hit_turned_game
+    source: "Marc Antoine Godin · Radio-Canada · 'La triade qui a coûté cher'"
+    source_url: "https://ici.radio-canada.ca/sports/2249448/cansdien-lightning-triade-defaite-slafkovsky"
+    quote: |
+      Three sequential events flipped momentum: (1) Crozier's hit on Slafkovský with
+      ~2:12 remaining in P2; (2) Guentzel's 4v4 goal while Slaf was off recovering;
+      (3) more Tampa pressure in the dying seconds of P2. Per Tampa players quoted by
+      Gagnon: "Elle a fait tourner le match."
+    question_for_data: "Did the hit precede the 4v4 goal? By how much? What did MTL on-ice metrics do?"
+
+  - id: worst_lead_in_hockey
+    source: "François Gagnon · RDS · 'La pire avance au hockey'"
+    source_url: "https://www.rds.ca/hockey/canadiens/article/la-pire-avance-au-hockey/"
+    quote: |
+      The cliché says a 2-0 lead is hockey's worst advantage. Cooper directly refutes:
+      "Je t'assure que tous les entraîneurs-chefs de la LNH, moi le premier, préfèrent
+      être en avant 2-0 que de tirer de l'arrière 0-2." Gagnon also reports St-Louis
+      saying: "Les buts en fin de période font toujours mal."
+    question_for_data: "Did MTL actually 'crash' in P3, or was the loss special-teams-driven?"
+
+  - id: penalty_discipline_p3
+    source: "Martin St-Louis (post-game) · Habs Eyes On The Prize"
+    source_url: "https://www.nhl.com/news/tampa-bay-lightning-montreal-canadiens-game-4-recap-april-26-2026"
+    quote: |
+      St-Louis: "We didn't play a good enough third, I would say. We take three
+      penalties. It's a veteran team, talented. They're good at getting us to take
+      penalties." EOTP: "Why can they not keep their sticks below shoulder level
+      in this series? It's just unacceptable carelessness." Singled out: too-many-men
+      penalty + Evans cross-check on Kucherov.
+    question_for_data: "How many MTL penalties in P3 vs P1+P2? Which goals came off resulting power plays?"
+
+  - id: matheson_hagel_crease_twice
+    source: "Habs Eyes On The Prize · Top Six Minutes recap"
+    source_url: "https://www.habseyesontheprize.com/canadiens-lightning-2026-04-26-stanley-cup-playoffs-top-six-minutes-recap-3-stars-cole-caufield-goal-zachary-bolduc-brandon-hagel-power-play-juraj-slafkovsky-hit/"
+    quote: |
+      "Matheson made the same mistake twice — failing to move Brandon Hagel out of
+      the crease, allowing identical tap-in goals."
+    question_for_data: "Was Matheson on-ice for BOTH Hagel goals? Were both shots from the slot/crease?"
+
+  - id: top_line_reunion_catalytic
+    source: "François Gagnon · RDS · chronique"
+    source_url: "https://www.rds.ca/hockey/canadiens/article/la-pire-avance-au-hockey/"
+    quote: |
+      Gagnon credits Tampa's reunion of Hagel-Point-Kucherov as catalytic to the
+      P3 surge.
+    question_for_data: |
+      Did the Hagel-Point-Kucherov trio play more in P3 than P1+P2? Or was it
+      efficiency rather than minutes?
+
+  - id: habs_deny_hit_effect
+    source: "RDS · 'Slafkovsky sonné, le CH nie avoir été affecté'"
+    source_url: "https://www.rds.ca/hockey/canadiens/article/slafkovsky-sonne-le-ch-nie-avoir-ete-affecte/"
+    quote: |
+      Matheson: "Je ne pense pas." Guhle: "De grosses collisions arrivent dans ces
+      matchs." Bolduc admits: "Peut-être que ça leur a donné un peu de gaz" — but
+      says it didn't affect the whole match.
+    question_for_data: |
+      Slaf-on-ice 5v5 metrics pre vs post the hit. Did the team play differently
+      with him on the ice? Did Slaf himself produce after returning?
+
+source_groups:
+  francophone:
+    - ["Marc Antoine Godin · Radio-Canada · La triade qui a coûté cher", "https://ici.radio-canada.ca/sports/2249448/cansdien-lightning-triade-defaite-slafkovsky"]
+    - ["François Gagnon · RDS · La pire avance au hockey", "https://www.rds.ca/hockey/canadiens/article/la-pire-avance-au-hockey/"]
+    - ["RDS · Slafkovsky sonné, le CH nie avoir été affecté", "https://www.rds.ca/hockey/canadiens/article/slafkovsky-sonne-le-ch-nie-avoir-ete-affecte/"]
+    - ["RDS · Le CH perd une avance et un match clé", "https://www.rds.ca/hockey/canadiens/article/le-ch-perd-une-avance-et-un-match-cle/"]
+    - ["RDS · Les grands moments du match no 4 en direct", "https://www.rds.ca/hockey/canadiens/article/les-grands-moments-du-match-no-4-en-direct/"]
+  anglophone:
+    - ["NHL.com · Hagel scores twice in 3rd, Lightning rally in Game 4", "https://www.nhl.com/news/tampa-bay-lightning-montreal-canadiens-game-4-recap-april-26-2026"]
+    - ["Habs Eyes On The Prize · Top Six Minutes — Habs weren't smart enough", "https://www.habseyesontheprize.com/canadiens-lightning-2026-04-26-stanley-cup-playoffs-top-six-minutes-recap-3-stars-cole-caufield-goal-zachary-bolduc-brandon-hagel-power-play-juraj-slafkovsky-hit/"]
+    - ["CBC News · Habs blow 2-goal lead, Hagel strikes twice", "https://www.cbc.ca/news/canada/montreal/habs-montreal-canadiens-game-4-tampa-bay-9.7177939"]
+    - ["Tampa Bay Times · Lightning even series with a boom in Game 4", "https://www.tampabay.com/sports/lightning/2026/04/27/max-crozier-juraj-slafkovsky-game-4-canadiens-nikita-kucherov-brandon-hagel/"]
+    - ["TSN · Bolduc, Caufield as Canadiens on top after two periods", "https://www.tsn.ca/nhl/article/bolduc-caufield-as-canadiens-on-top-over-lightning-after-two-periods-in-game-4/"]

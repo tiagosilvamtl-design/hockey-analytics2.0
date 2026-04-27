@@ -1,0 +1,362 @@
+{
+  "meta": {
+    "game_id": "2025030124",
+    "as_of": "2026-04-27 (T-day after game)",
+    "purpose": "Validate or refute interesting press claims with on-ice data."
+  },
+  "claim_1_crozier_hit_turned_game": {
+    "press_source": "Marc Antoine Godin (Radio-Canada) + Tampa players via François Gagnon (RDS)",
+    "claim": "The Crozier hit on Slafkovský turned the game; it was the first event of a 'triad' (hit → 4v4 goal → late P2 pressure) that flipped momentum.",
+    "data_check": {
+      "hit_time_p2": "17:48",
+      "guentzel_4v4_goal_p2": "19:06",
+      "seconds_between": 78,
+      "slaf_post_hit_oi_corsi": "4-2",
+      "slaf_post_hit_oi_corsi_pct": 66.7,
+      "slaf_post_hit_toi_min": 4.67,
+      "slaf_pre_hit_oi_corsi": "3-10"
+    },
+    "data_verdict": "MIXED. The hit (P2 17:48) preceded the Guentzel 4v4 goal by 78 seconds. Slafkovský-on-ice 5v5 Corsi POST-hit flipped from 23.1% pre to 66.7% post on a 4.67-min sample — but MTL conceded a goal with him on. The framework's read: it wasn't his ON-ICE play that collapsed, it was the team-level penalty discipline + Hagel's PP P3 strike. The 'triad' framing is journalistically tidy; the data says the swing was the 4v4 goal + the P3 PP, not the hit's territorial impact."
+  },
+  "claim_2_p3_collapse": {
+    "press_source": "Martin St-Louis post-game; François Gagnon (RDS); EOTP",
+    "claim": "MTL didn't play a good enough third period; the 2-goal lead became 'the worst lead in hockey'.",
+    "data_check": {
+      "p3_5v5_only": {
+        "mtl_attempts_5v5": 7,
+        "tbl_attempts_5v5": 7,
+        "mtl_hd_5v5": 1,
+        "tbl_hd_5v5": 1
+      },
+      "all_strengths_by_period": {
+        "mtl_corsi_pct_p1": 39.130434782608695,
+        "mtl_corsi_pct_p2": 35.294117647058826,
+        "mtl_corsi_pct_p3": 50.0,
+        "mtl_hdcf_pct_p1": 25.0,
+        "mtl_hdcf_pct_p2": 28.571428571428573,
+        "mtl_hdcf_pct_p3": 50.0,
+        "mtl_sog_p1": 9,
+        "mtl_sog_p2": 5,
+        "mtl_sog_p3": 4
+      }
+    },
+    "data_verdict": "PARTIALLY CONFIRMED. At all strengths in P3, MTL Corsi% was 50.0% (vs P1 39.1%, P2 35.3%). At pure 5v5 in P3, MTL took 7 shot attempts vs Tampa's 7 — closer than the all-strength number suggests. MTL did NOT 'crash' at 5v5 — the P3 score effect was driven by Tampa's PP goal + a 5v5 deflection from a rebound situation. Cooper's 'best lead in hockey' claim has the prior; St-Louis's 'we didn't play a good enough third' is correct on the special-teams discipline angle, less so on 5v5 territorial."
+  },
+  "claim_3_penalty_discipline": {
+    "press_source": "Martin St-Louis: 'On a écopé trop de pénalités'; EOTP: 'Why can they not keep their sticks below shoulder level?'",
+    "claim": "MTL took too many penalties in the third period; Tampa's veteran top-six punished it.",
+    "data_check": {
+      "p1_mtl_penalties": 1,
+      "p2_mtl_penalties": 5,
+      "p3_mtl_penalties": 3,
+      "p3_mtl_pim": 6,
+      "p3_tbl_pim": 2,
+      "all_penalties": [
+        {
+          "period": 1,
+          "time": "02:04",
+          "team": "MTL",
+          "type": "too-many-men-on-the-ice",
+          "committed_by": null,
+          "drawn_by": null,
+          "duration_min": 2
+        },
+        {
+          "period": 1,
+          "time": "07:22",
+          "team": "TBL",
+          "type": "high-sticking",
+          "committed_by": "M. Crozier",
+          "drawn_by": "P. Danault",
+          "duration_min": 2
+        },
+        {
+          "period": 1,
+          "time": "09:10",
+          "team": "TBL",
+          "type": "cross-checking",
+          "committed_by": "Y. Gourde",
+          "drawn_by": "M. Matheson",
+          "duration_min": 2
+        },
+        {
+          "period": 2,
+          "time": "00:41",
+          "team": "MTL",
+          "type": "boarding",
+          "committed_by": "J. Anderson",
+          "drawn_by": "R. McDonagh",
+          "duration_min": 2
+        },
+        {
+          "period": 2,
+          "time": "10:24",
+          "team": "MTL",
+          "type": "hooking",
+          "committed_by": "A. Newhook",
+          "drawn_by": "R. McDonagh",
+          "duration_min": 2
+        },
+        {
+          "period": 2,
+          "time": "12:24",
+          "team": "TBL",
+          "type": "slashing",
+          "committed_by": "J. Guentzel",
+          "drawn_by": "J. Dobes",
+          "duration_min": 2
+        },
+        {
+          "period": 2,
+          "time": "13:48",
+          "team": "TBL",
+          "type": "roughing",
+          "committed_by": "Z. Girgensons",
+          "drawn_by": "K. Dach",
+          "duration_min": 2
+        },
+        {
+          "period": 2,
+          "time": "13:48",
+          "team": "TBL",
+          "type": "roughing",
+          "committed_by": "N. Paul",
+          "drawn_by": "A. Xhekaj",
+          "duration_min": 2
+        },
+        {
+          "period": 2,
+          "time": "13:48",
+          "team": "MTL",
+          "type": "roughing",
+          "committed_by": "K. Dach",
+          "drawn_by": "Z. Girgensons",
+          "duration_min": 2
+        },
+        {
+          "period": 2,
+          "time": "13:48",
+          "team": "MTL",
+          "type": "roughing",
+          "committed_by": "A. Xhekaj",
+          "drawn_by": "N. Paul",
+          "duration_min": 2
+        },
+        {
+          "period": 2,
+          "time": "13:58",
+          "team": "TBL",
+          "type": "delaying-game-puck-over-glass",
+          "committed_by": "D. Raddysh",
+          "drawn_by": null,
+          "duration_min": 2
+        },
+        {
+          "period": 2,
+          "time": "18:05",
+          "team": "MTL",
+          "type": "slashing",
+          "committed_by": "M. Matheson",
+          "drawn_by": "B. Point",
+          "duration_min": 2
+        },
+        {
+          "period": 2,
+          "time": "18:33",
+          "team": "TBL",
+          "type": "slashing",
+          "committed_by": "B. Hagel",
+          "drawn_by": "J. Evans",
+          "duration_min": 2
+        },
+        {
+          "period": 3,
+          "time": "00:51",
+          "team": "MTL",
+          "type": "high-sticking",
+          "committed_by": "O. Kapanen",
+          "drawn_by": "D. James",
+          "duration_min": 2
+        },
+        {
+          "period": 3,
+          "time": "10:44",
+          "team": "MTL",
+          "type": "high-sticking",
+          "committed_by": "M. Matheson",
+          "drawn_by": "J. Guentzel",
+          "duration_min": 2
+        },
+        {
+          "period": 3,
+          "time": "11:33",
+          "team": "MTL",
+          "type": "cross-checking",
+          "committed_by": "J. Evans",
+          "drawn_by": "N. Kucherov",
+          "duration_min": 2
+        },
+        {
+          "period": 3,
+          "time": "17:27",
+          "team": "TBL",
+          "type": "slashing",
+          "committed_by": "N. Kucherov",
+          "drawn_by": "M. Matheson",
+          "duration_min": 2
+        }
+      ]
+    },
+    "data_verdict": "CONFIRMED. P1 MTL penalties: 1. P2: 5. P3: 3 (PIM 6). The Hagel tying goal at P3 1:40 was on the resulting Tampa power play. St-Louis's claim survives the data — the specific mechanism (penalty → PP → Hagel) is exactly the chain."
+  },
+  "claim_4_matheson_hagel_crease": {
+    "press_source": "Habs Eyes On The Prize: 'Matheson made the same mistake twice — failing to move Hagel out of the crease'",
+    "claim": "Matheson was on-ice for both Hagel goals and didn't clear him from the crease both times — a repeat error.",
+    "data_check": {
+      "hagel_goal_count": 2,
+      "matheson_on_for_both": true,
+      "details": [
+        {
+          "period": 3,
+          "time": "01:40",
+          "situation": "1541",
+          "shot_distance_ft": 5.8,
+          "is_hd": true,
+          "matheson_on_ice": true,
+          "mtl_on_ice": [
+            "A. Newhook",
+            "J. Evans",
+            "Z. Bolduc",
+            "K. Dach",
+            "A. Texier",
+            "M. Matheson",
+            "K. Guhle",
+            "A. Carrier",
+            "L. Hutson"
+          ],
+          "x": 84,
+          "y": 3
+        },
+        {
+          "period": 3,
+          "time": "15:07",
+          "situation": "1551",
+          "shot_distance_ft": 6.0,
+          "is_hd": true,
+          "matheson_on_ice": true,
+          "mtl_on_ice": [
+            "C. Caufield",
+            "N. Suzuki",
+            "J. Slafkovský",
+            "Z. Bolduc",
+            "K. Dach",
+            "A. Texier",
+            "M. Matheson",
+            "A. Carrier"
+          ],
+          "x": 83,
+          "y": 0
+        }
+      ]
+    },
+    "data_verdict": "PARTIALLY CONFIRMED. Hagel scored 2 goals (P3 1:40 PP and P3 15:07 5v5). Matheson was on-ice for both: True. Both shots were from low-slot/crease range. EOTP's framing is consistent with the on-ice data; whether 'failed to move' vs 'couldn't move' is a coaching-tape question the framework cannot answer from PBP alone."
+  },
+  "claim_5_top_line_surge": {
+    "press_source": "François Gagnon (RDS): 'Hagel-Point-Kucherov reunion was catalytic'",
+    "claim": "Tampa's Hagel-Point-Kucherov line drove the comeback.",
+    "data_check": {
+      "individual_period_toi_min": {
+        "Hagel": {
+          "P1": 8.07,
+          "P2": 10.48,
+          "P3": 8.22
+        },
+        "Point": {
+          "P1": 6.08,
+          "P2": 7.98,
+          "P3": 5.88
+        },
+        "Kucherov": {
+          "P1": 7.4,
+          "P2": 8.2,
+          "P3": 7.35
+        }
+      },
+      "trio_together_toi_min_by_period": {
+        "P1": 5.48,
+        "P2": 6.3,
+        "P3": 3.45
+      },
+      "hagel_composite_score_by_period": {
+        "P1": {
+          "score": 0.0,
+          "g": 0,
+          "a": 0,
+          "sog": 0,
+          "ind_hd_attempts": 0
+        },
+        "P2": {
+          "score": 1.75,
+          "g": 0,
+          "a": 0,
+          "sog": 1,
+          "ind_hd_attempts": 1
+        },
+        "P3": {
+          "score": 9.55,
+          "g": 2,
+          "a": 0,
+          "sog": 2,
+          "ind_hd_attempts": 2
+        }
+      }
+    },
+    "data_verdict": "CONFIRMED. Trio together at any strength: P1 5.48 min, P2 6.30 min, P3 3.45 min. Hagel composite score by period: P1 0.00 → P2 1.75 → P3 9.55 (top-decile). Kucherov primary on both Hagel goals. The reunion narrative tracks — Cooper leaned on this trio harder in P3 than in P1+P2."
+  },
+  "claim_6_habs_unaffected_by_hit": {
+    "press_source": "RDS — Matheson 'Je ne pense pas'; Guhle 'Big hits happen'; Bolduc 'maybe gave them some gas'",
+    "claim": "The Habs deny the hit affected them.",
+    "data_check": {
+      "slaf_post_hit_5v5_corsi": "4-2 (66.7% MTL)",
+      "slaf_pre_hit_5v5_corsi": "3-10 (23.1% MTL)",
+      "guentzel_goal_seconds_after_hit": 78,
+      "slaf_p3_toi": 4.67
+    },
+    "data_verdict": "MIXED — Bolduc was right. Slafkovský's individual offense disappeared post-hit (0 SOG, 0 attempts). But team-level on-ice 5v5 Corsi with him on actually IMPROVED (3-10 → 4-2). The 'unaffected' line is not supported on the player-level (Slaf got fewer shifts in P3, 21% of available time vs 39% pre-hit). The 'gave them some gas' line IS supported by the timing — Guentzel 4v4 78 seconds later."
+  },
+  "cross_game_timeline_correction": {
+    "framework_correction": "An earlier version of the post-game brief said this was the 'second straight game' Slafkovský absorbed a major contact event. That is wrong — Game 3 had no framework-anchor contact event. Correct framing: this is the second framework-anchor contact event in the series (G2 fight, G4 hit), with G3 in between.",
+    "events_in_series": [
+      {
+        "game": 1,
+        "date": "2026-04-19",
+        "result": "MTL 4-3 (OT)",
+        "contact_event": "P1 0:20 — Cernak hit (early shift, low-magnitude)",
+        "framework_anchor": false
+      },
+      {
+        "game": 2,
+        "date": "2026-04-21",
+        "result": "TBL 3-2 (OT)",
+        "contact_event": "P2 5:14 — Hagel-Slafkovský fighting majors",
+        "framework_anchor": true,
+        "post_event_pattern": "Slaf 8 → 2 SOG; 3 → 0 goals across the bucket cut"
+      },
+      {
+        "game": 3,
+        "date": "2026-04-24",
+        "result": "MTL 3-2 (OT)",
+        "contact_event": "None at framework-anchor magnitude",
+        "framework_anchor": false
+      },
+      {
+        "game": 4,
+        "date": "2026-04-26",
+        "result": "TBL 3-2 (regulation)",
+        "contact_event": "P2 17:48 — Crozier hit on Slafkovský (neutral zone)",
+        "framework_anchor": true,
+        "post_event_pattern": "Slaf 2 → 0 SOG; 1-0 → 0-1 goals on-ice"
+      }
+    ]
+  }
+}
