@@ -27,9 +27,15 @@ REPO = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO / "packages" / "lemieux-connectors" / "src"))
 sys.path.insert(0, str(REPO / "packages" / "lemieux-core" / "src"))
 
+try:
+    import truststore
+    truststore.inject_into_ssl()
+except Exception:
+    pass
+
 import requests
 
-from lemieux.connectors.nhl_edge import NhlEdgeClient, resolve_player_id
+from lemieux.connectors.nhl_edge import NhlEdgeClient, PlayerBio, resolve_player_id
 
 DB_PATH = REPO / "legacy" / "data" / "store.sqlite"
 INDEX_PATH = REPO / "legacy" / "data" / "comparable_index.json"
@@ -71,6 +77,26 @@ def init_edge_table(con: sqlite3.Connection) -> None:
             player_id INTEGER,
             resolved_at TEXT,
             PRIMARY KEY (name, position)
+        )
+    """)
+    # Static-bio block — one row per player_id. Pulled from
+    # api-web.nhle.com/v1/player/{id}/landing once per player. Stable for
+    # life so we re-fetch only on --force-refresh.
+    con.execute("""
+        CREATE TABLE IF NOT EXISTS edge_player_bio (
+            player_id INTEGER PRIMARY KEY,
+            name TEXT,
+            height_in INTEGER,
+            weight_lb INTEGER,
+            birth_date TEXT,
+            birth_country TEXT,
+            shoots_catches TEXT,
+            position TEXT,
+            draft_year INTEGER,
+            draft_round INTEGER,
+            draft_overall INTEGER,
+            is_active INTEGER,
+            fetched_at TEXT
         )
     """)
     con.commit()
@@ -132,6 +158,10 @@ def main():
     ap.add_argument("--explicit", default="",
                     help="Comma-separated extra names to include")
     ap.add_argument("--rate-limit-s", type=float, default=0.6)
+    ap.add_argument("--force-bio-refresh", action="store_true",
+                    help="Re-fetch /player/{id}/landing even when bio row already exists")
+    ap.add_argument("--bio-only", action="store_true",
+                    help="Only refresh static-bio block; skip the season-by-season Edge feature pulls")
     args = ap.parse_args()
 
     explicit = [s.strip() for s in args.explicit.split(",") if s.strip()]
@@ -146,6 +176,7 @@ def main():
     resolver_session.headers.update({"User-Agent": "lemieux-edge-connector/0.1"})
 
     n_resolved = 0; n_unresolved = 0; n_seasons_pulled = 0; n_with_data = 0
+    n_bio_pulled = 0; n_bio_cached = 0
 
     for name, position in targets:
         # Check cache
@@ -168,6 +199,33 @@ def main():
             n_unresolved += 1
             continue
         n_resolved += 1
+
+        # Static-bio block — one fetch per player_id, idempotent.
+        bio_row = con.execute(
+            "SELECT player_id FROM edge_player_bio WHERE player_id = ?", (pid,)
+        ).fetchone()
+        if bio_row and not args.force_bio_refresh:
+            n_bio_cached += 1
+        else:
+            bio = edge.fetch_player_bio(pid)
+            if bio is not None:
+                con.execute(
+                    """
+                    INSERT OR REPLACE INTO edge_player_bio
+                    (player_id, name, height_in, weight_lb, birth_date, birth_country,
+                     shoots_catches, position, draft_year, draft_round, draft_overall,
+                     is_active, fetched_at)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, datetime('now'))
+                    """,
+                    (pid, bio.name or name, bio.height_in, bio.weight_lb,
+                     bio.birth_date, bio.birth_country, bio.shoots_catches, bio.position,
+                     bio.draft_year, bio.draft_round, bio.draft_overall, bio.is_active),
+                )
+                con.commit()
+                n_bio_pulled += 1
+
+        if args.bio_only:
+            continue
 
         for season in EDGE_SEASONS:
             for gt in EDGE_GAME_TYPES:
@@ -196,7 +254,9 @@ def main():
     con.close()
     print(f"\nResolved {n_resolved} of {len(targets)} target names. Unresolved: {n_unresolved}")
     print(f"Season-rows fetched: {n_seasons_pulled}. With data: {n_with_data}")
+    print(f"Static bio: {n_bio_pulled} fetched, {n_bio_cached} already cached")
     print(f"\nNHL Edge features persisted to legacy/data/store.sqlite -> edge_player_features")
+    print(f"NHL static bio  persisted to legacy/data/store.sqlite -> edge_player_bio")
 
 
 if __name__ == "__main__":

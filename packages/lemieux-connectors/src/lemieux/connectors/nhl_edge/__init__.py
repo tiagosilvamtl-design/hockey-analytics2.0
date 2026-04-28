@@ -16,6 +16,6 @@ Aggregates per-player into a feature row:
 
 License: NHL.com public stats. Source notes documented in SOURCES.md.
 """
-from .client import NhlEdgeClient, EdgePlayerFeatures, resolve_player_id
+from .client import NhlEdgeClient, EdgePlayerFeatures, PlayerBio, resolve_player_id
 
-__all__ = ["NhlEdgeClient", "EdgePlayerFeatures", "resolve_player_id"]
+__all__ = ["NhlEdgeClient", "EdgePlayerFeatures", "PlayerBio", "resolve_player_id"]

@@ -152,6 +152,40 @@ def league_average_team_pool(team_pools: dict[str, dict]) -> dict[str, float]:
     return total
 
 
+def fetch_player_bio(con: sqlite3.Connection) -> dict[str, dict]:
+    """Per-player static bio (height, weight, age, draft).
+
+    Keyed by lowercased name for matching. Players without bio simply absent;
+    caller NaN-imputes.
+    """
+    out: dict[str, dict] = {}
+    try:
+        rows = con.execute("""
+            SELECT name, height_in, weight_lb, birth_date, draft_overall
+            FROM edge_player_bio
+        """).fetchall()
+    except sqlite3.OperationalError:
+        return {}
+    from datetime import datetime
+    today = datetime.utcnow().date()
+    for r in rows:
+        name, h, w, bd, draft = r
+        age = float("nan")
+        if bd:
+            try:
+                bdate = datetime.strptime(bd, "%Y-%m-%d").date()
+                age = (today - bdate).days / 365.25
+            except Exception:
+                pass
+        out[name] = {
+            "height_in": float(h) if h is not None else float("nan"),
+            "weight_lb": float(w) if w is not None else float("nan"),
+            "age_years": age,
+            "draft_overall": float(draft) if draft is not None else float("nan"),
+        }
+    return out
+
+
 def fetch_edge_features_max(con: sqlite3.Connection) -> dict[str, dict]:
     """Per-player career-best Edge biometrics (max across all (season, game_type) rows).
     Returns {name: {max_skating_speed_mph, max_shot_speed_mph, skating_burst_count_22plus, ...}}.
@@ -223,15 +257,25 @@ def main():
         "pos_C", "pos_L", "pos_R", "pos_D",   # one-hot position
     ]
     edge_features = {}
+    bio_features = {}
     if not args.no_block_b:
         edge_features = fetch_edge_features_max(con)
+        bio_features = fetch_player_bio(con)
         print(f"  Edge biometrics available for {len(edge_features)} players")
-        # Block B: NHL Edge biometric columns (NaN where unknown)
+        print(f"  Static bio (height/weight/age/draft) for {len(bio_features)} players")
+        # Block B1: NHL Edge biometric columns (NaN where unknown)
         feature_columns += [
             "max_skating_speed_mph",     # peak observed top speed
             "max_shot_speed_mph",        # peak observed hardest shot
             "skating_burst_count_22plus",  # high-speed-burst frequency proxy
             "hard_shot_count_90plus",      # heavy-shot count
+        ]
+        # Block B2: static bio (objective, doesn't depend on noisy LLM extraction)
+        feature_columns += [
+            "height_in",                 # static height in inches
+            "weight_lb",                 # static weight in pounds
+            "age_years",                 # current age (years, fractional)
+            "draft_overall",             # draft pick number (NaN if undrafted)
         ]
 
     rows = []
@@ -286,6 +330,13 @@ def main():
                 edge.get("max_shot_speed_mph", float("nan")),
                 edge.get("skating_burst_count_22plus", float("nan")),
                 edge.get("hard_shot_count_90plus", float("nan")),
+            ])
+            bio = bio_features.get(p["name"], {})
+            feats.extend([
+                bio.get("height_in", float("nan")),
+                bio.get("weight_lb", float("nan")),
+                bio.get("age_years", float("nan")),
+                bio.get("draft_overall", float("nan")),
             ])
         rows.append(key)
         matrix_rows.append(feats)

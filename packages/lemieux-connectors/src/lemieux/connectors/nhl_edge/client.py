@@ -23,6 +23,7 @@ log = logging.getLogger(__name__)
 PLAYER_SEARCH = "https://search.d3.nhle.com/api/v1/search/player"
 SKATING_SPEED_DETAIL = "https://api-web.nhle.com/v1/edge/skater-skating-speed-detail/{pid}/{season}/{game_type}"
 SHOT_SPEED_DETAIL    = "https://api-web.nhle.com/v1/edge/skater-shot-speed-detail/{pid}/{season}/{game_type}"
+PLAYER_LANDING       = "https://api-web.nhle.com/v1/player/{pid}/landing"
 
 DEFAULT_CACHE_DIR = Path.home() / ".lemieux" / "edge_cache"
 DEFAULT_RATE_LIMIT_S = 0.6   # polite default ~1.5 req/sec
@@ -75,6 +76,50 @@ class EdgePlayerFeatures:
                 out.hard_shot_count_90plus = sum(1 for v in shotspeeds if v >= 90.0)
                 out.hard_shot_count_80to90 = sum(1 for v in shotspeeds if 80.0 <= v < 90.0)
         return out
+
+
+@dataclass
+class PlayerBio:
+    """Static player bio from NHL.com /v1/player/{id}/landing.
+
+    One row per player; never changes mid-career except for trade/team_abbrev
+    (which we don't persist). Height/weight/birthdate/draft are stable.
+    """
+
+    player_id: int
+    name: str
+    height_in: int | None = None         # heightInInches
+    weight_lb: int | None = None         # weightInPounds
+    birth_date: str | None = None        # ISO yyyy-mm-dd
+    birth_country: str | None = None     # 3-letter code (CAN/USA/SWE/...)
+    shoots_catches: str | None = None    # L / R
+    position: str | None = None          # C / L / R / D / G
+    draft_year: int | None = None
+    draft_round: int | None = None
+    draft_overall: int | None = None
+    is_active: int | None = None         # 1 / 0 (cast from bool)
+
+    @classmethod
+    def from_landing(cls, payload: dict, player_id: int) -> "PlayerBio":
+        """Parse the /v1/player/{id}/landing response."""
+        first = (payload.get("firstName") or {}).get("default") or ""
+        last = (payload.get("lastName") or {}).get("default") or ""
+        name = f"{first} {last}".strip()
+        draft = payload.get("draftDetails") or {}
+        return cls(
+            player_id=player_id,
+            name=name,
+            height_in=payload.get("heightInInches"),
+            weight_lb=payload.get("weightInPounds"),
+            birth_date=payload.get("birthDate"),
+            birth_country=payload.get("birthCountry"),
+            shoots_catches=payload.get("shootsCatches"),
+            position=payload.get("position"),
+            draft_year=draft.get("year"),
+            draft_round=draft.get("round"),
+            draft_overall=draft.get("overallPick"),
+            is_active=int(bool(payload.get("isActive"))) if "isActive" in payload else None,
+        )
 
 
 class NhlEdgeClient:
@@ -143,6 +188,18 @@ class NhlEdgeClient:
     def fetch_shot_speed(self, player_id: int, season: str, game_type: int = 2) -> dict | None:
         url = SHOT_SPEED_DETAIL.format(pid=player_id, season=season, game_type=game_type)
         return self._get_json(url, f"shot_{player_id}_{season}_{game_type}")
+
+    def fetch_player_landing(self, player_id: int) -> dict | None:
+        """Fetch /v1/player/{id}/landing — static bio block (height, weight, draft, ...)."""
+        url = PLAYER_LANDING.format(pid=player_id)
+        return self._get_json(url, f"landing_{player_id}")
+
+    def fetch_player_bio(self, player_id: int) -> PlayerBio | None:
+        """Convenience: landing + parse to PlayerBio. Returns None on 404."""
+        data = self.fetch_player_landing(player_id)
+        if not data:
+            return None
+        return PlayerBio.from_landing(data, player_id=player_id)
 
     def fetch_player_features(
         self, player_id: int, name: str, season: str, game_type: int = 2
