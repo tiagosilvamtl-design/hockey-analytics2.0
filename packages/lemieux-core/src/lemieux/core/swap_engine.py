@@ -26,7 +26,14 @@ LINE_COMBO_DIVERGENCE_PP: float = 0.10
 
 @dataclass
 class PlayerImpact:
-    """Isolated on/off impact rates, per 60 minutes, at one strength state."""
+    """Isolated on/off impact rates, per 60 minutes, at one strength state.
+
+    The cohort-stabilized variant produced by `build_cohort_stabilized_impact()`
+    sets the optional `_iso_*60_override` and `_iso_*60_var_override` fields
+    so the iso properties below return the blended rates + blended variances
+    directly. For unblended use, leave them None and the Poisson approximation
+    on the (xgf_on, toi_on, xgf_off, toi_off) tuple is used.
+    """
 
     player_id: str
     name: str
@@ -37,21 +44,35 @@ class PlayerImpact:
     xga_on: float
     xgf_off: float
     xga_off: float
+    # Optional overrides used by cohort-stabilized blending. Default None ⇒
+    # standard Poisson-derived properties.
+    _iso_xgf60_override: float | None = None
+    _iso_xga60_override: float | None = None
+    _iso_xgf60_var_override: float | None = None
+    _iso_xga60_var_override: float | None = None
 
     @property
     def iso_xgf60(self) -> float:
+        if self._iso_xgf60_override is not None:
+            return self._iso_xgf60_override
         return self._per60(self.xgf_on, self.toi_on) - self._per60(self.xgf_off, self.toi_off)
 
     @property
     def iso_xga60(self) -> float:
+        if self._iso_xga60_override is not None:
+            return self._iso_xga60_override
         return self._per60(self.xga_on, self.toi_on) - self._per60(self.xga_off, self.toi_off)
 
     @property
     def iso_xgf60_var(self) -> float:
+        if self._iso_xgf60_var_override is not None:
+            return self._iso_xgf60_var_override
         return self._rate_var(self.xgf_on, self.toi_on) + self._rate_var(self.xgf_off, self.toi_off)
 
     @property
     def iso_xga60_var(self) -> float:
+        if self._iso_xga60_var_override is not None:
+            return self._iso_xga60_var_override
         return self._rate_var(self.xga_on, self.toi_on) + self._rate_var(self.xga_off, self.toi_off)
 
     @staticmethod

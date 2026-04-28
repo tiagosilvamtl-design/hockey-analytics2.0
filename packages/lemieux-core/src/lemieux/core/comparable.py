@@ -231,15 +231,22 @@ def build_cohort_stabilized_impact(
 ) -> PlayerImpact:
     """Blend the target's pooled iso impact with a cohort's pooled iso impact.
 
-    Blend ratio is a function of the target's pooled TOI:
+    Blend ratio is a sigmoid-shaped function of the target's pooled TOI:
     - Below `pivot_toi_min`, the cohort dominates (weight_target → `target_weight_floor`).
     - Above `pivot_toi_min`, the target dominates (weight_target → `target_weight_ceiling`).
-    - Smooth interpolation via a sigmoid-shaped blend.
 
-    Returns a new PlayerImpact with the blended events / TOI. Variance is
-    inherited from the underlying PlayerImpact computation, so downstream
-    `project_swap()` still gets honest CIs (they widen because the blended
-    sample is larger but the noise model is conservative).
+    Returns a new PlayerImpact whose iso properties (rate AND variance) are set
+    via overrides on the dataclass — so `project_swap()` consumes the BLENDED
+    rate AND the BLENDED variance, producing a tighter CI when the cohort
+    contributes meaningful sample. Math:
+
+        blend_rate = w_t * target_rate + w_c * cohort_rate
+        blend_var  = w_t² * target_var + w_c² * cohort_var
+
+    The cohort's variance is small (lots of pooled minutes), so the second term
+    is typically much smaller than the first; the net effect is variance ≈
+    w_t² × target_var, i.e. a CI that contracts as the target's relative weight
+    falls (i.e. as the target's sample shrinks).
     """
     if not cohort:
         return target
@@ -261,38 +268,45 @@ def build_cohort_stabilized_impact(
     coh_toi_on = sum(c.toi_on for c in cohort)
     coh_toi_off = sum(c.toi_off for c in cohort)
 
-    # Compute cohort iso rates per 60.
     def per60(ev, toi):
         return ev * 60.0 / toi if toi > 0 else 0.0
 
+    def rate_var(ev, toi):
+        if toi <= 0:
+            return float("inf")
+        hours = toi / 60.0
+        return max(ev, 1e-9) / (hours ** 2)
+
     coh_iso_xgf60 = per60(coh_xgf_on, coh_toi_on) - per60(coh_xgf_off, coh_toi_off)
     coh_iso_xga60 = per60(coh_xga_on, coh_toi_on) - per60(coh_xga_off, coh_toi_off)
+    coh_iso_xgf60_var = rate_var(coh_xgf_on, coh_toi_on) + rate_var(coh_xgf_off, coh_toi_off)
+    coh_iso_xga60_var = rate_var(coh_xga_on, coh_toi_on) + rate_var(coh_xga_off, coh_toi_off)
 
-    # Target iso rates.
     t_iso_xgf60 = target.iso_xgf60
     t_iso_xga60 = target.iso_xga60
+    t_iso_xgf60_var = target.iso_xgf60_var
+    t_iso_xga60_var = target.iso_xga60_var
 
-    # Blended iso rates (weighted average).
     blended_iso_xgf60 = w_t * t_iso_xgf60 + w_c * coh_iso_xgf60
     blended_iso_xga60 = w_t * t_iso_xga60 + w_c * coh_iso_xga60
+    blended_iso_xgf60_var = (w_t ** 2) * t_iso_xgf60_var + (w_c ** 2) * coh_iso_xgf60_var
+    blended_iso_xga60_var = (w_t ** 2) * t_iso_xga60_var + (w_c ** 2) * coh_iso_xga60_var
 
-    # Reverse-engineer xgf_on / xga_on so that PlayerImpact's iso_*60 properties
-    # return the blended values, holding toi_on / toi_off / xgf_off / xga_off
-    # fixed at the target's values. This lets downstream code consume the blended
-    # impact via the same PlayerImpact API.
-    blended_xgf_on = (target.xgf_off * 60.0 / target.toi_off if target.toi_off > 0 else 0.0
-                      ) * target.toi_on / 60.0 + blended_iso_xgf60 * target.toi_on / 60.0
-    blended_xga_on = (target.xga_off * 60.0 / target.toi_off if target.toi_off > 0 else 0.0
-                      ) * target.toi_on / 60.0 + blended_iso_xga60 * target.toi_on / 60.0
-
+    # Build the result via override fields so iso properties return the blended
+    # rate AND the blended variance directly. Carries the original toi/events
+    # values for downstream auditability.
     return PlayerImpact(
         player_id=f"{target.name}|cohort_stabilized",
         name=f"{target.name} (cohort-stabilized; w_target={w_t:.2f})",
         team_id=target.team_id,
         toi_on=target.toi_on,
         toi_off=target.toi_off,
-        xgf_on=blended_xgf_on,
-        xga_on=blended_xga_on,
+        xgf_on=target.xgf_on,
+        xga_on=target.xga_on,
         xgf_off=target.xgf_off,
         xga_off=target.xga_off,
+        _iso_xgf60_override=blended_iso_xgf60,
+        _iso_xga60_override=blended_iso_xga60,
+        _iso_xgf60_var_override=blended_iso_xgf60_var,
+        _iso_xga60_var_override=blended_iso_xga60_var,
     )
