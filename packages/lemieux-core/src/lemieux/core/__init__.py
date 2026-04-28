@@ -30,6 +30,29 @@ from .embedding import (
     standardize,
     transform_pca,
 )
+from .scouting import (
+    CANONICAL_TAGS,
+    CONTINUOUS_ATTRIBUTES,
+    ComparableMention,
+    ContinuousAttribute,
+    PlayerScoutingProfile,
+    TagAssertion,
+    init_scouting_tables,
+    load_profile,
+    upsert_profile,
+)
+from .tags import (
+    TaggedPlayer,
+    find_players_by_tag,
+    list_known_tags,
+    list_player_tags,
+)
+from .cohort_effects import (
+    TagIntroductionStudyResult,
+    TagSplitStudyResult,
+    tag_introduction_study,
+    tag_split_study,
+)
 
 __all__ = [
     # swap engine
@@ -57,6 +80,26 @@ __all__ = [
     "fit_pca",
     "standardize",
     "transform_pca",
+    # scouting
+    "CANONICAL_TAGS",
+    "CONTINUOUS_ATTRIBUTES",
+    "ComparableMention",
+    "ContinuousAttribute",
+    "PlayerScoutingProfile",
+    "TagAssertion",
+    "init_scouting_tables",
+    "load_profile",
+    "upsert_profile",
+    # tags
+    "TaggedPlayer",
+    "find_players_by_tag",
+    "list_known_tags",
+    "list_player_tags",
+    # cohort effects
+    "TagIntroductionStudyResult",
+    "TagSplitStudyResult",
+    "tag_introduction_study",
+    "tag_split_study",
 ]
 
 __version__ = "0.2.0"
