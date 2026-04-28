@@ -4,6 +4,20 @@
   "min_confidence": 0.6,
   "cohort": [
     {
+      "name": "Alec Martinez",
+      "position": "D",
+      "confidence": 0.95,
+      "source_quote": "Vegas Golden Knights defenseman Alec Martinez exemplified the grit and determination of hockey players to win the Stanley Cup. The Golden Knights top-pair defenseman played through the postseason with",
+      "source_url": "https://sportsnaut.com/nhl/vegas-golden-knights/vegas-golden-knights-alec-martinez-free-agents-ian-cole"
+    },
+    {
+      "name": "Artturi Lehkonen",
+      "position": "L",
+      "confidence": 0.95,
+      "source_quote": "Lehkonen is a speedy winger and a tenacious battler in the corners",
+      "source_url": "https://habshockeyreport.com/at-scandinavium-with-habs-prospect-artturi-lehkonen-audio/"
+    },
+    {
       "name": "Brayden McNabb",
       "position": "D",
       "confidence": 0.95,
@@ -16,6 +30,48 @@
       "confidence": 0.95,
       "source_quote": "tenacious forecheck, fearless, willing to go to the dirty areas, crashes the net",
       "source_url": "https://sportsforecaster.com/nhl/p/18502/Brendan_Gallagher"
+    },
+    {
+      "name": "Connor Clifton",
+      "position": "D",
+      "confidence": 0.95,
+      "source_quote": "Connor Clifton plays with a lot of brawn. The defenseman leads the Penguins in hits and fights this season.",
+      "source_url": "https://www.post-gazette.com/sports/penguins/2026/03/28/connor-clifton-hockey-fights-nhl-playoff-race-sidney-crosby/stories/202603260115"
+    },
+    {
+      "name": "Connor Zary",
+      "position": "C",
+      "confidence": 0.95,
+      "source_quote": "He's full of skill, hockey sense and competitiveness. You can use him in any situation and he won't disappoint you.",
+      "source_url": "https://oilersnation.com/news/with-the-no-14-overall-pick-the-oilers-select-connor-zary"
+    },
+    {
+      "name": "Josh Doan",
+      "position": "R",
+      "confidence": 0.95,
+      "source_quote": "Forward Josh Doan has been a menace on the forecheck as well with 44 puck-battle wins in the offensive zone at five-on-five \u2014 tied for second in the league",
+      "source_url": "https://sabrenoise.com/a-menace-buffalo-sabres-breakout-star-lauded-for-relentless-play-style-01kcsbctq3bm"
+    },
+    {
+      "name": "Marc-Edouard Vlasic",
+      "position": "D",
+      "confidence": 0.95,
+      "source_quote": "This is a man who took a Shea Weber slap shot in the mouth, and another one that broke his foot.",
+      "source_url": "https://www.nytimes.com/athletic/6210677/2025/03/20/marc-edouard-vlasic-nhl-blocked-shots-sharks/"
+    },
+    {
+      "name": "Oskar Lindblom",
+      "position": "L",
+      "confidence": 0.95,
+      "source_quote": "Philadelphia Flyers forward Oskar Lindblom talks with Christine Simpson about his journey back to the NHL after being dia...",
+      "source_url": "https://www.youtube.com/watch?v=6vZG_t7ULd4"
+    },
+    {
+      "name": "Ryan Hartman",
+      "position": "R",
+      "confidence": 0.95,
+      "source_quote": "Ryan Hartman is an in your face forward who never takes a shift off. He's not the biggest of players in terms of size, but he has the heart of a lion and won't back down from anyone.",
+      "source_url": "https://thehockeyguys.net/ryan-hartman-scouting-report-2013-nhl-draft-prospect-profile-plymouth-whalers/"
     },
     {
       "name": "Sam Bennett",
@@ -32,6 +88,62 @@
       "source_url": "https://en.wikipedia.org/wiki/Tom_Wilson_(ice_hockey)"
     },
     {
+      "name": "Tyler Pitlick",
+      "position": "C",
+      "confidence": 0.95,
+      "source_quote": "Undaunted, Pitlick tenaciously stayed with the puck and scored on this third successive shot attempt.",
+      "source_url": "https://www.nhl.com/flyers/news/meltzers-player-profiles-tyler-pitlick--philadelphia-flyers/c-316731966?ref=broadstreethockey.com"
+    },
+    {
+      "name": "Tyson Jost",
+      "position": "C",
+      "confidence": 0.95,
+      "source_quote": "Plays the game with a level of determination and purpose that is as high as anybody in the draft. Refuses to be denied in any area.",
+      "source_url": "https://www.tsn.ca/nhl/draftcentre/11-tyson-jost-c-1.470530"
+    },
+    {
+      "name": "Vasily Podkolzin",
+      "position": "R",
+      "confidence": 0.95,
+      "source_quote": "Vasili Podkolzin Brings Soft Hands and Tenacity",
+      "source_url": "https://milehighsticking.com/2019/05/27/colorado-avalanche-vasili-podkolzin-prospect-draft-profile/"
+    },
+    {
+      "name": "Connor Dewar",
+      "position": "C",
+      "confidence": 0.92,
+      "source_quote": "Connor Dewar's job is to 'be hard to play",
+      "source_url": "https://www.post-gazette.com/sports/penguins/2025/11/25/connor-dewar-nhl-news-the-pas-canada/stories/202511250027"
+    },
+    {
+      "name": "Drew Doughty",
+      "position": "D",
+      "confidence": 0.92,
+      "source_quote": "fearless, tireless, fiery style",
+      "source_url": "https://www.nytimes.com/athletic/3729306/2022/11/11/nhl-99-drew-doughty/"
+    },
+    {
+      "name": "Troy Stecher",
+      "position": "D",
+      "confidence": 0.92,
+      "source_quote": "A man of no fear",
+      "source_url": "https://www.nytimes.com/athletic/6964115/2026/01/13/maple-leafs-troy-stecher-nhl/"
+    },
+    {
+      "name": "Anton Stralman",
+      "position": "D",
+      "confidence": 0.9,
+      "source_quote": "Few players embody perseverance like the Tampa Bay Lightning's Anton Stralman, who overcame medical issues",
+      "source_url": "https://www.espn.com/nhl/story/_/id/14059010/nhl-anton-stralman-perseverance-paying-tampa-bay-lightning"
+    },
+    {
+      "name": "Beck Malenstyn",
+      "position": "L",
+      "confidence": 0.9,
+      "source_quote": "'Fearless' Beck Malenstyn playing gritty game",
+      "source_url": "https://www.buffalohockeybeat.com/fearless-beck-malenstyn-playing-gritty-game-showcasing-offensive-flair/"
+    },
+    {
       "name": "Ben Chiarot",
       "position": "D",
       "confidence": 0.9,
@@ -46,11 +158,39 @@
       "source_url": "https://thehockeywriters.com/lightning-hagel-trust-drive-own-line-2024-25/"
     },
     {
+      "name": "Carl Grundstrom",
+      "position": "R",
+      "confidence": 0.9,
+      "source_quote": "A spirited and energetic banging winger who off the puck is a nightmare to guard against",
+      "source_url": "https://www.thedraftanalyst.com/draft-profile-carl-grundstrom/"
+    },
+    {
+      "name": "Colin Blackwell",
+      "position": "C",
+      "confidence": 0.9,
+      "source_quote": "Blackwell has shown to be a high-energy player with great quickness and hard to knock off the puck",
+      "source_url": "https://bluelinestation.com/2020/10/16/does-colin-blackwell-fit-new-new-york-rangers-profile/"
+    },
+    {
       "name": "Corey Perry",
       "position": "R",
       "confidence": 0.9,
       "source_quote": "stands his ground in front of goalies and when engaged in physical confrontation, absorbs cruel levels of abuse",
       "source_url": "https://www.eliteprospects.com/player/8541/corey-perry/scouting-report"
+    },
+    {
+      "name": "Denver Barkey",
+      "position": "C",
+      "confidence": 0.9,
+      "source_quote": "Denver Barkey is a human ball of energy",
+      "source_url": "https://www.yardbarker.com/nhl/articles/philadelphia_flyers_prospect_denver_barkey_is_a_human_ball_of_energy/s1_16958_40699873"
+    },
+    {
+      "name": "Jack McBain",
+      "position": "C",
+      "confidence": 0.9,
+      "source_quote": "he plays with an intense competitiveness",
+      "source_url": "https://russianmachineneverbreaks.com/2018/06/21/scouting-reports-on-potential-draftees-for-the-capitals-at-pick-31-in-the-first-round-forwards/"
     },
     {
       "name": "Josh Anderson",
@@ -60,11 +200,102 @@
       "source_url": "https://sportsforecaster.com/nhl/p/19282/Josh_Anderson"
     },
     {
+      "name": "Kevin Bahl",
+      "position": "D",
+      "confidence": 0.9,
+      "source_quote": "Kevin Bahl has been rock solid for Calgary this season, but on Sunday night he sustained a scary injury as he blocked a puck with his head",
+      "source_url": "https://www.houseofhockey.net/nhl-team/calgary-flames/chilling-scene-for-calgary-flames-defenseman-kevin-bahl-as-he-blocks-shot-with-his-head-on-the-ice"
+    },
+    {
+      "name": "Kiefer Sherwood",
+      "position": "L",
+      "confidence": 0.9,
+      "source_quote": "Hard-hitting forward Kiefer Sherwood finding home with... transformed his game and went from being an elite goal-scorer in the American Hockey League to a menace for opponents at the NHL level",
+      "source_url": "https://www.sportsnet.ca/nhl/article/hard-hitting-forward-kiefer-sherwood-finding-home-with-canucks/"
+    },
+    {
       "name": "Mathieu Olivier",
       "position": "R",
       "confidence": 0.9,
       "source_quote": "loves to play a physical brand of hockey and initiate contact; momentum-changing hits",
       "source_url": "https://www.nhl.com/bluejackets/news/mathieu-olivier-blue-jackets-toughest-players-in-nhl"
+    },
+    {
+      "name": "Vladislav Namestnikov",
+      "position": "C",
+      "confidence": 0.9,
+      "source_quote": "very aggressive on the forecheck and backcheck",
+      "source_url": "https://thehockeywriters.com/the-next-ones-vladislav-namestnikov-nhl-2011-draft-prospect-profile-a-name-stnikov-to-remember/"
+    },
+    {
+      "name": "Will Borgen",
+      "position": "D",
+      "confidence": 0.9,
+      "source_quote": "He's a strong competitor and willing to play a tough, physical style on the defensive end.",
+      "source_url": "https://www.sbncollegehockey.com/2015/6/15/8783971/will-borgen-scouting-report-nhl-draft-profile"
+    },
+    {
+      "name": "Andreas Englund",
+      "position": "D",
+      "confidence": 0.88,
+      "source_quote": "He plays a North American style of game and has a very high compete level \u2013 just ask opposition forwards who try to hover around his crease.",
+      "source_url": "https://thehockeywriters.com/nhl-draft-war-room-andreas-englund/"
+    },
+    {
+      "name": "Anton Lundell",
+      "position": "C",
+      "confidence": 0.88,
+      "source_quote": "he plays a hard-nosed style that teams covet",
+      "source_url": "https://www.broadstreethockey.com/post/nhl-flyers-bsh-2020-community-draft-board-no-10-anton-lundell-profile-analysis/"
+    },
+    {
+      "name": "Jake Leschyshyn",
+      "position": "C",
+      "confidence": 0.88,
+      "source_quote": "He never stops moving his feet, chasing down loose pucks, battling in the corners and getting to the front of the net.",
+      "source_url": "https://lastwordonsports.com/hockeyprospects/2017/05/27/jake-leschyshyn-scouting-report/"
+    },
+    {
+      "name": "Rafael Harvey-Pinard",
+      "position": "L",
+      "confidence": 0.88,
+      "source_quote": "With Harvey-Pinard, it's never 'one and done,' he's always lingering looking to make something happen or to extend the play for as long as he can.",
+      "source_url": "https://www.habseyesontheprize.com/rafael-harvey-pinard-2021-montreal-canadiens-top-25-under-25-prospect-profile-projection-scouting/"
+    },
+    {
+      "name": "Alex Iafallo",
+      "position": "L",
+      "confidence": 0.85,
+      "source_quote": "aggressive forechecker who is hard on pucks, fights to win them back",
+      "source_url": "https://lakingsinsider.com/2018/07/12/player-evaluation-iafallo/"
+    },
+    {
+      "name": "Alex Laferriere",
+      "position": "R",
+      "confidence": 0.85,
+      "source_quote": "He was known for his high-energy style, relentless forechecking, and willingness to play in all three zones.",
+      "source_url": "https://thehockeynews.com/nhl/los-angeles-kings/latest-news/alex-laferriere-s-versatility-could-shape-the-kings-future-down-the-middle"
+    },
+    {
+      "name": "Andrew Ladd",
+      "position": "L",
+      "confidence": 0.85,
+      "source_quote": "Before Monday, Andrew Ladd had never missed a game for the Winnipeg Jets since it relocated from Atlanta. In his single season as a Thrasher, Ladd missed one out of 82 games. So yeah, the guy's a game",
+      "source_url": "https://sports.yahoo.com/blogs/nhl-puck-daddy/andrew-ladd-blasted-for-choosing-birth-of-child-over-jets-game-143350292.html"
+    },
+    {
+      "name": "Andrew Mangiapane",
+      "position": "L",
+      "confidence": 0.85,
+      "source_quote": "his tenacious style of play",
+      "source_url": "https://thehockeywriters.com/meet-the-new-blackhawks-andrew-mangiapane/"
+    },
+    {
+      "name": "Blake Lizotte",
+      "position": "C",
+      "confidence": 0.85,
+      "source_quote": "looking to add a little bit of the \"heart and soul\" type of player back to the Penguins. He has earned the reputation the hard way",
+      "source_url": "https://www.pensburgh.com/2024/8/9/24216265/blake-lizotte-vows-to-boost-bottom-six-identity-for-the-penguins"
     },
     {
       "name": "Brad Marchand",
@@ -74,11 +305,228 @@
       "source_url": "https://www.espn.com/nhl/story/_/id/17951883/nhl-boston-bruins-left-winger-brad-marchand-evolved-pest-one-nhl-best"
     },
     {
+      "name": "Brandon Duhaime",
+      "position": "R",
+      "confidence": 0.85,
+      "source_quote": "the 24-year-old winger have a gritty style of play fit for a role in the bottom of the lineup",
+      "source_url": "https://www.bemidjipioneer.com/sports/physical-winger-brandon-duhaime-emerging-as-dark-horse-to-make-wild-roster"
+    },
+    {
+      "name": "Brett Berard",
+      "position": "L",
+      "confidence": 0.85,
+      "source_quote": "attacks the opposing net without fear, despite his small frame",
+      "source_url": "https://dobberprospects.com/player/brett-berard/"
+    },
+    {
+      "name": "Cale Fleury",
+      "position": "D",
+      "confidence": 0.85,
+      "source_quote": "The sturdy blueliner was named captain of Kootenay in mid-January, always impressive for a draft-eligible player, and a testament to his character and leadership traits.",
+      "source_url": "https://thehockeywriters.com/cale-fleury-2017-nhl-draft-prospect-profile/"
+    },
+    {
+      "name": "Christian Fischer",
+      "position": "R",
+      "confidence": 0.85,
+      "source_quote": "Gritty winger provided the Red Wings with more than it appeared on...",
+      "source_url": "https://octopusthrower.com/posts/gritty-winger-provided-red-wings-more-appeared-surface-01hwjap5vtre"
+    },
+    {
+      "name": "Craig Smith",
+      "position": "C",
+      "confidence": 0.85,
+      "source_quote": "Flames head coach Darryl Sutter loves hard-working players, and that's exactly what Smith is most known for.",
+      "source_url": "https://thehockeywriters.com/bruins-3-landing-spots-craig-smith/"
+    },
+    {
       "name": "Darnell Nurse",
       "position": "D",
       "confidence": 0.85,
       "source_quote": "Enjoys playing physical.",
       "source_url": "https://www.eliteprospects.com/player/97352/darnell-nurse"
+    },
+    {
+      "name": "Denton Mateychuk",
+      "position": "D",
+      "confidence": 0.85,
+      "source_quote": "it's not hard to see why his involvement and work rate is so high",
+      "source_url": "https://smahtscouting.com/2021/12/27/scouting-report-denton-mateychuk/"
+    },
+    {
+      "name": "Jake McCabe",
+      "position": "D",
+      "confidence": 0.85,
+      "source_quote": "It's how he plays the game and if players around the league didn't know it, or they'd forgotten about the hit on Paille, McCabe completely leveling Laine sure will get their attention.",
+      "source_url": "https://www.hockeybuzz.com/blog/Michael-Pachla/Jake-McCabe--Cant-get-enough-of-this-guy/209/81966"
+    },
+    {
+      "name": "Justin Sourdif",
+      "position": "C, R",
+      "confidence": 0.85,
+      "source_quote": "hard-hitting, gritty powerhouse combination",
+      "source_url": "https://thehockeynews.com/nhl/washington-capitals/players/from-fourth-line-wing-to-top-6-center-justin-sourdif-continues-remarkable-rise-with-capitals-he-s-earned-everything-he-s-gotten"
+    },
+    {
+      "name": "Keegan Kolesar",
+      "position": "R",
+      "confidence": 0.85,
+      "source_quote": "Keegan Kolesar is a workhrose and one of the best bottom 6 players in the NHL.",
+      "source_url": "https://www.tiktok.com/@bladetechhockey/video/7479166014295379206"
+    },
+    {
+      "name": "Keith Yandle",
+      "position": "D",
+      "confidence": 0.85,
+      "source_quote": "on Monday, Flyers defenseman Keith Yandle tied Jarvis' mark, and in New York on Tuesday night, barring a last-minute availability change, he'll break it. Come Wednesday morning, the NHL record will be",
+      "source_url": "https://www.nytimes.com/athletic/3090130/2022/01/25/why-keith-yandles-nhl-ironman-streak-is-a-stunning-accomplishment-by-the-numbers/"
+    },
+    {
+      "name": "Kieffer Bellows",
+      "position": "L",
+      "confidence": 0.85,
+      "source_quote": "Bellows plays with intensity and drive, a great mix of skill and strength",
+      "source_url": "https://www.habseyesontheprize.com/kieffer-bellows-highlights-scouting-report-draft-profile-2016-nhl-draft-prospects-rankings/"
+    },
+    {
+      "name": "Mark Borowiecki",
+      "position": "D",
+      "confidence": 0.85,
+      "source_quote": "punishing defensive play, combining a gritty physicality",
+      "source_url": "https://www.silversevensens.com/top-25-under-25-no-18-mark-borowiecki/"
+    },
+    {
+      "name": "Mark Giordano",
+      "position": "D",
+      "confidence": 0.85,
+      "source_quote": "steely Mark Giordano",
+      "source_url": "https://www.si.com/nhl/2016/03/03/mark-giordano-calgary-flames-captain-undrafted-career-path-to-nhl"
+    },
+    {
+      "name": "Martin Fehervary",
+      "position": "D",
+      "confidence": 0.85,
+      "source_quote": "Is more than willing to play a physical game despite a relative lack of size for an NHL defenseman",
+      "source_url": "https://sportsforecaster.com/nhl/p/27103/Martin_Fehervary"
+    },
+    {
+      "name": "Mattias Samuelsson",
+      "position": "D",
+      "confidence": 0.85,
+      "source_quote": "He's an unbelievable hockey player, really hard to play against",
+      "source_url": "https://www.nhl.com/sabres/news/buffalo-sabres-mattias-samuelsson-highlights-goals-hits"
+    },
+    {
+      "name": "Matty Beniers",
+      "position": "C",
+      "confidence": 0.85,
+      "source_quote": "Beniers is an excellent 200-foot player who is always involved in play, even when he isn't putting up points.",
+      "source_url": "https://thehockeywriters.com/matthew-beniers-2021-nhl-draft-prospect-profile/"
+    },
+    {
+      "name": "Max Willman",
+      "position": "C",
+      "confidence": 0.85,
+      "source_quote": "His season-ending injury is going to happen when you play the game the way Max does. He is willing to put his body on the line, drive the net to try and score a goal.",
+      "source_url": "https://www.uticacomets.com/news/detail/get-to-know-the-team-max-willman"
+    },
+    {
+      "name": "Michael Pezzetta",
+      "position": "L",
+      "confidence": 0.85,
+      "source_quote": "He's the kind of player who gives 100% on every shift, forechecks hard, and doesn't shy away from scrums.",
+      "source_url": "https://www.profootballnetwork.com/nhl/nhl-fans-react-not-an-nhler-alarmed-as-leafs-gets-linked-with-winger-michael-pezzetta/"
+    },
+    {
+      "name": "Neal Pionk",
+      "position": "D",
+      "confidence": 0.85,
+      "source_quote": "Neal Pionk has channeled the proverbial chip on his shoulder after twice being passed over in the NHL Draft on the way to becoming a mainstay defenseman",
+      "source_url": "https://www.nhl.com/news/neal-pionk-fueling-winnipeg-jets-rise-to-top-of-nhl"
+    },
+    {
+      "name": "Oskar Steen",
+      "position": "C",
+      "confidence": 0.85,
+      "source_quote": "Steen is only 5'9\" tall, but he's really strong and not afraid of contact.",
+      "source_url": "https://www.sbncolleyhockey.com/2016/6/13/11929056/2016-nhl-draft-profile-oskar-steen-scouting-report"
+    },
+    {
+      "name": "Peyton Krebs",
+      "position": "C",
+      "confidence": 0.85,
+      "source_quote": "Krebs is an appealing combination of skill and effort.",
+      "source_url": "https://www.blueshirtbanter.com/blueshirt-banter-2019-nhl-draft-rankings-10-peyton-krebs-scouting-report-kootenay-ice-whl-rangers/"
+    },
+    {
+      "name": "Pierre-Edouard Bellemare",
+      "position": "L",
+      "confidence": 0.85,
+      "source_quote": "always works hard",
+      "source_url": "https://www.eliteprospects.com/player/8339/pierre-edouard-bellemare"
+    },
+    {
+      "name": "Sidney Crosby",
+      "position": "C",
+      "confidence": 0.85,
+      "source_quote": "His lower-body strength is probably unparalleled in the league",
+      "source_url": "https://en.wikipedia.org/wiki/Sidney_Crosby"
+    },
+    {
+      "name": "Taylor Raddysh",
+      "position": "R",
+      "confidence": 0.85,
+      "source_quote": "really hard working complementary offensive player who has excelled doing the 'dirty work'",
+      "source_url": "https://mapleleafshotstove.com/2016/06/07/taylor-raddysh-scouting-report-2016-nhl-draft/"
+    },
+    {
+      "name": "Travis Hamonic",
+      "position": "D",
+      "confidence": 0.85,
+      "source_quote": "Is still a tough defenseman to play against",
+      "source_url": "https://sportsforecaster.com/nhl/p/16722/Travis_Hamonic"
+    },
+    {
+      "name": "Viktor Arvidsson",
+      "position": "L",
+      "confidence": 0.85,
+      "source_quote": "Arvidsson, 31, is an industrious, middle-six right winger who plays the game on the inside",
+      "source_url": "https://www.sportsnet.ca/nhl/article/oilers-land-industrious-winger-they-have-long-needed-in-viktor-arvidsson/"
+    },
+    {
+      "name": "Wade Allison",
+      "position": "R",
+      "confidence": 0.85,
+      "source_quote": "he has been one of the Flyers' most relentless players \u2013 especially in front of the net",
+      "source_url": "https://www.inquirer.com/flyers/flyers-wade-allison-vigneault-meaningful-games-20210507.html"
+    },
+    {
+      "name": "William Lagesson",
+      "position": "D",
+      "confidence": 0.85,
+      "source_quote": "Lagesson is known for his physical style of play and strong defensive presence on the ice.",
+      "source_url": "https://www.lines.com/nhl/players/william-lagesson-3577"
+    },
+    {
+      "name": "Brett Ritchie",
+      "position": "R",
+      "confidence": 0.8,
+      "source_quote": "competes hard, and has decent hands to boot. Last season, while playing with the Toronto Marlboros minor midget team, Ritchie put up 36 goals and 69 points to go along with 67 penalty minutes in 71 ga",
+      "source_url": "https://thehockeywriters.com/the-next-ones-brett-ritchie-nhl-2011-draft-prospect-profile-power-forward-looking-to-sting/"
+    },
+    {
+      "name": "Brock McGinn",
+      "position": "L",
+      "confidence": 0.8,
+      "source_quote": "McGinn is a hard-working winger who will be an addition to the PK group. He has moderate finishing and offensive ability but can play responsible hockey against tough competition",
+      "source_url": "https://www.pensburgh.com/2021/7/28/22598420/nhl-free-agency-penguins-sign-forward-brock-mcginn"
+    },
+    {
+      "name": "Erik Cernak",
+      "position": "D",
+      "confidence": 0.8,
+      "source_quote": "He's a big, strong, hard, competitive defenseman",
+      "source_url": "https://mayorsmanor.com/2015/07/dev-camp-preview-yannetti-on-erik-cernak-lak-2015-second-rounder/"
     },
     {
       "name": "Esa Lindell",
@@ -88,11 +536,137 @@
       "source_url": "https://www.reddit.com/r/hockey/comments/1hb0wbn/josh_clark_living_the_dream_how_a_workhorse/"
     },
     {
+      "name": "Kyle MacLean",
+      "position": "C",
+      "confidence": 0.8,
+      "source_quote": "MacLean plays a grinder's game that coaches respect",
+      "source_url": "https://www.nytimes.com/athletic/2396434/2021/02/18/islanders-prospect-kyle-maclean-john-ahl/"
+    },
+    {
+      "name": "Max Jones",
+      "position": "L",
+      "confidence": 0.8,
+      "source_quote": "they have become a far stronger hitting and physical team than before",
+      "source_url": "https://www.oilersdaily.com/nhl-team/edmonton-oilers/oilers-making-real-effort-to-change-their-style-of-play-after-trade-deadline"
+    },
+    {
+      "name": "Michael McLeod",
+      "position": "C",
+      "confidence": 0.8,
+      "source_quote": "his competitiveness gives him an edge against other teams' best",
+      "source_url": "https://www.habseyesontheprize.com/michael-mcleod-highlights-scouting-report-draft-profile-nhl-draft-2016-montreal-canadiens/"
+    },
+    {
+      "name": "Viktor Arvidsson",
+      "position": "L, R",
+      "confidence": 0.8,
+      "source_quote": "Arvidsson, 31, is an industrious, middle-six right winger who plays the game on the inside",
+      "source_url": "https://www.sportsnet.ca/nhl/article/oilers-land-industrious-winger-they-have-long-needed-in-viktor-arvidsson/"
+    },
+    {
+      "name": "Jake Sanderson",
+      "position": "D",
+      "confidence": 0.78,
+      "source_quote": "Sanderson had just played an insane 43:06 in Ottawa's 3-2 double-overtime loss in Game 2",
+      "source_url": "https://www.nhltraderumors.me/2026/04/backs-against-wall-senators-lose-yet.html"
+    },
+    {
+      "name": "Alexander Wennberg",
+      "position": "C",
+      "confidence": 0.75,
+      "source_quote": "Wennberg provides a presence in all three zones due to a dedicated, hard-working style.",
+      "source_url": "https://www.sportsnet.ca/hockey/juniors/nhl-draft-prospects-no-12-alexander-wennberg/"
+    },
+    {
+      "name": "Anders Lee",
+      "position": "C, L",
+      "confidence": 0.75,
+      "source_quote": "We play with broken ribs, lose teeth and don't miss a shift, get stitches mid game, and come back as soon as possible from anything that keeps us off the ice.",
+      "source_url": "https://www.theplayerstribune.com/articles/anders-lee-hockey-players-arent-tough"
+    },
+    {
+      "name": "Andrew Peeke",
+      "position": "D",
+      "confidence": 0.75,
+      "source_quote": "It's about the physical edge and brand of hockey the Blue Jackets want to reflect within their game, and Peeke is doing that this season",
+      "source_url": "https://www.1stohiobattery.com/columbus-blue-jackets-analysis/2022/02/6638/andrew-peekes-evolution-opportunity-allowing-peeke-to-peak"
+    },
+    {
+      "name": "Ivan Miroshnichenko",
+      "position": "L",
+      "confidence": 0.75,
+      "source_quote": "the gutsy left-winger",
+      "source_url": "https://www.broadstreethockey.com/post/ivan-miroshnichenko-nhl-draft-board-profile-prospect-analysis-scouting-report-philadelphia-flyers/"
+    },
+    {
+      "name": "Jack Quinn",
+      "position": "R",
+      "confidence": 0.75,
+      "source_quote": "Quinn is a hard-working winger",
+      "source_url": "https://www.recruitscouting.com/recruit-scoutings-2020-nhl-mock-draft/"
+    },
+    {
+      "name": "Kevin Rooney",
+      "position": "C",
+      "confidence": 0.75,
+      "source_quote": "The big, grinding forward is starting to show a little more scoring ability",
+      "source_url": "https://sportsforecaster.com/nhl/p/21878/Kevin_Rooney"
+    },
+    {
       "name": "MacKenzie Weegar",
       "position": "D",
       "confidence": 0.75,
       "source_quote": "Weegar's gritty, effective style may be overlooked, but it's exactly what makes him so valuable",
       "source_url": "https://thehockeynews.com/nhl/calgary-flames/mackenzie-weegar-flames-nhl-most-underrated-defenseman"
+    },
+    {
+      "name": "Nils Hoglander",
+      "position": "L",
+      "confidence": 0.75,
+      "source_quote": "Hoglander, although small, does play a harder style of hockey than his size might indicate.",
+      "source_url": "https://www.torontohockeydaily.com/nhl-team/toronto-maple-leafs/Nils-Hoglander-may-be-the-Leafs-primary-trade-target-in-Vancouver"
+    },
+    {
+      "name": "Pavel Zacha",
+      "position": "C",
+      "confidence": 0.75,
+      "source_quote": "At his best when he's playing with a burr under his saddle. Hard not to love the size, strength and skill-set of the Czech-born centre.",
+      "source_url": "https://www.sportsnet.ca/hockey/nhl/pavel-zacha-8-ranked-souting-sarnia-sting-nhl-draft-prospect/"
+    },
+    {
+      "name": "Sean Durzi",
+      "position": "D",
+      "confidence": 0.75,
+      "source_quote": "Sean Durzi recalls the Arizona Coyotes playing a 'tenacious' style of hockey in 2022-23. He's going to fit right in this season in the desert.",
+      "source_url": "https://www.nhl.com/news/sean-durzi-aims-to-bring-versatility-to-arizona-coyotes-345594970"
+    },
+    {
+      "name": "Yanni Gourde",
+      "position": "C",
+      "confidence": 0.75,
+      "source_quote": "Yanni Gourde and Radko Gudas brought it in center ice when the two decided to drop the gloves after Gudas laid a big hit on Gourde",
+      "source_url": "https://www.youtube.com/watch?v=Ld1J0n8k60Y"
+    },
+    {
+      "name": "Zeev Buium",
+      "position": "D",
+      "confidence": 0.75,
+      "source_quote": "He's a winner of a person, and that helps him become a winner on the ice",
+      "source_url": "https://www.startribune.com/minnesota-wild-nhl-draft-zeev-buium/600377146"
+    },
+    {
+      "name": "Bo Groulx",
+      "position": "C",
+      "confidence": 0.7,
+      "source_quote": "Also brings a physical edge to the rink every game.",
+      "source_url": "https://sportsforecaster.com/nhl/p/27158/Bo_Groulx"
+    },
+    {
+      "name": "Paul Cotter",
+      "position": "C",
+      "confidence": 0.7,
+      "source_quote": "Cotter logged an assist, two shots on goal and nine hits in Tuesday's 5-4 double-overtime loss to the Hurricanes in Game 5.",
+      "source_url": "https://sportsforecaster.com/nhl/p/27055/Paul_Cotter"
     },
     {
       "name": "Phillip Danault",
@@ -102,21 +676,104 @@
       "source_url": "https://sportsforecaster.com/nhl/p/19016/Phillip_Danault"
     },
     {
+      "name": "Jack St. Ivany",
+      "position": "D",
+      "confidence": 0.65,
+      "source_quote": "St. Ivany, 24, is a physical defenseman",
+      "source_url": "https://pittsburghhockeynow.com/pittsburgh-penguins-news-jack-st-ivany-nhl-debut-ryan-graves-baby/"
+    },
+    {
+      "name": "Lars Eller",
+      "position": "C",
+      "confidence": 0.65,
+      "source_quote": "notable penalty minutes reflecting his physical style",
+      "source_url": "https://grokipedia.com/page/Lars_Eller"
+    },
+    {
+      "name": "Mark Friedman",
+      "position": "D",
+      "confidence": 0.65,
+      "source_quote": "No one can deny he has worked hard to get here, which fits his style of play on the ice",
+      "source_url": "https://www.pensburgh.com/2021/2/24/22299584/what-can-the-penguins-expect-from-new-defenseman-mark-friedman-flyers-pens-waivers-chad-ruhwedel"
+    },
+    {
+      "name": "Matt Martin",
+      "position": "L",
+      "confidence": 0.65,
+      "source_quote": "Matt Martin moved up from the fourth line to play left wing with Matthews and Marner and proved to be a good fit with his fore-checking.",
+      "source_url": "https://www.theglobeandmail.com/sports/hockey/leafs-nations-pleas-on-matthews-marner-dont-move-babcock/article37027201/"
+    },
+    {
+      "name": "Nick Seeler",
+      "position": "D",
+      "confidence": 0.65,
+      "source_quote": "Nick Seeler's journey back to the NHL is a testament to determination, resilience, and the unexpected turns life can take.",
+      "source_url": "https://www.americanosports.com/from-brush-to-blueline-nick-seelers-unconventional-journey-back-to-the-nhl/"
+    },
+    {
+      "name": "Ryan McLeod",
+      "position": "C",
+      "confidence": 0.65,
+      "source_quote": "Bakersfield struggled all year, but McLeod battled opponents to a draw.",
+      "source_url": "https://www.nytimes.com/athletic/1815127/2020/05/16/lowetide-exploring-oilers-prospect-ryan-mcleods-possible-nhl-path/"
+    },
+    {
+      "name": "Wyatt Johnston",
+      "position": "C",
+      "confidence": 0.65,
+      "source_quote": "Dallas has leaned on its power play, its penalty kill, and a lineup that doesn't back off after the whistle, and Johnston has fit that tone perfectly",
+      "source_url": "https://www.edmontonhockeydaily.com/nhl-team/edmonton-oilers/the-oilers-2021-draft-is-turning-into-a-nightmare-driven-by-wyatt-johnston"
+    },
+    {
       "name": "Zachary Bolduc",
       "position": "R",
       "confidence": 0.65,
       "source_quote": "fast and forechecks hard; tools give him the upper hand in downhill battles",
       "source_url": "https://sportsforecaster.com/nhl/p/1020824/Zack_Bolduc"
+    },
+    {
+      "name": "Charle-Edouard D'Astous",
+      "position": "D",
+      "confidence": 0.6,
+      "source_quote": "Just a slow, steady climb built on size, smarts, and the kind of rugged poise coaches fall in love with.",
+      "source_url": "https://www.si.com/onsi/breakaway/tampa-bay-lightning/jon-cooper-praises-charle-edouard-dastous"
+    },
+    {
+      "name": "Tyler Toffoli",
+      "position": "C",
+      "confidence": 0.6,
+      "source_quote": "Winning wasn't a style of hockey, or an effort level \u2014 it was an attitude. And every player had that in our room.",
+      "source_url": "https://www.theplayerstribune.com/posts/tyler-toffoli-montreal-canadiens-hockey-nhl"
     }
   ],
   "study": {
-    "n_players_in_split": 13,
-    "mean_delta_iso_net": -0.21535367730049904,
-    "median_delta_iso_net": -0.23034114751128287,
-    "ci80_low": -0.5475271262803894,
-    "ci80_high": 0.28620630559608395,
+    "n_players_in_split": 68,
+    "mean_delta_iso_net": -0.20677176886478407,
+    "median_delta_iso_net": -0.18704247988276523,
+    "ci80_low": -1.045146472348443,
+    "ci80_high": 0.8184091643594743,
     "ci80_excludes_zero": false,
     "per_player": [
+      {
+        "name": "Alec Martinez",
+        "position": "D",
+        "reg_toi": 3375.36666666667,
+        "playoff_toi": 467.71666666667,
+        "reg_iso_net": -0.19500430360715315,
+        "playoff_iso_net": -0.3377561739936672,
+        "delta": -0.14275187038651405,
+        "tag_confidence": 0.95
+      },
+      {
+        "name": "Artturi Lehkonen",
+        "position": "L",
+        "reg_toi": 4481.26666666663,
+        "playoff_toi": 727.633333333323,
+        "reg_iso_net": 0.5804453875852533,
+        "playoff_iso_net": 1.1609298152462237,
+        "delta": 0.5804844276609704,
+        "tag_confidence": 0.95
+      },
       {
         "name": "Brayden McNabb",
         "position": "D",
@@ -135,6 +792,26 @@
         "reg_iso_net": 0.06586399277241561,
         "playoff_iso_net": -0.36040348865177885,
         "delta": -0.42626748142419446,
+        "tag_confidence": 0.95
+      },
+      {
+        "name": "Connor Clifton",
+        "position": "D",
+        "reg_toi": 4907.6166666666995,
+        "playoff_toi": 178.96666666667,
+        "reg_iso_net": -0.0698959332456699,
+        "playoff_iso_net": -0.21564399956452718,
+        "delta": -0.14574806631885728,
+        "tag_confidence": 0.95
+      },
+      {
+        "name": "Ryan Hartman",
+        "position": "R",
+        "reg_toi": 4876.98333333333,
+        "playoff_toi": 319.933333333334,
+        "reg_iso_net": 0.25671699709711815,
+        "playoff_iso_net": 0.40467798624862006,
+        "delta": 0.1479609891515019,
         "tag_confidence": 0.95
       },
       {
@@ -158,6 +835,66 @@
         "tag_confidence": 0.95
       },
       {
+        "name": "Tyson Jost",
+        "position": "C",
+        "reg_toi": 3198.01666666667,
+        "playoff_toi": 55.683333333333,
+        "reg_iso_net": -0.23366617131774614,
+        "playoff_iso_net": 0.11863808972169854,
+        "delta": 0.3523042610394447,
+        "tag_confidence": 0.95
+      },
+      {
+        "name": "Vasily Podkolzin",
+        "position": "R",
+        "reg_toi": 3722.13333333336,
+        "playoff_toi": 305.466666666667,
+        "reg_iso_net": 0.21058959216850814,
+        "playoff_iso_net": -0.6416249076850091,
+        "delta": -0.8522144998535173,
+        "tag_confidence": 0.95
+      },
+      {
+        "name": "Connor Dewar",
+        "position": "C",
+        "reg_toi": 3059.11666666667,
+        "playoff_toi": 163.5500000000003,
+        "reg_iso_net": -0.07118326057854585,
+        "playoff_iso_net": -0.5379949842316483,
+        "delta": -0.4668117236531024,
+        "tag_confidence": 0.92
+      },
+      {
+        "name": "Drew Doughty",
+        "position": "D",
+        "reg_toi": 5768.8166666666,
+        "playoff_toi": 451.383333333327,
+        "reg_iso_net": 0.35199138356491044,
+        "playoff_iso_net": -0.5664051173027236,
+        "delta": -0.918396500867634,
+        "tag_confidence": 0.92
+      },
+      {
+        "name": "Troy Stecher",
+        "position": "D",
+        "reg_toi": 4332.71666666664,
+        "playoff_toi": 165.73333333333,
+        "reg_iso_net": -0.28475185206272347,
+        "playoff_iso_net": -0.5236667691847701,
+        "delta": -0.2389149171220466,
+        "tag_confidence": 0.92
+      },
+      {
+        "name": "Beck Malenstyn",
+        "position": "L",
+        "reg_toi": 2533.30000000001,
+        "playoff_toi": 67.38333333333401,
+        "reg_iso_net": -0.5124758464465031,
+        "playoff_iso_net": -0.5798696841119066,
+        "delta": -0.06739383766540352,
+        "tag_confidence": 0.9
+      },
+      {
         "name": "Ben Chiarot",
         "position": "D",
         "reg_toi": 6921.3166666666,
@@ -175,6 +912,26 @@
         "reg_iso_net": 0.5208761766320995,
         "playoff_iso_net": 0.1350144213607245,
         "delta": -0.385861755271375,
+        "tag_confidence": 0.9
+      },
+      {
+        "name": "Carl Grundstrom",
+        "position": "R",
+        "reg_toi": 2691.0666666666702,
+        "playoff_toi": 167.75,
+        "reg_iso_net": 0.14505396953017957,
+        "playoff_iso_net": -1.0922176896018776,
+        "delta": -1.2372716591320572,
+        "tag_confidence": 0.9
+      },
+      {
+        "name": "Colin Blackwell",
+        "position": "C",
+        "reg_toi": 2955.84999999999,
+        "playoff_toi": 190.66666666666399,
+        "reg_iso_net": -0.34366469638823194,
+        "playoff_iso_net": -1.350546755239077,
+        "delta": -1.0068820588508451,
         "tag_confidence": 0.9
       },
       {
@@ -198,6 +955,106 @@
         "tag_confidence": 0.9
       },
       {
+        "name": "Kevin Bahl",
+        "position": "D",
+        "reg_toi": 4711.8333333333,
+        "playoff_toi": 132.2,
+        "reg_iso_net": -0.06828606324345854,
+        "playoff_iso_net": -0.20501249105700214,
+        "delta": -0.1367264278135436,
+        "tag_confidence": 0.9
+      },
+      {
+        "name": "Kiefer Sherwood",
+        "position": "L",
+        "reg_toi": 3133.066666666667,
+        "playoff_toi": 68.05,
+        "reg_iso_net": -0.08587051834810122,
+        "playoff_iso_net": -2.323107068671133,
+        "delta": -2.237236550323032,
+        "tag_confidence": 0.9
+      },
+      {
+        "name": "Vladislav Namestnikov",
+        "position": "C",
+        "reg_toi": 4288.88333333333,
+        "playoff_toi": 345.55,
+        "reg_iso_net": 0.21362437611255825,
+        "playoff_iso_net": -0.6554234790794924,
+        "delta": -0.8690478551920506,
+        "tag_confidence": 0.9
+      },
+      {
+        "name": "Will Borgen",
+        "position": "D",
+        "reg_toi": 5440.18333333323,
+        "playoff_toi": 227.18333333333,
+        "reg_iso_net": -0.2513287378979028,
+        "playoff_iso_net": -1.110658318986291,
+        "delta": -0.8593295810883883,
+        "tag_confidence": 0.9
+      },
+      {
+        "name": "Andreas Englund",
+        "position": "D",
+        "reg_toi": 1997.6499999999699,
+        "playoff_toi": 62.166666666667,
+        "reg_iso_net": 0.02225917974747116,
+        "playoff_iso_net": -0.9764597521034521,
+        "delta": -0.9987189318509233,
+        "tag_confidence": 0.88
+      },
+      {
+        "name": "Anton Lundell",
+        "position": "C",
+        "reg_toi": 4449.01666666667,
+        "playoff_toi": 994.866666666667,
+        "reg_iso_net": 0.32441217085777074,
+        "playoff_iso_net": 0.2990628275407383,
+        "delta": -0.025349343317032424,
+        "tag_confidence": 0.88
+      },
+      {
+        "name": "Alex Iafallo",
+        "position": "L",
+        "reg_toi": 4589.08333333336,
+        "playoff_toi": 369.399999999997,
+        "reg_iso_net": 0.15101559185154745,
+        "playoff_iso_net": -0.6741868420751724,
+        "delta": -0.8252024339267199,
+        "tag_confidence": 0.85
+      },
+      {
+        "name": "Alex Laferriere",
+        "position": "R",
+        "reg_toi": 3234.7833333333,
+        "playoff_toi": 232.03333333333302,
+        "reg_iso_net": 0.3109289267339084,
+        "playoff_iso_net": -0.22641353293307365,
+        "delta": -0.537342459666982,
+        "tag_confidence": 0.85
+      },
+      {
+        "name": "Andrew Mangiapane",
+        "position": "L",
+        "reg_toi": 4723.74999999999,
+        "playoff_toi": 244.01666666666,
+        "reg_iso_net": 0.4838042943585168,
+        "playoff_iso_net": 0.4354910192895214,
+        "delta": -0.04831327506899541,
+        "tag_confidence": 0.85
+      },
+      {
+        "name": "Blake Lizotte",
+        "position": "C",
+        "reg_toi": 3527.98333333334,
+        "playoff_toi": 194.283333333334,
+        "reg_iso_net": 0.10445372188547575,
+        "playoff_iso_net": 0.09616502915026803,
+        "delta": -0.008288692735207714,
+        "tag_confidence": 0.85
+      },
+      {
         "name": "Brad Marchand",
         "position": "L",
         "reg_toi": 4407.19999999996,
@@ -205,6 +1062,26 @@
         "reg_iso_net": 0.45619569301860263,
         "playoff_iso_net": 0.8289373677360956,
         "delta": 0.372741674717493,
+        "tag_confidence": 0.85
+      },
+      {
+        "name": "Brandon Duhaime",
+        "position": "R",
+        "reg_toi": 2834.1,
+        "playoff_toi": 294.633333333337,
+        "reg_iso_net": -0.1354970776308564,
+        "playoff_iso_net": 0.17028092296366815,
+        "delta": 0.30577800059452453,
+        "tag_confidence": 0.85
+      },
+      {
+        "name": "Craig Smith",
+        "position": "C",
+        "reg_toi": 2953.71666666666,
+        "playoff_toi": 221.200000000003,
+        "reg_iso_net": 0.25383864205002915,
+        "playoff_iso_net": -0.31928181562814095,
+        "delta": -0.5731204576781701,
         "tag_confidence": 0.85
       },
       {
@@ -218,6 +1095,156 @@
         "tag_confidence": 0.85
       },
       {
+        "name": "Jake McCabe",
+        "position": "D",
+        "reg_toi": 6426.4833333333,
+        "playoff_toi": 567.1,
+        "reg_iso_net": -0.2132832721371245,
+        "playoff_iso_net": -0.3856463586008658,
+        "delta": -0.17236308646374132,
+        "tag_confidence": 0.85
+      },
+      {
+        "name": "Keegan Kolesar",
+        "position": "R",
+        "reg_toi": 4451.43333333337,
+        "playoff_toi": 437.583333333337,
+        "reg_iso_net": 0.005663942977601977,
+        "playoff_iso_net": -0.18177961916535068,
+        "delta": -0.18744356214295266,
+        "tag_confidence": 0.85
+      },
+      {
+        "name": "Mark Giordano",
+        "position": "D",
+        "reg_toi": 3017.21666666673,
+        "playoff_toi": 229.61666666667,
+        "reg_iso_net": 0.42494828617760616,
+        "playoff_iso_net": -0.32342295430872836,
+        "delta": -0.7483712404863345,
+        "tag_confidence": 0.85
+      },
+      {
+        "name": "Martin Fehervary",
+        "position": "D",
+        "reg_toi": 4926.8833333333005,
+        "playoff_toi": 172.933333333337,
+        "reg_iso_net": -0.17946813670176454,
+        "playoff_iso_net": -0.3764876055402224,
+        "delta": -0.1970194688384579,
+        "tag_confidence": 0.85
+      },
+      {
+        "name": "Mattias Samuelsson",
+        "position": "D",
+        "reg_toi": 4886.96666666666,
+        "playoff_toi": 59.683333333333,
+        "reg_iso_net": -0.19700649556884198,
+        "playoff_iso_net": 0.11069435024047314,
+        "delta": 0.3077008458093151,
+        "tag_confidence": 0.85
+      },
+      {
+        "name": "Matty Beniers",
+        "position": "C",
+        "reg_toi": 4722.44999999997,
+        "playoff_toi": 193.53333333333,
+        "reg_iso_net": -0.10999024957914827,
+        "playoff_iso_net": 0.2274127942181121,
+        "delta": 0.3374030437972604,
+        "tag_confidence": 0.85
+      },
+      {
+        "name": "Neal Pionk",
+        "position": "D",
+        "reg_toi": 6226.33333333323,
+        "playoff_toi": 430.500000000003,
+        "reg_iso_net": -0.20829316089853567,
+        "playoff_iso_net": -0.5752217728531428,
+        "delta": -0.36692861195460713,
+        "tag_confidence": 0.85
+      },
+      {
+        "name": "Peyton Krebs",
+        "position": "C",
+        "reg_toi": 4547.20000000007,
+        "playoff_toi": 52.133333333333,
+        "reg_iso_net": -0.39740149220918664,
+        "playoff_iso_net": 0.9449674444362794,
+        "delta": 1.342368936645466,
+        "tag_confidence": 0.85
+      },
+      {
+        "name": "Pierre-Edouard Bellemare",
+        "position": "L",
+        "reg_toi": 1831.30000000001,
+        "playoff_toi": 244.349999999997,
+        "reg_iso_net": 0.07783675614498753,
+        "playoff_iso_net": -0.10880464147759028,
+        "delta": -0.1866413976225778,
+        "tag_confidence": 0.85
+      },
+      {
+        "name": "Sidney Crosby",
+        "position": "C",
+        "reg_toi": 5815.75,
+        "playoff_toi": 154.783333333333,
+        "reg_iso_net": 0.4976494689329227,
+        "playoff_iso_net": 2.7089373115352924,
+        "delta": 2.2112878426023697,
+        "tag_confidence": 0.85
+      },
+      {
+        "name": "Taylor Raddysh",
+        "position": "R",
+        "reg_toi": 4303.73333333334,
+        "playoff_toi": 78.25,
+        "reg_iso_net": -0.22728301016689745,
+        "playoff_iso_net": 0.04603803794715855,
+        "delta": 0.273321048114056,
+        "tag_confidence": 0.85
+      },
+      {
+        "name": "Viktor Arvidsson",
+        "position": "L",
+        "reg_toi": 2592.24999999999,
+        "playoff_toi": 196.56666666667002,
+        "reg_iso_net": 0.3887762356312283,
+        "playoff_iso_net": -0.7456538682116096,
+        "delta": -1.134430103842838,
+        "tag_confidence": 0.85
+      },
+      {
+        "name": "Brett Ritchie",
+        "position": "R",
+        "reg_toi": 880.11666666667,
+        "playoff_toi": 59.65,
+        "reg_iso_net": 0.4239018069718701,
+        "playoff_iso_net": 1.6823768877488725,
+        "delta": 1.2584750807770024,
+        "tag_confidence": 0.8
+      },
+      {
+        "name": "Brock McGinn",
+        "position": "L",
+        "reg_toi": 2089.05,
+        "playoff_toi": 103.06666666667,
+        "reg_iso_net": -0.3397736139342151,
+        "playoff_iso_net": 0.5836675844721637,
+        "delta": 0.9234411984063788,
+        "tag_confidence": 0.8
+      },
+      {
+        "name": "Erik Cernak",
+        "position": "D",
+        "reg_toi": 5062.7,
+        "playoff_toi": 564.96666666667,
+        "reg_iso_net": 0.0626811086518062,
+        "playoff_iso_net": -0.1218825726476882,
+        "delta": -0.1845636812994944,
+        "tag_confidence": 0.8
+      },
+      {
         "name": "Esa Lindell",
         "position": "D",
         "reg_toi": 6803.1,
@@ -226,6 +1253,56 @@
         "playoff_iso_net": -0.40838215418945234,
         "delta": -0.5568638943113227,
         "tag_confidence": 0.8
+      },
+      {
+        "name": "Kyle MacLean",
+        "position": "C",
+        "reg_toi": 1697.78333333333,
+        "playoff_toi": 58.583333333333,
+        "reg_iso_net": -0.37883294166599457,
+        "playoff_iso_net": 0.5333338422812703,
+        "delta": 0.9121667839472649,
+        "tag_confidence": 0.8
+      },
+      {
+        "name": "Michael McLeod",
+        "position": "C",
+        "reg_toi": 2288.66666666666,
+        "playoff_toi": 157.45,
+        "reg_iso_net": 0.03179902624495545,
+        "playoff_iso_net": -0.36741614311704396,
+        "delta": -0.3992151693619994,
+        "tag_confidence": 0.8
+      },
+      {
+        "name": "Jake Sanderson",
+        "position": "D",
+        "reg_toi": 4923.1833333333,
+        "playoff_toi": 178.966666666667,
+        "reg_iso_net": 0.2774165853201609,
+        "playoff_iso_net": -1.2463884308327104,
+        "delta": -1.5238050161528713,
+        "tag_confidence": 0.78
+      },
+      {
+        "name": "Andrew Peeke",
+        "position": "D",
+        "reg_toi": 5907.28333333327,
+        "playoff_toi": 135.583333333333,
+        "reg_iso_net": -0.5454438436209603,
+        "playoff_iso_net": 0.07987768092071557,
+        "delta": 0.6253215245416759,
+        "tag_confidence": 0.75
+      },
+      {
+        "name": "Kevin Rooney",
+        "position": "C",
+        "reg_toi": 1635.7333333333333,
+        "playoff_toi": 150.05,
+        "reg_iso_net": -0.6112408205464352,
+        "playoff_iso_net": -1.8346996130299036,
+        "delta": -1.2234587924834683,
+        "tag_confidence": 0.75
       },
       {
         "name": "MacKenzie Weegar",
@@ -238,6 +1315,56 @@
         "tag_confidence": 0.75
       },
       {
+        "name": "Nils Hoglander",
+        "position": "L",
+        "reg_toi": 3148.73333333333,
+        "playoff_toi": 105.31666666667,
+        "reg_iso_net": 0.15105597296591355,
+        "playoff_iso_net": 1.0168398647922594,
+        "delta": 0.8657838918263459,
+        "tag_confidence": 0.75
+      },
+      {
+        "name": "Pavel Zacha",
+        "position": "C",
+        "reg_toi": 4985.11666666667,
+        "playoff_toi": 301.400000000003,
+        "reg_iso_net": -0.10387616711472747,
+        "playoff_iso_net": 0.6942295426160872,
+        "delta": 0.7981057097308146,
+        "tag_confidence": 0.75
+      },
+      {
+        "name": "Sean Durzi",
+        "position": "D",
+        "reg_toi": 4897.83333333334,
+        "playoff_toi": 232.550000000003,
+        "reg_iso_net": 0.13427894763714177,
+        "playoff_iso_net": -1.5888027315224327,
+        "delta": -1.7230816791595744,
+        "tag_confidence": 0.75
+      },
+      {
+        "name": "Yanni Gourde",
+        "position": "C",
+        "reg_toi": 5207.33333333327,
+        "playoff_toi": 343.800000000003,
+        "reg_iso_net": 0.23404876102488759,
+        "playoff_iso_net": -0.5248823865997272,
+        "delta": -0.7589311476246148,
+        "tag_confidence": 0.75
+      },
+      {
+        "name": "Paul Cotter",
+        "position": "C",
+        "reg_toi": 2625.900000000003,
+        "playoff_toi": 70.133333333333,
+        "reg_iso_net": -0.19368315132043534,
+        "playoff_iso_net": -2.2627950803441976,
+        "delta": -2.0691119290237623,
+        "tag_confidence": 0.7
+      },
+      {
         "name": "Phillip Danault",
         "position": "C",
         "reg_toi": 4176.28333333327,
@@ -246,6 +1373,66 @@
         "playoff_iso_net": -0.008873544716295978,
         "delta": -0.44008253797017627,
         "tag_confidence": 0.7
+      },
+      {
+        "name": "Lars Eller",
+        "position": "C",
+        "reg_toi": 4514.43333333333,
+        "playoff_toi": 280.716666666668,
+        "reg_iso_net": 0.02137988934864632,
+        "playoff_iso_net": 0.12052091113011443,
+        "delta": 0.09914102178146811,
+        "tag_confidence": 0.65
+      },
+      {
+        "name": "Mark Friedman",
+        "position": "D",
+        "reg_toi": 957.15,
+        "playoff_toi": 60.75,
+        "reg_iso_net": 0.48462801039965386,
+        "playoff_iso_net": 1.8300233319823425,
+        "delta": 1.3453953215826886,
+        "tag_confidence": 0.65
+      },
+      {
+        "name": "Matt Martin",
+        "position": "L",
+        "reg_toi": 2470.51666666667,
+        "playoff_toi": 88.816666666667,
+        "reg_iso_net": -0.48156077010835663,
+        "playoff_iso_net": -0.853249297712094,
+        "delta": -0.3716885276037374,
+        "tag_confidence": 0.65
+      },
+      {
+        "name": "Ryan McLeod",
+        "position": "C",
+        "reg_toi": 4407.2166666667,
+        "playoff_toi": 625.583333333343,
+        "reg_iso_net": 0.09962645136984571,
+        "playoff_iso_net": 0.3129623575797611,
+        "delta": 0.21333590620991538,
+        "tag_confidence": 0.65
+      },
+      {
+        "name": "Wyatt Johnston",
+        "position": "C",
+        "reg_toi": 4444.3333333333,
+        "playoff_toi": 887.116666666657,
+        "reg_iso_net": 0.22673047667338553,
+        "playoff_iso_net": 0.04356392535579934,
+        "delta": -0.1831665513175862,
+        "tag_confidence": 0.65
+      },
+      {
+        "name": "Tyler Toffoli",
+        "position": "C",
+        "reg_toi": 1919.13333333333,
+        "playoff_toi": 59.7,
+        "reg_iso_net": -0.29010360468112184,
+        "playoff_iso_net": -0.8254808089087735,
+        "delta": -0.5353772042276517,
+        "tag_confidence": 0.6
       }
     ]
   }
