@@ -12,11 +12,19 @@ from __future__ import annotations
 import json
 import logging
 import time
+import unicodedata
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
 import requests
+
+
+def _ascii_fold(s: str) -> str:
+    """Strip diacritics — NHL search/landing endpoints store names without them."""
+    if not s:
+        return ""
+    return "".join(c for c in unicodedata.normalize("NFKD", s) if not unicodedata.combining(c))
 
 log = logging.getLogger(__name__)
 
@@ -225,17 +233,21 @@ def resolve_player_id(name: str, position_hint: str | None = None,
         return None
     s = session or requests.Session()
     s.headers.setdefault("User-Agent", "lemieux-edge-connector/0.1")
+    # NHL.com search returns nothing for diacritic queries (e.g. "Jakub Dobeš"),
+    # but DOES return matches when queried with the ASCII-folded form ("Jakub Dobes").
+    # And its stored names are ASCII-only. So we always query + match in fold-space.
+    folded_name = _ascii_fold(name)
     try:
-        r = s.get(PLAYER_SEARCH, params={"culture": "en-us", "limit": 20, "q": name}, timeout=15)
+        r = s.get(PLAYER_SEARCH, params={"culture": "en-us", "limit": 20, "q": folded_name}, timeout=15)
         if r.status_code != 200:
             return None
         candidates = r.json()
     except Exception as e:
         log.warning("Player resolve failed for %r: %s", name, e)
         return None
-    # Filter to exact-name match (case-insensitive)
-    target = name.strip().lower()
-    exact = [c for c in candidates if (c.get("name") or "").strip().lower() == target]
+    # Filter to exact-name match (case-insensitive, ASCII-folded both sides)
+    target = folded_name.strip().lower()
+    exact = [c for c in candidates if _ascii_fold(c.get("name") or "").strip().lower() == target]
     pool = exact if exact else candidates
     if position_hint:
         pos = position_hint.strip().upper()
