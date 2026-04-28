@@ -243,8 +243,15 @@ CONTRIBUTING.md                              ← bilingual contributor guide
 .github/workflows/tests.yml                  ← pytest + ruff CI
 .github/workflows/connector-health.yml       ← nightly upstream-API drift detection
 
-packages/lemieux-core/                       ← swap engine, isolated impact, CIs
-packages/lemieux-connectors/                 ← NHL API, NST, plugin base
+packages/lemieux-core/                       ← swap engine, comparable engine, scouting
+  src/lemieux/core/swap_engine.py            ← isolated impact, swap projections, CIs
+  src/lemieux/core/comparable.py             ← Comparable, ComparableIndex, build_cohort_stabilized_impact
+  src/lemieux/core/embedding.py              ← standardize, PCA, Mahalanobis kNN
+  src/lemieux/core/scouting.py               ← PlayerScoutingProfile, ContinuousAttribute, TagAssertion
+  src/lemieux/core/tags.py                   ← find_players_by_tag, list_known_tags
+  src/lemieux/core/cohort_effects.py         ← tag_split_study (any tag), tag_introduction_study (scaffold)
+packages/lemieux-connectors/                 ← NHL API, NST, NHL Edge, plugin base
+  src/lemieux/connectors/nhl_edge/           ← biometric features (skating speed, shot speed)
 packages/lemieux-mcp/                        ← FastMCP server (5 tools, 4 resources)
 packages/lemieux-glossary/                   ← bilingual metric definitions (15+)
 packages/lemieux-app/                        ← (Streamlit companion, pending migration)
