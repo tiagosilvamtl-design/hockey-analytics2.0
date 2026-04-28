@@ -1,0 +1,90 @@
+{
+  "meta": {
+    "as_of": "2026-04-28",
+    "swap": "Gallagher (in) for Dach (out)",
+    "slot_minutes": 14.0,
+    "strength_state": "5v5",
+    "comp_cohort": [
+      {
+        "name": "Blake Wheeler",
+        "score": 9.0,
+        "toi": 2613.4333333333334
+      },
+      {
+        "name": "Timo Meier",
+        "score": 2.8,
+        "toi": 5964.516666666667
+      },
+      {
+        "name": "Viktor Arvidsson",
+        "score": 2.3,
+        "toi": 392.433333333334
+      },
+      {
+        "name": "Josh Anderson",
+        "score": 1.0,
+        "toi": 4845.23333333333
+      },
+      {
+        "name": "Mathieu Olivier",
+        "score": 0.0,
+        "toi": 3263.3333333333658
+      }
+    ],
+    "archetype_lift": {
+      "tag": "warrior",
+      "n_cohort": 4,
+      "mean_lift": -0.32571955343601966,
+      "ci80_low": -0.43593802100638174,
+      "ci80_high": -0.15122503393624548,
+      "lift_var_approx": 0.0123381363887466
+    }
+  },
+  "layers": [
+    {
+      "label": "Layer 1 \u2014 Gallagher's pooled iso (5-yr NHL, no kNN)",
+      "delta_xgf": 0.11342154208393145,
+      "delta_xga": 0.020897907411450426,
+      "delta_net": 0.09252363467248102,
+      "ci_xgf": [
+        0.02262622220212407,
+        0.20421686196573882
+      ],
+      "ci_xga": [
+        -0.07273112331424446,
+        0.1145269381371453
+      ],
+      "ci_xgf_width": 0.18159063976361475
+    },
+    {
+      "label": "Layer 2 \u2014 Comp-cohort-stabilized (k=5 NHL kNN)",
+      "delta_xgf": 0.10659672159814386,
+      "delta_xga": 0.015409302555802938,
+      "delta_net": 0.09118741904234093,
+      "ci_xgf": [
+        0.028369726681531857,
+        0.18482371651475588
+      ],
+      "ci_xga": [
+        -0.06635567104680706,
+        0.09717427615841295
+      ],
+      "ci_xgf_width": 0.156453989833224
+    },
+    {
+      "label": "Layer 3 \u2014 Archetype-adjusted ('warrior' tag, N=4)",
+      "delta_xgf": 0.0305954924630726,
+      "delta_xga": 0.015409302555802938,
+      "delta_net": 0.015186189907269661,
+      "ci_xgf": [
+        -0.0543910724722491,
+        0.11558205739839429
+      ],
+      "ci_xga": [
+        -0.06635567104680706,
+        0.09717427615841295
+      ],
+      "ci_xgf_width": 0.1699731298706434
+    }
+  ]
+}
