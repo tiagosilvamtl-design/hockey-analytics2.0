@@ -162,12 +162,26 @@ def main():
                     help="Re-fetch /player/{id}/landing even when bio row already exists")
     ap.add_argument("--bio-only", action="store_true",
                     help="Only refresh static-bio block; skip the season-by-season Edge feature pulls")
+    ap.add_argument("--all-skaters", action="store_true",
+                    help="Target every distinct skater name in skater_stats (full-league enrichment)")
+    ap.add_argument("--all-skaters-min-toi", type=float, default=0.0,
+                    help="With --all-skaters, only include skaters with this much pooled 5v5 TOI")
     args = ap.parse_args()
 
     explicit = [s.strip() for s in args.explicit.split(",") if s.strip()]
-    con = sqlite3.connect(DB_PATH)
+    con = sqlite3.connect(DB_PATH, timeout=60)
     init_edge_table(con)
-    targets = get_target_names(con, args.names_from_index, explicit)
+    if args.all_skaters:
+        rows = con.execute("""
+            SELECT name, MAX(position) AS position, SUM(toi) AS total_toi
+            FROM skater_stats WHERE sit='5v5'
+            GROUP BY name HAVING total_toi >= ?
+            ORDER BY name
+        """, (args.all_skaters_min_toi,)).fetchall()
+        targets = [(r[0], r[1] or "") for r in rows]
+        print(f"--all-skaters: {len(targets)} distinct skater names (min pooled 5v5 TOI {args.all_skaters_min_toi})")
+    else:
+        targets = get_target_names(con, args.names_from_index, explicit)
     print(f"Enriching Edge data for {len(targets)} (name, position) pairs")
     print(f"Seasons: {EDGE_SEASONS}; game types: {EDGE_GAME_TYPES}")
 

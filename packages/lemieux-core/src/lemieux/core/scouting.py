@@ -27,15 +27,22 @@ from typing import Iterable
 
 
 # Canonical attribute IDs; numeric values 1-5; confidence 0-1.
+# Skater attributes + goalie attributes are unioned because they live in the
+# same scouting_attributes table (position field disambiguates).
 CONTINUOUS_ATTRIBUTES = (
+    # Skater
     "skating", "hands", "hockey_iq", "compete", "size", "speed",
     "shot", "vision", "defense",
+    # Goalie
+    "positioning", "athleticism", "glove", "blocker", "rebound_control",
+    "puck_handling", "mental",
 )
 
 # Canonical tag vocabulary. The corpus builder is told to classify against
 # this set; novel descriptors get rounded to the nearest, or filed under
 # `_other` with the source quote preserved for later schema review.
 CANONICAL_TAGS = (
+    # ==== Skater ====
     # Offensive archetypes
     "playmaker", "sniper", "volume_shooter", "power_forward", "two_way",
     # Defensive archetypes
@@ -45,6 +52,15 @@ CANONICAL_TAGS = (
     "fast", "slow_start", "streaky", "consistent",
     # Role descriptors
     "top_six", "bottom_six", "bottom_pair", "rover", "specialist_pp", "specialist_pk",
+    # ==== Goalie ====
+    # Style schools
+    "positional", "athletic", "hybrid", "butterfly", "scrambly",
+    # Temperament
+    "calm", "fiery",
+    # Role/career-stage
+    "prospect", "veteran", "starter", "backup", "tandem",
+    # Build/specialty
+    "big_frame", "undersized_quick", "puck_mover_g", "big_game",
 )
 
 
