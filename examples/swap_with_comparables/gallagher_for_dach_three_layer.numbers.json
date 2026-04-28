@@ -7,22 +7,22 @@
     "comp_cohort": [
       {
         "name": "Blake Wheeler",
-        "score": 9.0,
+        "score": 7.7,
         "toi": 2613.4333333333334
       },
       {
-        "name": "Timo Meier",
-        "score": 2.8,
-        "toi": 5964.516666666667
-      },
-      {
         "name": "Viktor Arvidsson",
-        "score": 2.3,
+        "score": 1.8,
         "toi": 392.433333333334
       },
       {
+        "name": "Timo Meier",
+        "score": 1.1,
+        "toi": 5964.516666666667
+      },
+      {
         "name": "Josh Anderson",
-        "score": 1.0,
+        "score": 0.8,
         "toi": 4845.23333333333
       },
       {

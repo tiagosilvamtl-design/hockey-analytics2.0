@@ -152,12 +152,43 @@ def league_average_team_pool(team_pools: dict[str, dict]) -> dict[str, float]:
     return total
 
 
+def fetch_edge_features_max(con: sqlite3.Connection) -> dict[str, dict]:
+    """Per-player career-best Edge biometrics (max across all (season, game_type) rows).
+    Returns {name: {max_skating_speed_mph, max_shot_speed_mph, skating_burst_count_22plus, ...}}.
+    Players without Edge data are simply absent from the dict (caller NaN-imputes).
+    """
+    out: dict[str, dict] = {}
+    try:
+        rows = con.execute("""
+            SELECT name,
+                   MAX(max_skating_speed_mph) AS max_speed,
+                   MAX(max_shot_speed_mph)    AS max_shot,
+                   MAX(skating_burst_count_22plus) AS bursts_22,
+                   MAX(hard_shot_count_90plus) AS shots_90
+            FROM edge_player_features
+            GROUP BY name
+        """).fetchall()
+    except sqlite3.OperationalError:
+        return {}  # edge tables not yet created
+    for r in rows:
+        name, max_speed, max_shot, bursts, shots90 = r
+        out[name] = {
+            "max_skating_speed_mph": max_speed,
+            "max_shot_speed_mph": max_shot,
+            "skating_burst_count_22plus": bursts or 0,
+            "hard_shot_count_90plus": shots90 or 0,
+        }
+    return out
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--output", type=Path, default=DEFAULT_OUT)
     ap.add_argument("--min-toi", type=float, default=200.0,
                     help="Min pooled 5v5 TOI for inclusion in index (default 200 min)")
     ap.add_argument("--n-components", type=int, default=8)
+    ap.add_argument("--no-block-b", action="store_true",
+                    help="Skip Edge biometric features (rebuilds Block-A-only index)")
     ap.add_argument("--sanity-targets", nargs="*",
                     default=["Brendan Gallagher", "Cole Caufield", "Nick Suzuki",
                              "Zachary Bolduc", "Lane Hutson"])
@@ -175,7 +206,7 @@ def main():
     team_5v4 = league_average_team_pool(fetch_pooled_team_stats(con, "5v4"))
     print(f"  League-pool team 5v5 toi: {team_5v5['toi']:.0f} min")
 
-    # Compute features per player
+    # Block A: NST iso + on-ice rates + position
     feature_columns = [
         "iso_xgf60",        # 5v5 isolated offensive impact
         "iso_xga60",        # 5v5 isolated defensive impact
@@ -191,6 +222,17 @@ def main():
         "pp_share",         # PP TOI / total TOI (proxy for special-teams role)
         "pos_C", "pos_L", "pos_R", "pos_D",   # one-hot position
     ]
+    edge_features = {}
+    if not args.no_block_b:
+        edge_features = fetch_edge_features_max(con)
+        print(f"  Edge biometrics available for {len(edge_features)} players")
+        # Block B: NHL Edge biometric columns (NaN where unknown)
+        feature_columns += [
+            "max_skating_speed_mph",     # peak observed top speed
+            "max_shot_speed_mph",        # peak observed hardest shot
+            "skating_burst_count_22plus",  # high-speed-burst frequency proxy
+            "hard_shot_count_90plus",      # heavy-shot count
+        ]
 
     rows = []
     row_meta = []
@@ -237,6 +279,14 @@ def main():
             pos_features["pos_C"], pos_features["pos_L"],
             pos_features["pos_R"], pos_features["pos_D"],
         ]
+        if not args.no_block_b:
+            edge = edge_features.get(p["name"], {})
+            feats.extend([
+                edge.get("max_skating_speed_mph", float("nan")),
+                edge.get("max_shot_speed_mph", float("nan")),
+                edge.get("skating_burst_count_22plus", float("nan")),
+                edge.get("hard_shot_count_90plus", float("nan")),
+            ])
         rows.append(key)
         matrix_rows.append(feats)
         row_meta.append({
@@ -261,10 +311,18 @@ def main():
         metadata={
             "seasons": list(SEASONS),
             "sit_5v5_min_toi": args.min_toi,
-            "n_features_block_a": len(feature_columns),
-            "block_b_added": False,
+            "n_features": len(feature_columns),
+            "block_a_added": True,
+            "block_b_added": (not args.no_block_b),
+            "block_b_coverage": (
+                f"{len(edge_features)} of {len(rows)} players have Edge data; "
+                "the rest are NaN-imputed to mean during standardize"
+            ) if not args.no_block_b else "skipped",
             "block_c_added": False,
-            "build_note": "Phase 1 spike — Block A (NST oi) only. League-average team baseline used for iso (approximation).",
+            "build_note": (
+                f"Block A (NST oi 5v5+5v4) {'+ Block B (NHL Edge biometrics, partial coverage)' if not args.no_block_b else ''}. "
+                "League-average team baseline used for iso (acknowledged approximation)."
+            ),
         },
     )
 
