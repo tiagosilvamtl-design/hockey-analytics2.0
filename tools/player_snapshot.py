@@ -84,6 +84,20 @@ def render_skater_oi(con: sqlite3.Connection, name: str) -> None:
         print(f'    {r["season"]:<10}{stype:<8}{r["sit"]:<5}{(r["gp"] or 0):>4}{toi:>8.0f}{r["gf"] or 0:>4}{r["ga"] or 0:>4}{xgf:>7.1f}{xga:>7.1f}{cfp:>6.1f}%{xgfp:>6.1f}%')
 
 
+def render_skater_individual(con: sqlite3.Connection, name: str) -> None:
+    section("NST INDIVIDUAL STATS — table: skater_individual_stats (G/A/SOG/ixG/hits/blocks/FO)")
+    print(f'    {"season":<10}{"stype":<8}{"GP":>4}{"G":>4}{"A":>4}{"A1":>4}{"A2":>4}{"P":>4}{"SOG":>5}{"ixG":>7}{"iHDCF":>6}{"Hits":>5}{"Blks":>5}{"FOW":>5}{"FO%":>6}')
+    for r in con.execute(
+        "SELECT * FROM skater_individual_stats WHERE name=? AND sit='all' ORDER BY season, stype",
+        (name,),
+    ):
+        stype = {2:"reg", 3:"playoff"}.get(r["stype"], str(r["stype"]))
+        ixg = f'{r["ixg"]:.1f}' if r["ixg"] is not None else "n/a"
+        fopc = f'{r["faceoffs_pct"]:.1f}' if r["faceoffs_pct"] is not None else " n/a"
+        gp = r["gp"] if r["gp"] is not None else 0
+        print(f'    {r["season"]:<10}{stype:<8}{gp:>4}{r["goals"] or 0:>4}{r["assists"] or 0:>4}{r["first_assists"] or 0:>4}{r["second_assists"] or 0:>4}{r["points"] or 0:>4}{r["shots"] or 0:>5}{ixg:>7}{r["ihdcf"] or 0:>6}{r["hits"] or 0:>5}{r["shots_blocked"] or 0:>5}{r["faceoffs_won"] or 0:>5}{fopc:>6}')
+
+
 def render_goalie_stats(con: sqlite3.Connection, pid: int) -> None:
     section("NST GOALIE STATS — table: goalie_stats")
     print(f'    {"season":<10}{"stype":<8}{"sit":<5}{"GP":>4}{"TOI":>8}{"GA":>5}{"SA":>6}{"xGA":>7}{"HDGA":>5}{"HDCA":>5}{"SV%":>9}{"hdSV%":>9}{"GSAx":>8}')
@@ -314,6 +328,7 @@ def main():
     render_bio(con, pid)
     if kind == "skater":
         render_skater_oi(con, canonical)
+        render_skater_individual(con, canonical)
     else:
         render_goalie_stats(con, pid)
     render_edge_features(con, pid, kind)
