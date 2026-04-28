@@ -1,0 +1,252 @@
+{
+  "tag": "warrior",
+  "as_of": "2026-04-28",
+  "min_confidence": 0.6,
+  "cohort": [
+    {
+      "name": "Brayden McNabb",
+      "position": "D",
+      "confidence": 0.95,
+      "source_quote": "He can swing the momentum of a game with a big hip check",
+      "source_url": "https://sportsforecaster.com/nhl/p/17437/Brayden+McNabb"
+    },
+    {
+      "name": "Brendan Gallagher",
+      "position": "R",
+      "confidence": 0.95,
+      "source_quote": "tenacious forecheck, fearless, willing to go to the dirty areas, crashes the net",
+      "source_url": "https://sportsforecaster.com/nhl/p/18502/Brendan_Gallagher"
+    },
+    {
+      "name": "Sam Bennett",
+      "position": "C",
+      "confidence": 0.95,
+      "source_quote": "physical aspect to the game especially in the playoffs is invaluable; capable of really fine play at speed and also capable of the big hit",
+      "source_url": "https://www.nhl.com/panthers/news/sam-bennett-proving-to-be-perfect-fit-with-florida-x6990"
+    },
+    {
+      "name": "Tom Wilson",
+      "position": "R",
+      "confidence": 0.95,
+      "source_quote": "Heavy Hitter; almost unmatched ability to get under opponents' skin",
+      "source_url": "https://en.wikipedia.org/wiki/Tom_Wilson_(ice_hockey)"
+    },
+    {
+      "name": "Ben Chiarot",
+      "position": "D",
+      "confidence": 0.9,
+      "source_quote": "Chiarot is a ruggled-style defenseman whose 110 hits this season would rank third on the team",
+      "source_url": "https://floridahockeynow.com/ben-chiarot-florida-panthers-trade-montreal-canadiens/"
+    },
+    {
+      "name": "Brandon Hagel",
+      "position": "L",
+      "confidence": 0.9,
+      "source_quote": "gritty style; willing to do anything to win, regardless of the task; can drop the gloves",
+      "source_url": "https://thehockeywriters.com/lightning-hagel-trust-drive-own-line-2024-25/"
+    },
+    {
+      "name": "Corey Perry",
+      "position": "R",
+      "confidence": 0.9,
+      "source_quote": "stands his ground in front of goalies and when engaged in physical confrontation, absorbs cruel levels of abuse",
+      "source_url": "https://www.eliteprospects.com/player/8541/corey-perry/scouting-report"
+    },
+    {
+      "name": "Josh Anderson",
+      "position": "R",
+      "confidence": 0.9,
+      "source_quote": "willingness to go to the front of the net and to the corners; physical winger; tone-setting role",
+      "source_url": "https://sportsforecaster.com/nhl/p/19282/Josh_Anderson"
+    },
+    {
+      "name": "Mathieu Olivier",
+      "position": "R",
+      "confidence": 0.9,
+      "source_quote": "loves to play a physical brand of hockey and initiate contact; momentum-changing hits",
+      "source_url": "https://www.nhl.com/bluejackets/news/mathieu-olivier-blue-jackets-toughest-players-in-nhl"
+    },
+    {
+      "name": "Brad Marchand",
+      "position": "L",
+      "confidence": 0.85,
+      "source_quote": "ultracompetitive; the power of 'The Pest'; turned defense into offense with attacker's mindset",
+      "source_url": "https://www.espn.com/nhl/story/_/id/17951883/nhl-boston-bruins-left-winger-brad-marchand-evolved-pest-one-nhl-best"
+    },
+    {
+      "name": "Darnell Nurse",
+      "position": "D",
+      "confidence": 0.85,
+      "source_quote": "Enjoys playing physical.",
+      "source_url": "https://www.eliteprospects.com/player/97352/darnell-nurse"
+    },
+    {
+      "name": "Esa Lindell",
+      "position": "D",
+      "confidence": 0.8,
+      "source_quote": "How a workhorse mentality turned Esa Lindell into a Stars cornerstone",
+      "source_url": "https://www.reddit.com/r/hockey/comments/1hb0wbn/josh_clark_living_the_dream_how_a_workhorse/"
+    },
+    {
+      "name": "MacKenzie Weegar",
+      "position": "D",
+      "confidence": 0.75,
+      "source_quote": "Weegar's gritty, effective style may be overlooked, but it's exactly what makes him so valuable",
+      "source_url": "https://thehockeynews.com/nhl/calgary-flames/mackenzie-weegar-flames-nhl-most-underrated-defenseman"
+    },
+    {
+      "name": "Phillip Danault",
+      "position": "C",
+      "confidence": 0.7,
+      "source_quote": "speed, grit, intensity; dedicated teammate",
+      "source_url": "https://sportsforecaster.com/nhl/p/19016/Phillip_Danault"
+    },
+    {
+      "name": "Zachary Bolduc",
+      "position": "R",
+      "confidence": 0.65,
+      "source_quote": "fast and forechecks hard; tools give him the upper hand in downhill battles",
+      "source_url": "https://sportsforecaster.com/nhl/p/1020824/Zack_Bolduc"
+    }
+  ],
+  "study": {
+    "n_players_in_split": 13,
+    "mean_delta_iso_net": -0.21535367730049904,
+    "median_delta_iso_net": -0.23034114751128287,
+    "ci80_low": -0.5475271262803894,
+    "ci80_high": 0.28620630559608395,
+    "ci80_excludes_zero": false,
+    "per_player": [
+      {
+        "name": "Brayden McNabb",
+        "position": "D",
+        "reg_toi": 6434.4333333333,
+        "playoff_toi": 713.466666666663,
+        "reg_iso_net": 0.30912610933627915,
+        "playoff_iso_net": 0.07878496182499628,
+        "delta": -0.23034114751128287,
+        "tag_confidence": 0.95
+      },
+      {
+        "name": "Brendan Gallagher",
+        "position": "R",
+        "reg_toi": 3865.58333333334,
+        "playoff_toi": 65.05,
+        "reg_iso_net": 0.06586399277241561,
+        "playoff_iso_net": -0.36040348865177885,
+        "delta": -0.42626748142419446,
+        "tag_confidence": 0.95
+      },
+      {
+        "name": "Sam Bennett",
+        "position": "C",
+        "reg_toi": 4710.75000000007,
+        "playoff_toi": 1051.15,
+        "reg_iso_net": 0.6044643563922993,
+        "playoff_iso_net": 0.7219994150858575,
+        "delta": 0.11753505869355818,
+        "tag_confidence": 0.95
+      },
+      {
+        "name": "Tom Wilson",
+        "position": "R",
+        "reg_toi": 4518.96666666666,
+        "playoff_toi": 186.8499999999967,
+        "reg_iso_net": 0.12325485044990003,
+        "playoff_iso_net": -0.0807385147104629,
+        "delta": -0.20399336516036293,
+        "tag_confidence": 0.95
+      },
+      {
+        "name": "Ben Chiarot",
+        "position": "D",
+        "reg_toi": 6921.3166666666,
+        "playoff_toi": 151.23333333333,
+        "reg_iso_net": -0.49573336071990237,
+        "playoff_iso_net": -0.1673592433981872,
+        "delta": 0.3283741173217152,
+        "tag_confidence": 0.9
+      },
+      {
+        "name": "Brandon Hagel",
+        "position": "L",
+        "reg_toi": 5533.03333333333,
+        "playoff_toi": 572.75,
+        "reg_iso_net": 0.5208761766320995,
+        "playoff_iso_net": 0.1350144213607245,
+        "delta": -0.385861755271375,
+        "tag_confidence": 0.9
+      },
+      {
+        "name": "Corey Perry",
+        "position": "R",
+        "reg_toi": 3899.11666666667,
+        "playoff_toi": 739.983333333337,
+        "reg_iso_net": 0.2949113989226304,
+        "playoff_iso_net": 0.1438221351628215,
+        "delta": -0.1510892637598089,
+        "tag_confidence": 0.9
+      },
+      {
+        "name": "Josh Anderson",
+        "position": "R",
+        "reg_toi": 4734.83333333333,
+        "playoff_toi": 110.4,
+        "reg_iso_net": -0.5598663647362594,
+        "playoff_iso_net": -0.6105328038145923,
+        "delta": -0.0506664390783329,
+        "tag_confidence": 0.9
+      },
+      {
+        "name": "Brad Marchand",
+        "position": "L",
+        "reg_toi": 4407.19999999996,
+        "playoff_toi": 623.249999999993,
+        "reg_iso_net": 0.45619569301860263,
+        "playoff_iso_net": 0.8289373677360956,
+        "delta": 0.372741674717493,
+        "tag_confidence": 0.85
+      },
+      {
+        "name": "Darnell Nurse",
+        "position": "D",
+        "reg_toi": 7299.1333333333005,
+        "playoff_toi": 1368.599999999997,
+        "reg_iso_net": 0.3326627177786472,
+        "playoff_iso_net": -0.33023999921709457,
+        "delta": -0.6629027169957418,
+        "tag_confidence": 0.85
+      },
+      {
+        "name": "Esa Lindell",
+        "position": "D",
+        "reg_toi": 6803.1,
+        "playoff_toi": 1247.36666666667,
+        "reg_iso_net": 0.14848174012187032,
+        "playoff_iso_net": -0.40838215418945234,
+        "delta": -0.5568638943113227,
+        "tag_confidence": 0.8
+      },
+      {
+        "name": "MacKenzie Weegar",
+        "position": "D",
+        "reg_toi": 7235.4999999999,
+        "playoff_toi": 222.733333333333,
+        "reg_iso_net": 0.3312770506504492,
+        "playoff_iso_net": -0.17890300350620691,
+        "delta": -0.5101800541566561,
+        "tag_confidence": 0.75
+      },
+      {
+        "name": "Phillip Danault",
+        "position": "C",
+        "reg_toi": 4176.28333333327,
+        "playoff_toi": 413.133333333333,
+        "reg_iso_net": 0.4312089932538803,
+        "playoff_iso_net": -0.008873544716295978,
+        "delta": -0.44008253797017627,
+        "tag_confidence": 0.7
+      }
+    ]
+  }
+}
