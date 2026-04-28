@@ -44,13 +44,18 @@ class StandardizationResult:
 def standardize(matrix: np.ndarray) -> StandardizationResult:
     """Z-score each column. NaN entries imputed with column mean (becomes 0 post-std).
 
-    Columns with zero variance (all values equal or all NaN) get std=1 to avoid
-    divide-by-zero; their standardized output is all zeros.
+    Defensive against:
+    - All-NaN columns: set mean=0, std=1, output column = all zeros.
+    - Zero-variance columns: std=1 to avoid divide-by-zero; output column = all zeros.
     """
     matrix = np.asarray(matrix, dtype=np.float64)
-    means = np.nanmean(matrix, axis=0)
-    stds = np.nanstd(matrix, axis=0, ddof=0)
-    stds = np.where(stds < 1e-12, 1.0, stds)
+    # Use np.errstate to silence "Mean of empty slice" warnings on all-NaN columns.
+    with np.errstate(invalid="ignore"):
+        means = np.nanmean(matrix, axis=0)
+        stds = np.nanstd(matrix, axis=0, ddof=0)
+    # All-NaN columns → mean=NaN, std=NaN. Replace with safe defaults.
+    means = np.where(np.isnan(means), 0.0, means)
+    stds = np.where(np.isnan(stds) | (stds < 1e-12), 1.0, stds)
     # Impute NaNs with column mean BEFORE standardizing.
     imputed = np.where(np.isnan(matrix), means, matrix)
     standardized = (imputed - means) / stds
