@@ -381,6 +381,116 @@ PROFILES.append(PlayerScoutingProfile(
 ))
 
 
+# --- Tom Wilson (R, WSH) — warrior cohort expander ---
+PROFILES.append(PlayerScoutingProfile(
+    name="Tom Wilson", position="R", extracted_at=TODAY,
+    sources=["https://en.wikipedia.org/wiki/Tom_Wilson_(ice_hockey)",
+             "https://thehockeynews.com/news/latest-news/capitals-tom-wilson-just-keeps-getting-better"],
+    attributes=[
+        attr("skating", 3.0, 0.7), attr("hands", 3.0, 0.7),
+        attr("hockey_iq", 3.5, 0.7), attr("compete", 5.0, 0.95),
+        attr("size", 5.0, 0.95), attr("speed", 3.0, 0.7),
+        attr("shot", 3.5, 0.7), attr("vision", 3.0, 0.6),
+        attr("defense", 3.5, 0.7),
+    ],
+    tags=[
+        tag("warrior", 0.95, "Heavy Hitter; almost unmatched ability to get under opponents' skin",
+            "https://en.wikipedia.org/wiki/Tom_Wilson_(ice_hockey)"),
+        tag("agitator", 0.95, "Player type Agitator; placed on the Rat Line of agitators",
+            "https://en.wikipedia.org/wiki/Tom_Wilson_(ice_hockey)"),
+        tag("power_forward", 0.9, "6'4\" 218 power forward, strong scoring record and highly physical",
+            "https://en.wikipedia.org/wiki/Tom_Wilson_(ice_hockey)"),
+        tag("two_way", 0.7, "Two-Way Forward; works hard and back checking",
+            "https://en.wikipedia.org/wiki/Tom_Wilson_(ice_hockey)"),
+        tag("top_six", 0.85, "Top-Six Power Forward",
+            "https://devilsarmynetwork.com/trade-profile-tom-wilson-capitals/"),
+    ],
+))
+
+# --- Sam Bennett (C, FLA) — warrior who has actual playoff data ---
+PROFILES.append(PlayerScoutingProfile(
+    name="Sam Bennett", position="C", extracted_at=TODAY,
+    sources=["https://www.espn.com/nhl/story/_/id/45487805/nhl-2025-playoffs-stanley-cup-final-panthers-sam-bennett-mvp-conn-smythe-scoring-hits",
+             "https://thehockeynews.com/nhl/florida-panthers/players/physical-skilled-sam-bennett-personifies-florida-panthers-style-of-hockey"],
+    attributes=[
+        attr("skating", 4.0, 0.8), attr("hands", 4.0, 0.8),
+        attr("hockey_iq", 4.0, 0.8), attr("compete", 5.0, 0.95),
+        attr("size", 4.0, 0.85), attr("speed", 4.0, 0.8),
+        attr("shot", 4.0, 0.8), attr("vision", 3.5, 0.75),
+        attr("defense", 4.0, 0.8),
+    ],
+    tags=[
+        tag("warrior", 0.95, "physical aspect to the game especially in the playoffs is invaluable; capable of really fine play at speed and also capable of the big hit",
+            "https://www.nhl.com/panthers/news/sam-bennett-proving-to-be-perfect-fit-with-florida-x6990"),
+        tag("clutch", 0.95, "Conn Smythe Trophy as playoff MVP 2024-25; led playoffs with 15 goals; Built for this time of year",
+            "https://www.espn.com/nhl/story/_/id/45487805/nhl-2025-playoffs-stanley-cup-final-panthers-sam-bennett-mvp-conn-smythe-scoring-hits"),
+        tag("top_six", 0.9, "personifies Florida Panthers style of hockey; key playoff role",
+            "https://thehockeynews.com/nhl/florida-panthers/players/physical-skilled-sam-bennett-personifies-florida-panthers-style-of-hockey"),
+        tag("two_way", 0.8, "hard on pucks, hard on the body; the worst to play against, but the best to play with",
+            "https://thehockeynews.com/nhl/florida-panthers/players/physical-skilled-sam-bennett-personifies-florida-panthers-style-of-hockey"),
+    ],
+))
+
+# --- Brad Marchand (L, BOS/FLA) — pest/warrior + two-way star ---
+PROFILES.append(PlayerScoutingProfile(
+    name="Brad Marchand", position="L", extracted_at=TODAY,
+    sources=["https://en.wikipedia.org/wiki/Brad_Marchand",
+             "https://www.espn.com/nhl/story/_/id/17951883/nhl-boston-bruins-left-winger-brad-marchand-evolved-pest-one-nhl-best"],
+    attributes=[
+        attr("skating", 4.5, 0.85), attr("hands", 4.5, 0.85),
+        attr("hockey_iq", 5.0, 0.9), attr("compete", 5.0, 0.95),
+        attr("size", 2.5, 0.85), attr("speed", 4.5, 0.85),
+        attr("shot", 4.0, 0.8), attr("vision", 4.5, 0.85),
+        attr("defense", 5.0, 0.95),
+    ],
+    tags=[
+        tag("agitator", 0.95, "characterized as a pest; frustrates his opponents through physical or verbal attacks",
+            "https://en.wikipedia.org/wiki/Brad_Marchand"),
+        tag("warrior", 0.85, "ultracompetitive; the power of 'The Pest'; turned defense into offense with attacker's mindset",
+            "https://www.espn.com/nhl/story/_/id/17951883/nhl-boston-bruins-left-winger-brad-marchand-evolved-pest-one-nhl-best"),
+        tag("two_way", 0.95, "one of the most productive, feared two-way wingers Boston has ever had; career leader in short-handed goals",
+            "https://nesn.com/boston-bruins/news/brad-marchand-bruins-legacy-captain-short-handed-ace/bdff5f736340664979bad4bf"),
+        tag("specialist_pk", 0.9, "Boston's career leader in short-handed goals; Short-Handed Ace",
+            "https://nesn.com/boston-bruins/news/brad-marchand-bruins-legacy-captain-short-handed-ace/bdff5f736340664979bad4bf"),
+        tag("top_six", 0.95, "franchise cornerstone, Stanley Cup champion, captain",
+            "https://nesn.com/boston-bruins/news/brad-marchand-bruins-legacy-captain-short-handed-ace/bdff5f736340664979bad4bf"),
+        tag("clutch", 0.85, "captain; one of the most productive, feared two-way wingers",
+            "https://nesn.com/boston-bruins/news/brad-marchand-bruins-legacy-captain-short-handed-ace/bdff5f736340664979bad4bf"),
+    ],
+    comp_mentions=[
+        comp("Theo Fleury",
+             "Marchand has modelled his behaviour after that of Theo Fleury, a former pest who was able to leverage frustration into offensive production",
+             "https://en.wikipedia.org/wiki/Brad_Marchand", polarity="style"),
+    ],
+))
+
+# --- Corey Perry (R, EDM/CHI vet) — pest who's still effective in playoffs ---
+PROFILES.append(PlayerScoutingProfile(
+    name="Corey Perry", position="R", extracted_at=TODAY,
+    sources=["https://thehockeywriters.com/nhls-all-star-pests-corey-perry-brad-marchand-set-to-face-off-for-2025-stanley-cup/",
+             "https://www.eliteprospects.com/player/8541/corey-perry/scouting-report"],
+    attributes=[
+        attr("skating", 2.5, 0.8), attr("hands", 4.0, 0.8),
+        attr("hockey_iq", 4.5, 0.85), attr("compete", 4.5, 0.85),
+        attr("size", 4.0, 0.85), attr("speed", 2.5, 0.8),
+        attr("shot", 4.0, 0.8), attr("vision", 4.0, 0.8),
+        attr("defense", 3.0, 0.7),
+    ],
+    tags=[
+        tag("agitator", 0.95, "one of the NHL's premier pests; loves to get under the skin of his opponents; nicknamed The Worm",
+            "https://thehockeywriters.com/nhls-all-star-pests-corey-perry-brad-marchand-set-to-face-off-for-2025-stanley-cup/"),
+        tag("warrior", 0.9, "stands his ground in front of goalies and when engaged in physical confrontation, absorbs cruel levels of abuse",
+            "https://www.eliteprospects.com/player/8541/corey-perry/scouting-report"),
+        tag("clutch", 0.9, "thrives at the most important time of the year, the playoffs",
+            "https://thehockeywriters.com/nhls-all-star-pests-corey-perry-brad-marchand-set-to-face-off-for-2025-stanley-cup/"),
+        tag("specialist_pp", 0.85, "only used on the top power play unit as a spark",
+            "https://www.eliteprospects.com/player/8541/corey-perry/scouting-report"),
+        tag("bottom_six", 0.65, "playing in more of a specialist role now, can't keep up with top line minutes anymore",
+            "https://www.eliteprospects.com/player/8541/corey-perry/scouting-report"),
+    ],
+))
+
+
 # ============================================================
 def main():
     # Higher timeout so we wait for the Edge background job's commits to release
