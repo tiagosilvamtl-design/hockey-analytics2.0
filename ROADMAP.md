@@ -7,7 +7,7 @@
 - [x] `lemieux-glossary` — 15 bilingual terms (EN + FR) with formulas, caveats, sources
 - [x] `lemieux-mcp` — FastMCP server with 5 tools + 4 resources
 - [x] 6 Claude skills — `research-game`, `translate-to-quebec-fr`, `draft-game-post`, `propose-swap-scenario`, `validate-analysis`, `review-pr-lemieux`
-- [x] Bilingual READMEs + `docs/en` + `docs/fr` + `INSTALLATION_FACILE.md` (FR non-technical install)
+- [x] Bilingual READMEs + `docs/en` + `docs/fr`
 - [x] Templates for connectors and skills
 - [x] Three worked end-to-end examples in `examples/habs_round1_2026/`:
   - Round 1 standalone report (Habs vs TBL pre-G3)

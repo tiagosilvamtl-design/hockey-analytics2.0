@@ -239,7 +239,6 @@ CLAUDE.md                                    ← this file (rules of the road)
 README.md / README_FR.md                     ← public landing pages
 ROADMAP.md                                   ← shipped + planned
 SOURCES.md                                   ← per-source license posture
-CONTRIBUTING.md                              ← bilingual contributor guide
 
 .claude/skills/                              ← Claude Code skills (auto-discovered)
 .github/workflows/claude-pr-review.yml       ← auto-PR-review pipeline

@@ -134,8 +134,6 @@ Once your DB is populated, run `python tools/player_snapshot.py "<name>"` (or us
 
 ## Quickstart
 
-> **Non-technical?** See [INSTALLATION_FACILE.md](./INSTALLATION_FACILE.md) (FR) — a friend-of-the-project install guide that walks you through Claude Code + Lemieux setup with zero prior tooling assumed.
-
 ```bash
 git clone https://github.com/lemieuxAI/framework.git lemieux
 cd lemieux

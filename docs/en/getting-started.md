@@ -50,7 +50,7 @@ Claude invokes `draft-game-post`, calls the MCP tools, reads the glossary for me
 
 - Read the [glossary](../../packages/lemieux-glossary/src/lemieux/glossary/terms.yaml) to understand what Lemieux knows.
 - Browse `examples/habs_round1_2026/` for a full worked analysis.
-- Add a connector: see `templates/connector-template/` and [CONTRIBUTING.md](../../CONTRIBUTING.md).
+- Add a connector: see `templates/connector-template/`.
 
 ## Philosophy
 

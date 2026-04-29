@@ -50,7 +50,7 @@ Claude invoque `draft-game-post`, appelle les outils MCP, consulte le lexique po
 
 - Lire le [lexique](../../packages/lemieux-glossary/src/lemieux/glossary/terms.yaml) pour comprendre ce que Lemieux connaît.
 - Explorer `examples/habs_round1_2026/` pour un exemple d'analyse complète.
-- Ajouter un connecteur : voir `templates/connector-template/` et [CONTRIBUTING.md](../../CONTRIBUTING.md).
+- Ajouter un connecteur : voir `templates/connector-template/`.
 
 ## Philosophie
 

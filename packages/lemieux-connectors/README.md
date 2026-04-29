@@ -15,10 +15,8 @@ Plugin-style data source adapters. Every connector is a self-contained sub-packa
 
 ```bash
 cp -r templates/connector-template packages/lemieux-connectors/src/lemieux/connectors/<your-source>
-# implement refresh(), declare schema, record fixtures, open PR
+# implement refresh(), declare schema, record fixtures
 ```
-
-See [CONTRIBUTING.md](../../CONTRIBUTING.md) for the full flow.
 
 ## Global conventions
 
