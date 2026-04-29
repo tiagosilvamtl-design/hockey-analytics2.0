@@ -204,12 +204,6 @@ Lancez `python tools/export_derived_artifacts.py` pour produire un zip redistrib
 7. **Les données sont la source; la prose est templatée à partir d'elles.** Les fichiers d'entrée structurés (`<gameN>_lineups.yaml`, `<task>.numbers.json`) sont la base canonique des faits. L'invariant de construction garantit qu'aucune prose ne peut contredire les données — `runProseFactCheck()` interrompt la production du docx (code de sortie 7) si un patineur sans but apparaît comme sujet d'un verbe de marquage. Le même patron s'applique à la composition des trios, le temps de glace, les passes, etc. La composition des trios est une ENTRÉE de l'analyse, jamais inférée d'extraits de presse.
 8. **Mener par les résultats, pas par les annonces.** Le public a regardé le match — le rôle du rapport post-match est de faire surface ce que seuls les chiffres révèlent (amplitudes inattendues, paradoxes que l'œil ne voit pas, contradictions avec le narratif d'avant-série). Le pipeline de révision automatique des PR attrape les manquements.
 
-## Contribuer
-
-Voir [CONTRIBUTING.md](./CONTRIBUTING.md) (bilingue). La contribution la plus facile : un connecteur — copier `templates/connector-template`, implémenter `refresh()`, écrire trois tests.
-
-**Révision automatique de chaque PR.** Lorsqu'une PR est ouverte, un workflow GitHub lance Claude Code avec l'habileté [`review-pr-lemieux`](./.claude/skills/review-pr-lemieux) et publie un commentaire de révision structuré en quelques minutes — verdict (MERGE / DEMANDER DES CHANGEMENTS / FERMER), ce que fait la PR, ce qui est bien, ce qui inquiète, une grille des règles du projet, et la prochaine étape recommandée. Le mainteneur lit la révision et accepte ou refuse; Claude ne fusionne ni ne ferme jamais automatiquement.
-
 ## Feuille de route
 
 Voir [ROADMAP.md](./ROADMAP.md). Axes v0.2 : connecteur MoneyPuck, connecteur PWHL (un auditoire réellement sous-servi), publication sur PyPI, migration de l'application Streamlit complémentaire.

@@ -210,12 +210,6 @@ zip with these alongside a README pointer.
 7. **Data is the source; prose is templated against it.** Structured input files (`<gameN>_lineups.yaml`, `<task>.numbers.json`) are the canonical fact base. The build invariant guarantees no prose can contradict the data — `runProseFactCheck()` aborts the docx build (exit code 7) if any roster name with 0 goals appears as a scoring subject in prose. Same pattern applies to lineup composition, ice time, assists, etc. Lineup composition data is INPUT to the analysis, never inferred from press extracts.
 8. **Lead with outcomes, not announcements.** The audience watched the game — the post-game report's job is to surface what only the data reveals (unexpected magnitudes, paradoxes the eye test misses, contradictions with pre-series narrative). The auto-PR-review pipeline catches violations.
 
-## Contributing
-
-See [CONTRIBUTING.md](./CONTRIBUTING.md) (bilingual). The easiest first PR is a connector — copy `templates/connector-template`, implement `refresh()`, write three tests. There's an issue template for each contribution type.
-
-**Auto-review on every PR.** When you open a PR, a GitHub Action runs Claude Code with the [`review-pr-lemieux`](./.claude/skills/review-pr-lemieux) skill and posts a structured review comment within minutes — verdict (MERGE / REQUEST CHANGES / CLOSE), what the PR does, what's good, what worries me, a project-rules checklist, and a recommended next step. The maintainer reads the review and accepts or rejects; Claude never auto-merges or auto-closes. See [CONTRIBUTING.md](./CONTRIBUTING.md#auto-review) for what triggers each verdict.
-
 ## Roadmap
 
 See [ROADMAP.md](./ROADMAP.md). v0.2 focus: MoneyPuck connector, PWHL connector (a genuine under-served community), PyPI publishing, Streamlit companion migration.
