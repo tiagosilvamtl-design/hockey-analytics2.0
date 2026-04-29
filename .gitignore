@@ -88,3 +88,7 @@ lemieux_derived_*.zip
 
 # Deck workspace — internal slides, not part of the public framework
 deck/
+
+# LinkedIn / social-media post drafts — never commit, edit on Drive instead
+lemieux_linkedin_*
+*_linkedin_drafts.docx
