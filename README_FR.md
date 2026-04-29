@@ -117,18 +117,20 @@ Déclenche `translate-to-quebec-fr`. Glossaire de termes (50+ entrées), patrons
 
 ## Couverture des données (au 2026-04-29)
 
-La base de données de Lemieux dispose des couches suivantes pour chaque joueur de la LNH :
+Les chiffres ci-dessous décrivent **notre instance locale** de Lemieux. Au moment de cloner le dépôt, la base de données est vide — vous la peuplez vous-même avec les outils de rafraîchissement dans `tools/` et une clé d'accès Natural Stat Trick gratuite (à demander via un profil NST, voir [SOURCES.md](./SOURCES.md)). Ce qui est livré dans le dépôt, c'est **le code** pour reconstruire chaque couche; ce qui n'est pas livré, ce sont les données NST brutes (selon leurs termes — voir « Peut-on redistribuer la base de données elle-même? » plus bas).
 
-| Couche | Couverture |
-|---|---|
-| **Statistiques de comptage NST** (patineurs + gardiens) | 5 saisons × {5 c. 5, 5 c. 4, toutes situations} × {saison régulière, séries}, ~18 500 lignes de stats individuelles |
-| **Bio du joueur** (taille / poids / repêchage) | **1 322** joueurs, 100 % pour la taille et le poids |
-| **Données biométriques NHL Edge** (patinage, tir, accélérations) | **1 122** patineurs distincts avec mesures |
-| **Étiquettes et attributs scouting (GenAI)** | **1 023 patineurs + 135 gardiens** avec contenu extrait (1 393 profils au total) |
-| **Index de comparables kNN** | **1 257 patineurs** (espace de 24 caractéristiques) + **136 gardiens** (v1, 10 caractéristiques) |
-| **Yamls de contexte par match** | Série Canadien — Lightning, premier tour 2026 (M1 à M4 indexés) |
+| Couche | Notre couverture | Comment la peupler |
+|---|---|---|
+| **Statistiques de comptage NST** (patineurs + gardiens) | 5 saisons × {5 c. 5, 5 c. 4, toutes situations} × {saison régulière, séries}, ~18 500 lignes de stats individuelles | Clé NST + `tools/refresh_skater_individual_stats.py`, `tools/refresh_goalie_stats.py` |
+| **Bio du joueur** (taille / poids / repêchage) | **1 322** joueurs, 100 % pour la taille et le poids | `tools/refresh_edge_biometrics.py --bio-only` (aucune clé requise) |
+| **Données biométriques NHL Edge** (patinage, tir, accélérations) | **1 122** patineurs distincts avec mesures | `tools/refresh_edge_biometrics.py --all-skaters` (aucune clé requise) |
+| **Étiquettes et attributs scouting (GenAI)** | **1 023 patineurs + 135 gardiens** avec contenu extrait (1 393 profils au total) | `ANTHROPIC_API_KEY` + `tools/build_scouting_corpus.py` (≈ 30 $ en appels API pour le corpus complet) |
+| **Index de comparables kNN** | **1 257 patineurs** (espace de 24 caractéristiques) + **136 gardiens** (v1, 10 caractéristiques) | `tools/build_comparable_index.py` + `tools/build_goalie_comparable_index.py` (à exécuter APRÈS que les couches NST + Edge soient peuplées) |
+| **Yamls de contexte par match** | Série Canadien — Lightning, premier tour 2026 (M1 à M4 indexés) | `tools/build_game_context.py <game_id>` par match; champ `significance` rédigé à la main pour les évènements marquants |
 
-Lancez `python tools/player_snapshot.py "<nom>"` (ou utilisez l'habileté Claude `player-snapshot`) pour obtenir d'un seul coup les cinq couches pour n'importe quel joueur.
+**Vous ne voulez pas reconstruire toute la pile?** La sous-section redistribuable (les index kNN et les tables scouting extraites par LLM, mais pas les statistiques de comptage NST brutes) est livrée comme zip à télécharger séparément — voir [`tools/export_derived_artifacts.py`](./tools/export_derived_artifacts.py) et la réponse plus bas.
+
+Une fois la base peuplée, lancez `python tools/player_snapshot.py "<nom>"` (ou utilisez l'habileté Claude `player-snapshot`) pour obtenir d'un seul coup les cinq couches pour n'importe quel joueur.
 
 ## Démarrage rapide
 

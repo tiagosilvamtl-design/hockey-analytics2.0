@@ -115,21 +115,22 @@ Triggers `translate-to-quebec-fr`. Term-mapped (50+ entries), sentence patterns 
 | [`docs/en/data-model.md`](./docs/en/data-model.md) | Canonical guide to the 5-layer data model (counting → bio → kNN → scouting → game context) |
 | [`CLAUDE.md`](./CLAUDE.md) | Canonical operating guide for working in this repo with Claude Code — writing rails, data flow invariants, structural conventions |
 
-## Data coverage (as of 2026-04-28)
+## Data coverage (as of 2026-04-29)
 
-Lemieux's database knows the following about every NHL player:
+The figures below describe **our local instance** of Lemieux. After you clone, the database is empty — you'll populate it yourself with the refresh tools in `tools/` and a free Natural Stat Trick access key (request via an NST profile, see [SOURCES.md](./SOURCES.md)). What ships in the repo is the **code** to rebuild every layer; what doesn't ship is the raw NST data (per their terms — see "Can the database itself be redistributed?" below).
 
-| Layer | Coverage |
-|---|---|
-| **NST counting stats** (skater + goalie) | 5 seasons × {5v5, 5v4, all} × {reg, playoff}, ~18,500 individual-stat rows |
-| **Player bio** (height/weight/draft) | **1322** players, 100% on height + weight |
-| **NHL Edge biometrics** (skating, shot, bursts) | **1122** distinct skaters with measured data |
-| **GenAI scouting tags + attributes** | **1023 skaters + 135 goalies** with extracted content (1393 total profiles) |
-| **kNN comparable indexes** | **1257 skaters** (24-feature embedding) + **136 goalies** (10-feature v1) |
-| **Per-game context yamls** | Habs Round 1 2026 series (Games 1-4 indexed) |
+| Layer | Our coverage | How to populate it |
+|---|---|---|
+| **NST counting stats** (skater + goalie) | 5 seasons × {5v5, 5v4, all} × {reg, playoff}, ~18,500 individual-stat rows | NST key + `tools/refresh_skater_individual_stats.py`, `tools/refresh_goalie_stats.py` |
+| **Player bio** (height/weight/draft) | **1322** players, 100% on height + weight | `tools/refresh_edge_biometrics.py --bio-only` (no key needed) |
+| **NHL Edge biometrics** (skating, shot, bursts) | **1122** distinct skaters with measured data | `tools/refresh_edge_biometrics.py --all-skaters` (no key) |
+| **GenAI scouting tags + attributes** | **1023 skaters + 135 goalies** with extracted content (1393 total profiles) | `ANTHROPIC_API_KEY` + `tools/build_scouting_corpus.py` (~$30 in API calls for the full corpus) |
+| **kNN comparable indexes** | **1257 skaters** (24-feature embedding) + **136 goalies** (10-feature v1) | `tools/build_comparable_index.py` + `tools/build_goalie_comparable_index.py` (run AFTER the NST + Edge layers are populated) |
+| **Per-game context yamls** | Habs Round 1 2026 series (Games 1-4 indexed) | `tools/build_game_context.py <game_id>` per game; manual `significance` notes for marquee events |
 
-Run `python tools/player_snapshot.py "<name>"` (or use the `player-snapshot`
-Claude skill) to dump all five layers for any player in one shot.
+**Don't want to rebuild the whole stack?** The redistributable subset (kNN indexes + LLM-extracted scouting tables, but not the raw NST counting stats) ships as a separately downloadable zip — see [`tools/export_derived_artifacts.py`](./tools/export_derived_artifacts.py) and the answer below.
+
+Once your DB is populated, run `python tools/player_snapshot.py "<name>"` (or use the `player-snapshot` Claude skill) to dump all five layers for any player in one shot.
 
 ## Quickstart
 
