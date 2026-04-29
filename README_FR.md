@@ -282,4 +282,4 @@ Repose sur la communauté analytique qui a rendu ce projet pensable : [Natural S
 
 ## Le nom
 
-*Lemieux* est un hommage à **Claude Lemieux** — l'ailier québécois qui s'est bâti une carrière décorée de Coupes Stanley dans des séries éliminatoires longues et rugueuses — et donc un clin d'œil implicite à un certain outil de codage préféré et aux modèles qui l'animent. On ne s'étend pas là-dessus.
+*Lemieux* est un hommage à **Claude Lemieux** — l'ailier québécois qui s'est bâti une carrière décorée de Coupes Stanley dans des séries éliminatoires longues et rugueuses — et donc un clin d'œil implicite à un certain outil de codage préféré et aux modèles qui l'animent.
