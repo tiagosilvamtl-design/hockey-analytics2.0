@@ -1,6 +1,6 @@
 # Data sources — terms & caveats
 
-This is the authoritative registry of every data source Lemieux connects to. Each connector package references this file. If a source's terms change, update here first; the connector follows.
+This file lists every data source Lemieux actually connects to today. Sources we'd like to integrate later are documented in [ROADMAP.md](./ROADMAP.md). If a source's terms change, update here first; the connector follows.
 
 **Rule of thumb**: Lemieux is MIT-licensed code. The data is NOT. Respect each source's terms, rate limits, robots.txt, and redistribution policy. When in doubt, link out rather than republish.
 
@@ -8,13 +8,13 @@ This is the authoritative registry of every data source Lemieux connects to. Eac
 
 ## NHL.com — public API (`api-web.nhle.com` / `api.nhle.com/stats`)
 
-- **What's there**: Play-by-play, shift charts, rosters, schedules, standings, gamecenter, NHL EDGE (shot speed, skate speed).
+- **What's there**: Play-by-play, shift charts, rosters, schedules, standings, gamecenter, NHL Edge biometrics (shot speed, skate speed, burst counts).
 - **Access**: Free, undocumented, unauthenticated. No API key required.
 - **Rate limit**: Unofficial. Community practice: ≤10 req/sec sustained, cache aggressively.
 - **Redistribution**: Not for commercial redistribution. Citing counts, linking to NHL.com, and caching for personal/analytic use are fine.
 - **Stability**: Unofficial. Endpoints can change without notice. Schema drift is a real risk — we abstract via a connector and test nightly.
 - **Docs (community)**: [Zmalski/NHL-API-Reference](https://github.com/Zmalski/NHL-API-Reference), [dword4/nhlapi](https://github.com/dword4/nhlapi)
-- **Connector**: `lemieux-connectors/nhl_api`
+- **Connectors**: `lemieux-connectors/nhl_api` (PBP/shifts/rosters), `lemieux-connectors/nhl_edge` (biometrics)
 - **Safe to cache**: Yes, indefinitely for game-completed data.
 
 ## Natural Stat Trick (`data.naturalstattrick.com`)
@@ -27,58 +27,14 @@ This is the authoritative registry of every data source Lemieux connects to. Eac
 - **Safe to cache**: Yes; TTL by staleness (live games 6h, completed 7d, historical 30d).
 - **Key handling**: Each user supplies their own key via `.env`. Never commit a key. Never share across users.
 
-## MoneyPuck (`moneypuck.com/data.htm`)
+## DuckDuckGo search + Anthropic API — for the GenAI scouting layer
 
-- **What's there**: CSV dumps of player stats, team stats, shot data, goalie stats using MoneyPuck's xG model (differs from NST's — useful for cross-validation).
-- **Access**: Free. Nightly updates.
-- **Rate limit**: Implicit. Cache files locally; don't re-hit per-query.
-- **Redistribution**: Document source; do not republish raw files.
-- **Connector**: `lemieux-connectors/moneypuck`
-- **Safe to cache**: Yes.
-
-## PWHL (`thepwhl.com/en/stats`, `pwhl.hockey-statistics.com`)
-
-- **What's there**: Women's league (Professional Women's Hockey League) — team and player stats, 2025-26 season live.
-- **Access**: Free, public.
-- **Rate limit**: Unofficial; be polite.
-- **Redistribution**: Cite source.
-- **Connector**: `lemieux-connectors/pwhl` (roadmap)
-- **Why it matters**: Almost zero public analytics tooling covers PWHL. This is a deliberate differentiator.
-
-## All Three Zones (Corey Sznajder) — **subscription-gated**
-
-- **What's there**: Hand-tracked microstats — zone entries/exits, scoring chances, passing. Unique depth, no equivalent public source.
-- **Access**: Patreon subscription (~$5-20/month tiers). Data distributed via Dropbox/Google Drive links.
-- **Redistribution**: Absolutely not. Data is paywalled; each user brings their own subscription.
-- **Connector**: `lemieux-connectors/all_three_zones` (roadmap, opt-in)
-- **Design**: Connector reads files from a user-supplied local path — we never hit Patreon's API nor redistribute a single row.
-
-## Hockey-Reference (`hockey-reference.com`)
-
-- **What's there**: Historical stats, rosters, season summaries, records.
-- **Access**: Free scraping; bot policy at [sports-reference.com/bot-traffic.html](https://www.sports-reference.com/bot-traffic.html) enforces 20 req/min.
-- **Redistribution**: Sports-Reference family doesn't love redistribution. Cite, link, cache locally.
-- **Connector**: `lemieux-connectors/hockey_reference` (roadmap)
-
-## Evolving-Hockey (`evolving-hockey.com`)
-
-- **Status**: Dashboard-only as of 2026. No CSV export, no public API. RAPM model is widely cited.
-- **Use in Lemieux**: Manual reference only. We do not scrape Evolving-Hockey. The glossary cites their RAPM methodology where relevant.
-
-## HockeyViz (`hockeyviz.com` — Micah McCurdy)
-
-- **Status**: Subscription visualizations. Not integrable.
-- **Use in Lemieux**: Cited in docs when contextualizing our isolated-impact approach.
-
-## Big Data Cup (Stathletes — `stathletes.com/big-data-cup`)
-
-- **What's there**: Annual public research datasets with detailed event tracking.
-- **Access**: Free downloads via GitHub ([bigdatacup repos](https://github.com/bigdatacup)).
-- **Use in Lemieux**: Flat-file loader, not live connector. Good for reproducible research exercises.
-
-## Sportlogiq, PuckPedia, CapFriendly
-
-- **Status**: Paywalled / partnership-gated. Not integrated in V1. Documented here so users know why.
+- **What's there**: DDG returns short snippets from public web pages (player profiles, beat coverage, scouting reports). Anthropic's Claude Sonnet 4.5 extracts a structured JSON profile (continuous attributes + archetype tags + comparable mentions) from those snippets.
+- **Access**: DDG is free and unauthenticated. Anthropic requires an `ANTHROPIC_API_KEY` (paid; ~$30 in API calls to build the full skater corpus once).
+- **Rate limit**: Polite delay between players (default 0.5–1 s); the script is idempotent so partial runs are safe.
+- **Redistribution**: We cache the *extracted structured output* (not the source pages). Each extracted tag carries its verbatim `source_quote` and `source_url`; do not strip that provenance when republishing the scouting tables.
+- **Tools**: `tools/build_scouting_corpus.py`, `tools/build_goalie_scouting_corpus.py`, `tools/refresh_scouting_empties.py`
+- **Key handling**: `ANTHROPIC_API_KEY` lives in `.env`. Never commit it.
 
 ---
 
@@ -102,4 +58,10 @@ The data layer at `legacy/data/store.sqlite` mixes raw third-party tables (NST, 
 
 Use `tools/export_derived_artifacts.py` to produce a redistributable zip with these alongside a SOURCES note. The exporter explicitly excludes the NST tables.
 
-If a source operator contacts us asking us to remove a connector or change behaviour, we do so without argument. Open an issue to report any concern: `sources@lemieux-ai` (placeholder — replace with actual contact once public).
+---
+
+## Future sources
+
+Sources we'd like to integrate but haven't yet (MoneyPuck for cross-validation, PWHL for women's-league coverage, EliteProspects for cross-league prospect comps, Hockey-Reference for historical depth, All Three Zones for hand-tracked microstats, etc.) live in [ROADMAP.md](./ROADMAP.md) under "Future data sources."
+
+If a source operator contacts us asking that we remove a connector or change behaviour, we do so without argument. Open an issue to report any concern.

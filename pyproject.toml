@@ -6,7 +6,7 @@ readme = "README.md"
 license = { text = "MIT" }
 requires-python = ">=3.11"
 authors = [
-    { name = "Xavier Beauchamp-Tremblay", email = "xbeauchamptremblay@gmail.com" },
+    { name = "Lemieux AI contributors" },
 ]
 keywords = ["hockey", "nhl", "analytics", "mcp", "claude", "sports-analytics"]
 classifiers = [

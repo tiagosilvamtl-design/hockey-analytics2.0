@@ -49,12 +49,31 @@
 - [ ] Additional skills: `draft-trend-brief`, `draft-player-profile`, `compare-teams`
 - [ ] Glossary expansion (target: 40+ terms)
 
+## Future data sources
+
+Sources we'd like to integrate eventually but haven't yet. Each has a different access posture; the notes below are what we know going in. (Sources we *do* connect to today are documented in [SOURCES.md](./SOURCES.md).)
+
+| Source | What it adds | Access | Status |
+|---|---|---|---|
+| **MoneyPuck** ([moneypuck.com/data.htm](https://moneypuck.com/data.htm)) | CSV dumps with an independent xG model — useful for cross-validating NST. | Free; nightly updates. Document source, don't republish raw. | v0.2 |
+| **PWHL** ([thepwhl.com/en/stats](https://www.thepwhl.com/en/stats), pwhl.hockey-statistics.com) | Women's league team + player stats. Almost no public analytics tooling covers PWHL — a deliberate differentiator. | Free, public. Cite source. | v0.2 |
+| **EliteProspects** ([eliteprospects.com](https://www.eliteprospects.com/)) | Cross-league career stats (KHL / AHL / SHL / Liiga / CHL / USHL / NCAA). Prerequisite for prospect comps via NHLe translation. | Free scraping with polite rate; respect their bot policy. | v0.3 |
+| **Hockey-Reference** ([hockey-reference.com](https://www.hockey-reference.com/)) | Historical stats, rosters, season summaries, records. | Free scraping; bot policy at [sports-reference.com/bot-traffic.html](https://www.sports-reference.com/bot-traffic.html) enforces 20 req/min. Sports-Reference doesn't love redistribution — cite, link, cache locally. | v0.3 |
+| **All Three Zones** (Corey Sznajder, Patreon) | Hand-tracked microstats — zone entries/exits, scoring chances, passing. Unique depth, no equivalent public source. | Patreon subscription (~$5–20/month). Each user brings their own subscription. Connector reads files from a user-supplied local path; we never hit Patreon's API nor redistribute a single row. | v0.3 (opt-in) |
+| **Big Data Cup** (Stathletes — [stathletes.com/big-data-cup](https://www.stathletes.com/big-data-cup/)) | Annual public research datasets with detailed event tracking. | Free downloads via [bigdatacup repos](https://github.com/bigdatacup). Flat-file loader, not a live connector. | v0.3 |
+| **Sportlogiq, PuckPedia, CapFriendly** | Tracking, contracts, salary-cap data. | Paywalled / partnership-gated. Documented here so users know why they're absent. | Not currently planned |
+
+We also reference but don't connect to:
+
+- **Evolving-Hockey** ([evolving-hockey.com](https://evolving-hockey.com/)) — dashboard-only as of 2026; no CSV export, no public API. Their RAPM model is widely cited; the glossary references their methodology where relevant.
+- **HockeyViz** ([hockeyviz.com](https://hockeyviz.com/)) — subscription visualizations; not integrable. Cited in docs when contextualizing our isolated-impact approach.
+
 ## Explicit non-goals
 
 - Real-time / live-game streaming (post-game analysis is the sweet spot)
 - Prediction markets or betting tooling
 - Replacing Natural Stat Trick, Evolving-Hockey, or HockeyViz (we aggregate their outputs)
-- NHL EDGE endpoint reverse-engineering beyond what's stable
+- NHL Edge endpoint reverse-engineering beyond what's stable
 - Video / computer-vision analysis
 
 ## How to propose additions
