@@ -1,0 +1,137 @@
+# Projected Game 5 lineup (MTL @ TBL, 2026-04-29).
+# Series tied 2-2. First game in Tampa for Round 1.
+#
+# Source: Tony Marinaro (@TonyMarinaro / The Sick Podcast) projection
+# tweeted morning of Game 5. Corroborated by:
+#   - Practice reshuffles reported by Montreal Hockey Fanatics (2026-04-28)
+#   - Pierre LeBrun (TSN) flagging Gallagher as likely IN
+#   - Kapanen + Veleno skating as optional-skate extras (2026-04-29)
+#
+# This is INPUT to the pre-game brief analyzer. The lines BELOW are
+# Marinaro's projection, not confirmed at puck-drop.
+
+game_id: "2025030125"
+date: "2026-04-29"
+matchup: "MTL @ TBL"
+series_state: "tied 2-2"
+status: "PROJECTED — not confirmed at puck-drop"
+
+source:
+  outlet: "Tony Marinaro · The Sick Podcast"
+  url: "https://x.com/TonyMarinaro"
+  quote: |
+    I would not be surprised if the Habs lines looked like this tonight:
+    Caufield-Suzuki-Slafkovsky / Newhook-Evans-Demidov /
+    Anderson-Danault-Gallagher / Bolduc-Dach-Texier
+
+teams:
+  MTL:
+    forwards:
+      - line: 1
+        players:
+          - { name: "Cole Caufield",    position: "L" }   # SIDE FLIPPED from G4 (was R)
+          - { name: "Nick Suzuki",      position: "C" }
+          - { name: "Juraj Slafkovský", position: "R" }   # SIDE FLIPPED from G4 (was L)
+      - line: 2
+        players:
+          - { name: "Alex Newhook",     position: "L" }   # was L3 LW in G4
+          - { name: "Jake Evans",       position: "C" }   # was L4 in G4 (W role)
+          - { name: "Ivan Demidov",     position: "R" }   # was L3 RW in G4 — PROMOTED to L2
+      - line: 3
+        players:
+          - { name: "Josh Anderson",    position: "L" }   # was L4 RW in G4
+          - { name: "Phillip Danault",  position: "C" }   # was L4 C in G4
+          - { name: "Brendan Gallagher", position: "R" }  # IN — first appearance of the series
+      - line: 4
+        players:
+          - { name: "Zachary Bolduc",   position: "L" }   # was L2 RW in G4 — flipped to L
+          - { name: "Kirby Dach",       position: "C" }
+          - { name: "Alexandre Texier", position: "R" }   # was L2 LW in G4 — flipped to R
+    defense:
+      # Defense unchanged from G4 (Dobson, per beat reports as of practice 2026-04-28
+      # was on optional skate but availability for G5 was being confirmed — we
+      # treat it as G4-deployed unless press releases say otherwise.)
+      - pair: 1
+        players:
+          - { name: "Mike Matheson",   position: "D", side: "L" }
+          - { name: "Lane Hutson",     position: "D", side: "R" }
+      - pair: 2
+        players:
+          - { name: "Jayden Struble",  position: "D", side: "L" }
+          - { name: "Noah Dobson",     position: "D", side: "R" }
+      - pair: 3
+        players:
+          - { name: "Kaiden Guhle",    position: "D", side: "L" }
+          - { name: "Alexandre Carrier", position: "D", side: "R" }
+    goalie: "Jakub Dobeš"
+    pp1: ["Nick Suzuki", "Cole Caufield", "Juraj Slafkovský", "Ivan Demidov", "Lane Hutson"]
+    pp2: ["Zachary Bolduc", "Phillip Danault", "Brendan Gallagher", "Alexandre Texier", "Noah Dobson"]
+    scratches: ["Oliver Kapanen"]   # PROJECTED — was extra at optional skate
+
+  TBL:
+    # Held vs G4 unless press confirms otherwise.
+    forwards: []
+    defense: []
+    goalie: "Andrei Vasilevskiy"
+    pp1: []
+    pp2: []
+    scratches: []
+
+# Game 4 deployed lineup for diff reference.
+previous_game:
+  game_id: "2025030124"
+  date: "2026-04-26"
+  result: "TBL 3 - MTL 2 (regulation)"
+  MTL:
+    forwards:
+      - line: 1
+        players: [Slafkovský, Suzuki, Caufield]      # L-C-R
+      - line: 2
+        players: [Texier, Dach, Bolduc]              # L-C-R — produced both G3 5v5 goals
+      - line: 3
+        players: [Newhook, Kapanen, Demidov]         # L-C-R
+      - line: 4
+        players: [Danault, Anderson, Evans]          # double-listed Cs
+
+changes_vs_previous_game:
+  MTL:
+    personnel_changes_in_out:
+      - in:  "Brendan Gallagher"
+        out: "Oliver Kapanen"
+        position: "F"
+        rationale: |
+          Kapanen 0 points / 4 GP / 8:39 ATOI in this series; rested as extra
+          at optional skate. Gallagher hasn't appeared in the series; LeBrun
+          (TSN) flagged his absence at optional skate as the tell.
+    line_reshuffles:
+      # FOUR distinct reshuffles in one move. This is the most aggressive
+      # forward-group rebuild MTL has done this series.
+      - description: "L1 sides flipped"
+        prior: "Slafkovský(L) – Suzuki(C) – Caufield(R)"
+        new:   "Caufield(L) – Suzuki(C) – Slafkovský(R)"
+        moved_player: "Slafkovský and Caufield"
+        line_position_g4: "L1"
+        line_position_g5: "L1"
+      - description: "L2 fully rebuilt — Demidov promoted from L3"
+        prior: "Texier – Dach – Bolduc"
+        new:   "Newhook – Evans – Demidov"
+        moved_player: "Newhook + Evans + Demidov"
+        line_position_g4: "L3 + L4"
+        line_position_g5: "L2"
+      - description: "L3 rebuilt as heavy/compete line — Gallagher slotted in"
+        prior: "Newhook – Kapanen – Demidov"
+        new:   "Anderson – Danault – Gallagher"
+        moved_player: "Anderson + Danault + Gallagher"
+        line_position_g4: "L4"
+        line_position_g5: "L3"
+      - description: "Dach line demoted intact from L2 to L4"
+        prior: "Texier – Dach – Bolduc (L2)"
+        new:   "Bolduc – Dach – Texier (L4)"
+        moved_player: "entire trio"
+        line_position_g4: "L2"
+        line_position_g5: "L4"
+        note: |
+          The Dach line produced both MTL 5v5 goals plus the OT setup in
+          Game 3 and held a positive on-ice xG share through G4. Demoting
+          a producing line to L4 is the most data-noteworthy call in this
+          shake-up.
