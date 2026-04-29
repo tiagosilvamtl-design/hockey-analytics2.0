@@ -87,6 +87,8 @@ These rules are baked into the `draft-game-post`, `propose-swap-scenario`, and `
 
 These are the files / fields the framework depends on to keep prose honest. If you change their shape, every consumer breaks.
 
+> **For the full database schema** (skater_stats, skater_individual_stats, goalie_stats, edge_player_bio, edge_player_features, scouting_*, comparable indexes), see [`docs/en/data-model.md`](docs/en/data-model.md). The 5-layer overview lives there. This section enumerates only the file-format invariants that downstream renderers depend on.
+
 ### `<gameN>_lineups.yaml`
 
 Canonical fact base for line composition. Required by `draft-game-post`. Schema lives in `.claude/skills/research-game/SKILL.md`. Required fields:
@@ -176,6 +178,7 @@ All in `.claude/skills/`. Each has its own `SKILL.md` describing scope, workflow
 | `propose-swap-scenario` | Head-to-head lineup swap evaluation with 80% CI bands. Pooled-baseline default. |
 | `validate-analysis` | Rigor editor — flags overclaims, missing CIs, predictions, cliches, position errors, restated-what-was-known violations, fabricated scoring claims. Used by the auto-PR-review workflow. |
 | `review-pr-lemieux` | Opinionated PR review with structured verdict (MERGE / REQUEST CHANGES / CLOSE). Auto-invoked on every PR via `.github/workflows/claude-pr-review.yml`. |
+| `player-snapshot` | Render the full 5-layer data-model dump for one player (auto-detects skater vs goalie). Wraps `tools/player_snapshot.py`. Triggers on "tell me about <player>", "what do we know about", "everything we have on". |
 
 ---
 
@@ -256,7 +259,21 @@ packages/lemieux-mcp/                        ← FastMCP server (5 tools, 4 reso
 packages/lemieux-glossary/                   ← bilingual metric definitions (15+)
 packages/lemieux-app/                        ← (Streamlit companion, pending migration)
 
-tools/push_to_drive.py                       ← Drive uploader (BYO Google OAuth)
+tools/                                       ← stand-alone scripts (not packaged)
+  push_to_drive.py                           ← Drive uploader (BYO Google OAuth)
+  player_snapshot.py                         ← 5-layer player data-model dump (any name)
+  build_comparable_index.py                  ← (re)fit skater kNN index from store.sqlite
+  build_goalie_comparable_index.py           ← (re)fit goalie kNN index (v1)
+  build_scouting_corpus.py                   ← LLM-extract skater scouting profiles via DDG + Sonnet
+  build_goalie_scouting_corpus.py            ← same shape, goalie vocab
+  refresh_scouting_empties.py                ← second-pass 3-query rich search for empty profiles
+  refresh_skater_individual_stats.py         ← NST stdoi=std → skater_individual_stats
+  refresh_goalie_stats.py                    ← NST pos=G → goalie_stats with raw counting cols
+  refresh_edge_biometrics.py                 ← NHL Edge skating + shot + bio backfill
+  build_game_context.py                      ← per-game context yaml (PBP-derived fields)
+  qc_scouting_corpus.py / score_calibration.py / backtest_comparable_aging.py
+                                             ← QC + calibration + held-out backtest tooling
+  export_derived_artifacts.py                ← export the publishable subset (no raw NST tables)
 
 examples/habs_round1_2026/                   ← worked example end-to-end
   game3_analysis.py                          ← analyzer

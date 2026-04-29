@@ -1,6 +1,34 @@
-# `tools/` — operational helpers
+# `tools/` — stand-alone scripts
 
-Scripts that aren't part of the analytical framework but make running it easier. None of these are required to use Lemieux; they're conveniences.
+Scripts that drive Lemieux's data layer or push artifacts. Grouped by what they do.
+
+## Index
+
+| Script | Purpose |
+|---|---|
+| **Data refresh — populate the SQLite store** | |
+| `refresh_skater_individual_stats.py` | NST `stdoi=std` → `skater_individual_stats` (G/A/SOG/ixG/iCF/iHDCF/etc., 5 seasons × 3 sits × 2 stypes) |
+| `refresh_goalie_stats.py` | NST `pos=G` → `goalie_stats` with raw counting cols (ga, sa, xga, hdga, hdca) |
+| `refresh_edge_biometrics.py` | NHL Edge skating + shot speeds + bio. ASCII-fold name resolver. |
+| **Comparable engine** | |
+| `build_comparable_index.py` | Fit skater kNN: 1257 rows × 24 features (PCA + Mahalanobis-equivalent) |
+| `build_goalie_comparable_index.py` | Fit goalie kNN v1: 136 rows × 10 features |
+| `backtest_comparable_aging.py` | Held-out aging-curve backtest for the skater index |
+| `score_calibration.py` | Calibrate the CARMELO-style 0-100 score curve |
+| **Scouting (LLM extraction)** | |
+| `build_scouting_corpus.py` | DDG search + Sonnet 4.5 → skater profiles, 1023 with content |
+| `build_goalie_scouting_corpus.py` | Same shape, goalie vocab — 135 with content |
+| `refresh_scouting_empties.py` | Second-pass 3-query rich search for empty profiles (~38% recovery) |
+| `seed_scouting_corpus.py` | Hand-seed initial high-confidence rows for QC anchors |
+| `qc_scouting_corpus.py` | Eyeball-check tag cohorts ("warriors", "snipers", etc.) |
+| **Reports + briefs** | |
+| `build_game_context.py` | Per-game `<gameN>_context.yaml` from NHL.com PBP + boxscore |
+| `render_cohort_study.py` | Render a tag-cohort split-study to docx |
+| `player_snapshot.py` | 5-layer data-model dump for any player (auto-detect skater vs goalie) |
+| `dump_suzuki.py` | Legacy worked example — predates `player_snapshot.py` |
+| **Distribution** | |
+| `push_to_drive.py` | Portable Google Drive uploader (BYO OAuth, public-link mode) |
+| `export_derived_artifacts.py` | Zip the redistributable subset (kNN indexes + scouting tables); see [SOURCES.md](../SOURCES.md) for what cannot be redistributed |
 
 ## `push_to_drive.py` — upload artifacts to Google Drive
 

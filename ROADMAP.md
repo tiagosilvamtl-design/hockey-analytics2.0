@@ -20,6 +20,13 @@
 - [x] **Drive uploader** — `tools/push_to_drive.py` portable Google Drive push (BYO OAuth, 5-min one-time setup, refreshable token, `--public --folder-public` for shareable links).
 - [x] **Writing rails baked into the skills**: lead with outcomes (not announcements), no meta-commentary about report structure, no restating pre-data narrative, lineup data is input not output, goalscorer claims must source from PBP.
 - [x] **`CLAUDE.md`** — canonical operating guide for working in this repo as Claude Code.
+- [x] **Comparable engine — Phase 1 (quantitative skater kNN)**: 1257 skaters indexed on 24 features (NST iso 5v5/5v4 + counting rates + position + biometrics + bio). PCA + Mahalanobis-equivalent kNN. CARMELO-style 0-100 score + per-feature drivers. Builder: `tools/build_comparable_index.py`. API: `lemieux.core.comparable.ComparableIndex.find_comparables()`.
+- [x] **Comparable engine — v1 goalie kNN**: 136 goalies indexed on 10 features (perf + bio). Separate index file. Phase 1 plan reserved this for v4; user-pulled forward to v1. Stylistic features (positional vs scrambly, glove-side vs blocker-side) deferred to a future PBP-tracking phase. Builder: `tools/build_goalie_comparable_index.py`.
+- [x] **Scouting corpus — Phase 2**: 1023 skaters + 135 goalies with LLM-extracted (Sonnet 4.5) attributes + tags + comparable mentions. Verbatim source quotes + URLs persisted; tag without quote can't ship in prose. 23 skater archetype tags, 18 goalie tags. Builders: `tools/build_scouting_corpus.py`, `tools/build_goalie_scouting_corpus.py`. Second-pass empties refresh: `tools/refresh_scouting_empties.py` (3-query rich search, ~38% recovery on first-pass empties).
+- [x] **NST individual stats path** — fixed legacy `stdoi=bio` bug; new `skater_individual_stats` table with G/A/SOG/ixG/iCF/iHDCF/PIM/hits/blocks/faceoffs across 5 seasons × 3 sits × 2 stypes. Builder: `tools/refresh_skater_individual_stats.py`.
+- [x] **NHL Edge biometric backfill**: 1322 player bios (height/weight/draft 100%), 1122 skaters with measured skating + shot speed data. ASCII-fold name resolver (handles Dobeš, Slafkovský, etc.) — see `_ascii_fold()` in `lemieux-connectors/nhl_edge/client.py`.
+- [x] **`player-snapshot` skill + tool** — auto-detect skater vs goalie, render the full 5-layer data model dump in one shot. `tools/player_snapshot.py "<name>"`.
+- [x] **`docs/en/data-model.md`** — canonical 5-layer schema documentation, replacing scattered ad-hoc info.
 
 ## v0.2 — Community-facing release
 
@@ -36,6 +43,9 @@
 - [ ] `lemieux-connectors/all_three_zones` — opt-in, user-supplied Patreon data
 - [ ] `lemieux-connectors/hockey_reference` — historical & roster data
 - [ ] `lemieux-connectors/big_data_cup` — Stathletes annual public datasets
+- [ ] `lemieux-connectors/eliteprospects` — cross-league career stats for prospect comps (KHL/AHL/SHL/Liiga/CHL/USHL/NCAA)
+- [ ] **Comparable engine — Phase 3 (tag-cohort split studies)**: scaffold exists in `lemieux.core.cohort_effects.tag_split_study(tag)`. Wiring `with_archetype_lift(tag)` decorator on the swap engine + integrating into the propose-swap-scenario renderer is the next visible-to-user capability.
+- [ ] **NHLe translation factors** with CIs (`lemieux.core.nhle`) — needed before prospect kNN can ship.
 - [ ] Additional skills: `draft-trend-brief`, `draft-player-profile`, `compare-teams`
 - [ ] Glossary expansion (target: 40+ terms)
 

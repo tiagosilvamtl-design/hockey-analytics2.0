@@ -55,16 +55,33 @@ Most hockey coverage in 2026 remains innumerate: deep conclusions from single-ga
 
 ## What's in the box
 
-| Package | Purpose |
+| Package / dir | Purpose |
 |---|---|
-| [`lemieux-core`](./packages/lemieux-core) | Analytics primitives: swap engine, isolated impact, pooled baselines, variance-aware projections |
-| [`lemieux-connectors`](./packages/lemieux-connectors) | Plugin-style data source adapters (NHL.com public API, Natural Stat Trick, more coming) |
+| [`lemieux-core`](./packages/lemieux-core) | Analytics primitives: **swap engine** (pooled baselines + 80% CIs), **comparable engine** (kNN over PCA-whitened standardized features), **scouting** + **tags** + **cohort_effects** (tag-split studies) |
+| [`lemieux-connectors`](./packages/lemieux-connectors) | Plugin-style data source adapters: NHL.com public API, Natural Stat Trick, NHL Edge (biometrics) |
 | [`lemieux-mcp`](./packages/lemieux-mcp) | FastMCP server exposing analytics tools + resources to any MCP client |
 | [`lemieux-glossary`](./packages/lemieux-glossary) | Bilingual (EN/FR) definitions of every metric we use, with formulas and caveats |
-| [`.claude/skills/`](./.claude/skills) | Opinionated Claude workflows — `research-game`, `translate-to-quebec-fr`, `draft-game-post`, `propose-swap-scenario`, `validate-analysis`, `review-pr-lemieux` |
-| [`examples/`](./examples) | Three worked end-to-end analyses in `examples/habs_round1_2026/`: Round 1 standalone report, per-game analysis (Game 3), and playoff rankings report |
-| [`tools/push_to_drive.py`](./tools) | Portable Google Drive uploader (BYO OAuth, `--public --folder-public` for shareable links) |
+| [`.claude/skills/`](./.claude/skills) | Opinionated Claude workflows — `research-game`, `translate-to-quebec-fr`, `draft-game-post`, `propose-swap-scenario`, `validate-analysis`, `review-pr-lemieux`, `player-snapshot` |
+| [`tools/`](./tools) | Stand-alone scripts: scouting-corpus builder, kNN index builder, biometrics refresher, player snapshot, Drive uploader, derived-artifacts exporter |
+| [`examples/habs_round1_2026/`](./examples/habs_round1_2026) | Multiple worked end-to-end reports: pre-game brief, Game 3 / Game 4 post-game analyses, playoff rankings, **Game 5 contingency brief**, fight-bucket per-period analysis |
+| [`docs/en/data-model.md`](./docs/en/data-model.md) | Canonical guide to the 5-layer data model (counting → bio → kNN → scouting → game context) |
 | [`CLAUDE.md`](./CLAUDE.md) | Canonical operating guide for working in this repo with Claude Code — writing rails, data flow invariants, structural conventions |
+
+## Data coverage (as of 2026-04-28)
+
+Lemieux's database knows the following about every NHL player:
+
+| Layer | Coverage |
+|---|---|
+| **NST counting stats** (skater + goalie) | 5 seasons × {5v5, 5v4, all} × {reg, playoff}, ~18,500 individual-stat rows |
+| **Player bio** (height/weight/draft) | **1322** players, 100% on height + weight |
+| **NHL Edge biometrics** (skating, shot, bursts) | **1122** distinct skaters with measured data |
+| **GenAI scouting tags + attributes** | **1023 skaters + 135 goalies** with extracted content (1393 total profiles) |
+| **kNN comparable indexes** | **1257 skaters** (24-feature embedding) + **136 goalies** (10-feature v1) |
+| **Per-game context yamls** | Habs Round 1 2026 series (Games 1-4 indexed) |
+
+Run `python tools/player_snapshot.py "<name>"` (or use the `player-snapshot`
+Claude skill) to dump all five layers for any player in one shot.
 
 ## Quickstart
 
@@ -113,9 +130,25 @@ Add to your `mcp.json`:
 
 See [SOURCES.md](./SOURCES.md) for the full list with license terms. Connectors shipping in v0.1:
 
-- **NHL.com public API** — play-by-play, shifts, rosters, standings (no key required)
-- **Natural Stat Trick** — advanced stats (user-level access key required, free)
-- **MoneyPuck, PWHL** — planned for v0.2 (see [ROADMAP.md](./ROADMAP.md))
+- **NHL.com public API** — play-by-play, shifts, rosters, standings, NHL Edge biometrics (no key required)
+- **Natural Stat Trick** — on-ice + individual + goalie advanced stats (user-level access key required, free)
+- **DDG + Sonnet 4.5 extraction** — public scouting text → structured tags + attributes with verbatim source-quote provenance
+- **MoneyPuck, PWHL, EliteProspects** — planned for v0.2 (see [ROADMAP.md](./ROADMAP.md))
+
+### Can the database itself be redistributed?
+
+**No.** `legacy/data/store.sqlite` contains raw Natural Stat Trick tables, and
+SOURCES.md is unambiguous: *"Do NOT redistribute raw tables."* You bring your
+own NST access key (free, requested via an NST profile), and the refresh
+scripts in `tools/` rebuild the DB locally.
+
+**But the derived artifacts can be:**
+
+- Comparable indexes (`comparable_index.json`, `goalie_comparable_index.json`) — these are PCA-whitened embeddings + fitted parameters of our model, not raw stats.
+- Scouting tables (`scouting_*`) — LLM-extracted from public web text via our own prompts; we own the extraction work.
+
+Run `python tools/export_derived_artifacts.py` to produce a redistributable
+zip with these alongside a README pointer.
 
 ## Design principles
 

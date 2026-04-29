@@ -186,24 +186,36 @@ def persist_profile(con: sqlite3.Connection, name: str, extracted: dict,
         ComparableMention, ContinuousAttribute, PlayerScoutingProfile,
         TagAssertion, upsert_profile,
     )
+    def _flt(x, default=0.0):
+        try:
+            return float(x) if x is not None else default
+        except (TypeError, ValueError):
+            return default
+
+    def _int(x, default=0):
+        try:
+            return int(x) if x is not None else default
+        except (TypeError, ValueError):
+            return default
+
     profile = PlayerScoutingProfile(
         name=name, position="G", extracted_at=TODAY, sources=source_urls,
         attributes=[
             ContinuousAttribute(
                 name=a.get("name", ""),
-                value=float(a.get("value", 0)),
-                confidence=float(a.get("confidence", 0)),
-                source_count=int(a.get("source_count", 1)),
+                value=_flt(a.get("value")),
+                confidence=_flt(a.get("confidence")),
+                source_count=_int(a.get("source_count"), default=1),
             )
             for a in extracted.get("attributes", [])
-            if a.get("name")
+            if a.get("name") and a.get("value") is not None
         ],
         tags=[
             TagAssertion(
                 tag=t.get("tag", ""),
-                confidence=float(t.get("confidence", 0)),
-                source_quote=t.get("source_quote", "")[:1000],
-                source_url=t.get("source_url", "")[:500],
+                confidence=_flt(t.get("confidence")),
+                source_quote=(t.get("source_quote") or "")[:1000],
+                source_url=(t.get("source_url") or "")[:500],
             )
             for t in extracted.get("tags", [])
             if t.get("tag")
@@ -211,9 +223,9 @@ def persist_profile(con: sqlite3.Connection, name: str, extracted: dict,
         comp_mentions=[
             ComparableMention(
                 comp_name=m.get("comp_name", ""),
-                source_quote=m.get("source_quote", "")[:1000],
-                source_url=m.get("source_url", "")[:500],
-                polarity=m.get("polarity", "style"),
+                source_quote=(m.get("source_quote") or "")[:1000],
+                source_url=(m.get("source_url") or "")[:500],
+                polarity=m.get("polarity", "style") or "style",
             )
             for m in extracted.get("comp_mentions", [])
             if m.get("comp_name")

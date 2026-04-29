@@ -90,4 +90,16 @@ This is the authoritative registry of every data source Lemieux connects to. Eac
 - **Cache aggressively.** One fetch per unique query per TTL window. Don't be a jerk to upstream providers.
 - **Fail visibly.** If a source returns an unexpected schema, connectors raise a clear error and log the first diff — so you know something changed rather than silently ingesting garbage.
 
+---
+
+## Derived artifacts — what Lemieux owns and can redistribute
+
+The data layer at `legacy/data/store.sqlite` mixes raw third-party tables (NST, NHL.com Edge) with derived artifacts (kNN embeddings, LLM-extracted scouting) that Lemieux owns. The DB itself is **not redistributable** because of the raw layers, but the derived layers are:
+
+- **Comparable indexes** (`legacy/data/comparable_index.json`, `legacy/data/goalie_comparable_index.json`) — PCA-whitened embeddings + fitted parameters of our kNN model. These are the model itself, not raw NST tables.
+- **Scouting corpus** (`scouting_profiles`, `scouting_attributes`, `scouting_tags`, `scouting_comparable_mentions`) — LLM-extracted from public web scouting text via our prompts. Each tag carries its verbatim source quote and source URL; do not strip provenance when republishing.
+- **Schema dump** — `CREATE TABLE` statements only; downstream users repopulate raw layers themselves with their own NST key.
+
+Use `tools/export_derived_artifacts.py` to produce a redistributable zip with these alongside a SOURCES note. The exporter explicitly excludes the NST tables.
+
 If a source operator contacts us asking us to remove a connector or change behaviour, we do so without argument. Open an issue to report any concern: `sources@lemieux-ai` (placeholder — replace with actual contact once public).
