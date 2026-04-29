@@ -24,6 +24,52 @@ clone repo  →  open Claude Code  →  ask about last night's game
 
 Most hockey coverage in 2026 remains innumerate: deep conclusions from single-game eye tests, narratives recycled from the 1990s, zero engagement with twenty years of public advanced stats. Lemieux is a **scratch-your-own-itch tool** first, a community framework second. It's what one of us wanted yesterday; it's open-sourced because others almost certainly want the same.
 
+## What you can do with Lemieux
+
+Concrete capabilities you can drive from a Claude Code session in this repo. Every capability traces to data — no prose memory, no fabricated quotes, no series predictions.
+
+### Ask about a player
+
+> *"Tell me everything about Cole Caufield."*
+
+Triggers `player-snapshot`. Returns the full 5-layer data model in one shot: bio, on-ice career arc, NHL Edge biometrics, NST individual scoring, scouting profile (with verbatim source quotes), top-7 kNN comparable cohort + per-feature drivers, indexed game-context appearances, current-series PBP-direct stats. Auto-detects skater vs goalie.
+
+### Draft a post-game report
+
+> *"Draft a post-game report on tonight's Habs game. Include a swap callout for the third line."*
+
+Triggers the `research-game` → analyzer → renderer pipeline. Produces a branded EN + FR docx with claims ledger, line-reshuffle drift analysis, swap projections with 80% CIs, glossary links, and a build-time prose fact-check guard (no scoring claim about a non-scorer can ship — exit code 7 if violated). Push to Drive with one command.
+
+### Evaluate a lineup change
+
+> *"If Slafkovský can't play Game 5, who's the best replacement and what does it cost in xG/game?"*
+
+Uses the swap engine + comparable engine. Each candidate gets a pooled-baseline projection with 80% CI bands; multi-leg permutations propagate uncertainty; if a tag-cohort split study supports it, an archetype-adjusted layer is layered on. The Game 5 contingency brief in `examples/habs_round1_2026/` is a worked example.
+
+### Find similar players
+
+> *"Find me NHL skaters most similar to Brendan Gallagher."*
+
+The skater kNN index returns top-N comps with **per-feature drivers** (which features earned the match). 1257 skaters indexed across 24 features (NST iso 5v5/5v4, biometrics, static bio). Goalies have a separate v1 index over 10 features (perf + bio).
+
+### Run a tag-cohort study
+
+> *"Do players tagged `warrior` over-perform their reg-season iso in the playoffs?"*
+
+The scouting layer surfaces 23 archetype tags with verbatim source quotes + URLs. The cohort-effects module runs reg→playoff lift studies on any tag, with bootstrap CIs. Today's worked example (Gallagher's comps): warriors lift **+0.49 xG/60** more than non-warriors, 80% CI excludes zero on n=4 — suggestive, not load-bearing. Honest framing is built in.
+
+### Check rigor on a draft before publishing
+
+> *"Validate this analysis before I publish."*
+
+Triggers `validate-analysis`. Flags overclaims, missing CIs, predictions disguised as analysis, position errors, restated-pre-data narrative, fabricated scoring claims. Auto-runs on every PR via the `claude-pr-review.yml` GitHub Actions workflow.
+
+### Translate into Québec hockey-press FR
+
+> *"Translate this game-post draft into French."*
+
+Triggers `translate-to-quebec-fr`. Term-mapped (50+ entries), sentence patterns matching the La Presse / RDS chroniqueur register. No literal calques. Comma decimals, thin space before %, `5 c. 5` in prose, `5v5` only in technical contexts.
+
 ## Architecture at a glance
 
 ```
