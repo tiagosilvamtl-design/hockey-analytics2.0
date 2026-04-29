@@ -72,6 +72,64 @@ Triggers `validate-analysis`. Flags overclaims, missing CIs, predictions disguis
 
 Triggers `translate-to-quebec-fr`. Term-mapped (50+ entries), sentence patterns matching the La Presse / RDS chroniqueur register. No literal calques. Comma decimals, thin space before %, `5 c. 5` in prose, `5v5` only in technical contexts.
 
+## The hybrid GenAI + kNN comparable engine
+
+This is the part of Lemieux that doesn't have an obvious public equivalent.
+
+**The problem with existing comparable engines.** Quantitative systems like CARMELO, RAPM-distance kNN, or shot-quality embeddings will give you a top-10 list of "similar players" by stats — but they have no concept of *why* the players are similar. They can tell you that Brendan Gallagher and Troy Terry are neighbors in feature space; they can't tell you both are described as "warriors" in the scouting press, or test whether that descriptor actually predicts something about playoff behavior. Pure scouting databases have the opposite problem: rich qualitative tags, no quantitative grounding, no way to ask "do players described this way actually overperform their reg-season iso in the playoffs?"
+
+**What Lemieux does instead.** Three layers stacked, each independently auditable, with tag-cohort effect studies on top to test whether the qualitative layer carries signal:
+
+```
+                    LAYER 3 — Cohort effect study
+                    ┌──────────────────────────────────────────┐
+                    │  for each archetype tag, do players       │
+                    │  carrying it lift their reg-season iso    │
+                    │  in the playoffs vs comparable non-tagged │
+                    │  players? Bootstrap 80% CI on the Δ.      │
+                    │  e.g. warrior cohort: +0.49 xG/60         │
+                    │       lift, n=4 vs n=12, CI excludes zero │
+                    └─────────────────┬────────────────────────┘
+                                      │ uses
+                ┌─────────────────────▼─────────────────────────┐
+                │  LAYER 2 — GenAI scouting tags                │
+                │                                                │
+                │  DDG search → Sonnet 4.5 → 23 archetype tags  │
+                │  per skater (warrior, sniper, playmaker,      │
+                │  shutdown, two_way, etc.) with VERBATIM       │
+                │  source quote + source URL per tag            │
+                │                                                │
+                │  1023 skaters with extracted content          │
+                │  (1719 attributes + 2501 tag rows)            │
+                └─────────────────────┬─────────────────────────┘
+                                      │ joined on player_id
+                ┌─────────────────────▼─────────────────────────┐
+                │  LAYER 1 — Quantitative kNN                   │
+                │                                                │
+                │  PCA on 24-feature standardized embedding     │
+                │  Mahalanobis-equivalent Euclidean distance    │
+                │  CARMELO-style 0-100 score                    │
+                │                                                │
+                │  features: NST iso 5v5/5v4 (xGF/60, xGA/60,   │
+                │  net), counting rates, position one-hot,      │
+                │  NHL Edge biometrics, static bio              │
+                │                                                │
+                │  1257 skaters indexed                         │
+                └────────────────────────────────────────────────┘
+```
+
+**Why each layer matters.**
+
+- **Layer 1 alone** lets you ask "find me NHL skaters most similar to player X." You get a ranked list with per-feature drivers (which features earned the match — e.g. *Lane Hutson's top comp Samuel Girard matched on max_shot_speed_mph: Δz +1.64, pp_share: Δz +1.43*). This part is the standard quant comparable engine.
+- **Layer 2 alone** is a queryable scouting profile per player. It's structured (controlled vocab, confidence-scored), it's provenance-bound (every tag carries the verbatim source quote and URL — the framework rail is *no tag ships in prose without its quote*), and it's queryable as a cohort: `find_players_by_tag('warrior')` returns a recognizable set (Gallagher, Tom Wilson, Sam Bennett, Bertuzzi…) rather than noise. This part replaces hand-curated scouting databases.
+- **Layer 3 — the cohort effect study — is the novel piece.** Take the kNN cohort for a target player, partition by an archetype tag, compute the playoff-vs-reg-season iso lift for each subset, bootstrap a CI on the difference. *That* is a falsifiable test of whether the qualitative tag predicts something the quant features don't already capture. If the CI excludes zero, the archetype layer earns the right to enter a swap projection. If it straddles zero, the framework says so honestly and the projection runs without it.
+
+**Worked example shipping in this repo.** [Game 5 contingency brief](./examples/habs_round1_2026/) (Slafkovský out, who replaces him?). The swap engine projects each replacement candidate with a pooled-baseline CI band. Then for the lead candidate (Gallagher), the cohort-effect study asks: *of the 30 nearest comparables, do those carrying the `warrior` tag lift their playoff iso more than those that don't?* Result: warrior cohort (n=4) mean lift +0.69 xG/60, non-warrior cohort (n=12) mean lift +0.19, bootstrap Δ = +0.49 with 80% CI [+0.05, +0.93]. **The CI excludes zero — but n=4 is small and bootstrap on 4 datapoints recycles the same values.** The brief explicitly flags this as suggestive, not load-bearing, and shows the projection both with and without the archetype layer so the reader can disagree with the addend.
+
+**What's open about this.** The model fits ship as redistributable artifacts. The skater kNN index (`comparable_index.json`), the goalie kNN index (`goalie_comparable_index.json`), and the four scouting tables are all bundled into a single zip via [`tools/export_derived_artifacts.py`](./tools/export_derived_artifacts.py). The raw NST counting stats stay out (per their terms) — bring your own NST key, run the refresh tools, and your local DB matches ours. Every tag in the scouting tables carries its verbatim source quote and source URL; downstream republishers must keep that provenance attached.
+
+**What this is not.** It's not a replacement for stylistic tracking (positional vs scrambly goaltending, glove-side vs blocker-side; right-wall vs left-wall puck retrievals). Those features need PBP-derived microstats we don't yet ingest. It's not RAPM. It's not a single-number player rating. It's a hybrid quantitative + qualitative comparable engine with falsifiable tag-cohort tests on top — the kind of thing that, today, you could only build by stitching three different paid tools together and writing the integration yourself.
+
 ## Architecture at a glance
 
 ```

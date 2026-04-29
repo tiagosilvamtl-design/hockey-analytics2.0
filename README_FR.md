@@ -72,6 +72,68 @@ Déclenche `validate-analysis`. Repère les surinterprétations, les IC manquant
 
 Déclenche `translate-to-quebec-fr`. Glossaire de termes (50+ entrées), patrons de phrases du registre des chroniqueurs La Presse / RDS. Aucun calque littéral. Décimales avec virgule, espace fine avant %, `5 c. 5` dans la prose, `5v5` réservé aux contextes techniques.
 
+## Le moteur de comparables hybride GenAI + kNN
+
+Voilà le morceau de Lemieux qui n'a pas d'équivalent public évident.
+
+**Le problème avec les moteurs de comparables existants.** Les systèmes quantitatifs comme CARMELO, le kNN à distance RAPM ou les plongements de qualité de tir vous livrent un top 10 de « joueurs similaires » selon les statistiques — mais ils n'ont aucune notion du *pourquoi* de la similitude. Ils peuvent vous dire que Brendan Gallagher et Troy Terry sont voisins dans l'espace de caractéristiques; ils ne peuvent pas vous dire que les deux sont décrits comme des « warriors » par les chroniqueurs de scouting, ni vérifier si ce descripteur prédit réellement quelque chose au sujet du comportement en séries. Les bases de données scouting pures ont le problème inverse : étiquettes qualitatives riches, aucun ancrage quantitatif, aucune façon de poser la question « les joueurs décrits ainsi surperforment-ils vraiment leur iso de saison régulière une fois en séries? »
+
+**Ce que Lemieux fait à la place.** Trois couches empilées, chacune vérifiable indépendamment, avec des études d'effet par cohorte d'étiquettes par-dessus pour valider si la couche qualitative porte un signal :
+
+```
+                    COUCHE 3 — Étude d'effet par cohorte
+                    ┌──────────────────────────────────────────┐
+                    │  pour chaque étiquette d'archétype, les   │
+                    │  joueurs qui la portent relèvent-ils leur │
+                    │  iso de saison régulière en séries vs des │
+                    │  joueurs comparables non étiquetés?       │
+                    │  Bootstrap, IC à 80 % sur le Δ.           │
+                    │  ex. cohorte warrior : relèvement de      │
+                    │  +0,49 xG/60, n=4 vs n=12, IC exclut zéro │
+                    └─────────────────┬────────────────────────┘
+                                      │ utilise
+                ┌─────────────────────▼─────────────────────────┐
+                │  COUCHE 2 — Étiquettes scouting GenAI         │
+                │                                                │
+                │  recherche DDG → Sonnet 4.5 → 23 étiquettes   │
+                │  d'archétype par patineur (warrior, sniper,   │
+                │  playmaker, shutdown, two_way, etc.) avec     │
+                │  CITATION TEXTUELLE de la source + URL par    │
+                │  étiquette                                     │
+                │                                                │
+                │  1 023 patineurs avec contenu extrait         │
+                │  (1 719 attributs + 2 501 lignes d'étiquettes) │
+                └─────────────────────┬─────────────────────────┘
+                                      │ joint sur player_id
+                ┌─────────────────────▼─────────────────────────┐
+                │  COUCHE 1 — kNN quantitatif                   │
+                │                                                │
+                │  PCA sur plongement standardisé à 24          │
+                │  caractéristiques. Distance euclidienne       │
+                │  équivalente à Mahalanobis. Pointage 0-100    │
+                │  style CARMELO.                                │
+                │                                                │
+                │  caractéristiques : iso NST 5 c. 5 / 5 c. 4   │
+                │  (xGF/60, xGA/60, net), taux de comptage,     │
+                │  position (one-hot), biométrie NHL Edge, bio  │
+                │  statique                                      │
+                │                                                │
+                │  1 257 patineurs indexés                       │
+                └────────────────────────────────────────────────┘
+```
+
+**Pourquoi chaque couche compte.**
+
+- **La couche 1 seule** vous permet de demander « trouve-moi les patineurs LNH les plus similaires au joueur X ». On obtient une liste classée avec les contributeurs par caractéristique (quelles caractéristiques ont gagné l'appariement — ex. *le meilleur comparable de Lane Hutson, Samuel Girard, s'apparie sur max_shot_speed_mph : Δz +1,64; pp_share : Δz +1,43*). Cette portion, c'est le moteur de comparables quantitatif standard.
+- **La couche 2 seule** est un profil scouting interrogeable, joueur par joueur. Il est structuré (vocabulaire contrôlé, pondéré par confiance), il est lié à sa provenance (chaque étiquette transporte la citation textuelle de la source et l'URL — la règle du cadriciel : *aucune étiquette ne sort en prose sans sa citation*), et il s'interroge en cohorte : `find_players_by_tag('warrior')` renvoie un ensemble reconnaissable (Gallagher, Tom Wilson, Sam Bennett, Bertuzzi…) plutôt que du bruit. Cette portion remplace les bases de données scouting curées à la main.
+- **La couche 3 — l'étude d'effet par cohorte — c'est la pièce nouvelle.** Prenez la cohorte kNN d'un joueur cible, partitionnez selon une étiquette d'archétype, calculez le relèvement séries-vs-saison régulière de l'iso pour chaque sous-ensemble, et faites un bootstrap d'un IC sur la différence. *Ça*, c'est un test falsifiable qui vérifie si l'étiquette qualitative prédit quelque chose que les caractéristiques quantitatives ne capturent pas déjà. Si l'IC exclut zéro, la couche d'archétype gagne le droit d'entrer dans une projection d'échange. S'il chevauche zéro, le cadriciel le dit honnêtement et la projection roule sans elle.
+
+**Exemple complet livré dans ce dépôt.** [Dossier de contingence M5](./examples/habs_round1_2026/) (Slafkovský à l'écart, qui le remplace?). Le moteur d'échange projette chaque candidat avec une bande d'IC sur base regroupée. Puis, pour le candidat de tête (Gallagher), l'étude d'effet par cohorte demande : *parmi les 30 plus proches comparables, ceux qui portent l'étiquette `warrior` relèvent-ils davantage leur iso en séries que ceux qui ne la portent pas?* Résultat : cohorte warrior (n=4) avec un relèvement moyen de +0,69 xG/60, cohorte non-warrior (n=12) avec un relèvement moyen de +0,19; bootstrap Δ = +0,49 avec IC à 80 % de [+0,05, +0,93]. **L'IC exclut zéro — mais n=4 reste petit et un bootstrap sur 4 valeurs recycle constamment les mêmes points.** Le dossier signale explicitement que la lecture est suggestive, pas porteuse, et présente la projection avec et sans la couche d'archétype pour que le lecteur puisse contester l'addition s'il le veut.
+
+**Ce qui est ouvert là-dedans.** Les modèles ajustés sont livrés comme artefacts redistribuables. L'index kNN patineurs (`comparable_index.json`), l'index kNN gardiens (`goalie_comparable_index.json`) et les quatre tables scouting sont tous regroupés dans un seul zip via [`tools/export_derived_artifacts.py`](./tools/export_derived_artifacts.py). Les statistiques de comptage NST brutes restent dehors (selon leurs termes) — fournissez votre propre clé NST, lancez les outils de rafraîchissement, et votre base locale rejoint la nôtre. Chaque étiquette dans les tables scouting transporte sa citation textuelle et son URL source; quiconque republie en aval doit conserver cette provenance attachée.
+
+**Ce que ce n'est pas.** Ce n'est pas un substitut au pistage stylistique (gardien positionnel vs « scrambly », côté mitaine vs côté bouclier; récupérations sur la rampe droite vs la rampe gauche). Ces caractéristiques exigent des microstats dérivées du jeu par jeu qu'on n'ingère pas encore. Ce n'est pas du RAPM. Ce n'est pas une note unique pour évaluer un joueur. C'est un moteur de comparables hybride quantitatif + qualitatif avec des tests falsifiables par cohorte d'étiquettes par-dessus — le genre de chose qu'aujourd'hui on ne peut bâtir qu'en recollant trois outils payants différents et en écrivant l'intégration soi-même.
+
 ## Architecture en un coup d'œil
 
 ```
