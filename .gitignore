@@ -67,6 +67,13 @@ reearch/
 .claude/scheduled_tasks.lock
 .claude/scheduled_tasks/
 
+# Internal progress / planning notes — never publish
+plans/
+PROGRESS*.md
+PROGRESS_*.md
+NEXT_STEPS*.md
+TODO_*.md
+
 # Google OAuth credentials and tokens (NEVER commit)
 google-credentials.json
 google-token.json
