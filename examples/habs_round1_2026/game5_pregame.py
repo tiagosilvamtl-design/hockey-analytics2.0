@@ -302,6 +302,56 @@ def main():
                 if row:
                     series.setdefault(player_name, {})[tname] = row
 
+    # ---- Bottom-line weighted verdict ----
+    # Per-line per-game iso impact = trio_iso_net60 × slot_min / 60.
+    # Sum the swings (G5 - G4) across all four lines for a single number.
+    line_swings_xg_per_game = {}
+    for role in ("L1", "L2", "L3", "L4"):
+        a = g4_avg.get(role, {}).get("avg_iso_net60")
+        b = g5_avg.get(role, {}).get("avg_iso_net60")
+        if a is None or b is None:
+            line_swings_xg_per_game[role] = None
+            continue
+        slot = SLOT_TIMES[role]
+        line_swings_xg_per_game[role] = round((b - a) * slot / 60.0, 4)
+    total_iso_swing = sum(v for v in line_swings_xg_per_game.values() if v is not None)
+    # Warrior layer (only if CI excludes zero — the framework rail)
+    warrior_layer_xg_per_game = None
+    if warrior.get("bootstrap", {}).get("ci_excludes_zero"):
+        # Apply lift to Gallagher's L3 slot only
+        warrior_layer_xg_per_game = round(
+            warrior["bootstrap"]["delta_mean"] * SLOT_TIMES["L3"] / 60.0, 4
+        )
+    stacked_total = total_iso_swing + (warrior_layer_xg_per_game or 0)
+    # Verdict label
+    if abs(total_iso_swing) < 0.04 and not warrior_layer_xg_per_game:
+        verdict_label = "essentially neutral"
+    elif stacked_total > 0.10:
+        verdict_label = "small but clearly positive"
+    elif stacked_total > 0.03:
+        verdict_label = "small positive"
+    elif stacked_total < -0.10:
+        verdict_label = "small but clearly negative"
+    elif stacked_total < -0.03:
+        verdict_label = "small negative"
+    else:
+        verdict_label = "essentially neutral"
+    verdict = {
+        "line_swings_xg_per_game": line_swings_xg_per_game,
+        "total_iso_swing_xg_per_game": round(total_iso_swing, 3),
+        "warrior_layer_xg_per_game": warrior_layer_xg_per_game,
+        "stacked_total_xg_per_game": round(stacked_total, 3),
+        "label": verdict_label,
+        "interpretation_en": (
+            f"On the math alone, MTL's projected lineup is {verdict_label} vs Game 4: "
+            f"~{stacked_total:+.2f} expected xG/game at 5v5. The L3 rebuild "
+            f"(+{line_swings_xg_per_game['L3']:.2f} xG/g) is the bigger win than the L2 "
+            f"reshuffle ({line_swings_xg_per_game['L2']:+.2f} xG/g) is a loss. The Dach-line "
+            f"demotion barely registers ({line_swings_xg_per_game['L4']:+.2f} xG/g) in iso "
+            f"terms — the real cost there is finishing variance the model can't see."
+        ),
+    }
+
     payload = {
         "meta": {
             "as_of": "2026-04-29",
@@ -312,6 +362,7 @@ def main():
             "pool_windows": "24-25 reg+playoff + 25-26 reg+playoff",
             "slot_assumptions": SLOT_TIMES,
         },
+        "verdict": verdict,
         "lines_g4": G4_LINES,
         "lines_g5_projected": G5_LINES,
         "g4_line_iso": g4_avg,

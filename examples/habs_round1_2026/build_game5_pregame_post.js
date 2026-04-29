@@ -135,6 +135,7 @@ const ws = D.warrior_study.bootstrap;
 const tags = D.tags;
 const g4 = D.g4_line_iso;
 const g5 = D.g5_line_iso;
+const V = D.verdict;
 
 function lineIsoSwing(role) {
   const a = g4[role]?.avg_iso_net60 ?? 0;
@@ -153,6 +154,20 @@ const T = {
     subtitle: 'Amalie Arena · series tied 2–2 · Tampa has last change',
     banner: ('Lemieux pre-game brief · projection-driven, framework-graded · ' +
              'every number traces to a query in our open-source codebase.'),
+    verdict_title: 'The bottom line',
+    verdict_prose: (
+      `**Do these lineup changes help the Habs? Yes — slightly.** The projected ` +
+      `lineup grades as a **small but clearly positive** change vs Game 4: about ` +
+      `**${fmt(V.stacked_total_xg_per_game, 2)} expected xG/game** at 5v5 once you stack the pure ` +
+      `iso math (${fmt(V.total_iso_swing_xg_per_game, 2)} xG/g) with the archetype layer on Gallagher ` +
+      `(${fmt(V.warrior_layer_xg_per_game, 2)} xG/g). The win is concentrated on the third line: ` +
+      `Anderson–Danault–Gallagher is, on paper, a much better trio than Newhook–Kapanen–Demidov, ` +
+      `and that win is bigger than the cost of demoting the Dach line and promoting Demidov to L2. ` +
+      `The Dach demotion barely moves the needle in pure iso terms — the trio's positive iso ` +
+      `doesn't accumulate enough on 4.5 fewer minutes to matter; the real gamble is finishing ` +
+      `variance the model can't see. Translation: directionally favourable, magnitude small, ` +
+      `nothing here that swings a series on its own.`
+    ),
     tldr_title: 'Three things to watch for',
     tldr: [
       `**The L3 rebuild is the headline call.** Replacing Newhook–Kapanen–Demidov with **Anderson–Danault–Gallagher** swings the trio's pooled iso net60 from **${fmt(g4.L3.avg_iso_net60, 3)}** to **${fmt(g5.L3.avg_iso_net60, 3)}** — a **${fmt(lineIsoSwing('L3'), 3)}** swing in trio quality. That's the largest single-move iso shift any forward line has produced this series.`,
@@ -248,6 +263,20 @@ const T = {
     subtitle: 'Amalie Arena · série égale 2–2 · Tampa a le dernier changement',
     banner: ('Survol d\'avant-match Lemieux · piloté par projection, vérifié par le cadriciel · ' +
              'chaque chiffre se rattache à une requête dans notre code source ouvert.'),
+    verdict_title: 'En une phrase',
+    verdict_prose: (
+      `**Est-ce que ces changements aident le Canadien? Oui — légèrement.** La formation ` +
+      `projetée se lit comme une amélioration **nette mais petite** par rapport au Match 4 : ` +
+      `environ **${fmtFr(V.stacked_total_xg_per_game, 2)} buts attendus par match** à 5 c. 5 une fois ` +
+      `empilés le calcul iso pur (${fmtFr(V.total_iso_swing_xg_per_game, 2)} BAF/match) et la couche ` +
+      `d'archétype pour Gallagher (${fmtFr(V.warrior_layer_xg_per_game, 2)} BAF/match). Le gain est ` +
+      `concentré sur le 3ᵉ trio : Anderson–Danault–Gallagher est, sur papier, un trio nettement ` +
+      `meilleur que Newhook–Kapanen–Demidov, et ce gain dépasse le coût de rétrograder le trio de ` +
+      `Dach et de promouvoir Demidov au 2ᵉ. La descente du trio de Dach ne bouge presque pas l'aiguille ` +
+      `en iso pur — l'iso positif du trio s'accumule à peine sur 4,5 minutes de moins pour faire la ` +
+      `différence. Le vrai pari, c'est la variance de finition que le modèle ne voit pas. Traduction : ` +
+      `direction favorable, ampleur petite, rien ici qui renverse une série à lui seul.`
+    ),
     tldr_title: 'Trois choses à surveiller',
     tldr: [
       `**La reconstruction du 3ᵉ trio, c\'est le coup de tête de la soirée.** Remplacer Newhook–Kapanen–Demidov par **Anderson–Danault–Gallagher** fait passer l\'iso net60 regroupé du trio de **${fmtFr(g4.L3.avg_iso_net60, 3)}** à **${fmtFr(g5.L3.avg_iso_net60, 3)}** — un écart de **${fmtFr(lineIsoSwing('L3'), 3)}** sur la qualité du trio. C\'est la plus grosse oscillation iso d\'un seul changement de trio dans la série.`,
@@ -360,6 +389,20 @@ function titleBlock(t) {
     new Paragraph({
       spacing: { after: 240 },
       children: [new TextRun({ text: t.banner, color: BRAND.red, font: 'Arial', size: 18 })],
+    }),
+  ];
+}
+function verdictSection(t) {
+  // Inline-styled prose with a colored callout box feel — branded, easy to scan.
+  return [
+    new Paragraph({
+      heading: HeadingLevel.HEADING_1, spacing: { before: 240, after: 120 },
+      children: [new TextRun({ text: t.verdict_title, bold: true, size: 30, color: BRAND.red, font: 'Arial' })],
+    }),
+    new Paragraph({
+      spacing: { after: 200 }, indent: { left: 240, right: 240 },
+      shading: { type: ShadingType.CLEAR, color: 'auto', fill: BRAND.info },
+      children: md(t.verdict_prose),
     }),
   ];
 }
@@ -566,6 +609,7 @@ function buildDoc(lang) {
       children: [
         new Paragraph({ children: [] }),
         ...titleBlock(t),
+        ...verdictSection(t),
         ...tldrSection(t),
         new Paragraph({ children: [new PageBreak()] }),
         ...lineupSection(t, lang),
