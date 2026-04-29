@@ -22,7 +22,9 @@ cloner le dépôt  →  ouvrir Claude Code  →  poser une question sur le match
 
 ## Pourquoi ce projet existe
 
-En 2026, la couverture médiatique du hockey demeure majoritairement innumérique : conclusions profondes tirées d'un seul match, narratifs recyclés depuis les années 90, aucun véritable engagement avec vingt ans de statistiques avancées pourtant publiques. Lemieux est d'abord un outil qui **gratte notre propre démangeaison**, et ensuite un cadriciel communautaire. C'est ce que l'un d'entre nous aurait aimé avoir hier; nous l'ouvrons parce que d'autres veulent probablement la même chose.
+En 2026, la couverture médiatique du hockey s'appuie encore largement sur la lecture à l'œil — non pas par manque de talent chez les chroniqueurs et les analystes, mais parce qu'interroger la donnée avancée demande une expertise technique qui croise rarement le métier de journaliste sportif. Les statisticiens qui se reconvertissent en chroniqueurs sont rares; les chroniqueurs qui ont le temps d'apprendre pandas et un modèle de buts attendus sur un échéancier de deadline le sont encore plus. Résultat : vingt années d'excellent travail analytique public restent en grande partie dans la communauté analytique.
+
+Lemieux est d'abord un outil qui **gratte notre propre démangeaison**, et ensuite un cadriciel communautaire. On l'a bâti pour nous-mêmes, et on l'ouvre au cas où il puisse servir à d'autres — partisans qui veulent faire leurs propres analyses, journalistes et analystes médias qui cherchent à intégrer des notions analytiques à leur couverture sans avoir à reconstruire le pipeline de données à partir de zéro, passionnés qui veulent un point de départ déjà câblé. Le cadriciel s'occupe de la plomberie de données et des vérifications de rigueur pour que l'écriture puisse se concentrer sur ce qu'elle fait de mieux.
 
 ## Ce que Lemieux vous permet de faire
 

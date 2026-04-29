@@ -22,7 +22,9 @@ clone repo  →  open Claude Code  →  ask about last night's game
 
 ## Why this exists
 
-Most hockey coverage in 2026 remains innumerate: deep conclusions from single-game eye tests, narratives recycled from the 1990s, zero engagement with twenty years of public advanced stats. Lemieux is a **scratch-your-own-itch tool** first, a community framework second. It's what one of us wanted yesterday; it's open-sourced because others almost certainly want the same.
+Hockey coverage in 2026 still leans heavily on eye-test narrative — not because beat writers and broadcasters lack talent, but because querying advanced data takes technical chops that rarely overlap with sports journalism. Statisticians who become reporters are rare; reporters with the time to learn pandas + an xG model on a deadline are rarer still. The result is twenty years of excellent public analytics work that mostly stays inside the analytics community.
+
+Lemieux is a **scratch-your-own-itch tool** first, a community framework second. We built it for ourselves, and we're open-sourcing it in case it helps others — fans who want to do their own analysis, beat writers and broadcasters looking for a way to fold analytical notions into their coverage without rebuilding the data pipeline from scratch, hobbyist analysts who want a pre-wired starting point. The framework does the data plumbing and rigor checks so the writing can focus on what it's meant to do.
 
 ## What you can do with Lemieux
 
