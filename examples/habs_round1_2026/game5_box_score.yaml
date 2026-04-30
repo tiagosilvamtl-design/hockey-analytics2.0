@@ -1,0 +1,165 @@
+# Game 5 box score — MTL @ TBL, 2026-04-29.
+# Source: ESPN game summary + CBS Sports box score, fetched ~immediately
+# after the final whistle. Preliminary numbers: NST iso splits will not be
+# available until NST refreshes overnight. This yaml is the authoritative
+# fact base for the post-game brief.
+
+game_id: "2025030125"
+date: "2026-04-29"
+matchup: "MTL @ TBL"
+final_score: "MTL 3 - TBL 2 (regulation)"
+result: "MTL win"
+series_state_after_game: "MTL leads 3-2"
+venue: "Benchmark International Arena, Tampa"
+last_change: "TBL"  # home team
+
+# Per-team aggregate
+team_stats:
+  MTL:
+    goals: 3
+    shots: 24
+    hits: 37
+    pim: 8
+    faceoff_win_pct: 66.0
+  TBL:
+    goals: 2
+    shots: 40
+    hits: 23
+    pim: 6
+    faceoff_win_pct: 34.0
+
+# Period-by-period
+periods:
+  - { period: 1, mtl_g: 1, tbl_g: 0 }
+  - { period: 2, mtl_g: 1, tbl_g: 2 }
+  - { period: 3, mtl_g: 1, tbl_g: 0 }
+
+# Goal sequence
+goal_sequence:
+  - period: 1
+    time_in_period: "03:00"
+    team: "MTL"
+    scorer: "Brendan Gallagher"
+    primary_assist: "Alex Newhook"
+    secondary_assist: null
+    situation: "5v5"
+    note: "Gallagher's first goal of the series, scored in his first appearance after sitting G1-G4."
+  - period: 2
+    time_in_period: "06:49"
+    team: "TBL"
+    scorer: "Dominic James"
+    primary_assist: "Gage Goncalves"
+    secondary_assist: "Yanni Gourde"
+    situation: "5v5"
+  - period: 2
+    time_in_period: "07:00"
+    team: "MTL"
+    scorer: "Kirby Dach"
+    primary_assist: "Zachary Bolduc"
+    secondary_assist: "Kaiden Guhle"
+    situation: "5v5"
+    note: "Replied 11 seconds after the TBL tying goal."
+  - period: 2
+    time_in_period: "17:23"
+    team: "TBL"
+    scorer: "Jake Guentzel"
+    primary_assist: null
+    secondary_assist: null
+    situation: "unassisted"
+  - period: 3
+    time_in_period: "01:06"
+    team: "MTL"
+    scorer: "Alexandre Texier"
+    primary_assist: "Lane Hutson"
+    secondary_assist: "Nick Suzuki"
+    situation: "5v5"
+    note: "Game-winning goal."
+
+# Goalies
+goalies:
+  MTL:
+    name: "Jakub Dobeš"
+    shots_against: 40
+    saves: 38
+    goals_against: 2
+    sv_pct: 0.950
+    toi: "60:00"
+  TBL:
+    name: "Andrei Vasilevskiy"
+    shots_against: 24
+    saves: 21
+    goals_against: 3
+    sv_pct: 0.875
+    toi: "57:27"  # pulled briefly?
+
+# Skater box score per player
+# Format: name, position, G, A, +/-, SOG, TOI (m:s), hits, PIM
+skaters:
+  MTL:
+    - { name: "Alexandre Texier",    pos: "L", g: 1, a: 0, plus_minus: 2,  sog: 2, toi: "13:42", hits: 1, pim: 0 }
+    - { name: "Kirby Dach",          pos: "C", g: 1, a: 0, plus_minus: 2,  sog: 1, toi: "11:46", hits: 3, pim: 0 }
+    - { name: "Brendan Gallagher",   pos: "R", g: 1, a: 0, plus_minus: 1,  sog: 1, toi: "06:48", hits: 3, pim: 0 }
+    - { name: "Lane Hutson",         pos: "D", g: 0, a: 1, plus_minus: 1,  sog: 1, toi: "23:31", hits: 1, pim: 2 }
+    - { name: "Kaiden Guhle",        pos: "D", g: 0, a: 1, plus_minus: 1,  sog: 2, toi: "21:41", hits: 4, pim: 2 }
+    - { name: "Nick Suzuki",         pos: "C", g: 0, a: 1, plus_minus: -1, sog: 0, toi: "20:42", hits: 3, pim: 0 }
+    - { name: "Alex Newhook",        pos: "C", g: 0, a: 1, plus_minus: 0,  sog: 2, toi: "14:35", hits: 2, pim: 0 }
+    - { name: "Zachary Bolduc",      pos: "L", g: 0, a: 1, plus_minus: 2,  sog: 0, toi: "13:26", hits: 3, pim: 0 }
+    - { name: "Mike Matheson",       pos: "D", g: 0, a: 0, plus_minus: -1, sog: 1, toi: "27:54", hits: 0, pim: 0 }
+    - { name: "Juraj Slafkovský",    pos: "L", g: 0, a: 0, plus_minus: -1, sog: 3, toi: "19:27", hits: 1, pim: 0 }
+    - { name: "Phillip Danault",     pos: "C", g: 0, a: 0, plus_minus: 0,  sog: 0, toi: "19:40", hits: 2, pim: 0 }
+    - { name: "Josh Anderson",       pos: "R", g: 0, a: 0, plus_minus: -1, sog: 2, toi: "15:30", hits: 4, pim: 0 }
+    - { name: "Jake Evans",          pos: "C", g: 0, a: 0, plus_minus: 0,  sog: 3, toi: "15:14", hits: 2, pim: 2 }
+    - { name: "Ivan Demidov",        pos: "R", g: 0, a: 0, plus_minus: -1, sog: 3, toi: "11:07", hits: 2, pim: 0 }
+    - { name: "Cole Caufield",       pos: "R", g: 0, a: 0, plus_minus: 0,  sog: 1, toi: "13:13", hits: 1, pim: 0 }
+    - { name: "Alexandre Carrier",   pos: "D", g: 0, a: 0, plus_minus: -1, sog: 0, toi: "23:27", hits: 0, pim: 0 }
+    - { name: "Jayden Struble",      pos: "D", g: 0, a: 0, plus_minus: 1,  sog: 1, toi: "10:23", hits: 4, pim: 0 }
+    - { name: "Arber Xhekaj",        pos: "D", g: 0, a: 0, plus_minus: 1,  sog: 1, toi: "09:54", hits: 1, pim: 2 }
+  TBL:
+    - { name: "Jake Guentzel",       pos: "C", g: 1, a: 0, plus_minus: 1,  sog: 4, toi: "22:11", hits: 1, pim: 0 }
+    - { name: "Dominic James",       pos: "C", g: 1, a: 0, plus_minus: -1, sog: 2, toi: "13:14", hits: 1, pim: 0 }
+    - { name: "Darren Raddysh",      pos: "D", g: 0, a: 0, plus_minus: 1,  sog: 6, toi: "25:26", hits: 5, pim: 0 }
+    - { name: "Nikita Kucherov",     pos: "R", g: 0, a: 0, plus_minus: 0,  sog: 8, toi: "21:44", hits: 1, pim: 0 }
+    - { name: "Brandon Hagel",       pos: "L", g: 0, a: 0, plus_minus: 0,  sog: 5, toi: "23:12", hits: 3, pim: 0 }
+    - { name: "Brayden Point",       pos: "C", g: 0, a: 0, plus_minus: 1,  sog: 1, toi: "21:17", hits: 0, pim: 0 }
+    - { name: "Anthony Cirelli",     pos: "C", g: 0, a: 0, plus_minus: 0,  sog: 3, toi: "20:49", hits: 0, pim: 0 }
+    - { name: "Janis Moser",         pos: "D", g: 0, a: 0, plus_minus: 1,  sog: 1, toi: "20:33", hits: 1, pim: 0 }
+    - { name: "Yanni Gourde",        pos: "C", g: 0, a: 1, plus_minus: 1,  sog: 0, toi: "14:23", hits: 0, pim: 2 }
+    - { name: "Gage Goncalves",      pos: "C", g: 0, a: 1, plus_minus: -1, sog: 2, toi: "13:51", hits: 1, pim: 0 }
+    - { name: "Erik Cernak",         pos: "D", g: 0, a: 0, plus_minus: 0,  sog: 1, toi: "15:56", hits: 0, pim: 0 }
+    - { name: "Ryan McDonagh",       pos: "D", g: 0, a: 0, plus_minus: 0,  sog: 2, toi: "16:23", hits: 0, pim: 4 }
+    - { name: "Maxwell Crozier",     pos: "D", g: 0, a: 0, plus_minus: -2, sog: 1, toi: "17:40", hits: 0, pim: 0 }
+    - { name: "Emil Lilleberg",      pos: "D", g: 0, a: 0, plus_minus: -2, sog: 0, toi: "15:47", hits: 2, pim: 0 }
+    - { name: "Oliver Bjorkstrand",  pos: "R", g: 0, a: 0, plus_minus: -1, sog: 2, toi: "14:47", hits: 2, pim: 0 }
+    - { name: "Corey Perry",         pos: "R", g: 0, a: 0, plus_minus: -1, sog: 1, toi: "06:55", hits: 0, pim: 0 }
+    - { name: "Zemgus Girgensons",   pos: "C", g: 0, a: 0, plus_minus: -1, sog: 0, toi: "07:21", hits: 3, pim: 0 }
+    - { name: "Conor Geekie",        pos: "C", g: 0, a: 0, plus_minus: -1, sog: 1, toi: "05:04", hits: 3, pim: 0 }
+
+# Notable narrative anchors (manual)
+narrative_anchors:
+  gallagher_first_appearance:
+    significance: |
+      Gallagher's first appearance of the series. He was the focus of yesterday's
+      Lemieux pre-game brief — projected onto L3 with Anderson + Danault, with
+      a warrior-cohort archetype lift study suggesting his comp pool over-delivers
+      in playoffs. He scored 3:00 into the game on his first shift sequence.
+      TOI of 6:48 is well below the projected 10-min L3 slot, suggesting either
+      a tight 4-line rotation, an in-game adjustment, or an injury management
+      approach. The goal stands regardless.
+  dach_line_response:
+    significance: |
+      The "demoted to L4" Dach line in Marinaro's projection (Bolduc-Dach-Texier)
+      produced BOTH MTL 5v5 goals after Gallagher's opener: Dach scored at P2
+      7:00 (Bolduc primary assist) and Texier scored the GW at P3 1:06 (Hutson
+      primary, Suzuki secondary). All three trio members combined for 2G + 1A
+      in 12-13 min of TOI — exactly the line that yesterday's brief said the
+      iso math made the demotion almost cost-free.
+  dobes_wall:
+    significance: |
+      Dobeš stopped 38 of 40 shots (.950 SV%) on a night TBL outshot MTL 40-24.
+      Vasilevskiy on the other end was .875 (21/24). The PBP-direct goalie SV%
+      gap is the cleanest cause of the win.
+  tbl_kucherov_blank:
+    significance: |
+      Kucherov 0 points on 8 shots in 21:44. Highest individual-shot game of
+      the series with no offensive output. The Dobeš save-streak is the inverse
+      of his shot-volume night.
