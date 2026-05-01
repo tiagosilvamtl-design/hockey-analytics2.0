@@ -11,14 +11,13 @@ import sqlite3
 from pathlib import Path
 
 import pandas as pd
-from mcp.server.fastmcp import FastMCP
-
 from lemieux.core import (
     build_pooled_player_impact,
-    combine_swaps,
     project_swap,
 )
 from lemieux.glossary import list_terms, render_mcp_resource
+
+from mcp.server.fastmcp import FastMCP
 
 # ---------- server instance ----------
 mcp = FastMCP("lemieux")

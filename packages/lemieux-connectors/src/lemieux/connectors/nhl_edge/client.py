@@ -66,7 +66,7 @@ class EdgePlayerFeatures:
         game_type: int,
         skating: dict | None,
         shots: dict | None,
-    ) -> "EdgePlayerFeatures":
+    ) -> EdgePlayerFeatures:
         """Build from raw API JSON payloads (or None if 404)."""
         out = cls(player_id=player_id, name=name, season_label=season_label, game_type=game_type)
         if skating and (skating.get("topSkatingSpeeds")):
@@ -108,7 +108,7 @@ class PlayerBio:
     is_active: int | None = None         # 1 / 0 (cast from bool)
 
     @classmethod
-    def from_landing(cls, payload: dict, player_id: int) -> "PlayerBio":
+    def from_landing(cls, payload: dict, player_id: int) -> PlayerBio:
         """Parse the /v1/player/{id}/landing response."""
         first = (payload.get("firstName") or {}).get("default") or ""
         last = (payload.get("lastName") or {}).get("default") or ""

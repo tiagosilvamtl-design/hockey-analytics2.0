@@ -21,8 +21,6 @@ import numpy as np
 
 from .embedding import (
     FeatureMatrix,
-    PCAResult,
-    StandardizationResult,
     carmelo_score,
     find_nearest,
     fit_pca,
@@ -30,7 +28,6 @@ from .embedding import (
     transform_pca,
 )
 from .swap_engine import PlayerImpact
-
 
 # Position one-hot dimensions used in the feature matrix.
 POSITION_TOKENS = ("C", "L", "R", "D")
@@ -127,7 +124,7 @@ class ComparableIndex:
         order, distances = find_nearest(self.embedding[idx], self.embedding, k, exclude_indices=exclude)
         max_d = float(np.max(distances)) if len(distances) else 1.0
         comps: list[Comparable] = []
-        for nbr_idx, dist in zip(order, distances):
+        for nbr_idx, dist in zip(order, distances, strict=False):
             if not np.isfinite(dist):
                 continue
             m = self.row_meta[int(nbr_idx)]
@@ -157,7 +154,7 @@ class ComparableIndex:
         z_target = np.where(np.isnan(z_target), 0.0, z_target)
         z_nbr = np.where(np.isnan(z_nbr), 0.0, z_nbr)
         contribs = np.abs(z_target - z_nbr)
-        return {col: float(c) for col, c in zip(self.columns, contribs)}
+        return {col: float(c) for col, c in zip(self.columns, contribs, strict=False)}
 
     # ----- persistence -----
     def to_dict(self) -> dict:
@@ -175,7 +172,7 @@ class ComparableIndex:
         }
 
     @classmethod
-    def from_dict(cls, d: dict) -> "ComparableIndex":
+    def from_dict(cls, d: dict) -> ComparableIndex:
         return cls(
             rows=d["rows"],
             row_meta=d["row_meta"],
@@ -193,7 +190,7 @@ class ComparableIndex:
         Path(path).write_text(json.dumps(self.to_dict(), indent=2), encoding="utf-8")
 
     @classmethod
-    def load(cls, path: str | Path) -> "ComparableIndex":
+    def load(cls, path: str | Path) -> ComparableIndex:
         return cls.from_dict(json.loads(Path(path).read_text(encoding="utf-8")))
 
 

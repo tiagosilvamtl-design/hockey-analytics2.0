@@ -4,11 +4,7 @@ from __future__ import annotations
 import math
 
 import numpy as np
-import pytest
-
 from lemieux.core import (
-    Comparable,
-    ComparableIndex,
     FeatureMatrix,
     PlayerImpact,
     build_cohort_stabilized_impact,

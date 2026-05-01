@@ -1,7 +1,7 @@
 """Natural Stat Trick connector."""
 from __future__ import annotations
 
-from .client import NstClient, NstQuery, NST_CONNECTOR_META
+from .client import NST_CONNECTOR_META, NstClient, NstQuery
 from .parsers import parse_skater_table, parse_team_table, parse_toi_minutes
 from .team_map import NAME_TO_ABBREV, to_abbrev
 

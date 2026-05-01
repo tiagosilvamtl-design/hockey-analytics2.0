@@ -7,11 +7,13 @@ through a local SQLite cache.
 """
 from __future__ import annotations
 
-import os
 import urllib.parse
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Literal
+from typing import TYPE_CHECKING, Literal
+
+if TYPE_CHECKING:
+    import pandas as pd
 
 import requests
 from tenacity import (
@@ -21,7 +23,7 @@ from tenacity import (
     wait_exponential_jitter,
 )
 
-from .._base import Connector, ConnectorMetadata, HttpCache, RateLimiter
+from .._base import Connector, ConnectorMetadata
 
 NST_DATA_BASE = "https://data.naturalstattrick.com"
 NST_PUBLIC_BASE = "https://www.naturalstattrick.com"
@@ -146,10 +148,9 @@ class NstClient(Connector):
             return DEFAULT_TTLS["completed_days"] * 86400
         return DEFAULT_TTLS["historical_days"] * 86400
 
-    def refresh(self, **params) -> "pd.DataFrame":
+    def refresh(self, **params) -> pd.DataFrame:
         """Generic refresh entry point: accepts NstQuery kwargs, parses based on endpoint."""
         from .parsers import parse_skater_table, parse_team_table
-        import pandas as pd  # noqa: F401
 
         q = NstQuery(**params)
         html = self.fetch(q)

@@ -5,7 +5,6 @@ import math
 
 import pandas as pd
 import pytest
-
 from lemieux.core import PlayerImpact, build_player_impact, project_swap
 
 

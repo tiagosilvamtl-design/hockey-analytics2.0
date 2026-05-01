@@ -22,9 +22,6 @@ from __future__ import annotations
 import json
 import sqlite3
 from dataclasses import dataclass, field
-from pathlib import Path
-from typing import Iterable
-
 
 # Canonical attribute IDs; numeric values 1-5; confidence 0-1.
 # Skater attributes + goalie attributes are unioned because they live in the
@@ -121,7 +118,7 @@ class PlayerScoutingProfile:
         }
 
     @classmethod
-    def from_dict(cls, d: dict) -> "PlayerScoutingProfile":
+    def from_dict(cls, d: dict) -> PlayerScoutingProfile:
         return cls(
             name=d["name"], position=d.get("position", ""),
             extracted_at=d["extracted_at"],

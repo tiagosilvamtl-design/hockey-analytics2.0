@@ -53,7 +53,7 @@ class Connector(ABC):
         self.session.headers.update({"User-Agent": user_agent})
         self._configure_auth()
 
-    def _configure_auth(self) -> None:
+    def _configure_auth(self) -> None:  # noqa: B027
         """Override in subclasses to attach API keys. Default = noop."""
 
     def _read_env_key(self) -> str | None:

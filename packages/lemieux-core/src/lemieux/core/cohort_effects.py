@@ -23,7 +23,7 @@ from dataclasses import dataclass
 
 import numpy as np
 
-from .tags import find_players_by_tag, TaggedPlayer
+from .tags import find_players_by_tag
 
 
 @dataclass

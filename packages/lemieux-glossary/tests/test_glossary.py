@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 import pytest
-
 from lemieux.glossary import get_term, list_terms, render_for_markdown
 
 

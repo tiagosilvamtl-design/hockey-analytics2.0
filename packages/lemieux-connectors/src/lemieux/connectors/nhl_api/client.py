@@ -47,7 +47,7 @@ class GameId:
     raw: str
 
     @classmethod
-    def playoff(cls, season_start_year: int, round_: int, series: int, game: int) -> "GameId":
+    def playoff(cls, season_start_year: int, round_: int, series: int, game: int) -> GameId:
         s = f"{season_start_year}03{round_}{series}{game}"
         if len(s) != 10:
             raise ValueError(f"Unexpected playoff game id length: {s}")

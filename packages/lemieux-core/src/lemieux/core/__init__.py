@@ -1,17 +1,11 @@
 """Lemieux core analytics primitives."""
 from __future__ import annotations
 
-from .swap_engine import (
-    MIN_TOI_FOR_SWAP,
-    LINE_COMBO_MIN_TOI,
-    LINE_COMBO_DIVERGENCE_PP,
-    PlayerImpact,
-    SwapResult,
-    build_player_impact,
-    build_pooled_player_impact,
-    combine_swaps,
-    line_combo_sanity,
-    project_swap,
+from .cohort_effects import (
+    TagIntroductionStudyResult,
+    TagSplitStudyResult,
+    tag_introduction_study,
+    tag_split_study,
 )
 from .comparable import (
     POSITION_TOKENS,
@@ -41,17 +35,23 @@ from .scouting import (
     load_profile,
     upsert_profile,
 )
+from .swap_engine import (
+    LINE_COMBO_DIVERGENCE_PP,
+    LINE_COMBO_MIN_TOI,
+    MIN_TOI_FOR_SWAP,
+    PlayerImpact,
+    SwapResult,
+    build_player_impact,
+    build_pooled_player_impact,
+    combine_swaps,
+    line_combo_sanity,
+    project_swap,
+)
 from .tags import (
     TaggedPlayer,
     find_players_by_tag,
     list_known_tags,
     list_player_tags,
-)
-from .cohort_effects import (
-    TagIntroductionStudyResult,
-    TagSplitStudyResult,
-    tag_introduction_study,
-    tag_split_study,
 )
 
 __all__ = [
